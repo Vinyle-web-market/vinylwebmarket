@@ -3,6 +3,9 @@
 
 class EAbbonamento
 {
+    private $date;
+    private $import;
+
     function __construct($dataRinnovo , $importo)
     {
         $this->date = $dataRinnovo;
