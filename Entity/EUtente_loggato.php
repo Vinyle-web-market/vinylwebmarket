@@ -10,15 +10,15 @@ class EUtente_Loggato
     private $state;
     private $registrationDate;
 
-    //COSTRUTTORE
-    public function __construct($name,$mail,$pw,$tel,$stato,$datareg)
+    //COSTRUTTOREe
+    public function __construct($name, $mail, $pw, $tel, $stato, $datareg)
     {
-        $this->username=$name;
-        $this->email=$mail;
-        $this->password=$pw;
-        $this->phone=$tel;
-        $this->state=$stato;
-        $this->registrationDate=$datareg;
+        $this->username = $name;
+        $this->email = $mail;
+        $this->password = $pw;
+        $this->phone = $tel;
+        $this->state = $stato;
+        $this->registrationDate = $datareg;
     }
 
     //METODI GET
@@ -121,14 +121,17 @@ class EUtente_Loggato
     {
         $this->username = $username;
     }
+
 //eiei
-    function toString(){
-        return  "Username: ".$this->username."\n".
-            "Email: ".$this->email."\n".
-            "Password: ".$this->password."\n".
-            "Phone: ".$this->phone."\n".
-            "State: ".$this->state."\n".
-            "DateRegistration: ".$this->registrationDate."\n";
+    function toString()
+    {
+        return "Username: " . $this->username . "\n" .
+            "Email: " . $this->email . "\n" .
+            "Password: " . $this->password . "\n" .
+            "Phone: " . $this->phone . "\n" .
+            "State: " . $this->state . "\n" .
+            "DateRegistration: " . $this->registrationDate . "\n";
     }
+
 
 }
