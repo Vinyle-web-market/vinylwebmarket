@@ -5,7 +5,6 @@ class EPrivato extends EUtente_Loggato {
 
        private $nome;
        private $cognome;
-       //email chiave univova per Privato,fa riferimento a Eutente_loggsto
        private $email_privato;
 
 
