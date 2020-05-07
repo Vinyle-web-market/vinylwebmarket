@@ -9,14 +9,17 @@ class ECarta
     private $codcvv;
     private $id;
 
-    function __construct($IDcarta, $intestatario , $numeroCarta , $scadenza , $cvv)
+    //COSTRUTTORE
+
+    function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
     {
         $this->intestat=$intestatario;
         $this->num=$numeroCarta;
         $this->scad=$scadenza;
         $this->codcvv=$cvv;
-        $this->id=$IDcarta;
     }
+
+    //METODI SET
 
     /**
      * @param mixed $intestat
@@ -49,6 +52,16 @@ class ECarta
     {
         $this->codcvv = $codcvv;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    //METODI GET
 
     /**
      * @return mixed
@@ -90,9 +103,14 @@ class ECarta
         return $this->id;
     }
 
+    //METODO TOSTRING
+
     function toString()
     {
-        return "codice carta: ".$this->num." intestata a: ".$this->intestat." scadenza: ".$this->scad." CVV: ".$this->codcvv;
+        return "Codice carta: ".$this->num."\n".
+                "Intestata a: ".$this->intestat."\n".
+                "Scadenza: ".$this->scad."\n".
+                "CVV: ".$this->codcvv;
     }
 
 }
