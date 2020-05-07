@@ -7,13 +7,15 @@ class ECarta
     private $num;
     private $scad;
     private $codcvv;
+    private $id;
 
-    function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
+    function __construct($IDcarta, $intestatario , $numeroCarta , $scadenza , $cvv)
     {
         $this->intestat=$intestatario;
         $this->num=$numeroCarta;
         $this->scad=$scadenza;
         $this->codcvv=$cvv;
+        $this->id=$IDcarta;
     }
 
     /**
@@ -78,6 +80,14 @@ class ECarta
     function getCodcvv()
     {
         return $this->codcvv;
+    }
+
+    /**
+     * @return mixed
+     */
+    function getId()
+    {
+        return $this->id;
     }
 
     function toString()
