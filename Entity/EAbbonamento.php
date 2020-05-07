@@ -5,11 +5,15 @@ class EAbbonamento
 {
     private $date;
     private $import;
+    private $stato;
+    private $id;
 
-    function __construct($dataRinnovo , $importo)
+    function __construct($IDabbonamento, $dataRinnovo , $importo, $status)
     {
         $this->date = $dataRinnovo;
         $this->import= $importo;
+        $this->id=$IDabbonamento;
+        $this->stato=$status;
     }
 
     function setData($data) {
@@ -28,8 +32,32 @@ class EAbbonamento
         return $this->import;
     }
 
+    /**
+     * @param mixed $stato
+     */
+    function setStato($status)
+    {
+        $this->stato = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    function getStato()
+    {
+        return $this->stato;
+    }
+
+    /**
+     * @return mixed
+     */
+    function getId()
+    {
+        return $this->id;
+    }
+
     function toString() {
-        return "data rinnovo: ".$this->date." importo: ".$this->import."€";
+        return "data rinnovo: ".$this->date." importo: ".$this->import."€"." stato: ".$this->stato;
     }
 
 }
