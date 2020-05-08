@@ -14,7 +14,18 @@ class Evinile
     private $descrizione;
     private $quantita;
 
-    /*Questo è il costruttore della classe Vinile*/
+    /*Questo è il costruttore della classe Vinile
+     * @param $id
+     * @param $user_venditore
+     * @param $titolo
+     * @param $artista
+     * @param $genere
+     * @param $ngiri
+     * @param $condizione
+     * @param $prezzo
+     * @param descrizione
+     * @param quantità
+     */
 
     function __construct($user_vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
@@ -144,7 +155,7 @@ class Evinile
     {
         $this->descrizione = $descrizione;
     }
-    /**
+    /** Metodo che prende la Quantità
      * @return mixed
      */
     function getQuantita()
@@ -160,14 +171,13 @@ class Evinile
     }
     function toString()
     {
-        return "Identificativo: ".$this->id."\n".
-            "Venditore: ".$this->user_venditore."\n".
-            "Titolo vinile: ".$this->titolo."\n".
-            "Artista è: ".$this->artista."\n".
-            "Numero di giri: ".$this->ngiri."\n".
-            "Condizione vinile : ".$this->condizione."\n".
-            "Prezzo: ".$this->prezzo."\n".
-            "Descrizione:".$this->descrizione."\n".
-            "Quantità: ".$this->quantita."\n";
+        return "Venditore: ".$this->user_venditore."\n".
+               "Titolo vinile: ".$this->titolo."\n".
+               "Artista è: ".$this->artista."\n".
+               "Numero di giri: ".$this->ngiri."\n".
+               "Condizione vinile : ".$this->condizione."\n".
+               "Prezzo: ".$this->prezzo."\n".
+               "Descrizione:".$this->descrizione."\n".
+               "Quantità: ".$this->quantita."\n";
     }
 }
