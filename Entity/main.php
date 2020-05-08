@@ -1,6 +1,7 @@
 <?php
 include("EAbbonamento.php");
 include("ECarta.php");
+include ("EMessaggio.php");
 /*
 //prova di EAbbonamento se non serve escluderla mediante commento
 $data="08-12-2020";
@@ -48,4 +49,15 @@ print "prova getScad ".$carta->getScad();
 // FINE CODICE PROVA
 */
 
+/*$mittente="anthony";
+$destinatario="nanni";
+$ogetto="saluti";
+$testo="ciao nanni tutto ok?";
+$mex= new EMessaggio($mittente, $destinatario, $ogetto, $testo);
+echo "prova metodi get: ".$mex->getMittente()." ".$mex->getDestinatario()." ".$mex->getOggetto()." ".$mex->getTesto();
+$mex->setDestinatario("nuovo dest");
+$mex->setMittente("nuovo mittente");
+$mex->setOggetto("nuovo oggetto");
+$mex->setTesto("nuovo testo");
+echo "prova to string: ".$mex->toString();*/
 ?>
