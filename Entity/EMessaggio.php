@@ -11,9 +11,8 @@ class EMessaggio
 
     /*Costruttore della classe Messaggio*/
 
-    function __construct($ID, $mitt, $dest, $ogg, $test)
+    function __construct($mitt, $dest, $ogg, $test)
     {
-        $this->id = $ID;
         $this->mittente = $mitt;
         $this->destinatario = $dest;
         $this->oggetto = $ogg;
@@ -25,13 +24,6 @@ class EMessaggio
     function getId()
     {
         return $this->id;
-    }
-    /**
-     * @param mixed $id
-     */
-    function setId($id)
-    {
-        $this->id = $id;
     }
     /**
      * @return mixed

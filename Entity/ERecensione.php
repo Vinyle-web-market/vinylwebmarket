@@ -11,14 +11,12 @@ class ERecensione
 
     /*Questo è il costruttore della classe Recensione*/
 
-    function __construct($text, $vt, $user_mitt, $user_dest)
+    function __construct($vt, $user_mitt, $user_dest)
     {
-        $this->testo=$text;
         $this->votostelle = $vt;
         $this->username_mittente = $user_mitt;
         $this->username_destinatario = $user_dest;
     }
-
     /**
      * @return mixed
      */
@@ -26,23 +24,10 @@ class ERecensione
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
     function getVotostelle()
     {
         return $this->votostelle;
     }
-
     /**
      * @param mixed $votostelle
      */
@@ -50,7 +35,6 @@ class ERecensione
     {
         $this->votostelle = $votostelle;
     }
-
     /**
      * @return mixed
      */
@@ -58,7 +42,6 @@ class ERecensione
     {
         return $this->testo;
     }
-
     /**
      * @param mixed $testo
      */
@@ -66,7 +49,6 @@ class ERecensione
     {
         $this->testo = $testo;
     }
-
     /**
      * @return mixed
      */
@@ -74,7 +56,6 @@ class ERecensione
     {
         return $this->username_mittente;
     }
-
     /**
      * @param mixed $username_mittente
      */
@@ -82,7 +63,6 @@ class ERecensione
     {
         $this->username_mittente = $username_mittente;
     }
-
     /**
      * @return mixed
      */
@@ -90,7 +70,6 @@ class ERecensione
     {
         return $this->username_destinatario;
     }
-
     /**
      * @param mixed $username_destinatario
      */
@@ -98,7 +77,6 @@ class ERecensione
     {
         $this->username_destinatario = $username_destinatario;
     }
-
     function toString()
     {
         return "Identificativo: ".$this->id."\n".

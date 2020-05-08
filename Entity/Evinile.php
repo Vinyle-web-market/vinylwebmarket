@@ -16,9 +16,8 @@ class Evinile
 
     /*Questo è il costruttore della classe Vinile*/
 
-    function __construct($ID, $user_vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
+    function __construct($user_vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->id = $ID;
         $this->user_venditore = $user_vend;
         $this->titolo = $tit;
         $this->artista = $art;
@@ -35,13 +34,6 @@ class Evinile
     function getId()
     {
         return $this->id;
-    }
-    /**
-     * @param mixed $id
-     */
-    function setId($id)
-    {
-        $this->id = $id;
     }
     function getUserVenditore()
     {
