@@ -73,8 +73,19 @@ class EAbbonamento
 
     function toString() {
         return "Data rinnovo: ".$this->date."\n".
-                "Importo: ".$this->import." €"."\n".
+                //"Importo: ".$this->import." €"."\n".
                 "Stato: ".$this->stato;
+    }
+
+    public function CalcolaPrezzo($n_mesi){
+        $this->import=($n_mesi*15);
+        return $this->import;
+    }
+
+    public function AggiornaAbbonamento($n_mesiPagati){
+        $data =date("j-m-Y",mktime(0,0,0,date('j'),date('m')+$n_mesiPagati,date('Y')));
+        $this->date=$data;
+        $this->stato="attivo";
     }
 
 }
