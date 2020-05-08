@@ -7,6 +7,7 @@ class ECarta
     private $num;
     private $scad;
     private $codcvv;
+    /** $id è l'identificativo della carta */
     private $id;
 
     /** Questo metodo è il costruttore della classe ECarta.
