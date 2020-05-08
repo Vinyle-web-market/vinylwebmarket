@@ -6,6 +6,7 @@ class EAbbonamento
     private $date;
     private $import;
     private $stato;
+    /** $id è l'identificativo della carta */
     private $id;
 
     /** Questo metodo è il costruttore della classe EAbbonamento.
