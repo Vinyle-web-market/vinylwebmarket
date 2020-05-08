@@ -9,8 +9,13 @@ class ECarta
     private $codcvv;
     private $id;
 
-    //COSTRUTTORE
-
+    /** Questo metodo è il costruttore della classe ECarta.
+     * ECarta constructor.
+     * @param String $intestatario
+     * @param String $numeroCarta
+     * @param int $cvv
+     * @param string $scadenza
+     */
     function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
     {
         $this->intestat=$intestatario;
@@ -21,7 +26,7 @@ class ECarta
 
     //METODI SET
 
-    /**
+    /** Questo metodo setta il nome dell'intestatario della carta
      * @param mixed $intestat
      */
     function setIntestat($intestat)
@@ -29,7 +34,7 @@ class ECarta
         $this->intestat = $intestat;
     }
 
-    /**
+    /** Questo metodo setta il nome dell'intestatario della carta
      * @param mixed $num
      */
     function setNum($num)
@@ -37,7 +42,7 @@ class ECarta
         $this->num = $num;
     }
 
-    /**
+    /** Questo metodo setta la scadenza della carta
      * @param mixed $scad
      */
     function setScad($scad)
@@ -45,7 +50,7 @@ class ECarta
         $this->scad = $scad;
     }
 
-    /**
+    /** Questo metodo setta il cvv della carta
      * @param mixed $codcvv
      */
     function setCodcvv($codcvv)
@@ -53,7 +58,7 @@ class ECarta
         $this->codcvv = $codcvv;
     }
 
-    /**
+    /** Questo metodo setta l'ID della carta
      * @param mixed $id
      */
     public function setId($id)
@@ -63,7 +68,7 @@ class ECarta
 
     //METODI GET
 
-    /**
+    /** Questo metodo ritorna il nome dell'intestatario della carta
      * @return mixed
      */
     function getIntestat()
@@ -71,7 +76,7 @@ class ECarta
         return $this->intestat;
     }
 
-    /**
+    /** Questo metodo ritorna il numero della carta
      * @return mixed
      */
     function getNum()
@@ -79,7 +84,7 @@ class ECarta
         return $this->num;
     }
 
-    /**
+    /** Questo metodo ritorna la scadenza della carta
      * @return mixed
      */
     function getScad()
@@ -87,7 +92,7 @@ class ECarta
         return $this->scad;
     }
 
-    /**
+    /** Questo metodo ritorna il cvv della carta
      * @return mixed
      */
     function getCodcvv()
@@ -95,7 +100,7 @@ class ECarta
         return $this->codcvv;
     }
 
-    /**
+    /** Questo metodo ritorna l'ID della carta
      * @return mixed
      */
     function getId()
@@ -104,7 +109,9 @@ class ECarta
     }
 
     //METODO TOSTRING
-
+    /**metodo che restituisce una stringa con i dati relativi alla carta
+     * @return string
+     */
     function toString()
     {
         return "Codice carta: ".$this->num."\n".
