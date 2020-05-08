@@ -10,11 +10,11 @@ class EAbbonamento
 
     //COSTRUTTORE
 
-    function __construct($dataRinnovo , $importo, $status)
+    function __construct($dataRinnovo)
     {
         $this->date = $dataRinnovo;
-        $this->import= $importo;
-        $this->stato=$status;
+        $this->import="0";
+        $this->stato="non attivo";
     }
 
     //METODI SET
