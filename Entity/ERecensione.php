@@ -11,9 +11,8 @@ class ERecensione
 
     /*Questo è il costruttore della classe Recensione*/
 
-    function __construct($ID, $vt, $user_mitt, $user_dest)
+    function __construct($vt, $user_mitt, $user_dest)
     {
-        $this->id = $ID;
         $this->votostelle = $vt;
         $this->username_mittente = $user_mitt;
         $this->username_destinatario = $user_dest;
@@ -25,16 +24,6 @@ class ERecensione
     {
         return $this->id;
     }
-    /**
-     * @param mixed $id
-     */
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-    /**
-     * @return mixed
-     */
     function getVotostelle()
     {
         return $this->votostelle;
