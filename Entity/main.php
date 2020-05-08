@@ -3,16 +3,25 @@ include("EAbbonamento.php");
 include("ECarta.php");
 /*
 //prova di EAbbonamento se non serve escluderla mediante commento
-$data="27/06/1970";
-$importoAbb="5";
-$abb=new EAbbonamento($data, $importoAbb);
-print "prova toString ".$abb->toString()."br";
-$data1="3/05/2020";
-$importo1="30";
-$abb->setData($data1);
-$abb->setImporto($importo1);
-print "prova getData ".$abb->getData();
-print "prova getImporto ".$abb->getImporto();
+$data="08-12-2020";
+$importoAbb="0";
+$stato="non attivo";
+$abb=new EAbbonamento($data, $importoAbb, $stato);
+print "prova toString ".$abb->toString()."\n";
+//$data1="3/05/2020";
+//$importo1="30";
+//$abb->setData($data1);
+//$abb->setImporto($importo1);
+//print "prova getData ".$abb->getData();
+//print "prova getImporto ".$abb->getImporto();
+$nummesi=3;
+echo "numero mesi richiesti: ".$nummesi."\n";
+$abb->CalcolaPrezzo($nummesi);
+echo "prezzo abbonamento per numero mesi richiesti: ".$abb->getImporto()." €"."\n";
+echo "numero mesi pagati: ".$nummesi."\n";
+$abb->AggiornaAbbonamento($nummesi);
+echo $abb->toString();
+
 // FINE CODICE PROVA
 */
 
