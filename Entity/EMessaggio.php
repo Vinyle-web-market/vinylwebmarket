@@ -3,10 +3,25 @@
 
 class EMessaggio
 {
+    /**
+     * identificativo univoco del messaggio
+     * attributeType Integer
+     * autoincrement
+     */
     private $id;
+    /**
+     * mittente del messaggio
+     * References Utente_loggato
+     */
     private $mittente;
+    /**
+     * destinatario del messaggio
+     * References Utente_loggato
+     */
     private $destinatario;
+
     private $oggetto;
+
     private $testo;
 
     /*Costruttore della classe Messaggio*/

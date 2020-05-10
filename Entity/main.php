@@ -1,8 +1,6 @@
 <?php
 include("EAbbonamento.php");
 include("ECarta.php");
-include("ERecensione.php");
-include ("Evinile.php");
 /*
 //prova di EAbbonamento se non serve escluderla mediante commento
 $data="08-12-2020";
@@ -49,50 +47,5 @@ print "prova getCodcvv ".$carta->getCodcvv();
 print "prova getScad ".$carta->getScad();
 // FINE CODICE PROVA
 */
-
-/*
-$stelle = "4";
-$testo = "Utente molto affidabile!";
-$mittente = "Tonino";
-$destinatario = "Gordo";
-$recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
-//print "Test toString: ".$recensione->toString()."\n";
-$stelle2 = "5";
-$recensione->setVotostelle($stelle2);
-print "Il voto è: ".$recensione->getVotostelle();
-$testo2 = "Questo utente è uno dei più affidabili che abbia mai trovato!";
-$recensione->setTesto($testo2);
-print "Il testo del nuovo messaggio è: ".$recensione->getTesto();
-$mittente2 = "Cammill billi cappilli";
-$recensione->setUsernameMittente($mittente2);
-print "Il mittente della recensione è: ".$recensione->getUsernameMittente();
-$destinatario2 = "Matt il biondo";
-$recensione->setUsernameDestinatario($destinatario2);
-print "Il destinatario della recensione è: ".$recensione->getUsernameDestinatario();
-*/
-
-$venditore = "I am a bello uaglione";
-$titolo = " Kittamuort";
-$artist = "Il piccolo Lucio";
-$gen = "Napoletano puro";
-$ng = "99";
-$cond = "Non male";
-$pr = "€7.99";
-$des = "Tutt appost";
-$quant = "2";
-$vinile = new Evinile($venditore, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-//echo "Test toString ".$vinile->toString();
-$venditore2 = "IO";
-$vinile->setUserVenditore($venditore2);
-//echo " il nuovo venditore è: ".$vinile->getUserVenditore();
-$titolo2 = "AAA";
-$vinile->setTitolo($titolo2);
-//echo " Il nuovo titolo è: ".$vinile->getTitolo();
-$art2 = "Marò";
-$vinile->setArtista($art2);
-//echo "nuovo artista: ".$vinile->getArtista();
-$gen2 = "ccc";
-$vinile->setGenere($gen2);
-//echo "Genere nuovo: ".$vinile->getGenere();
 
 ?>

@@ -3,7 +3,17 @@
 
 class Evinile
 {
+    /**
+     * identificativo univoco annuncio
+     * attributeType Integer
+     * autoincrement
+     */
     private $id;
+    /**
+     * informazione sul venditore
+     * attributeType Integer
+     * autoincrement
+     */
     private $user_venditore;
     private $titolo;
     private $artista;
