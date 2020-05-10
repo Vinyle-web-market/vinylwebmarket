@@ -83,7 +83,8 @@ class EMessaggio
     }
     function toString()
     {
-        return "Mittente del messaggio: ".$this->mittente."\n" .
+        return "Identificativo del messaggio: ".$this->id."\n" .
+            "Mittente del messaggio: ".$this->mittente."\n" .
             "Destinatario del messaggio: ".$this->destinatario."\n" .
             "Oggetto del messaggio: ".$this->oggetto."\n" .
             "Testo del messaggio: ".$this->testo ."\n";
