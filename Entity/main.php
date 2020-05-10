@@ -45,7 +45,6 @@ print "prova getNum ".$carta->getNum();
 print "prova getIntestat ".$carta->getIntestat();
 print "prova getCodcvv ".$carta->getCodcvv();
 print "prova getScad ".$carta->getScad();
-// FINE CODICE PROVA
 */
 
 ?>
