@@ -3,9 +3,16 @@
 
 class ERecensione
 {
+    /**
+     * identificativo univoco recensione
+     */
     private $id;
     private $votostelle;
     private $testo;
+    /**
+     *mittente recensione
+     * references utente loggato
+     */
     private $username_mittente;
     private $username_destinatario;
     /*Questo è il costruttore della classe Recensione*/
