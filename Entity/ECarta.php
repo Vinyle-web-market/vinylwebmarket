@@ -27,7 +27,7 @@ class ECarta
 
     //METODI SET
 
-    /** Questo metodo setta il nome dell'intestatario della carta
+    /** Questo metodo setta il nome dell'intestatario della carta.
      * @param mixed $intestat
      */
     function setIntestat($intestat)
