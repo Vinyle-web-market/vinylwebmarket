@@ -7,7 +7,7 @@ class ENegozio extends EUtente_loggato{
      private $nameShop;
      private $p_iva;
      private $address;
-     private $card;
+     private $carta;
      private $abbonamento;
 
      /** Questo metodo è il costruttore della classe ENegozio.

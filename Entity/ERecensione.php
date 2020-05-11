@@ -15,7 +15,7 @@ class ERecensione
      */
     private $username_mittente;
     private $username_destinatario;
-
+    private $ban;
     /*Questo è il costruttore della classe Recensione*/
 
     function __construct($vt,$test, $user_mitt, $user_dest)
@@ -24,6 +24,7 @@ class ERecensione
         $this->testo = $test;
         $this->username_mittente = $user_mitt;
         $this->username_destinatario = $user_dest;
+        $this->ban = false;
     }
     /** Metodo che ci permette di prendere l'Id del messaggio
      * @return mixed
@@ -85,6 +86,24 @@ class ERecensione
     function setUsernameDestinatario($username_destinatario)
     {
         $this->username_destinatario = $username_destinatario;
+    }
+
+    /** Metodo che ci resitituisce l'attuale
+     * stato dell'attributo ban
+     * @return bool
+     */
+    function isBan()
+    {
+        return $this->ban;
+    }
+
+    /** Metodo che ci permette di cambiare
+     * lo stato dell'attributo ban
+     * @param bool $ban
+     */
+    function setBan($ban)
+    {
+        $this->ban = $ban;
     }
     /*Metodo che ci permette di stampare a video tutti gli
      attributi della classe Recensione*/

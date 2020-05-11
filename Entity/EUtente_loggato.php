@@ -175,13 +175,13 @@ class EUtente_Loggato
     function toStringRecensioni()
     {
         return "Username: " . $this->username . "\n" .
-            "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
+               "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
     }
 
     function toStringVetrina()
     {
         return "Username: " . $this->username . "\n" .
-            "Vetrina: ".$this->arrayToString($this->_vetrina)."\n";
+               "Vetrina: ".$this->arrayToString($this->_vetrina)."\n";
     }
 
 
