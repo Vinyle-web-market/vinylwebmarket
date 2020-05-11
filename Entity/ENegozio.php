@@ -82,7 +82,7 @@ class ENegozio extends EUtente_loggato{
         "Partita iva: " . $this->p_iva. "\n";
         "Indirizzo: " . $this->andress->toString(). "\n";
         "Carta: ".$this->card->toString()."\n";
-        "Abbonamento: ".$this->abb->toString()."\n";
+        "Abbonamento: ".$this->abbonamento->toString()."\n";
 
     }
 
