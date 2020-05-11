@@ -1,7 +1,7 @@
 <?php
 include("EAbbonamento.php");
 include("ECarta.php");
-/*
+
 //prova di EAbbonamento se non serve escluderla mediante commento
 $data="08-12-2020";
 $importoAbb="0";
@@ -22,8 +22,7 @@ echo "numero mesi pagati: ".$nummesi."\n";
 $abb->AggiornaAbbonamento($nummesi);
 echo $abb->toString();
 
-// FINE CODICE PROVA
-*/
+
 
 /*
 //prova ECarta se non serve escluderla mediante commento
