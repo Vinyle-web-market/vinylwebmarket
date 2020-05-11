@@ -21,14 +21,14 @@ class EAbbonamento
     }
 
     //METODI SET
-    /** Questo metodo setta la data di rinnovo dell'abbonamento
+    /** Questo metodo setta la data di rinnovo dell'abbonamento.
      * @param DateTime $data
      */
     function setData($data) {
         $this->date=$data;
     }
 
-    /** Questo metodo setta l' importo dell'abbonamento
+    /** Questo metodo setta l' importo dell'abbonamento.
      * @param Int $importo_abb
      */
     function setImporto($importo_abb) {
