@@ -33,69 +33,71 @@ class EMessaggio
         $this->oggetto = $ogg;
         $this->testo = $test;
     }
-    /**
+    /**Metodo getId che ci permette di prendere il valore di Id
      * @return mixed
      */
     function getId()
     {
         return $this->id;
     }
-    /**
+    /**Metodo getMittente che ci permettere di prendere il mittente
      * @return mixed
      */
     function getMittente()
     {
         return $this->mittente;
     }
-    /**
+    /**Metodo che ci permette di cambiare il mittente
      * @param mixed $mittente
      */
     function setMittente($mittente)
     {
         $this->mittente = $mittente;
     }
-    /**
+    /**Metodo che ci permette di prendere il valore di destinatario
      * @return mixed
      */
     function getDestinatario()
     {
         return $this->destinatario;
     }
-    /**
+    /**Metodo che ci permette di cambiare il destinatario
      * @param mixed $destinatario
      */
     function setDestinatario($destinatario)
     {
         $this->destinatario = $destinatario;
     }
-    /**
+    /** Metodo che ci permette di prendere il valore dell'oggetto
      * @return mixed
      */
     function getOggetto()
     {
         return $this->oggetto;
     }
-    /**
+    /**Metodo che ci permette di cambiare il valore dell'oggetto
      * @param mixed $oggetto
      */
     function setOggetto($oggetto)
     {
         $this->oggetto = $oggetto;
     }
-    /**
+    /**Metodo che ci permette di prendere il testo del messaggio
      * @return mixed
      */
     function getTesto()
     {
         return $this->testo;
     }
-    /**
+    /**Metodo che permette di cambiare il testo del messaggio
      * @param mixed $testo
      */
     function setTesto($testo)
     {
         $this->testo = $testo;
     }
+    /*Metodo che ci permette di stampare a video tutti gli
+     attributi della classe Messaggio*/
     function toString()
     {
         return "Identificativo del messaggio: ".$this->id."\n" .
