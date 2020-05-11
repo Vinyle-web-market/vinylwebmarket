@@ -31,7 +31,7 @@ class ENegozio extends EUtente_loggato{
 
        //METODI GET
 
-    /** Questo metodo ritorna il nome del Negozio
+    /** Questo metodo ritorna il nome del Negozio.
      * @return mixed
      */
     public function getNameShop()
