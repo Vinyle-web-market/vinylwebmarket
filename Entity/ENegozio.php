@@ -16,8 +16,8 @@ class ENegozio extends EUtente_loggato{
            $this->nameShop=$nomeNegozio;
            $this->p_iva=$iva;
            $this->andress=$indirizzo;
-           $this->carta=new Ecarta($carta->getIntestat(),$carta->getNum(),$carta->getScad(),$carta->getCodcvv());
-           $this->abb=new EAbbonamento($abb->getData(),$abb->getImporto(),$abb->getStato());
+           $this->card=new Ecarta($carta->getIntestat(),$carta->getNum(),$carta->getScad(),$carta->getCodcvv());
+           $this->abbonamento=new EAbbonamento($abb->getData(),$abb->getImporto(),$abb->getStato());
        }
 
 
