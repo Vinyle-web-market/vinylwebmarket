@@ -190,8 +190,8 @@ class EUtente_Loggato
 
     public function removeRecensione($pos)
     {
-        unset($this->recensioni[$pos]);
-        $this->recensioni=array_values($this->recensioni);
+        unset($this->_recensioni[$pos]);
+        $this->_recensioni=array_values($this->_recensioni);
     }
 
     public function mediaRecensioni() {

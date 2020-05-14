@@ -14,7 +14,7 @@ class Evinile
      * attributeType Integer
      * autoincrement
      */
-    private $user_venditore;
+    private $venditore;
     private $titolo;
     private $artista;
     private $genere;
@@ -25,21 +25,21 @@ class Evinile
     private $quantita;
 
     /*Questo è il costruttore della classe Vinile
-     * @param $id
-     * @param $user_venditore
-     * @param $titolo
-     * @param $artista
-     * @param $genere
-     * @param $ngiri
-     * @param $condizione
-     * @param $prezzo
-     * @param descrizione
-     * @param quantità
+     * @param string $id
+     * @param EUtente_loggato $venditore
+     * @param string $titolo
+     * @param string $artista
+     * @param string $genere
+     * @param string $ngiri
+     * @param string $condizione
+     * @param string $prezzo
+     * @param string descrizione
+     * @param string quantità
      */
 
-    function __construct($user_vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
+    function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->user_venditore = $user_vend;
+        $this->vend = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getState(),$vend->getRegistrationDate());
         $this->titolo = $tit;
         $this->artista = $art;
         $this->genere = $gen;
@@ -59,17 +59,19 @@ class Evinile
     /*Metodo che ci permette di cambiare il nome utente
     del venditore
     */
-    function getUserVenditore()
+    function getVenditore()
     {
-        return $this->user_venditore;
+        return $this->venditore;
     }
+
     /**Metodo che ci permette di cambiare il
      * nome utente del venditore
-     * @param mixed $user_venditore
+     * @return EUtente_Loggato
      */
-    function setUserVenditore($user_venditore)
+    function setUserVenditore(EUtente_Loggato $vend)
     {
-        $this->user_venditore = $user_venditore;
+        $y = $this->venditore = $vend;
+        return $y;
     }
     /** Metodo che ci permette di prendere
      * in esame il titolo del vinile
@@ -205,7 +207,7 @@ class Evinile
      */
     function toString()
     {
-        return "Venditore: ".$this->user_venditore."\n".
+        return "Venditore: ".$this->venditore."\n".
                "Titolo vinile: ".$this->titolo."\n".
                "Artista è: ".$this->artista."\n".
                "Numero di giri: ".$this->ngiri."\n".

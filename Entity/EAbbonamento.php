@@ -4,7 +4,6 @@
 class EAbbonamento
 {
     private $date;
-    private $import;
     private $stato;
     /** $id è l'identificativo dell'abbonamento */
     private $id;
@@ -13,10 +12,9 @@ class EAbbonamento
      * EAbbonamento constructor.
      * @param DateTime $dataRinnovo
      */
-    function __construct($dataRinnovo)
+    function __construct()
     {
-        $this->date = $dataRinnovo;
-        $this->import="0";
+        $this->date = NUll;
         $this->stato="non attivo";
     }
 
@@ -26,13 +24,6 @@ class EAbbonamento
      */
     function setData($data) {
         $this->date=$data;
-    }
-
-    /** Questo metodo setta l' importo dell'abbonamento.
-     * @param Int $importo_abb
-     */
-    function setImporto($importo_abb) {
-        $this->import=$importo_abb;
     }
 
     /** Questo metodo setta lo stato dell'abbonamento
@@ -58,13 +49,6 @@ class EAbbonamento
      */
     function getData() {
         return $this->date;
-    }
-
-    /** Questo metodo ritorna l'importo dell'abbonamento
-     * @return Int
-     */
-    function getImporto() {
-        return $this->import;
     }
 
     /** Questo metodo ritorna lo stato dell'abbonamento
@@ -97,8 +81,8 @@ class EAbbonamento
      * @return int
      */
     public function CalcolaPrezzo($n_mesi){
-        $this->import=($n_mesi*15);
-        return $this->import;
+        $x=($n_mesi*15);
+        return $x;
     }
 
     /** Metodo per aggiornare la data di scadenza dell'abbonamento

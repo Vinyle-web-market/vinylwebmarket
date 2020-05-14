@@ -25,9 +25,8 @@ class ENegozio extends EUtente_loggato{
            $this->p_iva=$iva;
            $this->address=$indirizzo;
            $this->carta=new Ecarta($cart->getIntestat(),$cart->getNum(),$cart->getScad(),$cart->getCodcvv());
-           $this->abbonamento=new EAbbonamento($abb->getData(),$abb->getImporto(),$abb->getStato());
+           $this->abbonamento=new EAbbonamento();
        }
-
 
        //METODI GET
 
@@ -126,7 +125,7 @@ class ENegozio extends EUtente_loggato{
         "Nome negozio: " . $this->nameShop . "\n";
         "Partita iva: " . $this->p_iva. "\n";
         "Indirizzo: " . $this->address->toString(). "\n";
-        "Carta: ".$this->card->toString()."\n";
+        "Carta: ".$this->carta->toString()."\n";
         "Abbonamento: ".$this->abbonamento->toString()."\n";
 
     }
