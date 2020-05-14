@@ -10,7 +10,6 @@ class EUtente_Loggato
     private $state;
     private $registrationDate;
     private $_recensioni;
-    private $_vetrina;
     private $id;
 
     //COSTRUTTOREe
@@ -23,8 +22,6 @@ class EUtente_Loggato
         $this->state = $stato;
         $this->registrationDate = $datareg;
         $this->_recensioni=array();
-        $this->_vetrina=array();
-
     }
 
     //METODI GET
@@ -147,10 +144,6 @@ class EUtente_Loggato
     /**
      * @return array
      */
-    public function getVetrina()
-    {
-        return $this->_vetrina;
-    }
 
     /**
      * @param mixed $username
@@ -176,12 +169,6 @@ class EUtente_Loggato
     {
         return "Username: " . $this->username . "\n" .
                "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
-    }
-
-    function toStringVetrina()
-    {
-        return "Username: " . $this->username . "\n" .
-               "Vetrina: ".$this->arrayToString($this->_vetrina)."\n";
     }
 
 
@@ -222,16 +209,7 @@ class EUtente_Loggato
         return $str;
     }
 
-    public function addVinile(Evinile $vin)
-    {
-        array_push($this->_vetrina,$vin);
-    }
 
-    public function removeVinile($pos)
-    {
-        unset($this->_vetrina[$pos]);
-        $this->_vetrina=array_values($this->_vetrina);
-    }
 
 
 }

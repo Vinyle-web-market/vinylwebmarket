@@ -18,14 +18,14 @@ class ENegozio extends EUtente_loggato{
       * @param ECarta $carta
       * @param EAbbonamento $abb
      */
-       public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $carta,EAbbonamento $abb)
+       public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
        {
            parent::__construct($name, $mail, $pw, $tel, $stato, $datareg);
            $this->nameShop=$nomeNegozio;
            $this->p_iva=$iva;
            $this->address=$indirizzo;
-           $this->carta=new Ecarta($carta->getIntestat(),$carta->getNum(),$carta->getScad(),$carta->getCodcvv());
-           $this->abb=new EAbbonamento($abb->getData(),$abb->getImporto(),$abb->getStato());
+           $this->carta=new Ecarta($cart->getIntestat(),$cart->getNum(),$cart->getScad(),$cart->getCodcvv());
+           $this->abbonamento=new EAbbonamento($abb->getData(),$abb->getImporto(),$abb->getStato());
        }
 
 
@@ -55,6 +55,22 @@ class ENegozio extends EUtente_loggato{
         return $this->address;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAbbonamento()
+    {
+        return $this->abbonamento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarta()
+    {
+        return $this->carta;
+    }
+
         //METODI SET
 
     /** Questo metodo setta il nome del Negozio
@@ -79,6 +95,24 @@ class ENegozio extends EUtente_loggato{
     public function setAddress($address)
     {
         $this->address = $address;
+    }
+
+    /**
+     * @param EAbbonamento $abbonamento
+     */
+    public function setAbbonamento(EAbbonamento $abbonamento)
+    {
+        $x=$this->abbonamento = $abbonamento;
+        return $x;
+    }
+
+    /**
+     * @param Ecarta $carta
+     */
+    public function setCarta(Ecarta $carta)
+    {
+        $x=$this->carta = $carta;
+        return $x;
     }
 
     //Metodo toString
