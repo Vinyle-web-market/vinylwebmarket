@@ -1,13 +1,14 @@
 <?php
 include("EAbbonamento.php");
 include("ECarta.php");
-/*
+
+
 //prova di EAbbonamento se non serve escluderla mediante commento
-$data="08-12-2020";
+/*$data="08-12-2020";
 $importoAbb="0";
-$stato="non attivo";
-$abb=new EAbbonamento($data, $importoAbb, $stato);
-print "prova toString ".$abb->toString()."\n";
+$stato="non attivo";*/
+/*$abb=new EAbbonamento();
+//print "prova toString ".$abb->toString()."\n";
 //$data1="3/05/2020";
 //$importo1="30";
 //$abb->setData($data1);
@@ -15,12 +16,12 @@ print "prova toString ".$abb->toString()."\n";
 //print "prova getData ".$abb->getData();
 //print "prova getImporto ".$abb->getImporto();
 $nummesi=3;
-echo "numero mesi richiesti: ".$nummesi."\n";
-$abb->CalcolaPrezzo($nummesi);
-echo "prezzo abbonamento per numero mesi richiesti: ".$abb->getImporto()." €"."\n";
+//echo "numero mesi richiesti: ".$nummesi."\n";
+echo "prezzo abbonamento per numero mesi richiesti: ".$abb->CalcolaPrezzo($nummesi)." €"."\n";
 echo "numero mesi pagati: ".$nummesi."\n";
 $abb->AggiornaAbbonamento($nummesi);
 echo $abb->toString();
+*/
 
 /*
 $stelle = "4";
@@ -43,6 +44,7 @@ $recensione->setUsernameDestinatario($destinatario2);
 print "Il destinatario della recensione è: ".$recensione->getUsernameDestinatario();
 */
 
+/*
 $venditore = "I am a bello uaglione";
 $titolo = " Kittamuort";
 $artist = "Il piccolo Lucio";
