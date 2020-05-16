@@ -1,13 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+</head>
+<body>
 <?php
 include("EAbbonamento.php");
 include("ECarta.php");
+include("ERecensione.php");
+include("Evinile.php");
+include("EUtente_loggato.php");
+include("EPrivato.php");
+include("ENegozio.php");
 
 
-//prova di EAbbonamento se non serve escluderla mediante commento
-/*$data="08-12-2020";
+//  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
+echo "<hr>";
+echo "<h3>prove EAbbonamento</h3>";
+$data="08-12-2020";
 $importoAbb="0";
-$stato="non attivo";*/
-/*$abb=new EAbbonamento();
+$stato="non attivo";
+$abb=new EAbbonamento();
 //print "prova toString ".$abb->toString()."\n";
 //$data1="3/05/2020";
 //$importo1="30";
@@ -20,17 +34,18 @@ $nummesi=3;
 echo "prezzo abbonamento per numero mesi richiesti: ".$abb->CalcolaPrezzo($nummesi)." €"."\n";
 echo "numero mesi pagati: ".$nummesi."\n";
 $abb->AggiornaAbbonamento($nummesi);
-echo $abb->toString();
-*/
+echo "".$abb->toString()."<br>";
+echo "<hr>";
 
-/*
+
+echo "<h3>prove Erecensione</h3>";
 $stelle = "4";
 $testo = "Utente molto affidabile!";
 $mittente = "Tonino";
 $destinatario = "Gordo";
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
-//print "Test toString: ".$recensione->toString()."\n";
-$stelle2 = "5";
+print "Test toString: ".$recensione->toString()."<br>";
+/*$stelle2 = "5";
 $recensione->setVotostelle($stelle2);
 print "Il voto è: ".$recensione->getVotostelle();
 $testo2 = "Questo utente è uno dei più affidabili che abbia mai trovato!";
@@ -43,6 +58,7 @@ $destinatario2 = "Matt il biondo";
 $recensione->setUsernameDestinatario($destinatario2);
 print "Il destinatario della recensione è: ".$recensione->getUsernameDestinatario();
 */
+echo "<hr>";
 
 /*
 $venditore = "I am a bello uaglione";
@@ -55,7 +71,9 @@ $pr = "€7.99";
 $des = "Tutt appost";
 $quant = "2";
 $vinile = new Evinile($venditore, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-//echo "Test toString ".$vinile->toString();
+echo "Test toString ".$vinile->toString();
+*/
+/*
 $venditore2 = "IO";
 $vinile->setUserVenditore($venditore2);
 //echo " il nuovo venditore è: ".$vinile->getUserVenditore();
@@ -71,7 +89,7 @@ $vinile->setGenere($gen2);
 // FINE CODICE PROVA
 */
 
-/*
+echo "<h3>prove Ecarta</h3>";
 //prova ECarta se non serve escluderla mediante commento
 $intestatarioCarta="tonino scarselli";
 $numeroCarta="4023 6009 2356 7896";
@@ -79,6 +97,7 @@ $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."br";
+/*
 $intestatarioCarta1="mangusta nannus";
 $numeroCarta1="0000";
 $scadenzaCarta1="000";
@@ -93,5 +112,36 @@ print "prova getCodcvv ".$carta->getCodcvv();
 print "prova getScad ".$carta->getScad();
 // FINE CODICE PROVA
 */
+echo "<hr>";
 
+echo "<h3>prove EPrivato</h3>";
+//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
+$nome="claudio97";
+$email="claudio@virgilio.it";
+$pw="pippo";
+$tel="3345756896";
+$stato="attivo";
+$datareg="24-10-1019";
+$nome="claudio";
+$cogn="cruciani";
+$utente1=new EPrivato($nome,$email,$pw,$tel,$stato,$datareg,$nome,$cogn);
+print " PROVA toString <br> ".$utente1->toString()."br";
+echo "<hr>";
+
+echo "<h3>prove ENegozio</h3>";
+// public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
+$nom="ZioTony";
+$emai="ZioTony@virgilio.it";
+$passw="pappeppino";
+$tele="3313476567";
+$state="attivo";
+$datar="24-9-1019";
+$nomeNeg="Vynilshop";
+$iva="19856784611";
+$indirizzo="via Paolo Fabbri 23";
+$utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+print " PROVA toString <br> ".$utente2->toString()."<br>";
 ?>
+
+</body>
+</html>
