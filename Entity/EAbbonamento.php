@@ -89,7 +89,7 @@ class EAbbonamento
      * @param int $n_mesiPagati
      */
     public function AggiornaAbbonamento($n_mesiPagati){
-        $data =date("j-m-Y",mktime(0,0,0,date('j'),date('m')+$n_mesiPagati,date('Y')));
+        $data =date("j-m-Y",mktime(0,0,0,date('m')+$n_mesiPagati,date('j'),date('Y')));
         $this->date=$data;
         $this->stato="attivo";
     }
