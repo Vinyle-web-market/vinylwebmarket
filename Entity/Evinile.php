@@ -1,5 +1,5 @@
 <?php
-
+include("EUtente_loggato.php");
 
 class Evinile
 {
@@ -207,7 +207,7 @@ class Evinile
      */
     function toString()
     {
-        return "Venditore: ".$this->venditore."\n".
+        return "Venditore: ".$this->venditore->toString()."\n".
                "Titolo vinile: ".$this->titolo."\n".
                "Artista è: ".$this->artista."\n".
                "Numero di giri: ".$this->ngiri."\n".

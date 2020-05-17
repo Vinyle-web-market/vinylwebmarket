@@ -60,19 +60,7 @@ print "Il destinatario della recensione è: ".$recensione->getUsernameDestinatar
 */
 echo "<hr>";
 
-/*
-$venditore = "I am a bello uaglione";
-$titolo = " Kittamuort";
-$artist = "Il piccolo Lucio";
-$gen = "Napoletano puro";
-$ng = "99";
-$cond = "Non male";
-$pr = "€7.99";
-$des = "Tutt appost";
-$quant = "2";
-$vinile = new Evinile($venditore, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-echo "Test toString ".$vinile->toString();
-*/
+
 /*
 $venditore2 = "IO";
 $vinile->setUserVenditore($venditore2);
@@ -141,6 +129,21 @@ $iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
 $utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
 print " PROVA toString <br> ".$utente2->toString()."<br>";
+
+echo "<hr>";
+
+echo "<h3> Prova Vinile </h3>";
+
+$titolo = " Kittamuort";
+$artist = "Il piccolo Lucio";
+$gen = "Napoletano puro";
+$ng = "99";
+$cond = "Non male";
+$pr = "€7.99";
+$des = "Tutt appost";
+$quant = "2";
+$vinile = new Evinile($utente2, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+echo "Test toString ".$vinile->toString();
 ?>
 
 </body>
