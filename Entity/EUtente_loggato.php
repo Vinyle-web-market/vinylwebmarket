@@ -162,7 +162,6 @@ class EUtente_Loggato
             "Phone: " . $this->phone . "\n" .
             "State: " . $this->state . "\n" .
             "DateRegistration: " . $this->registrationDate . "\n";
-            "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
     }
 
     function toStringRecensioni()

@@ -39,7 +39,7 @@ class Evinile
 
     function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->vend = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getState(),$vend->getRegistrationDate());
+        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getState(),$vend->getRegistrationDate());
         $this->titolo = $tit;
         $this->artista = $art;
         $this->genere = $gen;
@@ -207,7 +207,7 @@ class Evinile
      */
     function toString()
     {
-        return "Venditore: ".$this->venditore->toString()."\n".
+        return
                "Titolo vinile: ".$this->titolo."\n".
                "Artista è: ".$this->artista."\n".
                "Numero di giri: ".$this->ngiri."\n".
@@ -215,5 +215,6 @@ class Evinile
                "Prezzo: ".$this->prezzo."\n".
                "Descrizione:".$this->descrizione."\n".
                "Quantità: ".$this->quantita."\n";
+               "Venditore: ".$this->venditore->toString();
     }
 }

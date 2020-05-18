@@ -10,9 +10,9 @@ include("EAbbonamento.php");
 include("ECarta.php");
 include("ERecensione.php");
 include("Evinile.php");
-include("EUtente_loggato.php");
 include("EPrivato.php");
 include("ENegozio.php");
+
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
@@ -132,6 +132,19 @@ print " PROVA toString <br> ".$utente2->toString()."<br>";
 
 echo "<hr>";
 
+echo "<h3>prove EUtente_loggato</h3>";
+//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
+$nome="claudio";
+$email="claudio97@virgilio.it";
+$pw="pippo";
+$tel="3345756889";
+$stato="attivo";
+$datareg="24-8-1019";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel,$stato,$datareg);
+print " PROVA toString <br> ".$u->toString()."br";
+echo "<hr>";
+
+
 echo "<h3> Prova Vinile </h3>";
 
 $titolo = " Kittamuort";
@@ -142,8 +155,10 @@ $cond = "Non male";
 $pr = "€7.99";
 $des = "Tutt appost";
 $quant = "2";
-$vinile = new Evinile($utente2, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+$vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString();
+
+
 ?>
 
 </body>
