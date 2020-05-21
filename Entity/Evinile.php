@@ -211,10 +211,10 @@ class Evinile
                "Titolo vinile: ".$this->titolo."\n".
                "Artista è: ".$this->artista."\n".
                "Numero di giri: ".$this->ngiri."\n".
-               "Condizione vinile : ".$this->condizione."\n".
+               "Condizione vinile: ".$this->condizione."\n".
                "Prezzo: ".$this->prezzo."\n".
-               "Descrizione:".$this->descrizione."\n".
-               "Quantità: ".$this->quantita."\n";
+               "Descrizione: ".$this->descrizione."\n".
+               "Quantità: ".$this->quantita."\n".
                "Venditore: ".$this->venditore->toString();
     }
 }
