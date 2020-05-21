@@ -214,7 +214,7 @@ class Evinile
                "Condizione vinile : ".$this->condizione."\n".
                "Prezzo: ".$this->prezzo."\n".
                "Descrizione:".$this->descrizione."\n".
-               "Quantità: ".$this->quantita."\n".
+               "Quantità: ".$this->quantita."\n";
                "Venditore: ".$this->venditore->toString();
     }
 }
