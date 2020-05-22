@@ -1,6 +1,5 @@
 <?php
 
-
 class FDataBase
 {
     //approccio statico,una sola istanza
@@ -38,7 +37,6 @@ class FDataBase
     public function store($object,$Fclass)
     {
         try {
-            $db = FDataBase::getInstance();
             $this->db->begintransaction();
             $sql = " INSERT INTO " . $Fclass::getTable() . " VALUES " . $Fclass::getValues();
             $pdost = $this->db->prepare($sql);
@@ -57,7 +55,6 @@ class FDataBase
  //field è chiave primaria della classe
     public function exists($Fclass,$field,$id){
         try{
-            $db=Fdatabase::getInstance();   //VEDERE SE CORRETTO
             $sql=" SELECT * FROM ".$Fclass::getTable(). " WHERE ".$field."='".$id."'";
             $pdost=$this->db->prepare($sql);
             $pdost->execute();
@@ -74,7 +71,6 @@ class FDataBase
 //field chiave primaria della classe a cui fa riferimento
     public function delete($Fclass,$field,$id){
        try{
-           $db=FDataBase::getInstance();
         $this->db->beginTransaction();
         $presente=$this->exists($Fclass,$field,$id);
         if($presente){

@@ -41,8 +41,11 @@ class FCarta
     }
 
     public static function storeCarta(ECarta $c){
-       $id=store(self::getClass(), $c);
-       if ($id) return id;
-       else return NULL;
+        $db = FDataBase::getInstance();
+       $id=$db->store(self::getClass(), $c);
+       if ($id)
+           return $id;
+       else
+           return NULL;
     }
 }
