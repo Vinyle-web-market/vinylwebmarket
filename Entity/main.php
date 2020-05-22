@@ -12,6 +12,8 @@ include("ERecensione.php");
 include("Evinile.php");
 include("EPrivato.php");
 include("ENegozio.php");
+include("../Foundation/FDataBase.php");
+include('C:\Users\rugge\public_html\vinylwebmarket\Foundation\FRecensione.php');
 
 
 
@@ -159,6 +161,8 @@ $vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant)
 echo "Test toString ".$vinile->toString();
 
 
+$id1=storeRecensione($recensione);
+var_dump($id1);
 ?>
 
 </body>
