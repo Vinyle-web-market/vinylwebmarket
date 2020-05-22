@@ -54,7 +54,7 @@ class FDataBase
             return null;
         }
     }
-
+ //field è chiave primaria della classe
     public function exists($Fclass,$field,$id){
         try{
             $db=Fdatabase::getInstance();   //VEDERE SE CORRETTO
@@ -70,6 +70,25 @@ class FDataBase
                       echo "ATTENZIONE ERRORE: " . $err->getMessage();
                         return null;
         }
+    }
+//field chiave primaria della classe a cui fa riferimento
+    public function delete($Fclass,$field,$id){
+       try{
+           $db=FDataBase::getInstance();
+        $this->db->beginTransaction();
+        $presente=$this->exists($Fclass,$field,$id);
+        if($presente){
+        $sql="DELETE FROM ".$Fclass::getTable()." WHERE ".$field."='".$id."'";
+        $pdost=$this->db->prepare($sql);
+        $pdost->execute();
+        $this->db->commit();
+        $eliminato=TRUE;
+                      }
+        }
+        catch (PDOException $err) {
+               echo "ATTENZIONE ERRORE: " . $err->getMessage();
+               return null;
+       }
     }
 
 
