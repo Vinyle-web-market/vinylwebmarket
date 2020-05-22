@@ -6,10 +6,11 @@ class FDataBase
     private static $instance;
     private $db;
 
+
     private function __construct()
     {
         try{
-            $this->db=new PDO("mysql:dbname=".$GLOBALS["database"].";host=localhost;charset=utf8;",$GLOBALS["username"],$GLOBALS["password"]);
+            $this->db=new PDO("mysql:dbname="."vinylwebmarket".";host=localhost;charset=utf8;","root","pippo");
            }
            catch(PDOException $err)
            {

@@ -6,6 +6,10 @@ class FRecensione
   private static $values= "(:id,:mittente,:destinatario,:testo_recensione,:voto)"; //mettere ban
   private static $class= "FRecensione";
   //METTERE COSTRUTTORE?
+    function __construct()
+    {
+    }
+
     public static function bind($pdost,ERecensione $r)
     {
         $pdost->bindValue(':id', NULL, PDO::PARAM_INT);
@@ -38,9 +42,10 @@ class FRecensione
         return self::$class;
     }
 
-    public static function storeRecensione(ERecensione $r){
+    public static function storeRecensione(ERecensione $r)
+    {
         $db=FDataBase::getInstance();
-        $id=$db->store(self::getClass(),$r);    //usare static al posto di self?
+        $id=$db->store($r , self::getClass());    //usare static al posto di self?
         if($id)
             return $id;
         else
