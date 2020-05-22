@@ -48,4 +48,14 @@ class FCarta
        else
            return NULL;
     }
+
+    public static function existCarta($field,$id)
+    {
+        $db=FDataBase::getInstance();
+        $exist=$db->exists(self::getClass(),$field,$id);
+        if($exist!=NULL)
+            $exist=true;
+        else
+            $exist=false;
+    }
 }
