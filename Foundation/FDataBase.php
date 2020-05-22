@@ -5,12 +5,18 @@ class FDataBase
     //approccio statico,una sola istanza
     private static $instance;
     private $db;
+    private $dsn = 'mysql:host=localhost;dbname=vinylwebmarket';
+    private $username = 'root';
+    private $password = 'pippo';
+    private $options = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+    );
 
 
     private function __construct()
     {
         try{
-            $this->db=new PDO("mysql:dbname="."vinylwebmarket".";host=localhost;charset=utf8;","root","pippo");
+            $this->db=new PDO($this->dsn, $this->username, $this->password, $this->options);
            }
            catch(PDOException $err)
            {

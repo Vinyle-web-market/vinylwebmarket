@@ -45,8 +45,8 @@ class FRecensione
     public static function storeRecensione(ERecensione $r)
     {
         $db=FDataBase::getInstance();
-        $id=$db->store($r , self::getClass());    //usare static al posto di self?
-        if($id)
+        $id=$db->store($r , static::getClass());    //usare static al posto di self?
+        if($id!=0)
             return $id;
         else
             return NULL;

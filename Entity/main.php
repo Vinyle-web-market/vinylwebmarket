@@ -160,8 +160,16 @@ $quant = "2";
 $vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString();
 
+$stelle = "5";
+$testo = "ciao caio caio";
+$mittente = "nanni";
+$destinatario = "pasquale";
+$rec = new ERecensione($stelle, $testo, $mittente, $destinatario);
+print "Test toString: ".$rec->toString()."<br>";
+
+
 $id1=new FRecensione();
-$id1=$id1->storeRecensione($recensione);
+$id1=$id1->storeRecensione($rec);
 var_dump($id1);
 ?>
 
