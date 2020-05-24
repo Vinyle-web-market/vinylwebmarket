@@ -71,4 +71,34 @@ class FCarta
         else
             return false;
     }
+
+    public static function update($field, $newvalue, $keyField, $id)
+    {
+        $db=FDatabase::getInstance();
+        $result = $db->updateP(static::getClass(), $field, $newvalue, $keyField, $id);
+        if($result) return true;
+        else return false;
+    }
+
+    /*public static function load($field, $id)
+    {
+        $cli = null;
+        $tra = null;
+        $db = FDatabase::getInstance();
+        $result = $db->load(static::getClass(), $field, $id);
+        $rows_number = $db->interestedRows(static::getClass(), $field, $id);
+        if (($result != null) && ($rows_number == 1)) {
+            $ute = FUtenteloggato::loadByField("email", $result["emailUtente"]);
+            $cli = new ECliente($ute->getName(), $ute->getSurname(), $ute->getEmail(), $ute->getPassword(),$ute->getState());
+        } else {
+            if (($result != null) && ($rows_number > 1)) {
+                $tra = array();
+                for ($i = 0; $i < count($result); $i++) {
+                    $ute[] = FUtenteloggato::loadByField("email", $result[$i]["emailUtente"]);
+                    $cli[] = new ECliente($ute[$i]->getName(), $ute[$i]->getSurname(), $ute[$i]->getEmail(), $ute[$i]->getPassword(),$ute->getState());
+                }
+            }
+        }
+        return $cli;
+    }*/
 }
