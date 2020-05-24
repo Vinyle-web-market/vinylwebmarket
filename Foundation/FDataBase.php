@@ -41,13 +41,13 @@ class FDataBase
     }
 
 
-    public function store($object,$Fclass)
+    public function storeP($object,$Fclass)
     {
         try {
             $this->db->begintransaction();
             $sql = " INSERT INTO " . $Fclass::getTable() . " VALUES " . $Fclass::getValues();
             $pdost = $this->db->prepare($sql);
-            $Fclass::bind($pdost, $object);
+            $Fclass::bind($pdost,$object);
             $pdost->execute();
             $id = $this->db->lastInsertId();
             $this->db->commit();
@@ -59,10 +59,10 @@ class FDataBase
             return null;
         }
     }
- //field è chiave primaria della classe
-    public function exists($Fclass,$field,$id){
+ //keyField è chiave primaria della classe
+    public function existP($Fclass,$keyField,$id){
         try{
-            $sql=" SELECT * FROM ".$Fclass::getTable(). " WHERE ".$field."='".$id."'";
+            $sql=" SELECT * FROM ".$Fclass::getTable(). " WHERE ".$keyField."='".$id."'";
             $pdost=$this->db->prepare($sql);
             $pdost->execute();
             $array=$pdost->fetchAll(PDO::FETCH_ASSOC) ;
@@ -75,13 +75,14 @@ class FDataBase
                         return null;
         }
     }
-//field chiave primaria della classe a cui fa riferimento
-    public function delete($Fclass,$field,$id){
+//field chiave primaria della classe a cui fa riferimentO
+    public function deleteP($Fclass,$keyField,$id){
        try{
+        $eliminato=NULL;
         $this->db->beginTransaction();
-        $presente=$this->exists($Fclass,$field,$id);
+        $presente=$this->existP($Fclass,$keyField,$id);
         if($presente){
-        $sql="DELETE FROM ".$Fclass::getTable()." WHERE ".$field."='".$id."'";
+        $sql="DELETE FROM ".$Fclass::getTable()." WHERE ".$keyField."='".$id."'";
         $pdost=$this->db->prepare($sql);
         $pdost->execute();
         $this->db->commit();
@@ -90,8 +91,26 @@ class FDataBase
         }
         catch (PDOException $err) {
                echo "ATTENZIONE ERRORE: " . $err->getMessage();
-               return null;
+               $eliminato=FALSE;
        }
+       return $eliminato;
+    }
+    
+    public function updateP ($Fclass, $field, $newvalue, $keyField, $id)
+    {
+        try {
+            $this->db->beginTransaction();
+            $query = "UPDATE " . $Fclass::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $keyField . "='" . $id . "';";
+            $pdost = $this->db->prepare($query);
+            $pdost->execute();
+            $this->db->commit();
+            $this->dbCloseConnection();
+            return true;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return false;
+        }
     }
 
 
