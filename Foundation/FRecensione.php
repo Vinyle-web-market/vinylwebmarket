@@ -9,7 +9,7 @@ class FRecensione
     function __construct()
     {
     }
-  //
+  ///
     public static function bind($pdost,ERecensione $r)
     {
         $pdost->bindValue(':id', NULL, PDO::PARAM_INT);

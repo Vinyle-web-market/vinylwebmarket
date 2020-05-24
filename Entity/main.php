@@ -261,17 +261,17 @@ $stato="non attivo";
 $abb=new EAbbonamento();
 */
 
-/*prova Fabbonamento,funziona me vedere vari casi
+//prova Fabbonamento,funziona me vedere vari casi
 $id=new FAbbonamento();
 $id1=$id->store($abb);
 var_dump($id1);
-*/
 
-/*store Fabbonamneto ,funziona me vedere vari casi
+
+//store Fabbonamneto ,funziona me vedere vari casi
 $id=new FCarta();
 $id2=$id->store($carta);
 var_dump($id2);
-*/
+
 
 /*delete abbonamento,OK
 $id=new FAbbonamento();
