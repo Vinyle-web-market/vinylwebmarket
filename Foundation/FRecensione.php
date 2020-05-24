@@ -17,6 +17,7 @@ class FRecensione
         $pdost->bindValue(':destinatario', $r->getUsernameDestinatario(), PDO::PARAM_STR);
         $pdost->bindValue(':testo_recensione', $r->getTesto(), PDO::PARAM_STR);
         $pdost->bindValue(':voto', $r->getUsernameMittente(), PDO::PARAM_INT);
+        $pdost->bindValue(':ban', $r->isBan(), PDO::PARAM_BOOL);
     }
         //int o float?
 
@@ -42,7 +43,7 @@ class FRecensione
         return self::$class;
     }
 
-    public static function storeRecensione(ERecensione $r)
+    public static function store (ERecensione $r)
     {
         $db=FDataBase::getInstance();
         $id=$db->store($r , static::getClass());    //usare static al posto di self?
@@ -52,7 +53,7 @@ class FRecensione
             return NULL;
     }
 
-    public static function existRecensione($field,$id){
+    public static function exist ($field,$id){
         $db=FDataBase::getInstance();
         $exist=$db->exists(self::getClass(),$field,$id);
         if($exist!=NULL)

@@ -3,9 +3,9 @@
 
 class FAbbonamento
 {
-    private static $table="abbonamento";
-    private static $values="(:id,:scadenza,:stato)";
-    private static $class="FAbbonamento";
+    private static $table = "abbonamento";
+    private static $values = "(:id,:scadenza,:stato)";
+    private static $class = "FAbbonamento";
 
     public function __construct()
     {
@@ -13,7 +13,7 @@ class FAbbonamento
 
     public static function bind($pdost, EAbbonamento $a)
     {
-        $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+        $pdost->bindValue(':id', NULL, PDO::PARAM_INT);
         $pdost->bindValue(':scadenza', $a->getData(), PDO::PARAM_STR);
         $pdost->bindValue(':stato', $a->getStato(), PDO::PARAM_STR);
     }
@@ -26,6 +26,7 @@ class FAbbonamento
     {
         return self::$class;
     }
+
     /**
      * @return string
      */
@@ -33,6 +34,7 @@ class FAbbonamento
     {
         return self::$values;
     }
+
     /**
      * @return string
      */
@@ -41,33 +43,46 @@ class FAbbonamento
         return self::$table;
     }
 
-    public static function store(EAbbonamento $a){
+    public static function store(EAbbonamento $a)
+    {
         $db = FDataBase::getInstance();
-        $id=$db->storeP($a,self::getClass());
+        $id = $db->storeP($a, self::getClass());
         if ($id)
             return $id;
         else
             return NULL;
     }
 
-    public function delete($keyField,$id){
+    public static function delete($keyField, $id)
+    {
         $db = FDataBase::getInstance();
-        $execute=$db->deleteP(self::getClass(),$keyField,$id);
-        if($execute)
+        $execute = $db->deleteP(self::getClass(), $keyField, $id);
+        if ($execute)
             return true;
         else
             return false;
     }
 
 
-    public static function exist($keyField, $id){
-        $db=FDatabase::getInstance();
-        $exist=$db->existP(self::getClass(), $keyField, $id);
-        if($exist!= null)
+    public static function exist($keyField, $id)
+    {
+        $db = FDatabase::getInstance();
+        $exist = $db->existP(self::getClass(), $keyField, $id);
+        if ($exist != null)
             return true;
         else
             return false;
     }
 
+    public static function update($field, $newvalue, $keyField, $id)
+    {
+        $result = false;
+        $db = FDataBase::getInstance();
+        $result = $db->updateP(self::getClass(), $field, $newvalue, $keyField, $id);
+        if($result)
+            return $result;
+        else
+            return $result = false;
+    }
 
 }
