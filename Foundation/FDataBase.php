@@ -15,14 +15,12 @@ class FDataBase
 
     private function __construct()
     {
-        try{
-            $this->db=new PDO($this->dsn, $this->username, $this->password, $this->options);
-           }
-           catch(PDOException $err)
-           {
-             echo"ATTENZIONE ERRORE: ".$err->getMessage();
-             die;
-           }
+        try {
+            $this->db = new PDO($this->dsn, $this->username, $this->password, $this->options);
+        } catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            die;
+        }
     }
 
     /**
@@ -30,24 +28,25 @@ class FDataBase
      */
     public static function getInstance()
     {
-        if(self::$instance==null){
-            self::$instance=new FDataBase();
+        if (self::$instance == null) {
+            self::$instance = new FDataBase();
         }
         return self::$instance;
     }
 
-    public function dbCloseConnection(){
-        self::$instance=NULL;     //IN CASO USARE STATIC::
+    public function dbCloseConnection()
+    {
+        self::$instance = NULL;     //IN CASO USARE STATIC::
     }
 
 
-    public function storeP($object,$Fclass)
+    public function storeP($object, $Fclass)
     {
         try {
             $this->db->begintransaction();
             $sql = " INSERT INTO " . $Fclass::getTable() . " VALUES " . $Fclass::getValues();
             $pdost = $this->db->prepare($sql);
-            $Fclass::bind($pdost,$object);
+            $Fclass::bind($pdost, $object);
             $pdost->execute();
             $id = $this->db->lastInsertId();
             $this->db->commit();
@@ -59,44 +58,47 @@ class FDataBase
             return null;
         }
     }
- //keyField è chiave primaria della classe
-    public function existP($Fclass,$keyField,$id){
-        try{
-            $sql=" SELECT * FROM ".$Fclass::getTable(). " WHERE ".$keyField."='".$id."'";
-            $pdost=$this->db->prepare($sql);
+
+    //keyField è chiave primaria della classe
+    public function existP($Fclass, $keyField, $id)
+    {
+        try {
+            $sql = " SELECT * FROM " . $Fclass::getTable() . " WHERE " . $keyField . "='" . $id . "'";
+            $pdost = $this->db->prepare($sql);
             $pdost->execute();
-            $array=$pdost->fetchAll(PDO::FETCH_ASSOC) ;
-            if(count($array)==1) return $array[0];
-            if(count($array)>1) return $array;     //fare test
+            $array = $pdost->fetchAll(PDO::FETCH_ASSOC);
+            if (count($array) == 1) return $array[0];
+            if (count($array) > 1) return $array;     //fare test
             $this->dbCloseConnection();
 
-            } catch (PDOException $err) {
-                      echo "ATTENZIONE ERRORE: " . $err->getMessage();
-                        return null;
+        } catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            return null;
         }
     }
+
 //field chiave primaria della classe a cui fa riferimentO
-    public function deleteP($Fclass,$keyField,$id){
-       try{
-        $eliminato=NULL;
-        $this->db->beginTransaction();
-        $presente=$this->existP($Fclass,$keyField,$id);
-        if($presente){
-        $sql="DELETE FROM ".$Fclass::getTable()." WHERE ".$keyField."='".$id."'";
-        $pdost=$this->db->prepare($sql);
-        $pdost->execute();
-        $this->db->commit();
-        $eliminato=TRUE;
-                      }
+    public function deleteP($Fclass, $keyField, $id)
+    {
+        try {
+            $eliminato = NULL;
+            $this->db->beginTransaction();
+            $presente = $this->existP($Fclass, $keyField, $id);
+            if ($presente) {
+                $sql = "DELETE FROM " . $Fclass::getTable() . " WHERE " . $keyField . "='" . $id . "'";
+                $pdost = $this->db->prepare($sql);
+                $pdost->execute();
+                $this->db->commit();
+                $eliminato = TRUE;
+            }
+        } catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            $eliminato = FALSE;
         }
-        catch (PDOException $err) {
-               echo "ATTENZIONE ERRORE: " . $err->getMessage();
-               $eliminato=FALSE;
-       }
-       return $eliminato;
+        return $eliminato;
     }
-    
-    public function updateP ($Fclass, $field, $newvalue, $keyField, $id)
+
+    public function updateP($Fclass, $field, $newvalue, $keyField, $id)
     {
         try {
             $this->db->beginTransaction();
@@ -112,6 +114,33 @@ class FDataBase
             return false;
         }
     }
+
+    //caricamento attraverso il campo chiave
+    public function loadP($Fclass,$keyField,$id){
+        try{
+            $sql="SELECT * FROM ".$Fclass::getTable()." WHERE ".$keyField."='".$id."';";
+            $pdost = $this->db->prepare($sql);
+            $pdost->execute();
+            $nload=$pdost->rowCount();
+            if($nload==0)
+                $result=NULL;
+            else if($nload==1)
+                $result=$pdost->fetch(PDO::FETCH_ASSOC);
+            else {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($e = $pdost->fetch())
+                    $result[] = $e;
+                }
+            return $result;
+
+           }
+             catch (PDOException $err) {
+             echo "ATTENZIONE ERRORE: " . $err->getMessage();
+              return null;
+            }
+            }
+
 
 
 }
