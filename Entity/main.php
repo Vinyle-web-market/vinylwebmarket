@@ -14,6 +14,8 @@ include("EPrivato.php");
 include("ENegozio.php");
 include("../Foundation/FDataBase.php");
 include("../Foundation/FRecensione.php");
+include("../Foundation/FAbbonamento.php");
+include("../Foundation/FCarta.php");
 
 
 
@@ -81,8 +83,8 @@ $vinile->setGenere($gen2);
 
 echo "<h3>prove Ecarta</h3>";
 //prova ECarta se non serve escluderla mediante commento
-$intestatarioCarta="tonino scarselli";
-$numeroCarta="4023 6009 2356 7896";
+$intestatarioCarta="toni selli";
+$numeroCarta="40 60 2356 96";
 $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
@@ -158,7 +160,7 @@ $pr = "€7.99";
 $des = "Tutt appost";
 $quant = "2";
 $vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-echo "Test toString ".$vinile->toString();
+echo "Test toString ".$vinile->toString()."br";
 
 $stelle = "5";
 $testo = "ciao caio caio";
@@ -168,9 +170,131 @@ $rec = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$rec->toString()."<br>";
 
 
-$id1=new FRecensione();
-$id1=$id1->storeRecensione($rec);
+     $host="localhost";
+     $database="vinylwebmarket";
+     $username = 'root';
+     $password = 'pippo';
+try{
+    $db=new PDO("mysql:host=$host;dbname=$database; charset=utf8",$username,$password);
+}
+catch(PDOException $err)
+{
+    echo"ATTENZIONE ERRORE: ".$err->getMessage();
+    die;
+}
+
+var_dump($db);
+/*
+var_dump($carta->getIntestat());
+var_dump($carta->getNum());
+var_dump($carta->getScad());
+var_dump($carta->getCodcvv());
+$int=$carta->getCodcvv();
+$num=$carta->getNum();
+$scad=$carta->getScad();
+$cv=$carta->getCodcvv();
+echo "<br>";
+var_dump('miao');
+var_dump('45667');
+var_dump('24');
+var_dump('101');
+*/
+
+/*
+try {
+    $db->begintransaction();
+    $sql = " INSERT INTO " ."abbonamento"." VALUES "."(:id,:scadenza,:stato);";
+    $pdost = $db->prepare($sql);
+
+   $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+    $pdost->bindValue(':scadenza', $abb->getData(), PDO::PARAM_STR);
+    $pdost->bindValue(':stato', $abb->getStato(), PDO::PARAM_INT);
+    /*
+    $pdost->bindValue(':scadenza', $carta->getScad(), PDO::PARAM_STR);
+    $pdost->bindValue(':cvv', $carta->getCodcvv(), PDO::PARAM_INT);
+    */
+
+
+/*
+    $pdost->execute();
+    $id = $db->lastInsertId();
+    $db->commit();
+
+    echo"operazione effettuta";
+} catch (PDOException $err) {
+    echo "ATTENZIONE ERRORE: " . $err->getMessage();
+    $db->rollBack();
+    return null;
+}
+echo"<br>";
+echo $sql;
+echo "<br>";
+var_dump($id);
+
+/*
+try {
+    $db->begintransaction();
+    $sql = " INSERT INTO carta VALUES (:id,intestatario,:numero,:scadenza,:cvv);";
+    $pdost = $db->prepare($sql);
+    $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+    $pdost->bindValue(':intestatario', $carta->getIntestat(), PDO::PARAM_STR);
+    $pdost->bindValue(':numero', $carta->getNum(), PDO::PARAM_STR);
+    $pdost->bindValue(':scadenza', $carta->getScad(), PDO::PARAM_STR);
+    $pdost->bindValue(':cvv', $carta->getCodcvv(), PDO::PARAM_STR);
+    $pdost->execute();
+    $id = $db->lastInsertId();
+    $db->commit();
+    $db=NULL;
+    }
+          catch(PDOException $err) {
+              echo "ATTENZIONE ERRORE: " . $err->getMessage();
+              die;
+          }
+echo"<br>";
+echo $sql;
+echo "<br>";
+          $db=NULL;
+           var_dump($id);
+$data="08-12-2020";
+$importoAbb="0";
+$stato="non attivo";
+$abb=new EAbbonamento();
+*/
+
+/*prova Fabbonamento,funziona me vedere vari casi
+$id=new FAbbonamento();
+$id1=$id->store($abb);
 var_dump($id1);
+*/
+
+/*store Fabbonamneto ,funziona me vedere vari casi
+$id=new FCarta();
+$id2=$id->store($carta);
+var_dump($id2);
+*/
+
+/*delete abbonamento,OK
+$id=new FAbbonamento();
+var_dump($id->delete("id",5));
+*/
+
+/*delete abbonamento,OK
+$id=new FCarta();
+var_dump($id->delete("id",4));
+*/
+
+/*prova exist
+$id=new FCarta();
+var_dump($id->exist("id",12));
+*/
+
+
+
+
+
+
+
+
 ?>
 
 </body>
