@@ -1,5 +1,5 @@
 <?php
-
+include_once("FDataBase.php");
 
 class FAbbonamento
 {
@@ -43,6 +43,7 @@ class FAbbonamento
         return self::$table;
     }
 
+    //OPERAZIONI CRUD
     public static function store(EAbbonamento $a)
     {
         $db = FDataBase::getInstance();
@@ -85,4 +86,25 @@ class FAbbonamento
             return $result = false;
     }
 
+    public static function load($field, $id){
+        $mezzo = null;
+        $db=FDatabase::getInstance();
+        $result=$db->loadP(static::getClass(), $field, $id);
+        $rows_number = $db->countLoadP(static::getClass(), $field, $id);
+        if(($result!=null) && ($rows_number == 1)) {
+            $abbonamento=new EAbbonamento($result['scadenza'],$result['stato']);
+            $abbonamento->setId($result['id']);
+        }
+        else {
+            if(($result!=null) && ($rows_number > 1)){
+                $mezzo = array();
+                for($i=0; $i<count($result); $i++){
+                    $abbonamento[]=new EAbbonamento($result[$i]['scadenza'],$result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
+                    $abbonamento[$i]->setId($result['id']);
+
+                }
+            }
+        }
+        return $abbonamento;
+    }
 }

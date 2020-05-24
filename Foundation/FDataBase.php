@@ -39,7 +39,7 @@ class FDataBase
         self::$instance = NULL;     //IN CASO USARE STATIC::
     }
 
-
+    //OPERAZIONI CRUD
     public function storeP($object, $Fclass)
     {
         try {
@@ -139,7 +139,25 @@ class FDataBase
              echo "ATTENZIONE ERRORE: " . $err->getMessage();
               return null;
             }
+    }
+         //interestedrows claudia
+        public function countLoadP ($Fclass, $keyField, $id)
+        {
+            try {
+                $this->db->beginTransaction();
+                $query = "SELECT * FROM " . $Fclass::getTable() . " WHERE " . $keyField . "='" . $id . "';";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+                $num = $stmt->rowCount();
+                $this->dbCloseConnection();
+                return $num;
+            } catch (PDOException $e) {
+                echo "Attenzione errore: " . $e->getMessage();
+                $this->db->rollBack();
+                return null;
             }
+        }
+
 
 
 

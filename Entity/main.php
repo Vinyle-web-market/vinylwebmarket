@@ -255,7 +255,7 @@ echo $sql;
 echo "<br>";
           $db=NULL;
            var_dump($id);
-$data="08-12-2020";
+$data="2020-10-10";
 $importoAbb="0";
 $stato="non attivo";
 $abb=new EAbbonamento();
@@ -287,6 +287,19 @@ var_dump($id->delete("id",4));
 $id=new FCarta();
 var_dump($id->exist("id",12));
 */
+
+/*
+echo "<br>";
+$id=new FAbbonamento();
+$a=new EAbbonamento();
+$a=$id->load("id",6);
+var_dump($a);
+echo "<br>";
+echo $a->toString();
+*/
+
+
+
 
 ?>
 

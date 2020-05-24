@@ -1,6 +1,7 @@
 <?php
 
 
+
 class FCarta
 {
     private static $table="carta";
@@ -43,7 +44,7 @@ class FCarta
     {
         return self::$values;
     }
-
+    //OPERAZIONI CRUD
     public static function store(ECarta $c){
         $db = FDataBase::getInstance();
        $id=$db->storeP($c,self::getClass());
