@@ -81,25 +81,25 @@ class FCarta
         else return false;
     }
 
-    /*public static function load($field, $id)
-    {
-        $cli = null;
-        $tra = null;
-        $db = FDatabase::getInstance();
-        $result = $db->load(static::getClass(), $field, $id);
-        $rows_number = $db->interestedRows(static::getClass(), $field, $id);
-        if (($result != null) && ($rows_number == 1)) {
-            $ute = FUtenteloggato::loadByField("email", $result["emailUtente"]);
-            $cli = new ECliente($ute->getName(), $ute->getSurname(), $ute->getEmail(), $ute->getPassword(),$ute->getState());
-        } else {
-            if (($result != null) && ($rows_number > 1)) {
-                $tra = array();
-                for ($i = 0; $i < count($result); $i++) {
-                    $ute[] = FUtenteloggato::loadByField("email", $result[$i]["emailUtente"]);
-                    $cli[] = new ECliente($ute[$i]->getName(), $ute[$i]->getSurname(), $ute[$i]->getEmail(), $ute[$i]->getPassword(),$ute->getState());
+    public static function load($field, $id){
+        $mezzo = null;
+        $db=FDatabase::getInstance();
+        $result=$db->loadP(static::getClass(), $field, $id);
+        $rows_number = $db->countLoadP(static::getClass(), $field, $id);
+        if(($result!=null) && ($rows_number == 1)) {
+            $carta=new ECarta($result['intestatario'],$result['numero'],$result['scadenza'],$result['cvv']);
+            $carta->setId($result['id']);
+        }
+        else {
+            if(($result!=null) && ($rows_number > 1)){
+                $mezzo = array();
+                for($i=0; $i<count($result); $i++){
+                    $carta=new ECarta($result['intestatario'],$result['numero'],$result['scadenza'],$result['cvv']);
+                    $carta->setId($result['id']);
+
                 }
             }
         }
-        return $cli;
-    }*/
+        return $carta;
+    }
 }
