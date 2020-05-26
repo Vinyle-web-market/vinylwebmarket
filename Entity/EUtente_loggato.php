@@ -12,14 +12,15 @@ class EUtente_Loggato
     private $_recensioni;
     private $id;
 
-    //COSTRUTTOREe
-    public function __construct($name, $mail, $pw, $tel, $stato, $datareg)
+    //COSTRUTTORE
+
+    public function __construct($name, $mail, $pw, $tel, $datareg)
     {
         $this->username = $name;
         $this->email = $mail;
         $this->password = $pw;
         $this->phone = $tel;
-        $this->state = $stato;
+        $this->state = true;
         $this->registrationDate = $datareg;
         $this->_recensioni=array();
     }
@@ -67,9 +68,9 @@ class EUtente_Loggato
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getState()
+    public function isState()
     {
         return $this->state;
     }

@@ -16,7 +16,7 @@ include("../Foundation/FDataBase.php");
 include("../Foundation/FRecensione.php");
 include("../Foundation/FAbbonamento.php");
 include("../Foundation/FCarta.php");
-
+include("../Foundation/FUtente_loggato.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
@@ -297,9 +297,10 @@ var_dump($a);
 echo "<br>";
 echo $a->toString();
 */
-
-
-
+ /* Prova FUtente_loggato, store() */
+$email = new FUtente_loggato();
+$email = $email->store($u);
+var_dump($email);
 
 ?>
 

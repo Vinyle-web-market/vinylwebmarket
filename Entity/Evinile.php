@@ -39,7 +39,7 @@ class Evinile
 
     function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getState(),$vend->getRegistrationDate());
+        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getRegistrationDate());
         $this->titolo = $tit;
         $this->artista = $art;
         $this->genere = $gen;
