@@ -20,7 +20,7 @@ include("../Foundation/FUtente_loggato.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
-echo "<hr>";
+/*echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $data="08-12-2020";
 $importoAbb="0";
@@ -81,6 +81,7 @@ $vinile->setGenere($gen2);
 // FINE CODICE PROVA
 */
 
+/*
 echo "<h3>prove Ecarta</h3>";
 //prova ECarta se non serve escluderla mediante commento
 $intestatarioCarta="toni selli";
@@ -89,6 +90,8 @@ $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."br";
+*/
+
 /*
 $intestatarioCarta1="mangusta nannus";
 $numeroCarta1="0000";
@@ -104,8 +107,10 @@ print "prova getCodcvv ".$carta->getCodcvv();
 print "prova getScad ".$carta->getScad();
 // FINE CODICE PROVA
 */
+
 echo "<hr>";
 
+/*
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
 $nome="claudio97";
@@ -119,7 +124,9 @@ $cogn="cruciani";
 $utente1=new EPrivato($nome,$email,$pw,$tel,$stato,$datareg,$nome,$cogn);
 print " PROVA toString <br> ".$utente1->toString()."br";
 echo "<hr>";
+*/
 
+/*
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
 $nom="ZioTony";
@@ -133,22 +140,20 @@ $iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
 $utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
 print " PROVA toString <br> ".$utente2->toString()."<br>";
-
 echo "<hr>";
+*/
+
 
 echo "<h3>prove EUtente_loggato</h3>";
-//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
 $nome="claudio";
 $email="claudio97@virgilio.it";
 $pw="pippo";
 $tel="3345756889";
-$stato="attivo";
-$datareg="24-8-1019";
-$u=new EUtente_Loggato($nome,$email,$pw,$tel,$stato,$datareg);
-print " PROVA toString <br> ".$u->toString()."br";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$u->toString()."<br>";
 echo "<hr>";
 
-
+/*
 echo "<h3> Prova Vinile </h3>";
 
 $titolo = " Kittamuort";
@@ -161,16 +166,19 @@ $des = "Tutt appost";
 $quant = "2";
 $vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString()."br";
+*/
 
+/*
 $stelle = "5";
 $testo = "ciao caio caio";
 $mittente = "nanni";
 $destinatario = "pasquale";
 $rec = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$rec->toString()."<br>";
+*/
 
 
-     $host="localhost";
+    /* $host="localhost";
      $database="vinylwebmarket";
      $username = 'root';
      $password = 'pippo';
@@ -183,7 +191,7 @@ catch(PDOException $err)
     die;
 }
 
-var_dump($db);
+var_dump($db);*/
 /*
 var_dump($carta->getIntestat());
 var_dump($carta->getNum());
@@ -298,10 +306,13 @@ echo "<br>";
 echo $a->toString();
 */
  /* Prova FUtente_loggato, store() */
-$email = new FUtente_loggato();
+/*$email = new FUtente_loggato();
 $email = $email->store($u);
-var_dump($email);
+var_dump($email);*/
 
+$id = new FUtente_loggato();
+$id = $id->store($u);
+var_dump($id);
 ?>
 
 </body>
