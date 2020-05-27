@@ -50,7 +50,6 @@ class FUtente_loggato
     {
         $db = FDataBase::getInstance();
         $exist = $db->existP(self::getClass(),"email",$u->getEmail());
-       // $control=$db->static::exist("email",$u->getEmail());
         if($exist==TRUE)
            return "Utente ".$u->getEmail()." già esistente nel Database";
         else {

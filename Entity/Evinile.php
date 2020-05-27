@@ -39,7 +39,7 @@ class Evinile
 
     function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone(),$vend->getRegistrationDate());
+        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
         $this->titolo = $tit;
         $this->artista = $art;
         $this->genere = $gen;
@@ -56,6 +56,15 @@ class Evinile
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
     /*Metodo che ci permette di cambiare il nome utente
     del venditore
     */

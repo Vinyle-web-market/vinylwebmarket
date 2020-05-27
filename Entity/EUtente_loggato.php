@@ -163,22 +163,4 @@ class EUtente_Loggato
         $this->_recensioni=array_values($this->_recensioni);
     }
 
-    public function mediaRecensioni() {
-        $s = 0;
-        $med = 0;
-        $numVoti=is_array($this->_recensioni)?count($this->_recensioni):0;
-        if ($numVoti>1)
-            foreach ($this->_recensioni as $rec) {
-                $s = $s + $rec->getVotostelle();
-                $med = $s / $numVoti;
-            }
-        elseif (null !== $this->_recensioni[0]->getVotostelle())
-            $med = $this->_recensioni[0]->getVotostelle();
-        $str = number_format($med,1);
-        return $str;
-    }
-
-
-
-
 }
