@@ -152,6 +152,11 @@ $tel="3345756889";
 $u=new EUtente_Loggato($nome,$email,$pw,$tel);
 print " PROVA toString <br> ".$u->toString()."<br>";
 echo "<hr>";
+$nome="nannu";
+$email="nanniPenelungo@virgo.it";
+$pw="pippo";
+$tel="334568456";
+$u1=new EUtente_Loggato($nome,$email,$pw,$tel);
 
 /*
 echo "<h3> Prova Vinile </h3>";
@@ -311,8 +316,10 @@ $email = $email->store($u);
 var_dump($email);*/
 
 $id = new FUtente_loggato();
-$id = $id->store($u);
-var_dump($id);
+$risp=$id->store($u1);
+echo $risp;
+
+
 ?>
 
 </body>

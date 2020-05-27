@@ -5,7 +5,7 @@ class FUtente_loggato
 {
     private static $table = "utente_loggato";
 
-    private static $values = "(:username, :email, :password, :telefono, :stato) ";
+    private static $values = "(:username,:email,:password,:telefono,:stato)";
 
     private static $class = "FUtente_loggato";
 
@@ -23,7 +23,7 @@ class FUtente_loggato
     /**
      * @return string
      */
-    public static function getTable(): string
+    public static function getTable()
     {
         return self::$table;
     }
@@ -31,7 +31,7 @@ class FUtente_loggato
     /**
      * @return string
      */
-    public static function getClass(): string
+    public static function getClass()
     {
         return self::$class;
     }
@@ -39,7 +39,7 @@ class FUtente_loggato
     /**
      * @return string
      */
-    public static function getValues(): string
+    public static function getValues()
     {
         return self::$values;
     }
@@ -49,11 +49,14 @@ class FUtente_loggato
     public static function store(EUtente_Loggato $u)
     {
         $db = FDataBase::getInstance();
-        $id = $db->storeP($u, self::getClass());
-        if ($id)
-            return $id;
-        else
-            return NULL;
+        $exist = $db->existP(self::getClass(),"email",$u->getEmail());
+       // $control=$db->static::exist("email",$u->getEmail());
+        if($exist==TRUE)
+           return "Utente ".$u->getEmail()." già esistente nel Database";
+        else {
+            $id = $db->storeP($u, static::getClass());
+            return "operazione a buon fine: " . $u->getEmail() . " salvato";
+             }
     }
 
     public static function delete($keyField, $id)

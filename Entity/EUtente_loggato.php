@@ -19,7 +19,7 @@ class EUtente_Loggato
         $this->email = $mail;
         $this->password = $pw;
         $this->phone = $tel;
-        $this->state =1;
+        $this->state =true;
         $this->_recensioni=array();
     }
 
