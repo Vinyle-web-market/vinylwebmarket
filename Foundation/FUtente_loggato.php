@@ -5,7 +5,7 @@ class FUtente_loggato
 {
     private static $table = "utente_loggato";
 
-    private static $values = "(:username, :email, :password, :telefono, :stato, :data_registrazione); ";
+    private static $values = "(:username, :email, :password, :telefono, :stato) ";
 
     private static $class = "FUtente_loggato";
 
@@ -18,8 +18,6 @@ class FUtente_loggato
        $pdost->bindValue(':password', $utente->getPassword(), PDO::PARAM_STR);
        $pdost->bindValue(':telefono', $utente->getPhone(), PDO::PARAM_STR);
        $pdost->bindValue(':stato', $utente->isState(), PDO::PARAM_BOOL);
-       $pdost->bindValue(':data_registrazione', $utente->getRegistrationDate(), PDO::PARAM_INPUT_OUTPUT);
-       /*$pdost->bindValue(':media_recensioni', $utente->getRecensioni(), PDO::PARAM_INPUT_OUTPUT);*/
    }
 
     /**
@@ -48,10 +46,10 @@ class FUtente_loggato
 
     //OPERAZIONI CRUD
 
-    public static function store(EUtente_Loggato $utente)
+    public static function store(EUtente_Loggato $u)
     {
         $db = FDataBase::getInstance();
-        $id = $db->storeP($utente, self::getClass());
+        $id = $db->storeP($u, self::getClass());
         if ($id)
             return $id;
         else
@@ -95,16 +93,14 @@ class FUtente_loggato
         $result = $db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $utente = new EUtente_Loggato($result['username'], $result['password'], $result['telefono'], $result['stato'],
-                                          $result['data_registrazione'], $result['media_recensioni']);
+            $utente = new EUtente_Loggato($result['username'], $result['password'], $result['telefono'], $result['stato'],  $result['data_registrazione']);
             $utente->setEmail($result['email']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
-                    $utente []= new EUtente_Loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'],
-                                                  $result[$i]['stato'],$result[$i]['data_registrazione'],$result[$i]['media_recensioni']);  //ARRAY DI ARRAY ATTENTO
+                    $utente []= new EUtente_Loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'], $result[$i]['stato'],$result[$i]['data_registrazione']);  //ARRAY DI ARRAY ATTENTO
                     $utente[$i]->setEmail($result['email']);
 
                 }
