@@ -8,32 +8,23 @@ class EUtente_Loggato
     private $password;
     private $phone;
     private $state;
-    private $registrationDate;
     private $_recensioni;
     private $id;
 
     //COSTRUTTORE
 
-    public function __construct($name, $mail, $pw, $tel, $datareg)
+    public function __construct($name, $mail, $pw, $tel)
     {
         $this->username = $name;
         $this->email = $mail;
         $this->password = $pw;
         $this->phone = $tel;
-        $this->state = true;
-        $this->registrationDate = $datareg;
+        $this->state =1;
         $this->_recensioni=array();
     }
 
     //METODI GET
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return mixed
@@ -59,13 +50,6 @@ class EUtente_Loggato
         return $this->phone;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRegistrationDate()
-    {
-        return $this->registrationDate;
-    }
 
     /**
      * @return bool
@@ -86,13 +70,6 @@ class EUtente_Loggato
 
     //METODI SET
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @param mixed $email
@@ -118,13 +95,6 @@ class EUtente_Loggato
         $this->phone = $phone;
     }
 
-    /**
-     * @param mixed $registrationDate
-     */
-    public function setRegistrationDate($registrationDate)
-    {
-        $this->registrationDate = $registrationDate;
-    }
 
     /**
      * @param mixed $state
@@ -161,8 +131,7 @@ class EUtente_Loggato
             "Email: " . $this->email . "\n" .
             "Password: " . $this->password . "\n" .
             "Phone: " . $this->phone . "\n" .
-            "State: " . $this->state . "\n" .
-            "DateRegistration: " . $this->registrationDate . "\n";
+            "State: " . $this->state . "\n" ;
     }
 
     function toStringRecensioni()
