@@ -17,6 +17,7 @@ include("../Foundation/FRecensione.php");
 include("../Foundation/FAbbonamento.php");
 include("../Foundation/FCarta.php");
 include("../Foundation/FUtente_loggato.php");
+include ("../Foundation/FNegozio.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
@@ -81,7 +82,7 @@ $vinile->setGenere($gen2);
 // FINE CODICE PROVA
 */
 
-/*
+
 echo "<h3>prove Ecarta</h3>";
 //prova ECarta se non serve escluderla mediante commento
 $intestatarioCarta="toni selli";
@@ -90,7 +91,7 @@ $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."br";
-*/
+
 
 /*
 $intestatarioCarta1="mangusta nannus";
@@ -126,7 +127,7 @@ print " PROVA toString <br> ".$utente1->toString()."br";
 echo "<hr>";
 */
 
-/*
+
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
 $nom="ZioTony";
@@ -134,16 +135,16 @@ $emai="ZioTony@virgilio.it";
 $passw="pappeppino";
 $tele="3313476567";
 $state="attivo";
-$datar="24-9-1019";
 $nomeNeg="Vynilshop";
 $iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
-$utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
-print " PROVA toString <br> ".$utente2->toString()."<br>";
+$abb=new EAbbonamento();
+$negozio=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+print " PROVA toString <br> ".$negozio->toString()."<br>";
 echo "<hr>";
-*/
 
 
+/*
 echo "<h3>prove EUtente_loggato</h3>";
 $nome="claudio";
 $email="claudio97@virgilio.it";
@@ -152,6 +153,7 @@ $tel="3345756889";
 $u=new EUtente_Loggato($nome,$email,$pw,$tel);
 print " PROVA toString <br> ".$u->toString()."<br>";
 echo "<hr>";
+*/
 
 /*
 echo "<h3> Prova Vinile </h3>";
@@ -309,7 +311,7 @@ echo $a->toString();
 /*$email = new FUtente_loggato();
 $email = $email->store($u);
 var_dump($email);*/
-
+/*
 $id = new FUtente_loggato();
 $id = $id->store($u);
 //var_dump($id);
@@ -320,6 +322,10 @@ $f= new FUtente_loggato();
 //$f->update('username', 'pasquale', 'email', 'claudio97@virgilio.it');
 $out=$f->load('email', 'claudio97@virgilio.it');
 var_dump($out);
+*/
+$id = new FNegozio();
+$id = $id->store($negozio);
+var_dump($id);
 ?>
 
 </body>

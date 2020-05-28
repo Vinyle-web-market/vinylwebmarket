@@ -9,7 +9,6 @@ class EUtente_Loggato
     private $phone;
     private $state;
     private $_recensioni;
-    private $id;
 
     //COSTRUTTORE
 
