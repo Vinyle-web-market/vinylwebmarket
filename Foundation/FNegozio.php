@@ -19,8 +19,8 @@ class FNegozio
         $pdost->bindValue(':nome', $negozio->getNameShop(), PDO::PARAM_STR);
         $pdost->bindValue(':partitaiva', $negozio->getPIva(), PDO::PARAM_STR);
         $pdost->bindValue(':indirizzo', $negozio->getAddress(), PDO::PARAM_STR);
-        $pdost->bindValue(':carta', $negozio->getCarta(), PDO::PARAM_INT);
-        $pdost->bindValue(':abbonamento', $negozio->getAbbonamento(), PDO::PARAM_INT);
+        $pdost->bindValue(':carta', $negozio->getCarta()->getId(), PDO::PARAM_INT);
+        $pdost->bindValue(':abbonamento', $negozio->getAbbonamento()->getId(), PDO::PARAM_INT);
     }
 
     /**
@@ -47,15 +47,22 @@ class FNegozio
         return self::$class;
     }
 
-    public function store (ENegozio $negozio)
+    public static function store(ENegozio $n)
     {
         $db = FDataBase::getInstance();
-        $id =$db->storeP($negozio, static::getClass());
-        if ($id)
-            return $id;
-        else
-            return null;
+        $exist = $db->existP("FUtente_loggato","email",$n->getEmail());
+        // $control=$db->static::exist("email",$u->getEmail());
+        if($exist==TRUE)
+            return "Utente ".$n->getEmail()." già esistente nel Database";
+        else {
+            $db->storeP($n,"FUtente_loggato");
+            $db->storeP($n->getCarta(),"FCarta");
+            $db->storeP($n->getAbbonamento(),"FAbbonamento");
+            $db->storeP($n, static::getClass());
+            return "operazione a buon fine: " . $n->getEmail() . " salvato le tabelle utente_loggato,carta,abbonamneto e negozio sono state aggiornate ";
+        }
     }
+
 
     public function exist ($field, $id)
     {

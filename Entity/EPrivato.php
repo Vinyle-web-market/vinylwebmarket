@@ -10,9 +10,9 @@ class EPrivato extends EUtente_Loggato {
 /*Costruttore della classe EPrivato, che è una classe ereidtaria della
   classe padre EUtente_loggato*/
 
-            public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
+            public function __construct($name, $mail, $pw, $tel,$nom,$cog)
                {
-                      parent::__construct($name, $mail, $pw, $tel, $stato, $datareg);
+                      parent::__construct($name, $mail, $pw, $tel);
                       $this->nome=$nom;
                       $this->cognome=$cog;
                }

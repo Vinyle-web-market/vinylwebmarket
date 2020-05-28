@@ -1,5 +1,4 @@
 <?php
-include_once("FDataBase.php");
 
 class FAbbonamento
 {

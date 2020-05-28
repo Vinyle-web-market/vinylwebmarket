@@ -14,7 +14,7 @@ class EAbbonamento
      */
     function __construct()
     {
-        $this->date = NUll;
+        $this->date ="0000-00-00";
         $this->stato="non attivo";
     }
 

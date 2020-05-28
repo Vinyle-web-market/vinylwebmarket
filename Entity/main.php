@@ -17,7 +17,8 @@ include("../Foundation/FRecensione.php");
 include("../Foundation/FAbbonamento.php");
 include("../Foundation/FCarta.php");
 include("../Foundation/FUtente_loggato.php");
-include ("../Foundation/FNegozio.php");
+include("../Foundation/FPrivato.php");
+include("../Foundation/FNegozio.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
@@ -27,7 +28,7 @@ $data="08-12-2020";
 $importoAbb="0";
 $stato="non attivo";
 $abb=new EAbbonamento();
-//print "prova toString ".$abb->toString()."\n";
+//print "prova toString ".$abb->toString()."<br>";
 //$data1="3/05/2020";
 //$importo1="30";
 //$abb->setData($data1);
@@ -82,7 +83,7 @@ $vinile->setGenere($gen2);
 // FINE CODICE PROVA
 */
 
-
+/*
 echo "<h3>prove Ecarta</h3>";
 //prova ECarta se non serve escluderla mediante commento
 $intestatarioCarta="toni selli";
@@ -91,7 +92,7 @@ $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."br";
-
+*/
 
 /*
 $intestatarioCarta1="mangusta nannus";
@@ -127,7 +128,7 @@ print " PROVA toString <br> ".$utente1->toString()."br";
 echo "<hr>";
 */
 
-
+/*
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
 $nom="ZioTony";
@@ -135,14 +136,14 @@ $emai="ZioTony@virgilio.it";
 $passw="pappeppino";
 $tele="3313476567";
 $state="attivo";
+$datar="24-9-1019";
 $nomeNeg="Vynilshop";
 $iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
-$abb=new EAbbonamento();
-$negozio=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
-print " PROVA toString <br> ".$negozio->toString()."<br>";
+$utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+print " PROVA toString <br> ".$utente2->toString()."<br>";
 echo "<hr>";
-
+*/
 
 /*
 echo "<h3>prove EUtente_loggato</h3>";
@@ -271,13 +272,24 @@ $stato="non attivo";
 $abb=new EAbbonamento();
 */
 
-/*prova Fabbonamento,funziona me vedere vari casi
-$id=new FAbbonamento();
-$id1=$id->store($abb);
+/*
+//prova Fabbonamento,funziona me vedere vari casi
+$a=new EAbbonamento();
+var_dump($a);
+//PER LA DATA INSERIRE FORMATO DATA CORRETTO
+//$a->setData("1997-11-11");
+$miao=new FAbbonamento();
+$id1=$miao->store($a);
+echo "<br>";
 var_dump($id1);
 */
 
 /*store Fabbonamneto ,funziona me vedere vari casi
+$intestatarioCarta="seee";
+$numeroCarta="40 60 2356 96";
+$scadenzaCarta="27/09/2026";
+$codiceCVV="728";
+$carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 $id=new FCarta();
 $id2=$id->store($carta);
 var_dump($id2);
@@ -323,9 +335,56 @@ $f= new FUtente_loggato();
 $out=$f->load('email', 'claudio97@virgilio.it');
 var_dump($out);
 */
-$id = new FNegozio();
-$id = $id->store($negozio);
-var_dump($id);
+/*
+//Prova Fprivato
+echo "<h3>prove EUtente_loggato</h3>";
+$nome="marco";
+$email="cicco@virgilio.it";
+$pw="mjJordan";
+$tel="337894375";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$u->toString()."<br>";
+echo "<hr>";
+$n="marco";
+$c="cicchetti";
+$p=new EPrivato($nome,$email,$pw,$tel,$n,$c);
+$id=new fPrivato();
+$id1=$id->store($p);
+var_dump($id1);
+*/
+
+echo "<h3>prove EUtente_loggato</h3>";
+$nome="Claudia";
+$email="lovepen@virgilio.it";
+$pw="nannuseimio";
+$tel="337894567";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$u->toString()."<br>";
+$abb=new EAbbonamento();
+print "prova toString ".$abb->toString()."<br>";
+echo "<h3>prove Ecarta</h3>";
+$intestatarioCarta="cla ninf";
+$numeroCarta="4055 5678 345 45";
+$scadenzaCarta="27/09/2026";
+$codiceCVV="728";
+$carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
+print "prova toString ".$carta->toString()."<br>";
+echo "<hr>";
+$nomeNeg="Shop_puss";
+$iva="196543";
+$indirizzo="via Paolo Fabbri 37";
+$utente2=new ENegozio($nome,$email,$pw,$tel,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+$id=new fNegozio();
+$id1=$id->store($utente2);
+var_dump($id1);
+
+
+
+
+
+
+
+
 ?>
 
 </body>
