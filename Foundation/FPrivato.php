@@ -12,7 +12,7 @@ class FPrivato
     public static function bind($pdost, EPrivato $privato)
     {
         $pdost->bindValue(':email_privato', $privato->getEmail(), PDO::PARAM_STR);
-        $pdost->bindValue('nome', $privato->getNome(), PDO::PARAM_STR);
+        $pdost->bindValue(':nome', $privato->getNome(), PDO::PARAM_STR);
         $pdost->bindValue(':cognome', $privato->getCognome(), PDO::PARAM_STR);
     }
 

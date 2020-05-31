@@ -16,7 +16,7 @@ class ENegozio extends EUtente_loggato{
      * @param string $iva
      * @param string $indirizzo
       * @param ECarta $carta
-      * @param EAbbonamento $abb
+      * @param EAbbonamento $abbonamento
      */
        public function __construct($name, $mail, $pw, $tel,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
        {

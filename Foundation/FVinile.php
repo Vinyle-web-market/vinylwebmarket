@@ -4,9 +4,7 @@
 class FVinile
 {
     private static $table = "vinile";
-
-    private static $values = "(:id, :venditore, :titolo, :artista, :genere, :ngiri, 
-                               :condizione, :prezzo, :descizione, :quantità)";
+    private static $values = "(:id, :venditore, :titolo, :artista, :genere, :ngiri, :condizione, :prezzo, :descrizione, :quantità)";
     private static $class = "FVinile";
 
     public function __construct(){}
@@ -21,7 +19,7 @@ class FVinile
         $pdost->bindValue(':genere', $vinile->getGenere(), PDO::PARAM_STR);
         $pdost->bindValue(':ngiri', $vinile->getNgiri(), PDO::PARAM_INT);
         $pdost->bindValue(':condizione', $vinile->getCondizione(), PDO::PARAM_STR);
-        $pdost->bindValue(':prezzo', $vinile->getPrezzo());
+        $pdost->bindValue(':prezzo', $vinile->getPrezzo(), PDO::PARAM_STR);
         $pdost->bindValue(':descrizione', $vinile->getDescrizione(), PDO::PARAM_STR);
         $pdost->bindValue(':quantità', $vinile->getQuantita(), PDO::PARAM_INT);
     }
@@ -53,12 +51,19 @@ class FVinile
     public static function store(EVinile $vinile)
     {
         $db = FDataBase::getInstance();
-        $id=$db->storeP($vinile, self::getClass());
-        if ($id)
-            return $id;
-        else
-            return NULL;
+        $exist = FUtente_loggato::exist("email",$vinile->getVenditore()->getEmail());
+        if($exist==TRUE){
+
+              $id=$db->storeP($vinile, static::getClass());
+              return $id;
+                        }
+        else {
+            $str="operazione non riuscita";
+            return $str;
+             }
     }
+
+
     public static function delete($keyField, $id)
     {
         $db = FDataBase::getInstance();

@@ -19,6 +19,7 @@ include("../Foundation/FCarta.php");
 include("../Foundation/FUtente_loggato.php");
 include("../Foundation/FPrivato.php");
 include("../Foundation/FNegozio.php");
+include("../Foundation/FVinile.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
@@ -180,8 +181,8 @@ $rec = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$rec->toString()."<br>";
 */
 
-
-    /* $host="localhost";
+/*
+     $host="localhost";
      $database="vinylwebmarket";
      $username = 'root';
      $password = 'pippo';
@@ -193,8 +194,10 @@ catch(PDOException $err)
     echo"ATTENZIONE ERRORE: ".$err->getMessage();
     die;
 }
+*/
 
-var_dump($db);*/
+
+
 /*
 var_dump($carta->getIntestat());
 var_dump($carta->getNum());
@@ -241,19 +244,53 @@ echo"<br>";
 echo $sql;
 echo "<br>";
 var_dump($id);
-
+*/
+/*
+$nome="vanessa";
+$email="vanny@virgilio.it";
+$pw="stupos";
+$tel="33784535";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$u->toString()."<br>";
+$prova=new FUtente_loggato();
+$prova1=$prova->store($u);
+var_dump($prova1);
+echo "<hr>";
+$titolo = "notti";
+$artist = "liga";
+$gen = "rock";
+$ng = 98;
+$cond = "nuovo";
+$pr = 22;
+$des = "schifo musica italiana";
+$quant = 7;
+$vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+var_dump($vinile);
+echo "<br>";
+echo "Test toString ".$vinile->toString()."<br>";
+echo $vinile->getVenditore()->getEmail();
+echo "<hr>";
+*/
 /*
 try {
     $db->begintransaction();
-    $sql = " INSERT INTO carta VALUES (:id,intestatario,:numero,:scadenza,:cvv);";
+   //$sql = " INSERT INTO vinile VALUES (NULL,:venditore,:titolo,:artista,:genere,:ngiri,:condizione,:prezzo,:descrizione,:quantità);";
+   $sql = " INSERT INTO vinile VALUES (NULL,'Ziotony','notti','liga','rock',98,'nuovo',22,'schifo musica italiana',7);";
     $pdost = $db->prepare($sql);
-    $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
-    $pdost->bindValue(':intestatario', $carta->getIntestat(), PDO::PARAM_STR);
-    $pdost->bindValue(':numero', $carta->getNum(), PDO::PARAM_STR);
-    $pdost->bindValue(':scadenza', $carta->getScad(), PDO::PARAM_STR);
-    $pdost->bindValue(':cvv', $carta->getCodcvv(), PDO::PARAM_STR);
+    /*
+        $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+        $pdost->bindValue(':venditore', $vinile->getVenditore()->getEmail(), PDO::PARAM_STR);
+        $pdost->bindValue(':titolo', $vinile->getTitolo(), PDO::PARAM_STR);
+        $pdost->bindValue(':artista', $vinile->getArtista(), PDO::PARAM_STR);
+        $pdost->bindValue(':genere', $vinile->getGenere(), PDO::PARAM_STR);
+        $pdost->bindValue(':ngiri', $vinile->getNgiri(), PDO::PARAM_INT);
+        $pdost->bindValue(':condizione', $vinile->getCondizione(), PDO::PARAM_STR);
+        $pdost->bindValue(':prezzo', $vinile->getPrezzo(), PDO::PARAM_INT);
+        $pdost->bindValue(':descrizione', $vinile->getDescrizione(), PDO::PARAM_STR);
+        $pdost->bindValue(':quantità', $vinile->getQuantita(), PDO::PARAM_INT);
+    */
+/*
     $pdost->execute();
-    $id = $db->lastInsertId();
     $db->commit();
     $db=NULL;
     }
@@ -261,11 +298,14 @@ try {
               echo "ATTENZIONE ERRORE: " . $err->getMessage();
               die;
           }
+
+
 echo"<br>";
 echo $sql;
 echo "<br>";
-          $db=NULL;
-           var_dump($id);
+*/
+/*
+
 $data="2020-10-10";
 $importoAbb="0";
 $stato="non attivo";
@@ -338,45 +378,207 @@ var_dump($out);
 /*
 //Prova Fprivato
 echo "<h3>prove EUtente_loggato</h3>";
-$nome="marco";
-$email="cicco@virgilio.it";
-$pw="mjJordan";
-$tel="337894375";
+$nome="Carmelo96";
+$email="carme@virgilio.it";
+$pw="mj";
+$tel="3378345";
 $u=new EUtente_Loggato($nome,$email,$pw,$tel);
 print " PROVA toString <br> ".$u->toString()."<br>";
 echo "<hr>";
-$n="marco";
-$c="cicchetti";
+$n="Carmelo";
+$c="cstronsss";
 $p=new EPrivato($nome,$email,$pw,$tel,$n,$c);
 $id=new fPrivato();
 $id1=$id->store($p);
 var_dump($id1);
 */
 
+/*
 echo "<h3>prove EUtente_loggato</h3>";
-$nome="Claudia";
-$email="lovepen@virgilio.it";
-$pw="nannuseimio";
-$tel="337894567";
+$nome="cicco97";
+$email="cicco@rgilio.it";
+$pw="najnjrjcrjo";
+$tel="337867867";
 $u=new EUtente_Loggato($nome,$email,$pw,$tel);
 print " PROVA toString <br> ".$u->toString()."<br>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
 echo "<h3>prove Ecarta</h3>";
-$intestatarioCarta="cla ninf";
-$numeroCarta="4055 5678 345 45";
-$scadenzaCarta="27/09/2026";
+$intestatarioCarta="cicco";
+$numeroCarta="4055 345 45";
+$scadenzaCarta="2020-12-11";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."<br>";
 echo "<hr>";
-$nomeNeg="Shop_puss";
+$nomeNeg="Shop_cicco";
 $iva="196543";
-$indirizzo="via Paolo Fabbri 37";
-$utente2=new ENegozio($nome,$email,$pw,$tel,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+$indirizzo="cvia cicco";
+$negozio=new ENegozio($nome,$email,$pw,$tel,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+
+
 $id=new fNegozio();
-$id1=$id->store($utente2);
+
+$id1=$id->store($negozio);
+
 var_dump($id1);
+*/
+
+
+
+
+/*
+$id2=new FCarta();
+$id_carta=$id2->store($carta);
+$id3=new FAbbonamento();
+$id_abb=$id3->store($abb);
+$negozio->getCarta()->setId($id_carta);
+$negozio->getAbbonamento()->setId($id_abb);
+$id5=new FUtente_loggato();
+$id5->store($u);
+*/
+
+
+
+
+$host="localhost";
+$database="vinylwebmarket";
+$username = 'root';
+$password = 'pippo';
+try{
+    $db=new PDO("mysql:host=$host;dbname=$database; charset=utf8",$username,$password);
+}
+catch(PDOException $err) {
+    echo "ATTENZIONE ERRORE: " . $err->getMessage();
+    die;
+}
+/*
+$db->begintransaction();
+$sql = " INSERT INTO negozio VALUES ('tommy@rgilio.it', 'micio', '34567', 'via pippetto', '56', '52');";
+$pdost = $db->prepare($sql);
+$pdost->execute();
+$db->commit();
+$db=NULL;
+*/
+
+
+/*
+try {
+    $db->begintransaction();
+    $sql = " INSERT INTO negozio VALUES (:email_negozio, :nome, :partitaiva, :indirizzo, :id_carta, :id_abbonamento)";
+   // $sql=  " INSERT INTO negozio VALUES ('turbo@rgilio.it','turbo_shop','66696','via turbo turbo',27,23)";
+    $pdost = $db->prepare($sql);
+
+    $pdost->bindValue(':email_negozio', $negozio->getEmail(), PDO::PARAM_STR);
+    $pdost->bindValue(':nome', $negozio->getNameShop(), PDO::PARAM_STR);
+    $pdost->bindValue(':partitaiva', $negozio->getPIva(), PDO::PARAM_STR);
+    $pdost->bindValue(':indirizzo', $negozio->getAddress(), PDO::PARAM_STR);
+    $pdost->bindValue(':id_carta', $negozio->getCarta()->getId(), PDO::PARAM_INT);
+    $pdost->bindValue(':id_abbonamento', $negozio->getAbbonamento()->getId(), PDO::PARAM_INT);
+
+    $pdost->execute();
+    $db->commit();
+    $db=NULL;
+    }
+          catch(PDOException $err) {
+              echo "ATTENZIONE ERRORE: " . $err->getMessage();
+              die;
+          }
+
+
+echo"<br>";
+echo $sql;
+echo "<br>";
+*/
+
+//prova vinile
+/*
+echo "<h3>prove EUtente_loggato</h3>";
+$nome="vanessa";
+$email="vanny@virgilio.it";
+$pw="stupos";
+$tel="33784535";
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$u->toString()."<br>";
+$prova=new FUtente_loggato();
+$prova1=$prova->store($u);
+var_dump($prova1);
+echo "<hr>";
+*/
+$u=new EUtente_Loggato('cicco97','cicco@rgilio.it','najnjrjcrjo','337867867','1');
+var_dump($u);
+
+$titolo = "notti";
+$artist = "liga";
+$gen = "rock";
+$ng = 99;
+$cond = "nuovo";
+$pr = "$22";
+$des = "schifo musica italiana";
+$quant = 2;
+$vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+var_dump($vinile);
+echo "<br>";
+echo "Test toString ".$vinile->toString()."<br>";
+echo "<hr>";
+
+/*
+$id=new FVinile();
+$id1=$id->store($vinile);
+var_dump($id1);
+*/
+echo "<hr>";
+var_dump($vinile->getVenditore()->getEmail());
+echo "<hr>";
+var_dump($vinile->getTitolo());
+echo "<hr>";
+var_dump($vinile->getArtista());
+echo "<hr>";
+var_dump($vinile->getGenere());
+echo "<hr>";
+var_dump($vinile->getNgiri());
+echo "<hr>";
+var_dump($vinile->getCondizione());
+echo "<hr>";
+var_dump($vinile->getPrezzo());
+echo "<hr>";
+var_dump($vinile->getDescrizione());
+echo "<hr>";
+var_dump($vinile->getQuantita());
+echo "<hr>";
+try {
+    $db->begintransaction();
+    $sql = " INSERT INTO vinile VALUES (:id,:venditore,:titolo,:artista,:genere,:ngiri,:condizione,:prezzo,:descrizione,:quantità);";
+    //$sql = " INSERT INTO vinile VALUES (NULL,'cicco@rgilio.it','notti','liga','rock',98,'nuovo','22','schifo musica italiana',7);";
+    $pdost = $db->prepare($sql);
+
+        $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+        $pdost->bindValue(':venditore', $vinile->getVenditore()->getEmail(), PDO::PARAM_STR);
+        $pdost->bindValue(':titolo', $vinile->getTitolo(), PDO::PARAM_STR);
+        $pdost->bindValue(':artista', $vinile->getArtista(), PDO::PARAM_STR);
+        $pdost->bindValue(':genere', $vinile->getGenere(), PDO::PARAM_STR);
+        $pdost->bindValue(':ngiri', $vinile->getNgiri(), PDO::PARAM_INT);
+        $pdost->bindValue(':condizione', $vinile->getCondizione(), PDO::PARAM_STR);
+        $pdost->bindValue(':prezzo', $vinile->getPrezzo(), PDO::PARAM_STR);
+        $pdost->bindValue(':descrizione', $vinile->getDescrizione(), PDO::PARAM_STR);
+        $pdost->bindValue(':quantità', $vinile->getQuantita(), PDO::PARAM_INT);
+
+    var_dump($pdost);
+
+    $pdost->execute();
+    $db->commit();
+    $db=NULL;
+    }
+          catch(PDOException $err) {
+              echo "ATTENZIONE ERRORE: " . $err->getMessage();
+              die;
+          }
+
+
+
+
+
+
 
 
 

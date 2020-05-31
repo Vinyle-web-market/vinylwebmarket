@@ -7,7 +7,7 @@ class FNegozio
 
     private static $class = "FNegozio";
 
-    private static $values = (":email_negozio, :nome, :partitaiva, :indirizzo, :carta, :abbonamento");
+    private static $values = (":email_negozio, :nome, :partitaiva, :indirizzo, :id_carta, :id_abbonamento");
 
     public function __construct()
     {
@@ -19,8 +19,8 @@ class FNegozio
         $pdost->bindValue(':nome', $negozio->getNameShop(), PDO::PARAM_STR);
         $pdost->bindValue(':partitaiva', $negozio->getPIva(), PDO::PARAM_STR);
         $pdost->bindValue(':indirizzo', $negozio->getAddress(), PDO::PARAM_STR);
-        $pdost->bindValue(':carta', $negozio->getCarta()->getId(), PDO::PARAM_INT);
-        $pdost->bindValue(':abbonamento', $negozio->getAbbonamento()->getId(), PDO::PARAM_INT);
+        $pdost->bindValue(':id_carta', $negozio->getCarta()->getId(), PDO::PARAM_INT);
+        $pdost->bindValue(':id_abbonamento', $negozio->getAbbonamento()->getId(), PDO::PARAM_INT);
     }
 
     /**
@@ -47,6 +47,7 @@ class FNegozio
         return self::$class;
     }
 
+
     public static function store(ENegozio $n)
     {
         $db = FDataBase::getInstance();
@@ -55,13 +56,27 @@ class FNegozio
         if($exist==TRUE)
             return "Utente ".$n->getEmail()." già esistente nel Database";
         else {
-            $db->storeP($n,"FUtente_loggato");
-            $db->storeP($n->getCarta(),"FCarta");
-            $db->storeP($n->getAbbonamento(),"FAbbonamento");
-            $db->storeP($n, static::getClass());
-            return "operazione a buon fine: " . $n->getEmail() . " salvato le tabelle utente_loggato,carta,abbonamneto e negozio sono state aggiornate ";
+               $id1=$db->storeP($n->getCarta(),"FCarta");
+               $id2=$db->storeP($n->getAbbonamento(),"FAbbonamento");
+               $db->storeP($n,"FUtente_loggato");
+           $n->getCarta()->setId($id1);
+           $n->getAbbonamento()->setId($id2);
+           $db->storeP2($n, static::getClass());
+           return "operazione a buon fine: " . $n->getEmail() . " salvato le tabelle utente_loggato,carta,abbonamneto e negozio sono state aggiornate ";
         }
     }
+
+/*
+    public static function store(ENegozio $n) {
+        $db = FDatabase::getInstance();
+        $id = $db->storeP( $n,"FUtente_loggato");
+        $id1=$db->storeP($n->getCarta(),"FCarta");
+        $id2=$db->storeP($n->getAbbonamento(),"FAbbonamento");
+        $id3=$db->storeP($n, static::getClass());
+        return $id3;
+    }
+*/
+
 
 
     public function exist ($field, $id)
