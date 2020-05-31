@@ -24,18 +24,6 @@ class Evinile
     private $descrizione;
     private $quantita;
 
-    /*Questo è il costruttore della classe Vinile
-     * @param string $id
-     * @param EUtente_loggato $venditore
-     * @param string $titolo
-     * @param string $artista
-     * @param string $genere
-     * @param string $ngiri
-     * @param string $condizione
-     * @param string $prezzo
-     * @param string descrizione
-     * @param string quantità
-     */
 
     function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
     {
@@ -79,8 +67,7 @@ class Evinile
      */
     function setUserVenditore(EUtente_Loggato $vend)
     {
-        $y = $this->venditore = $vend;
-        return $y;
+          $this->venditore = $vend;
     }
     /** Metodo che ci permette di prendere
      * in esame il titolo del vinile

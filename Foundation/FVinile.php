@@ -4,7 +4,7 @@
 class FVinile
 {
     private static $table = "vinile";
-    private static $values = "(:id, :venditore, :titolo, :artista, :genere, :ngiri, :condizione, :prezzo, :descrizione, :quantità)";
+    private static $values = "(:id_vinile, :venditore, :titolo, :artista, :genere, :ngiri, :condizione, :prezzo, :descrizione, :quantita)";
     private static $class = "FVinile";
 
     public function __construct(){}
@@ -12,7 +12,7 @@ class FVinile
     public static function bind($pdost, Evinile $vinile)
     {
 
-        $pdost->bindValue(':id',NULL, PDO::PARAM_INT);
+        $pdost->bindValue(':id_vinile',NULL, PDO::PARAM_INT);
         $pdost->bindValue(':venditore', $vinile->getVenditore()->getEmail(), PDO::PARAM_STR);
         $pdost->bindValue(':titolo', $vinile->getTitolo(), PDO::PARAM_STR);
         $pdost->bindValue(':artista', $vinile->getArtista(), PDO::PARAM_STR);
@@ -21,7 +21,7 @@ class FVinile
         $pdost->bindValue(':condizione', $vinile->getCondizione(), PDO::PARAM_STR);
         $pdost->bindValue(':prezzo', $vinile->getPrezzo(), PDO::PARAM_STR);
         $pdost->bindValue(':descrizione', $vinile->getDescrizione(), PDO::PARAM_STR);
-        $pdost->bindValue(':quantità', $vinile->getQuantita(), PDO::PARAM_INT);
+        $pdost->bindValue(':quantita', $vinile->getQuantita(), PDO::PARAM_INT);
     }
 
     /**
@@ -54,8 +54,8 @@ class FVinile
         $exist = FUtente_loggato::exist("email",$vinile->getVenditore()->getEmail());
         if($exist==TRUE){
 
-              $id=$db->storeP($vinile, static::getClass());
-              return $id;
+              $db->storeP($vinile, static::getClass());
+              return "operazione riuscita";
                         }
         else {
             $str="operazione non riuscita";

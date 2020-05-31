@@ -508,9 +508,9 @@ echo "<hr>";
 $u=new EUtente_Loggato('cicco97','cicco@rgilio.it','najnjrjcrjo','337867867','1');
 var_dump($u);
 
-$titolo = "notti";
-$artist = "liga";
-$gen = "rock";
+$titolo = "ragazzi funziona";
+$artist = "il gordo";
+$gen = "blues";
 $ng = 99;
 $cond = "nuovo";
 $pr = "$22";
@@ -522,11 +522,13 @@ echo "<br>";
 echo "Test toString ".$vinile->toString()."<br>";
 echo "<hr>";
 
-/*
+
 $id=new FVinile();
 $id1=$id->store($vinile);
 var_dump($id1);
-*/
+
+
+/*
 echo "<hr>";
 var_dump($vinile->getVenditore()->getEmail());
 echo "<hr>";
@@ -573,8 +575,7 @@ try {
               echo "ATTENZIONE ERRORE: " . $err->getMessage();
               die;
           }
-
-
+*/
 
 
 
