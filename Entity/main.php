@@ -7,6 +7,7 @@
 <body>
 <?php
 include("EAbbonamento.php");
+
 include("ECarta.php");
 include("ERecensione.php");
 include("Evinile.php");
