@@ -10,7 +10,7 @@ class EAbbonamento
 
     /** Questo metodo è il costruttore della classe EAbbonamento.
      * EAbbonamento constructor.
-     * @param DateTime $dataRinnovo
+     * @param
      */
     function __construct()
     {
@@ -20,7 +20,7 @@ class EAbbonamento
 
     //METODI SET
     /** Questo metodo setta la data di rinnovo dell'abbonamento.
-     * @param DateTime $data
+     * @param
      */
     function setData($data) {
         $this->date=$data;

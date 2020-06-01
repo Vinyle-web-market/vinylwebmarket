@@ -60,7 +60,7 @@ class FDataBase
     }
 
 
-    //store per la
+    /*
     public function storeP2($object, $Fclass)
     {
         try {
@@ -84,6 +84,7 @@ class FDataBase
             return NULL;
         }
     }
+    */
 
     //keyField è chiave primaria della classe
     public function existP($Fclass, $keyField, $id)
