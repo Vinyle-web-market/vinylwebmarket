@@ -78,6 +78,7 @@ $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$a
 print " PROVA toString <br> ".$utente2->toString()."<br>";
 echo "<hr>";
 
+/*
 echo "<h3>prove Erecensione</h3>";
 $stelle = 4;
 $testo = "Utente molto affidabile!";
@@ -85,15 +86,17 @@ $mittente = $utente1->getEmail();
 $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
+*/
 
 echo "<h3> prova EMessaggio</h3>";
-$mitt=$utente2->getEmail();
-$dest=$utente1->getEmail();
+//$mitt=$utente2->getEmail();
+//$dest=$utente1->getEmail();
 $ogg="cia crist";
 $text="il tabaccaio di pescara";
-$mex=new EMessaggio($mitt, $dest, $ogg, $text);
+$mex=new EMessaggio($emai, $email, $ogg, $text);
 print "Test to String: ".$mex->toString()."<br>";
 
+/*
 $id=new FCarta();
 $id2=$id->store($carta);
 var_dump($id2);
@@ -101,7 +104,8 @@ var_dump($id2);
 $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
-
+*/
+/*
 $idpriv=new FPrivato();
 $idpriv->store($utente1);
 
@@ -111,6 +115,7 @@ $idneg->store($utente2);
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
+*/
 
 $idmex=new FMessaggio();
 $idmex=$idmex->store($mex);
@@ -204,7 +209,7 @@ $cond = "Non male";
 $pr = "€7.99";
 $des = "Tutt appost";
 $quant = "2";
-$vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+$vinile = new Evinile($utente1, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString()."br";
 */
 

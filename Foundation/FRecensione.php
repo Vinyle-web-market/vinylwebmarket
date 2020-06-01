@@ -16,7 +16,7 @@ class FRecensione
         $pdost->bindValue(':mittente', $r->getUsernameMittente(), PDO::PARAM_STR);
         $pdost->bindValue(':destinatario', $r->getUsernameDestinatario(), PDO::PARAM_STR);
         $pdost->bindValue(':testo_recensione', $r->getTesto(), PDO::PARAM_STR);
-        $pdost->bindValue(':voto', $r->getUsernameMittente(), PDO::PARAM_INT);
+        $pdost->bindValue(':voto', $r->getVotostelle(), PDO::PARAM_INT);
         $pdost->bindValue(':ban', $r->isBan(), PDO::PARAM_BOOL);
     }
         //int o float?

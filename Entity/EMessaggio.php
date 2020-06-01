@@ -100,7 +100,7 @@ class EMessaggio
      attributi della classe Messaggio*/
     function toString()
     {
-        return "Identificativo del messaggio: ".$this->id."\n" .
+        return
             "Mittente del messaggio: ".$this->mittente."\n" .
             "Destinatario del messaggio: ".$this->destinatario."\n" .
             "Oggetto del messaggio: ".$this->oggetto."\n" .
