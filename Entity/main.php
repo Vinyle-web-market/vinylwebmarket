@@ -25,10 +25,13 @@ include ("../Foundation/FMessaggio.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
+/*
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
+*/
+
 //$data1="3/05/2020";
 //$importo1="30";
 //$abb->setData($data1);
@@ -44,6 +47,7 @@ $abb->AggiornaAbbonamento($nummesi);
 echo "".$abb->toString()."<br>";
 echo "<hr>";
 */
+/*
 //prova ECarta se non serve escluderla mediante commento
 $intestatarioCarta="toninoo selli";
 $numeroCarta="40603566";
@@ -51,7 +55,8 @@ $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."<br>";
-
+*/
+/*
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
 $nom="claudio crucio";
@@ -63,8 +68,8 @@ $cogn="crucianie";
 $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
 print " PROVA toString <br> ".$utente1->toString()."<br>";
 echo "<hr>";
-
-
+*/
+/*
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
 $nom="ZioTonye";
@@ -77,7 +82,7 @@ $indirizzo="via Paolo Fabbri 23";
 $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
 print " PROVA toString <br> ".$utente2->toString()."<br>";
 echo "<hr>";
-
+*/
 /*
 echo "<h3>prove Erecensione</h3>";
 $stelle = 4;
@@ -87,7 +92,7 @@ $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
 */
-
+/*
 echo "<h3> prova EMessaggio</h3>";
 //$mitt=$utente2->getEmail();
 //$dest=$utente1->getEmail();
@@ -95,7 +100,7 @@ $ogg="cia crist";
 $text="il tabaccaio di pescara";
 $mex=new EMessaggio($emai, $email, $ogg, $text);
 print "Test to String: ".$mex->toString()."<br>";
-
+*/
 /*
 $id=new FCarta();
 $id2=$id->store($carta);
@@ -104,8 +109,7 @@ var_dump($id2);
 $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
-*/
-/*
+
 $idpriv=new FPrivato();
 $idpriv->store($utente1);
 
@@ -115,12 +119,12 @@ $idneg->store($utente2);
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
-*/
+
 
 $idmex=new FMessaggio();
 $idmex=$idmex->store($mex);
 var_dump($idmex);
-
+*/
 
 /*$stelle2 = "5";
 $recensione->setVotostelle($stelle2);
@@ -619,9 +623,11 @@ try {
               die;
           }
 */
-
-
-
+/*
+$id=new FNegozio();
+$id=$id->exist("email_negozio", "ZioTony@virgeilio.it");
+echo $id;
+*/
 
 
 

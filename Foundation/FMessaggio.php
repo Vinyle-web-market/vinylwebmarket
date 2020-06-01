@@ -75,4 +75,34 @@ class FMessaggio
         else
             return NULL;
     }
+
+    public static function update($field, $newvalue, $keyField, $id)
+    {
+        $db=FDatabase::getInstance();
+        $result = $db->updateP(static::getClass(), $field, $newvalue, $keyField, $id);
+        if($result) return true;
+        else return false;
+    }
+
+    public static function load($field, $id){
+        $mezzo = null;
+        $db=FDatabase::getInstance();
+        $result=$db->loadP(static::getClass(), $field, $id);
+        $rows_number = $db->countLoadP(static::getClass(), $field, $id);
+        if(($result!=null) && ($rows_number == 1)) {
+            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['testo'],$result['oggetto']);
+            $messaggio->setId($result['id']);
+        }
+        else {
+            if(($result!=null) && ($rows_number > 1)){
+                $mezzo = array();
+                for($i=0; $i<count($result); $i++){
+                    $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['testo'],$result['oggetto']);
+                    $messaggio->setId($result['id']);
+
+                }
+            }
+        }
+        return $messaggio;
+    }
 }

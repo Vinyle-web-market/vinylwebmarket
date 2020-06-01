@@ -54,4 +54,6 @@ class FPrivato
             return "operazione a buon fine: " . $p->getEmail() . " salvato ";
         }
     }
+
+
 }

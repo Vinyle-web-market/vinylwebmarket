@@ -53,7 +53,7 @@ class FNegozio
         $db = FDataBase::getInstance();
         $exist = $db->existP("FUtente_loggato","email",$n->getEmail());
         // $control=$db->static::exist("email",$u->getEmail());
-        if($exist==TRUE)
+        if($exist!=null)
             return "Utente ".$n->getEmail()." già esistente nel Database";
         else {
                $id1=$db->storeP($n->getCarta(),"FCarta");
@@ -66,38 +66,19 @@ class FNegozio
         }
     }
 
-/*
-    public static function store(ENegozio $n) {
-        $db = FDatabase::getInstance();
-        $id = $db->storeP( $n,"FUtente_loggato");
-        $id1=$db->storeP($n->getCarta(),"FCarta");
-        $id2=$db->storeP($n->getAbbonamento(),"FAbbonamento");
-        $id3=$db->storeP($n, static::getClass());
-        return $id3;
-    }
-*/
-
 
 
     public function exist ($field, $id)
     {
         $exist = false;
         $db = FDataBase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
-        $exist = $db->exist(static::getClass(), $field, $id);
+        $exist = $db->existP(static::getClass(), $field, $id);
         if($exist)
-            return $exist = true;
+            return $exist = "esiste";
         else
-            return $exist = false;
+            return $exist = "non esiste";
     }
 
-    public function delete ($keyField,$id){
-        $db = FDataBase::getInstance();
-        $id = $db->deleteP(self::getClass(),$keyField,$id);
-        if ($id)
-            return $id;
-        else
-            return NULL;
-    }
 
     public static function update($field, $newvalue, $keyField, $id)
     {
