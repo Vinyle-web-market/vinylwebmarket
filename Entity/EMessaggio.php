@@ -40,6 +40,15 @@ class EMessaggio
     {
         return $this->id;
     }
+
+    /**Metodo che ci permette di cambiare l'id di vinile
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
     /**Metodo getMittente che ci permettere di prendere il mittente
      * @return mixed
      */
