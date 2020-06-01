@@ -7,19 +7,19 @@ class FMessaggio
 
     private static $class = "FMessaggio";
 
-    private static $values = (":id, :id_mittente, :id_destinatario, :testo_mes, :oggetto_mes");
+    private static $values ="(:id, :mittente, :destinatario, :testo, :oggetto)";
 
     public function __construct()
     {
     }
 
-    public static function bind($pdost, EMessaggio $messaggio)
+    public static function bind($pdost, EMessaggio $m)
     {
-        $pdost->bindValue(':id', NULL, PDO::PARAM_INT);
-        $pdost->bindValue(':id_mittente', $messaggio->getMittente(), PDO::PARAM_STR);
-        $pdost->bindValue(':id_destinatario', $messaggio->getDestinatario(), PDO::PARAM_STR);
-        $pdost->bindValue(':testo_mes', $messaggio->getTesto(), PDO::PARAM_STR);
-        $pdost->bindValue(':oggetto_mes', $messaggio->getOggetto(), PDO::PARAM_STR);
+        $pdost->bindValue(':id', null, PDO::PARAM_INT);
+        $pdost->bindValue(':mittente', $m->getMittente(), PDO::PARAM_STR);
+        $pdost->bindValue(':destinatario', $m->getDestinatario(), PDO::PARAM_STR);
+        $pdost->bindValue(':testo', $m->getTesto(), PDO::PARAM_STR);
+        $pdost->bindValue(':oggetto', $m->getOggetto(), PDO::PARAM_STR);
     }
 
     /**
