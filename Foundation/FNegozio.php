@@ -7,7 +7,7 @@ class FNegozio
 
     private static $class = "FNegozio";
 
-    private static $values = (":email_negozio, :nome, :partitaiva, :indirizzo, :id_carta, :id_abbonamento");
+    private static $values = "(:email_negozio, :nome, :partitaiva, :indirizzo, :id_carta, :id_abbonamento)";
 
     public function __construct()
     {
