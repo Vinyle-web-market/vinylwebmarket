@@ -46,10 +46,10 @@ class FMessaggio
         return self::$values;
     }
 
-    public function store ($messaggio)
+    public function store(EMessaggio $m)
     {
         $db = FDataBase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
-        $id =$db->store(static::getClass(), $messaggio);
+        $id =$db->storeP($m, self::getClass());
         if ($id)
             return $id;
         else

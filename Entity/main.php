@@ -12,6 +12,7 @@ include("ERecensione.php");
 include("Evinile.php");
 include("EPrivato.php");
 include("ENegozio.php");
+include ("EMessaggio.php");
 include("../Foundation/FDataBase.php");
 include("../Foundation/FRecensione.php");
 include("../Foundation/FAbbonamento.php");
@@ -20,22 +21,21 @@ include("../Foundation/FUtente_loggato.php");
 include("../Foundation/FPrivato.php");
 include("../Foundation/FNegozio.php");
 include("../Foundation/FVinile.php");
+include ("../Foundation/FMessaggio.php");
 
 
 //  !!! MANCA IL TEST DI MESSAGGIO !!! E IL TEST DI VINILE VA RIFATTO DOPO LE MODIFICHE
-/*echo "<hr>";
+echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
-$data="08-12-2020";
-$importoAbb="0";
-$stato="non attivo";
 $abb=new EAbbonamento();
-//print "prova toString ".$abb->toString()."<br>";
+print "prova toString ".$abb->toString()."<br>";
 //$data1="3/05/2020";
 //$importo1="30";
 //$abb->setData($data1);
 //$abb->setImporto($importo1);
 //print "prova getData ".$abb->getData();
 //print "prova getImporto ".$abb->getImporto();
+/*
 $nummesi=3;
 //echo "numero mesi richiesti: ".$nummesi."\n";
 echo "prezzo abbonamento per numero mesi richiesti: ".$abb->CalcolaPrezzo($nummesi)." €"."\n";
@@ -43,15 +43,80 @@ echo "numero mesi pagati: ".$nummesi."\n";
 $abb->AggiornaAbbonamento($nummesi);
 echo "".$abb->toString()."<br>";
 echo "<hr>";
+*/
+//prova ECarta se non serve escluderla mediante commento
+$intestatarioCarta="toninoo selli";
+$numeroCarta="40603566";
+$scadenzaCarta="27/09/2026";
+$codiceCVV="728";
+$carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
+print "prova toString ".$carta->toString()."<br>";
 
+echo "<h3>prove EPrivato</h3>";
+//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
+$nom="claudio crucio";
+$email="claudio0000@virgilio.it";
+$pw="pippo0";
+$tel="33450756896";
+$nome="claudioe";
+$cogn="crucianie";
+$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+print " PROVA toString <br> ".$utente1->toString()."<br>";
+echo "<hr>";
+
+
+echo "<h3>prove ENegozio</h3>";
+// public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
+$nom="ZioTonye";
+$emai="ZioTony@virgeilio.it";
+$passw="pappepepino";
+$tele="3313476567";
+$nomeNeg="Vynilshop";
+$iva="19856784611";
+$indirizzo="via Paolo Fabbri 23";
+$utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
+print " PROVA toString <br> ".$utente2->toString()."<br>";
+echo "<hr>";
 
 echo "<h3>prove Erecensione</h3>";
-$stelle = "4";
+$stelle = 4;
 $testo = "Utente molto affidabile!";
-$mittente = "Tonino";
-$destinatario = "Gordo";
+$mittente = $utente1->getEmail();
+$destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
+
+echo "<h3> prova EMessaggio</h3>";
+$mitt=$utente2->getEmail();
+$dest=$utente1->getEmail();
+$ogg="cia crist";
+$text="il tabaccaio di pescara";
+$mex=new EMessaggio($mitt, $dest, $ogg, $text);
+print "Test to String: ".$mex->toString()."<br>";
+
+$id=new FCarta();
+$id2=$id->store($carta);
+var_dump($id2);
+
+$idabb=new FAbbonamento();
+$idabb=$idabb->store($abb);
+var_dump($idabb);
+
+$idpriv=new FPrivato();
+$idpriv->store($utente1);
+
+$idneg=new FNegozio();
+$idneg->store($utente2);
+
+$idrec=new FRecensione();
+$idrec=$idrec->store($recensione);
+var_dump($idrec);
+
+$idmex=new FMessaggio();
+$idmex=$idmex->store($mex);
+var_dump($idmex);
+
+
 /*$stelle2 = "5";
 $recensione->setVotostelle($stelle2);
 print "Il voto è: ".$recensione->getVotostelle();
@@ -113,38 +178,9 @@ print "prova getScad ".$carta->getScad();
 
 echo "<hr>";
 
-/*
-echo "<h3>prove EPrivato</h3>";
-//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nome="claudio97";
-$email="claudio@virgilio.it";
-$pw="pippo";
-$tel="3345756896";
-$stato="attivo";
-$datareg="24-10-1019";
-$nome="claudio";
-$cogn="cruciani";
-$utente1=new EPrivato($nome,$email,$pw,$tel,$stato,$datareg,$nome,$cogn);
-print " PROVA toString <br> ".$utente1->toString()."br";
-echo "<hr>";
-*/
 
-/*
-echo "<h3>prove ENegozio</h3>";
-// public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
-$nom="ZioTony";
-$emai="ZioTony@virgilio.it";
-$passw="pappeppino";
-$tele="3313476567";
-$state="attivo";
-$datar="24-9-1019";
-$nomeNeg="Vynilshop";
-$iva="19856784611";
-$indirizzo="via Paolo Fabbri 23";
-$utente2=new ENegozio($nom,$emai,$passw,$tele,$state,$datar,$nomeNeg,$iva,$indirizzo,$carta,$abb);
-print " PROVA toString <br> ".$utente2->toString()."<br>";
-echo "<hr>";
-*/
+
+
 
 /*
 echo "<h3>prove EUtente_loggato</h3>";
@@ -440,7 +476,7 @@ $id5->store($u);
 
 
 
-
+/*
 $host="localhost";
 $database="vinylwebmarket";
 $username = 'root';
@@ -452,6 +488,8 @@ catch(PDOException $err) {
     echo "ATTENZIONE ERRORE: " . $err->getMessage();
     die;
 }
+*/
+
 /*
 $db->begintransaction();
 $sql = " INSERT INTO negozio VALUES ('tommy@rgilio.it', 'micio', '34567', 'via pippetto', '56', '52');";
@@ -505,7 +543,7 @@ $prova1=$prova->store($u);
 var_dump($prova1);
 echo "<hr>";
 */
-$u=new EUtente_Loggato('cicco97','cicco@rgilio.it','najnjrjcrjo','337867867','1');
+/*$u=new EUtente_Loggato('cicco97','cicco@rgilio.it','najnjrjcrjo','337867867','1');
 var_dump($u);
 
 $titolo = "ragazzi funziona";
@@ -520,13 +558,13 @@ $vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant)
 var_dump($vinile);
 echo "<br>";
 echo "Test toString ".$vinile->toString()."<br>";
-echo "<hr>";
+echo "<hr>";*/
 
-
+/*
 $id=new FVinile();
 $id1=$id->store($vinile);
 var_dump($id1);
-
+*/
 
 /*
 echo "<hr>";

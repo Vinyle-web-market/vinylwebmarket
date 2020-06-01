@@ -3,7 +3,7 @@
 class FRecensione
 {
   private static $table = "recensione";
-  private static $values= "(:id,:mittente,:destinatario,:testo_recensione,:voto)"; //mettere ban
+  private static $values= "(:id,:mittente,:destinatario,:testo_recensione,:voto, :ban)"; //mettere ban
   private static $class= "FRecensione";
   //METTERE COSTRUTTORE?
     function __construct()
@@ -46,8 +46,8 @@ class FRecensione
     public static function store (ERecensione $r)
     {
         $db=FDataBase::getInstance();
-        $id=$db->store($r , static::getClass());    //usare static al posto di self?
-        if($id!=NULL)
+        $id=$db->storeP($r, self::getClass());    //usare static al posto di self?
+        if($id)
             return $id;
         else
             return NULL;
