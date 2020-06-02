@@ -109,4 +109,12 @@ class FVinile
         return $vinile;
     }
 
+
+    public static function update($field, $newvalue, $keyField, $id)
+    {
+        $db=FDatabase::getInstance();
+        $result = $db->updateP(static::getClass(), $field, $newvalue, $keyField, $id);
+        if($result) return true;
+        else return false;
+    }
 }

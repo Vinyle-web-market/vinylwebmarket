@@ -59,15 +59,15 @@ class FMessaggio
     public function exist ($field, $id)
     {
         $exist = false;
-        $db = FDataBase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
-        $exist = $db->exist(static::getClass(), $field, $id);
+        $db = FDataBase::getInstance();
+        $exist = $db->existP(static::getClass(), $field, $id);
         if($exist)
             return $exist = true;
         else
             return $exist = false;
     }
 
-    public function delete ($keyField,$id){
+    public function delete($keyField,$id){
         $db = FDataBase::getInstance();
         $id = $db->deleteP(self::getClass(),$keyField,$id);
         if ($id)

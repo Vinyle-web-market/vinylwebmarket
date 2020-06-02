@@ -56,4 +56,22 @@ class FPrivato
     }
 
 
+    public static function update($field, $newvalue, $keyField, $id)
+    {
+        $db=FDatabase::getInstance();
+        $result = $db->updateP(static::getClass(), $field, $newvalue, $keyField, $id);
+        if($result) return true;
+        else return false;
+    }
+
+    public static function exist($keyField,$id)
+    {
+        $db=FDataBase::getInstance();
+        $exist=$db->existP(self::getClass(),$keyField,$id);
+        if($exist!=NULL)
+            return true;
+        else
+            return false;
+    }
+
 }

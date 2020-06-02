@@ -53,13 +53,15 @@ class FRecensione
             return NULL;
     }
 
-    public static function exist ($field,$id){
-        $db=FDataBase::getInstance();
-        $exist=$db->exists(self::getClass(),$field,$id);
-        if($exist!=NULL)
-            $exist=true;
+    public function exist ($field, $id)
+    {
+        $exist = false;
+        $db = FDataBase::getInstance();
+        $exist = $db->existP(static::getClass(), $field, $id);
+        if($exist)
+            return $exist = true;
         else
-            $exist=false;
+            return $exist = false;
     }
 
     public static function delete($keyField,$id){
@@ -85,7 +87,7 @@ class FRecensione
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $recensione=new ERecensione($result['mittente'],$result['destinatario'],$result['testo_recensione'],$result['voto']);
+            $recensione=new ERecensione($result['voto'],$result['testo_recensione'],$result['mittente'],$result['destinatario']);
             $recensione->setId($result['id']);
             $recensione->setBan($result['ban']);
         }

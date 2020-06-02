@@ -66,19 +66,6 @@ class FNegozio
         }
     }
 
-/*
-    public static function store(ENegozio $n) {
-        $db = FDatabase::getInstance();
-        $id = $db->storeP( $n,"FUtente_loggato");
-        $id1=$db->storeP($n->getCarta(),"FCarta");
-        $id2=$db->storeP($n->getAbbonamento(),"FAbbonamento");
-        $id3=$db->storeP($n, static::getClass());
-        return $id3;
-    }
-*/
-
-
-
     public function exist ($field, $id)
     {
         $exist = false;
@@ -88,15 +75,6 @@ class FNegozio
             return $exist = true;
         else
             return $exist = false;
-    }
-
-    public function delete ($keyField,$id){
-        $db = FDataBase::getInstance();
-        $id = $db->deleteP(self::getClass(),$keyField,$id);
-        if ($id)
-            return $id;
-        else
-            return NULL;
     }
 
     public static function update($field, $newvalue, $keyField, $id)
