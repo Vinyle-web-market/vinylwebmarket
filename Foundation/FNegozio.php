@@ -91,19 +91,30 @@ class FNegozio
         $db = FDatabase::getInstance();
         $result = $db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
+        $result_u = $db->loadP('FUtente_loggato', 'email', $result['email_negozio']);
+        $result_c = $db->loadP('FCarta', 'id', $result['id_carta']);
+        $result_a = $db->loadP('FAbbonamento', 'id', $result['id_abbonamento']);
         if (($result != null) && ($rows_number == 1)) {
-            $negozio = new ENegozio($result['email_negozio'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $result['carta'], $result['abbonamento']);
-            $negozio->setEmail($result['email_negozio']);
+            $a=new EAbbonamento();
+            $a->setData($result_a['scadenza']);
+            $a->getStato($result_a['stato']);
+            $a->setId($result_a['id']);
+            $c=new ECarta($result_c['intestatario'], $result_c['numero'], $result_c['scadenza'], $result_c['cvv']);
+            $neg = new ENegozio($result_u['username'], $result_u['email'], $result_u['password'], $result_u['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $c, $a);
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $mezzo = array();
                 for ($i = 0; $i < count($result); $i++) {
-                    $negozio = new ENegozio($result['email_negozio'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $result['carta'], $result['abbonamento']);
-                    $negozio->setEmail($result['email_negozio']);
+                    $a=new EAbbonamento();
+                    $a->setData($result_a['scadenza']);
+                    $a->getStato($result_a['stato']);
+                    $a->setId($result_a['id']);
+                    $c=new ECarta($result_c['intestatario'], $result_c['numero'], $result_c['scadenza'], $result_c['cvv']);
+                    $neg = new ENegozio($result_u['username'], $result['email_negozio'], $result_u['password'], $result_u['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $c, $a);
 
                 }
             }
         }
-        return $negozio;
+        return $neg;
     }
 }

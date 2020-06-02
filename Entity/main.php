@@ -346,10 +346,19 @@ echo $a->toString();
 
 /*
 //----------LOAD FUTENTE_LOGGATO-----------------------------------------
-$out=$f->load('email', 'claudio97@virgilio.it');
+$out= new FUtente_loggato();
+$out=$out->load('email', 'claudio97@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
 */
+
+
+//----------LOAD FNEGOZIO-------------------------------------------------
+$n=new FNegozio();
+$out=$n->load('email_negozio', 'ZioTony@virgeilio.it');
+var_dump($out);
+//------------------------------------------------------------------------
+
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------

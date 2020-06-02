@@ -60,31 +60,6 @@ class FDataBase
     }
 
 
-    /*
-    public function storeP2($object, $Fclass)
-    {
-        try {
-            $this->db->begintransaction();
-            $sql = " INSERT INTO negozio VALUES (:email_negozio, :nome, :partitaiva, :indirizzo, :id_carta, :id_abbonamento)";
-            // $sql=  " INSERT INTO negozio VALUES ('turbo@rgilio.it','turbo_shop','66696','via turbo turbo',27,23)";
-            $pdost = $this->db->prepare($sql);
-            $pdost->bindValue(':email_negozio', $object->getEmail(), PDO::PARAM_STR);
-            $pdost->bindValue(':nome', $object->getNameShop(), PDO::PARAM_STR);
-            $pdost->bindValue(':partitaiva', $object->getPIva(), PDO::PARAM_STR);
-            $pdost->bindValue(':indirizzo', $object->getAddress(), PDO::PARAM_STR);
-            $pdost->bindValue(':id_carta', $object->getCarta()->getId(), PDO::PARAM_INT);
-            $pdost->bindValue(':id_abbonamento', $object->getAbbonamento()->getId(), PDO::PARAM_INT);
-            $pdost->execute();
-            $this->db->commit();
-            $this->dbCloseConnection();
-        }
-        catch(PDOException $err) {
-            echo "ATTENZIONE ERRORE: " . $err->getMessage();
-            $this->db->rollBack();
-            return NULL;
-        }
-    }
-    */
 
     //keyField è chiave primaria della classe
     public function existP($Fclass, $keyField, $id)
