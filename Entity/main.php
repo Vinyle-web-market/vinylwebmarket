@@ -87,7 +87,7 @@ echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
 */
 
-
+/*
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
 //----------load per un utente1-----------------------------------------
 $out= new FUtente_loggato();
@@ -104,19 +104,19 @@ $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
 //-----------------------------------------------------------------------
+*/
 
 
-/*
 //---------------------COSTRUTTORE EMESSAGGIO--------------------------------
 echo "<h3> prova EMessaggio</h3>";
-$email="claudio0000@virgilio.it";
-$emai="ZioTony@virgeilio.it";
+$email2="claudio0000@virgilio.it";
+$email1="ZioTony@virgeilio.it";
 $ogg="cia crist";
 $text="il tabaccaio di pescara";
-$mex=new EMessaggio($emai, $email, $ogg, $text);
+$mex=new EMessaggio($email1, $email2, $ogg, $text);
 print "Test to String: ".$mex->toString()."<br>";
 //---------------------------------------------------------------------------
-*/
+
 
 /*
 //------------COSTRUTTORE EUTENTE_LOGGATO------------------
@@ -182,21 +182,21 @@ $idneg->store($utente2);
 //---------------------------------
 */
 
-
+/*
 //--------------STORE FRECENSIONE-----------
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
 //-----------------------------------------
+*/
 
 
-/*
 //----------STORE FMESSAGGIO---------------
 $idmex=new FMessaggio();
 $idmex=$idmex->store($mex);
 var_dump($idmex);
 //-----------------------------------------
-*/
+
 
 /*
 //--------STORE FUTENTE_LOGGATO-----------
@@ -333,7 +333,7 @@ echo $vin_r[1]->toString();
 //--------------------------------------------------------
 */
 
-
+/*
 //------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
 $rec=new FRecensione();
 $rec_r=$rec->load("mittente","rugg67@virgilio.it");
@@ -343,15 +343,20 @@ echo $rec_r[0]->toString();
 echo "<br>"."<br>";
 echo $rec_r[1]->toString();
 //-----------------------------------------------------
+*/
 
 
-/*
 //------------LOAD FMESSAGGIO--------------------------
+
 $mex=new FMessaggio();
 $mex_r=$mex->load("mittente", "ZioTony@virgeilio.it");
 var_dump($mex_r);
+echo "<br>"."<br>";
+echo $mex_r[0]->toString();
+echo "<br>"."<br>";
+echo $mex_r[1]->toString();
 //-----------------------------------------------------
-*/
+
 
 /*
 //------------LOAD FABBONAMENTO------------

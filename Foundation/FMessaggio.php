@@ -85,20 +85,20 @@ class FMessaggio
     }
 
     public static function load($field, $id){
-        $mezzo = null;
+        $messaggio = null;
         $db=FDatabase::getInstance();
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['testo'],$result['oggetto']);
-            $messaggio->setId($result['id']);
+            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['oggetto'],$result['testo']);
+            //$messaggio[$i]->setId($result['id']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
-                $mezzo = array();
+                $messaggio = array();
                 for($i=0; $i<count($result); $i++){
-                    $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['testo'],$result['oggetto']);
-                    $messaggio->setId($result['id']);
+                    $messaggio[]=new EMessaggio($result[$i]['mittente'],$result[$i]['destinatario'],$result[$i]['oggetto'],$result[$i]['testo']);
+                   // $messaggio[$i]->setId($result['id']);
 
                 }
             }
