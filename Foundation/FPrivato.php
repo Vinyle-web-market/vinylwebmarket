@@ -74,4 +74,28 @@ class FPrivato
             return false;
     }
 
+    public static function load($field,$id){
+        $privato=NULL;
+        $db=FDatabase::getInstance();
+        $resultLoadDB=$db->loadP(static::getClass(),$field,$id);
+        $rows_number=$db->countLoadP(static::getClass(),$field,$id);
+        if (($resultLoadDB!=null) && ($rows_number == 1)) {
+            $utenteloggato = FUtente_loggato::load("email", $resultLoadDB["email_privato"]);
+            $privato = new EPrivato($utenteloggato->getUsername(), $utenteloggato->getEmail(), $utenteloggato->getPassword(), $utenteloggato->getPhone(),$resultLoadDB["nome"],$resultLoadDB["cognome"]);
+            $privato->setState($utenteloggato->isState());
+        } else {
+            if (($resultLoadDB != null) && ($rows_number > 1)) {
+                $privato = array();
+                $utenteloggato=array();
+                for ($i = 0; $i < count($resultLoadDB); $i++) {
+                    $utenteloggato[] = FUtente_loggato::load("email", $resultLoadDB[$i]["email_privato"]);
+                    $privato[] = new EPrivato($utenteloggato[$i]->getUsername(), $utenteloggato[$i]->getEmail(), $utenteloggato[$i]->getPassword(), $utenteloggato[$i]->getPhone(),$resultLoadDB[$i]["nome"],$resultLoadDB[$i]["cognome"]);
+                    $privato[$i]->setState($utenteloggato[$i]->isState());
+                }
+            }
+        }
+        return $privato;
+    }
+
+
 }

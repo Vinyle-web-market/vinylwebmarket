@@ -84,6 +84,7 @@ class FVinile
             return false;
     }
 
+    /*
     public static function load($field, $id)
     {
         $mezzo = null;
@@ -106,6 +107,31 @@ class FVinile
                 }
             }
         }
+        return $vinile;
+    }
+   */
+
+    public static function load($field, $id)
+    {
+        $vinile = null;
+        $db = FDatabase::getInstance();
+        $resultLoadDB = $db->loadP(static::getClass(), $field, $id);
+        $rows_number = $db->countLoadP(static::getClass(), $field, $id);
+        if (($resultLoadDB != null) && ($rows_number == 1)) {
+            $utenteloggato = FUtente_loggato::load("email", $resultLoadDB["venditore"]);
+            //function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
+            $vinile = new Evinile($utenteloggato, $resultLoadDB["titolo"], $resultLoadDB["artista"], $resultLoadDB["genere"], $resultLoadDB["ngiri"], $resultLoadDB["condizione"], $resultLoadDB["prezzo"], $resultLoadDB["descrizione"], $resultLoadDB["quantita"]);
+        }
+        else {
+            if (($resultLoadDB != null) && ($rows_number > 1)) {
+                $vinile=array();
+                $utenteloggato=array();
+                for ($i = 0; $i < count($resultLoadDB); $i++) {
+                    $utenteloggato[] = FUtente_loggato::load("email", $resultLoadDB[$i]["venditore"]);
+                    $vinile[$i]=new Evinile($utenteloggato[$i],$resultLoadDB[$i]["titolo"],$resultLoadDB[$i]["artista"],$resultLoadDB[$i]["genere"], $resultLoadDB[$i]["ngiri"],$resultLoadDB[$i]["condizione"],$resultLoadDB[$i]["prezzo"],$resultLoadDB[$i]["descrizione"], $resultLoadDB[$i]["quantita"]);
+                }
+              }
+            }
         return $vinile;
     }
 

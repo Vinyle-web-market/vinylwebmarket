@@ -58,12 +58,12 @@ print "prova toString ".$carta->toString()."<br>";
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="claudio crucio";
-$email="claudio0000@virgilio.it";
-$pw="pippo0";
-$tel="33450756896";
-$nome="claudioe";
-$cogn="crucianie";
+$nom="enrico";
+$email="enrico88@virgilio.it";
+$pw="pipdcf";
+$tel="334587896";
+$nome="enrico";
+$cogn="rossi";
 $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
 print " PROVA toString <br> ".$utente1->toString()."<br>";
 echo "<hr>";
@@ -87,17 +87,24 @@ echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
 */
 
-/*
+
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
+//----------load per un utente1-----------------------------------------
+$out= new FUtente_loggato();
+$utente1=$out->load('email', 'rugg67@virgilio.it');
+//----------load per un utente-----------------------------------------
+$out= new FUtente_loggato();
+$utente2=$out->load('username', 'enrico');
+//---------------------------------------------------------------------
 echo "<h3>prove Erecensione</h3>";
-$stelle = 4;
-$testo = "Utente molto affidabile!";
+$stelle = 5;
+$testo = "affidabile come sempre!";
 $mittente = $utente1->getEmail();
 $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
 //-----------------------------------------------------------------------
-*/
+
 
 /*
 //---------------------COSTRUTTORE EMESSAGGIO--------------------------------
@@ -126,16 +133,20 @@ echo "<hr>";
 
 /*
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
+//----------load per un utente-----------------------------------------
+$out= new FUtente_loggato();
+$out=$out->load('email', 'rugg67@virgilio.it');
+//---------------------------------------------------------------------
 echo "<h3> Prova Vinile </h3>";
-$titolo = " Kittamuort";
-$artist = "Il piccolo Lucio";
-$gen = "Napoletano puro";
-$ng = "99";
-$cond = "Non male";
+$titolo = "domani smetto";
+$artist = "articolo 31";
+$gen = "rap";
+$ng = "66";
+$cond = "usato";
 $pr = "€7.99";
-$des = "Tutt appost";
-$quant = "2";
-$vinile = new Evinile($u, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+$des = "anno 2001,settimo album per i cantanti milanesi";
+$quant = "5";
+$vinile = new Evinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString()."br";
 //------------------------------------------------------------------------------------------
 */
@@ -157,9 +168,10 @@ var_dump($idabb);
 */
 
 /*
-//----------STORE FPRIVATO--------------
+//----------STORE FPRIVATO--------------FUNZIOANTE 100%
 $idpriv=new FPrivato();
-$idpriv->store($utente1);
+$id=$idpriv->store($utente1);
+echo $id;
 //--------------------------------------
 */
 
@@ -170,13 +182,13 @@ $idneg->store($utente2);
 //---------------------------------
 */
 
-/*
+
 //--------------STORE FRECENSIONE-----------
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
 //-----------------------------------------
-*/
+
 
 /*
 //----------STORE FMESSAGGIO---------------
@@ -309,20 +321,29 @@ echo $rec_r;
 */
 
 /*
-//---------------LOAD FVINILE----------------------------
+//---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
+echo "<hr>";
 $vin=new FVinile();
-$vin_r=$vin->load("id_vinile", "1");
+$vin_r=$vin->load("venditore", "cicco@rgilio.it");
 var_dump($vin_r);
+echo "<br>"."<br>";
+echo $vin_r[0]->toString();
+echo "<br>"."<br>";
+echo $vin_r[1]->toString();
 //--------------------------------------------------------
 */
 
-/*
-//------------LOAD FRECENSIONE-------------------------
+
+//------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
 $rec=new FRecensione();
-$rec_r=$rec->load("id","1");
+$rec_r=$rec->load("mittente","rugg67@virgilio.it");
 var_dump($rec_r);
+echo "<br>"."<br>";
+echo $rec_r[0]->toString();
+echo "<br>"."<br>";
+echo $rec_r[1]->toString();
 //-----------------------------------------------------
-*/
+
 
 /*
 //------------LOAD FMESSAGGIO--------------------------
@@ -352,13 +373,26 @@ var_dump($out);
 //------------------------------------------------------------------------
 */
 
+/*
+//----------LOAD FPRIVATO-----------------------------------------FUNZIONANTE 100%
+echo"<hr>";
+$out= new FPrivato();
+$o=$out->load('cognome', 'rossi');
+var_dump($o);
+echo "<br>"."<br>";
+echo $o[0]->toString();
+echo "<br>"."<br>";
+echo $o[1]->toString();
+//------------------------------------------------------------------------
+*/
 
+/*
 //----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
 $out=$n->load('email_negozio', 'ZioTony@virgeilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-
+*/
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------

@@ -82,22 +82,22 @@ class FRecensione
     }
 
     public static function load($field, $id){
-        $mezzo = null;
+        $recensione = null;
         $db=FDatabase::getInstance();
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
             $recensione=new ERecensione($result['voto'],$result['testo_recensione'],$result['mittente'],$result['destinatario']);
-            $recensione->setId($result['id']);
+           // $recensione->setId($result['id']);
             $recensione->setBan($result['ban']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
-                $mezzo = array();
+                $recensione=array();
                 for($i=0; $i<count($result); $i++){
-                    $recensione=new ERecensione($result['mittente'],$result['destinatario'],$result['testo_recensione'],$result['voto'],$result['ban']);
-                    $recensione->setId($result['id']);
-                    $recensione->setBan($result['ban']);
+                    $recensione[]=new ERecensione($result[$i]['voto'],$result[$i]['testo_recensione'],$result[$i]['mittente'],$result[$i]['destinatario']);
+                   // $recensione[]->setId($result[$i]['id']);
+                    $recensione[$i]->setBan($result[$i]['ban']);
                 }
             }
         }

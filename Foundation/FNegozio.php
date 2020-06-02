@@ -97,7 +97,7 @@ class FNegozio
         if (($result != null) && ($rows_number == 1)) {
             $a=new EAbbonamento();
             $a->setData($result_a['scadenza']);
-            $a->getStato($result_a['stato']);
+            $a->setStato($result_a['stato']);
             $a->setId($result_a['id']);
             $c=new ECarta($result_c['intestatario'], $result_c['numero'], $result_c['scadenza'], $result_c['cvv']);
             $neg = new ENegozio($result_u['username'], $result_u['email'], $result_u['password'], $result_u['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $c, $a);
