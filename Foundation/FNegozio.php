@@ -93,10 +93,10 @@ class FNegozio
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
 
         if (($result != null) && ($rows_number == 1)) {
-            $utente_loggato = FUtente_loggato::load('email', $result['email_privato']);
+            $utente_loggato = FUtente_loggato::load('email', $result['email_negozio']);
             $carta = FCarta::load('id', $result['id_carta']);
             $abbonamento = FAbbonamento::load('id', $result['id_abbonamento']);
-            $neg = new ENegozio($utente_loggato['username'], $utente_loggato['email'], $utente_loggato['password'], $utente_loggato['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $carta, $abbonamento);
+            $neg = new ENegozio($utente_loggato->getUsername(), $utente_loggato->getEmail(), $utente_loggato->getPassword(), $utente_loggato->getPhone(), $result['nome'], $result['partitaiva'], $result['indirizzo'], $carta, $abbonamento);
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $neg = array();
@@ -104,10 +104,10 @@ class FNegozio
                 $carta=array();
                 $abbonamento=array();
                 for ($i = 0; $i < count($result); $i++) {
-                    $utente_loggato[] = FUtente_loggato::load('email', $result[$i]['email_privato']);
+                    $utente_loggato[] = FUtente_loggato::load('email', $result[$i]['email_negozio']);
                     $carta[] = FCarta::load('id', $result[$i]['id_carta']);
                     $abbonamento[] = FAbbonamento::load('id', $result[$i]['id_abbonamento']);
-                    $neg[] = new ENegozio($utente_loggato[$i]['username'], $utente_loggato[$i]['email'], $utente_loggato[$i]['password'], $utente_loggato[$i]['telefono'], $result[$i]['nome'], $result[$i]['partitaiva'], $result[$i]['indirizzo'], $carta[$i], $abbonamento[$i]);
+                    $neg[] = new ENegozio($utente_loggato[$i]->getUsername(), $utente_loggato[$i]->getEmail(), $utente_loggato[$i]->getPassword(), $utente_loggato[$i]->getPhone(), $result[$i]['nome'], $result[$i]['partitaiva'], $result[$i]['indirizzo'], $carta[$i], $abbonamento[$i]);
 
                 }
             }

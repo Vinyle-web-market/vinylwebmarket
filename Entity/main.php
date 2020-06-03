@@ -346,7 +346,7 @@ echo $rec_r[1]->toString();
 */
 
 /*
-//------------LOAD FMESSAGGIO--------------------------
+//------------LOAD FMESSAGGIO-------------------------- FUNZIONANTE 100%
 $mex=new FMessaggio();
 $mex_r=$mex->load("mittente", "ZioTony@virgeilio.it");
 var_dump($mex_r);
@@ -397,8 +397,8 @@ echo $o[1]->toString();
 //------------------------------------------------------------------------
 */
 
-
-//----------LOAD FNEGOZIO-------------------------------------------------
+/*
+//----------LOAD FNEGOZIO------------------------------------------------- FUNZIONANTE 100%
 $n=new FNegozio();
 $out=$n->load('nome', 'marco');
 var_dump($out);
@@ -407,7 +407,7 @@ echo $out[0]->toString();
 echo "<br>"."<br>";
 echo $out[1]->toString();
 //------------------------------------------------------------------------
-
+*/
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------
