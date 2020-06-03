@@ -53,7 +53,7 @@ class FUtente_loggato
         if($exist==TRUE)
            return "Utente ".$u->getEmail()." già esistente nel Database";
         else {
-            $id = $db->storeP($u, static::getClass());
+            $db->storeP($u, static::getClass());
             return "operazione a buon fine: " . $u->getEmail() . " salvato nella tablle utente_loggato ";
              }
     }
@@ -110,4 +110,6 @@ class FUtente_loggato
         }
         return $utente;
     }
+
+
 }

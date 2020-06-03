@@ -160,9 +160,100 @@ class FDataBase
             }
         }
 
+    public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
+    {
+        try {
+            $query = null;
+            $class = "FVinile";
+            $param = array($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
+            for ($i = 0; $i < count($param); $i++) {
+                if ($param[$i] != null) {
+                    switch ($i) {
+                        case 0:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE titolo ='" . $titolo . "'";
+                            else
+                                $query = $query . " AND titolo ='" . $titolo . "'";
+                            break;
+                        case 1:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE artista ='" . $artista . "'";
+                            else
+                                $query = $query . " AND artista ='" . $artista . "'";
+                            break;
+                        case 2:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE genere ='" . $genere . "'";
+                            else
+                                $query = $query . " AND genere ='" . $genere . "'";
+                            break;
+                        case 3:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE ngiri ='" . $ngiri . "'";
+                            else
+                                $query = $query . " AND ngiri ='" . $ngiri . "'";
+                            break;
+                        case 4:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE space ='" . $condizioni . "'";
+                            else
+                                $query = $query . " AND condizioni ='" . $condizioni . "'";
+                            break;
+                        case 5:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE prezzo ='" . $prezzo . "'";
+                            else
+                                $query = $query . " AND prezzo ='" . $prezzo . "'";
+                            break;
+                    }
+                }
+            }
+            $query = $query . ";";
 
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if ($num == 0) {
+                $result = null;        //nessuna riga interessata. return null
+            } elseif ($num == 1) {                          //nel caso in cui una sola riga fosse interessata
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);   //ritorna una sola riga
+            } else {
+                $result = array();                         //nel caso in cui piu' righe fossero interessate
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);   //imposta la modalità di fetch come array associativo
+                while ($row = $stmt->fetch())
+                    $result[] = $row;                    //ritorna un array di righe.
+            }
+            //  $this->closeDbConnection();
+            return array($result, $num);
 
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
 
+    public function login ($email, $pass)
+    {
+        try {
+            $query = null;
+            $class = "FUtente_loggato";
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE email ='" . $email . "' AND password ='" . $pass . "';";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if ($num == 0) {
+                $result = null;        //nessuna riga interessata. return null
+            } else {                          //nel caso in cui una sola riga fosse interessata
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);   //ritorna una sola riga
+            }
+            return $result;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
 }
 
 
