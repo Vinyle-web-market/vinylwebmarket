@@ -160,12 +160,12 @@ class FDataBase
             }
         }
 
-    public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
+    public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizione, $prezzo)
     {
         try {
             $query = null;
             $class = "FVinile";
-            $param = array($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
+            $param = array($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
             for ($i = 0; $i < count($param); $i++) {
                 if ($param[$i] != null) {
                     switch ($i) {
@@ -195,9 +195,9 @@ class FDataBase
                             break;
                         case 4:
                             if ($query == null)
-                                $query = "SELECT * FROM " . $class::getTable() . " WHERE space ='" . $condizioni . "'";
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE space ='" . $condizione . "'";
                             else
-                                $query = $query . " AND condizioni ='" . $condizioni . "'";
+                                $query = $query . " AND condizione ='" . $condizione . "'";
                             break;
                         case 5:
                             if ($query == null)

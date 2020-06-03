@@ -74,12 +74,12 @@ echo "<hr>";
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
-$nom="ZioTye";
-$emai="ZioTony@vieilo.it";
+$nom="ZioTonye";
+$emai="ZioTony@virgeilio.it";
 $passw="pappepepino";
 $tele="3313476567";
-$nomeNeg="marco";
-$iva="19567611";
+$nomeNeg="Vynilshop";
+$iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
 $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
 print " PROVA toString <br> ".$utente2->toString()."<br>";
@@ -321,7 +321,7 @@ echo $rec_r;
 */
 
 /*
-//---------------LOAD FVINILE---------------------------- FUNZIONANTE 100%
+//---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
 $vin=new FVinile();
 $vin_r=$vin->load("venditore", "cicco@rgilio.it");
@@ -334,7 +334,7 @@ echo $vin_r[1]->toString();
 */
 
 /*
-//------------LOAD FRECENSIONE------------------------- FUNZIONANTE 100%
+//------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
 $rec=new FRecensione();
 $rec_r=$rec->load("mittente","rugg67@virgilio.it");
 var_dump($rec_r);
@@ -346,7 +346,8 @@ echo $rec_r[1]->toString();
 */
 
 /*
-//------------LOAD FMESSAGGIO-------------------------- FUNZIONANTE 100%
+//------------LOAD FMESSAGGIO--------------------------
+
 $mex=new FMessaggio();
 $mex_r=$mex->load("mittente", "ZioTony@virgeilio.it");
 var_dump($mex_r);
@@ -358,29 +359,22 @@ echo $mex_r[1]->toString();
 */
 
 /*
-//------------LOAD FABBONAMENTO------------ FUNZIONANTE 100%
+//------------LOAD FABBONAMENTO------------
 echo "<br>";
 $id=new FAbbonamento();
-$abb_r=$id->load("stato","non attivo");
-var_dump($abb_r);
-echo "<br>"."<br>";
-echo $abb_r[0]->toString();
-echo "<br>"."<br>";
-echo $abb_r[1]->toString();
+$a=new EAbbonamento();
+$a=$id->load("id",6);
+var_dump($a);
+echo "<br>";
+echo $a->toString();
 //---------------------------------------
 */
 
 /*
-//----------LOAD FUTENTE_LOGGATO----------------------------- FUNZIONANTE 100%
+//----------LOAD FUTENTE_LOGGATO-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('stato', '1');
+$out=$out->load('email', 'claudio97@virgilio.it');
 var_dump($out);
-echo "<br>"."<br>";
-echo $out[0]->toString();
-echo "<br>"."<br>";
-echo $out[1]->toString();
-echo "<br>"."<br>";
-echo $out[2]->toString();
 //------------------------------------------------------------------------
 */
 
@@ -398,14 +392,10 @@ echo $o[1]->toString();
 */
 
 /*
-//----------LOAD FNEGOZIO------------------------------------------------- FUNZIONANTE 100%
+//----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
-$out=$n->load('nome', 'marco');
+$out=$n->load('email_negozio', 'ZioTony@virgeilio.it');
 var_dump($out);
-echo "<br>"."<br>";
-echo $out[0]->toString();
-echo "<br>"."<br>";
-echo $out[1]->toString();
 //------------------------------------------------------------------------
 */
 
@@ -466,6 +456,11 @@ $priv= new FPrivato();
 $priv->update("nome", "marco", "email_privato", "claudio0000@virgilio.it");
 //--------------------------------------------
 */
+
+//-----------------RICERCA VINILE-----------------------
+$id=new FVinile();
+$id_v=$id->search(NULL,'liga',NULL,'99',NULL,NULL);
+//var_dump($id_v);
 
 ?>
 
