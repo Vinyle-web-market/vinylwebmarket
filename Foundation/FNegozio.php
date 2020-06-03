@@ -87,30 +87,27 @@ class FNegozio
 
     public static function load($field, $id)
     {
-        $mezzo = null;
+        $neg = null;
         $db = FDatabase::getInstance();
         $result = $db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
-        $result_u = $db->loadP('FUtente_loggato', 'email', $result['email_negozio']);
-        $result_c = $db->loadP('FCarta', 'id', $result['id_carta']);
-        $result_a = $db->loadP('FAbbonamento', 'id', $result['id_abbonamento']);
+
         if (($result != null) && ($rows_number == 1)) {
-            $a=new EAbbonamento();
-            $a->setData($result_a['scadenza']);
-            $a->setStato($result_a['stato']);
-            $a->setId($result_a['id']);
-            $c=new ECarta($result_c['intestatario'], $result_c['numero'], $result_c['scadenza'], $result_c['cvv']);
-            $neg = new ENegozio($result_u['username'], $result_u['email'], $result_u['password'], $result_u['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $c, $a);
+            $utente_loggato = FUtente_loggato::load('email', $result['email_privato']);
+            $carta = FCarta::load('id', $result['id_carta']);
+            $abbonamento = FAbbonamento::load('id', $result['id_abbonamento']);
+            $neg = new ENegozio($utente_loggato['username'], $utente_loggato['email'], $utente_loggato['password'], $utente_loggato['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $carta, $abbonamento);
         } else {
             if (($result != null) && ($rows_number > 1)) {
-                $mezzo = array();
+                $neg = array();
+                $utente_loggato=array();
+                $carta=array();
+                $abbonamento=array();
                 for ($i = 0; $i < count($result); $i++) {
-                    $a=new EAbbonamento();
-                    $a->setData($result_a['scadenza']);
-                    $a->getStato($result_a['stato']);
-                    $a->setId($result_a['id']);
-                    $c=new ECarta($result_c['intestatario'], $result_c['numero'], $result_c['scadenza'], $result_c['cvv']);
-                    $neg = new ENegozio($result_u['username'], $result['email_negozio'], $result_u['password'], $result_u['telefono'], $result['nome'], $result['partitaiva'], $result['indirizzo'], $c, $a);
+                    $utente_loggato[] = FUtente_loggato::load('email', $result[$i]['email_privato']);
+                    $carta[] = FCarta::load('id', $result[$i]['id_carta']);
+                    $abbonamento[] = FAbbonamento::load('id', $result[$i]['id_abbonamento']);
+                    $neg[] = new ENegozio($utente_loggato[$i]['username'], $utente_loggato[$i]['email'], $utente_loggato[$i]['password'], $utente_loggato[$i]['telefono'], $result[$i]['nome'], $result[$i]['partitaiva'], $result[$i]['indirizzo'], $carta[$i], $abbonamento[$i]);
 
                 }
             }

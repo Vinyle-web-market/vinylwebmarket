@@ -99,7 +99,7 @@ class FAbbonamento
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
                     $abbonamento[]=new EAbbonamento($result[$i]['scadenza'],$result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
-                    $abbonamento[$i]->setId($result['id']);
+                    $abbonamento[$i]->setId($result[$i]['id']);
 
                 }
             }

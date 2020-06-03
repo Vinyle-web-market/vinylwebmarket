@@ -103,7 +103,7 @@ class FUtente_loggato
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
                     $utente []= new EUtente_Loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'], $result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
-                    $utente[$i]->setEmail($result['email']);
+                    $utente[$i]->setEmail($result[$i]['email']);
 
                 }
             }
