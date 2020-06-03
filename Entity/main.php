@@ -460,7 +460,7 @@ $priv->update("nome", "marco", "email_privato", "claudio0000@virgilio.it");
 //-----------------RICERCA VINILE-----------------------
 $id=new FVinile();
 $id_v=$id->search(NULL,'liga',NULL,'99',NULL,NULL);
-//var_dump($id_v);
+var_dump($id_v);
 
 ?>
 
