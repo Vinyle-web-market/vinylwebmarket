@@ -111,5 +111,11 @@ class FUtente_loggato
         return $utente;
     }
 
-
+    public static function login($email, $pass){
+        $db=FDataBase::getInstance();
+        $r=$db->loginP($email, $pass);
+        if ($r!=null)
+            echo "accesso eseguito";
+        else echo "accesso non eseguito";
+    }
 }
