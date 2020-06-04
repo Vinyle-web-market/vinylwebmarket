@@ -22,6 +22,7 @@ include("../Foundation/FPrivato.php");
 include("../Foundation/FNegozio.php");
 include("../Foundation/FVinile.php");
 include ("../Foundation/FMessaggio.php");
+include ("../Foundation/FPersistentManager.php");
 
 
 //-------MAIN ORDINATO:
@@ -54,21 +55,21 @@ print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="enrico";
-$email="enrico88@virgilio.it";
-$pw="pipdcf";
+$nom="ciok82";
+$email="carlo82@virgilio.it";
+$pw="ciaksigira";
 $tel="334587896";
-$nome="enrico";
-$cogn="rossi";
+$nome="carlo";
+$cogn="fonzi";
 $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
 print " PROVA toString <br> ".$utente1->toString()."<br>";
 echo "<hr>";
 //-------------------------------------------------------------------------------------
-*/
+
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -174,6 +175,10 @@ $id=$idpriv->store($utente1);
 echo $id;
 //--------------------------------------
 */
+$idpriv=new FPersistentManager();
+$id=$idpriv->store($utente1);
+echo $id;
+
 
 /*
 //-------STORE FNEGOZIO------------
@@ -462,15 +467,8 @@ $priv->update("nome", "marco", "email_privato", "claudio0000@virgilio.it");
 $id=new FVinile();
 $id_v=$id->search(NULL,'liga',NULL,'99',NULL,NULL);
 var_dump($id_v);
-//------------------------------------------------------
 */
 
-/*
-//-------------------LOGIN------------------------------
-$id=new FUtente_loggato();
-$id->login("claudio97@virgilio.it" ,"pippo");
-//------------------------------------------------------
-*/
 ?>
 
 </body>

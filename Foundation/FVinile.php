@@ -145,7 +145,7 @@ class FVinile
     }
 
     //loadByform di claudia
-    public static function search($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
+    public static function searchVinyl($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
     {
         $vinile = null;
         $db = FDatabase::getInstance();
