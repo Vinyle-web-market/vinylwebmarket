@@ -11,7 +11,7 @@ class FPersistentManager
      */
     public static function getInstance(){ //restituisce l'unica istanza (creandola se non esiste gia)
         if(static::$instance==null){
-            static::$instance=new FPersistenceManager();
+            static::$instance=new FPersistentManager();
         }
         return static::$instance;
     }
@@ -43,11 +43,6 @@ class FPersistentManager
         return $result;
     }
 
-    public static function searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo) {
-        $search = null;
-        $search = FAnnuncio::searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
-        return $search;
-    }
 
     /** Metodo che permette l'aggiornamento del valore di un campo passato per parametro */
     public static function update($field, $newValue, $keyField, $idValue ,$Fclass) {
@@ -57,6 +52,19 @@ class FPersistentManager
         //else
            // print ("METODO NON SUPPORTATO DALLA CLASSE");
         return $result;
+    }
+
+    public static function searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo) {
+        $search = null;
+        $search = FAnnuncio::searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
+        return $search;
+    }
+
+    //carica tutte le recensioni per l admin
+    public function adminAllReviews(){
+        $rec=NULL;
+        $rec=FRecensione::adminAllReviews();
+        return $rec;
     }
 
 

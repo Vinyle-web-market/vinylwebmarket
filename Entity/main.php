@@ -55,7 +55,7 @@ print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
 */
 
-
+/*
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
@@ -69,7 +69,7 @@ $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
 print " PROVA toString <br> ".$utente1->toString()."<br>";
 echo "<hr>";
 //-------------------------------------------------------------------------------------
-
+*/
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -175,9 +175,11 @@ $id=$idpriv->store($utente1);
 echo $id;
 //--------------------------------------
 */
+/*  //store con PM
 $idpriv=new FPersistentManager();
 $id=$idpriv->store($utente1);
 echo $id;
+/*
 
 
 /*
@@ -467,6 +469,20 @@ $priv->update("nome", "marco", "email_privato", "claudio0000@virgilio.it");
 $id=new FVinile();
 $id_v=$id->search(NULL,'liga',NULL,'99',NULL,NULL);
 var_dump($id_v);
+*/
+
+//-----------------ADMIN__PRENDI TUTTE LE RECENSIONI------
+$id=new FPersistentManager();
+$id1=$id->adminAllReviews();
+print_r($id1);
+//array_values($id1)
+
+/*
+echo $id1[0]->toString();
+echo "<br>"."<br>";
+echo $id1[1]->toString();
+echo "<br>"."<br>";
+echo $id1[2]->toString();
 */
 
 ?>

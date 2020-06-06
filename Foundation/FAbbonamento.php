@@ -91,16 +91,19 @@ class FAbbonamento
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $abbonamento=new EAbbonamento($result['scadenza'],$result['stato']);
+            $abbonamento=new EAbbonamento();
             $abbonamento->setId($result['id']);
+            $abbonamento->setScadenza($result['scadenza']);
+            $abbonamento->setStato($result['stato']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
-                    $abbonamento[]=new EAbbonamento($result[$i]['scadenza'],$result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
+                    $abbonamento[]=new EAbbonamento();  //ARRAY DI ARRAY ATTENTO
                     $abbonamento[$i]->setId($result[$i]['id']);
-
+                    $abbonamento[$i]->setScadenza($result[$i]['scadenza']);
+                    $abbonamento[$i]->setStato($result[$i]['stato']);
                 }
             }
         }

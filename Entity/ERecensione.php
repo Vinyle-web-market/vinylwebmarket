@@ -123,4 +123,16 @@ class ERecensione
                "Recensione effetuata da: ".$this->username_mittente."\n".
                "Recensione ricevuta da: ".$this->username_destinatario."\n";
     }
+    protected function arrayToString($rec){
+        $stringa=null;
+        if(is_array($rec))
+            foreach ($rec as $valore)
+            {
+                $stringa=$stringa."-".$valore;
+            }
+        else $stringa=$rec;
+        return $stringa;
+    }
+
+
 }

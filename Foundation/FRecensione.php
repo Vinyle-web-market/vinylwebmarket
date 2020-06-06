@@ -103,4 +103,27 @@ class FRecensione
         }
         return $recensione;
     }
+
+    public static function adminAllReviews() {
+        $review = null;
+        $db = FDatabase::getInstance();
+        list ($result, $rows_number)=$db->adminGetRev();
+        if(($result != null) && ($rows_number == 1)) {
+            $review = new ERecensione($result['voto'],$result['testo_recensione'],$result['mittente'],$result['destinatario']);
+            $review->setId($result['id']);
+        }
+        else {
+            if(($result != null) && ($rows_number > 1)){
+                $review = array();
+                for($i = 0; $i < count($result); $i++){
+                    $review[] = new ERecensione($result[$i]['voto'], $result[$i]['testo_recensione'],$result[$i]['mittente'], $result[$i]['destinatario']);
+                    $review[$i]->setId($result[$i]['id']);
+                }
+            }
+        }
+        return $review;
+    }
+
+
+
 }

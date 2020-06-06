@@ -254,6 +254,37 @@ class FDataBase
             return null;
         }
     }
+   
+    //torna tutte le recensioni 
+    public function adminGetRev ()
+    {
+        try {
+            $query = "SELECT * FROM recensione;";
+            $pdost = $this->db->prepare($query);
+            $pdost->execute();
+            $rowsNumber = $pdost->rowCount();
+            if ($rowsNumber == 0) {
+                $result = null;
+            } elseif ($rowsNumber == 1) {
+                $result = $pdost->fetch(PDO::FETCH_ASSOC);
+            } else {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $pdost->fetch())
+                    $result[] = $row;
+            }
+            return array($result, $rowsNumber);
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 
