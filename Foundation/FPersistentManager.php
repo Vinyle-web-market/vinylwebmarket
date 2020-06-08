@@ -56,7 +56,7 @@ class FPersistentManager
 
     public static function searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo) {
         $search = null;
-        $search = FAnnuncio::searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
+        $search = FVinile::searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
         return $search;
     }
 

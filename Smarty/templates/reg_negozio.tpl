@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>reg_negozio</title>
 
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smartycss\bootstrap.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -86,7 +86,7 @@
           </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
+<script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
 
 </body>
 

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>index</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.css">
-  	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smartycss\bootstrap.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
 
   </head>
 <body>
@@ -79,7 +79,7 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
+  <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
 
 </body>
 </html>

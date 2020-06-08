@@ -7,6 +7,7 @@
 <body>
 <?php
 include_once("../AutoLoad.php");
+//include_once 'smartyConfiguration.php';
 /*
 include("EAbbonamento.php");
 include("ECarta.php");
@@ -39,14 +40,14 @@ include ("../View/VUser.php");
 //-------  2.5 UPDATE
 
 
-
+/*
 //---------COSTRUTTORE EABBONAMENTO--------------------------
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
 //----------------------------------------------------------
-
+*/
 
 /*
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
@@ -164,13 +165,13 @@ var_dump($id2);
 //--------------------------------------
 */
 
-
+/*
 //---------------------STORE FABBONAMENTO------------
 $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
 //----------------------------------------------------
-
+/*
 
 /*
 //----------STORE FPRIVATO--------------FUNZIOANTE 100%
@@ -491,10 +492,15 @@ echo "<br>"."<br>";
 echo $id1[2]->toString();
 */
 
-/*
- $V=new VUser();
- $V->form_mostra();
-*/
+
+//try {
+    $V = new VUser();
+    $V->form_mostra();
+   // }
+  //  catch(SmartyException $e){
+  //      echo "Attenzione errore: " . $e->getMessage();
+   // }
+
 
 ?>
 

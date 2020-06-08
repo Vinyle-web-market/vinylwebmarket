@@ -1,5 +1,4 @@
 <?php
-include ('../smartyConfiguration.php');
 
 
 class VUser
@@ -23,7 +22,11 @@ class VUser
 
     //form di registrazione del Negozio
     public function form_regNegozio() {
-        $this->smarty->display('reg_negozio.tpl');
+        try {
+            $this->smarty->display('reg_negozio.tpl');
+        } catch (SmartyException $e) {
+            echo "errore".$e->getMessage();
+        }
     }
 
 }
