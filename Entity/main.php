@@ -39,14 +39,14 @@ include ("../View/VUser.php");
 //-------  2.5 UPDATE
 
 
-/*
+
 //---------COSTRUTTORE EABBONAMENTO--------------------------
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
 //----------------------------------------------------------
-*/
+
 
 /*
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
@@ -164,13 +164,13 @@ var_dump($id2);
 //--------------------------------------
 */
 
-/*
+
 //---------------------STORE FABBONAMENTO------------
 $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
 //----------------------------------------------------
-*/
+
 
 /*
 //----------STORE FPRIVATO--------------FUNZIOANTE 100%
@@ -490,8 +490,11 @@ echo $id1[1]->toString();
 echo "<br>"."<br>";
 echo $id1[2]->toString();
 */
+
+/*
  $V=new VUser();
  $V->form_mostra();
+*/
 
 ?>
 

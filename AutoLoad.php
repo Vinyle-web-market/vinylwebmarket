@@ -23,11 +23,11 @@ function my_autoloader($class_name) {
 
 //include_once 'Session.php';
 
-include_once 'Smarty/Smarty.class.php';
+//include_once 'Smarty/Smarty.class.php';
 
 //include_once 'Installation.php';
 
-include_once 'smartyConfiguration.php.php';
+include_once 'smartyConfiguration.php';
 
 spl_autoload_register('my_autoloader');
 
