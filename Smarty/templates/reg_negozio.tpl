@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>reg_negozio</title>
 
-  <link rel="stylesheet" href="./css/bootstrap.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/style.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -18,7 +18,7 @@
   <nav class="navbar navbar sticky-top navbar-dark bg-dark">
     <div class="container=50px">
     <a class="navbar-brand" href="#">
-      <img src="../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+      <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
       Vinyl Web Market
     </a>
     </div>
@@ -28,7 +28,7 @@
       <div class="container=50px">
 
       </div>
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="index.tpl">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,16 +36,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="login.html">Log In</a>
+            <a class="nav-link" href="login.tpl">Log In</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Iscriviti
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="reg_privato.html">Iscriviti come privato</a>
+              <a class="dropdown-item" href="reg_privato.tpl">Iscriviti come privato</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="reg_negozio.html">Iscriviti come negozio</a>
+              <a class="dropdown-item" href="reg_negozio.tpl">Iscriviti come negozio</a>
             </div>
         </ul>
         <form class="form-inline my-2 my-lg-0">

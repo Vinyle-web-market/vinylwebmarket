@@ -6,6 +6,8 @@
 </head>
 <body>
 <?php
+include_once("../AutoLoad.php");
+/*
 include("EAbbonamento.php");
 include("ECarta.php");
 include("ERecensione.php");
@@ -24,6 +26,7 @@ include("../Foundation/FVinile.php");
 include ("../Foundation/FMessaggio.php");
 include ("../Foundation/FPersistentManager.php");
 include ("../View/VUser.php");
+*/
 
 
 //-------MAIN ORDINATO:
