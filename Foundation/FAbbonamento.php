@@ -93,7 +93,7 @@ class FAbbonamento
         if(($result!=null) && ($rows_number == 1)) {
             $abbonamento=new EAbbonamento();
             $abbonamento->setId($result['id']);
-            $abbonamento->setScadenza($result['scadenza']);
+            $abbonamento->setData($result['scadenza']);
             $abbonamento->setStato($result['stato']);
         }
         else {
@@ -102,7 +102,7 @@ class FAbbonamento
                 for($i=0; $i<count($result); $i++){
                     $abbonamento[]=new EAbbonamento();  //ARRAY DI ARRAY ATTENTO
                     $abbonamento[$i]->setId($result[$i]['id']);
-                    $abbonamento[$i]->setScadenza($result[$i]['scadenza']);
+                    $abbonamento[$i]->setData($result[$i]['scadenza']);
                     $abbonamento[$i]->setStato($result[$i]['stato']);
                 }
             }

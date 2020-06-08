@@ -23,6 +23,7 @@ include("../Foundation/FNegozio.php");
 include("../Foundation/FVinile.php");
 include ("../Foundation/FMessaggio.php");
 include ("../Foundation/FPersistentManager.php");
+include ("../View/VUser.php");
 
 
 //-------MAIN ORDINATO:
@@ -471,11 +472,13 @@ $id_v=$id->search(NULL,'liga',NULL,'99',NULL,NULL);
 var_dump($id_v);
 */
 
+/*
 //-----------------ADMIN__PRENDI TUTTE LE RECENSIONI------
 $id=new FPersistentManager();
 $id1=$id->adminAllReviews();
 print_r($id1);
 //array_values($id1)
+/*
 
 /*
 echo $id1[0]->toString();
@@ -484,6 +487,8 @@ echo $id1[1]->toString();
 echo "<br>"."<br>";
 echo $id1[2]->toString();
 */
+ $V=new VUser();
+ $V->form_mostra();
 
 ?>
 
