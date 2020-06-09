@@ -62,22 +62,22 @@
                       <p>Iscriviti al nostro sito web come privato:</p>
                   </div>
 
-                  <div class="form-content">
+                  <div class="form-content" action="C:\xampp\htdocs\vinylwebmarket\Controller\CUser.php" method="POST">
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Name *" value=""/>
+                                  <input type="text" class="form-control" placeholder="Your Name *" value="username"/>
                               </div>
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Phone Number *" value=""/>
+                                  <input type="text" class="form-control" placeholder="Phone Number *" value="email"/>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Password *" value=""/>
+                                  <input type="text" class="form-control" placeholder="Your Password *" value="password"/>
                               </div>
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Confirm Password *" value=""/>
+                                  <input type="text" class="form-control" placeholder="Confirm Password *" value="password"/>
                               </div>
                           </div>
                       </div>
