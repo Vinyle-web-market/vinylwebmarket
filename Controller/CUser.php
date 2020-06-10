@@ -3,8 +3,13 @@
 
 class CUser
 {
+    public function FormRegistrazionePrivato()
+    {
+        $view = new VUser();
+        $view->formRegistrazionePrivato();
+    }
 
-    public function registration_privato()
+    public function registratione_privato()
     {
       if ($_SERVER['REQUEST_METHOD'] == "POST") {
           $pm = new FPersistentManager();

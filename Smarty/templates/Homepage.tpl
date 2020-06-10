@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>index</title>
 
-    <link rel="stylesheet" href="\vinylwebmarket\Smartycss\bootstrap.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
     <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
 
   </head>
@@ -38,7 +38,7 @@
             Iscriviti
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="reg_privato.tpl">Iscriviti come privato</a>
+            <a class="dropdown-item" href="/vinylwebmarket/User/formRegistrazionePrivato">Iscriviti come privato</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="reg_negozio.tpl">Iscriviti come negozio</a>
           </div>

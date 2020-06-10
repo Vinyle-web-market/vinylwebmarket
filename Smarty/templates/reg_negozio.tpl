@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <title>reg_negozio</title>
 
-    <link rel="stylesheet" href="\vinylwebmarket\Smartycss\bootstrap.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
     <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
 
     <!-- Google Fonts -->
@@ -28,7 +28,7 @@
       <div class="container=50px">
 
       </div>
-      <a class="navbar-brand" href="index.tpl">Home</a>
+      <a class="navbar-brand" href="Homepage.tpl">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

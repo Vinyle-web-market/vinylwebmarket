@@ -11,22 +11,16 @@ class VUser
         $this->smarty = smartyConfiguration::configuration();
     }
 
-    public function form_mostra() {
-        $this->smarty->display('index.tpl');
-    }
 
     //form di registrazione del privato
-    public function form_regPrivato() {
+    public function formRegistrazionePrivato() {
         $this->smarty->display('reg_privato.tpl');
+
     }
 
     //form di registrazione del Negozio
-    public function form_regNegozio() {
-        try {
+    public function formRegistrazioneNegozio() {
             $this->smarty->display('reg_negozio.tpl');
-        } catch (SmartyException $e) {
-            echo "errore".$e->getMessage();
-        }
     }
 
 }
