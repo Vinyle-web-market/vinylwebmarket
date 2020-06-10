@@ -38,9 +38,9 @@
             Iscriviti
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/vinylwebmarket/User/formRegistrazionePrivato">Iscriviti come privato</a>
+            <a class="dropdown-item" href="/vinylwebmarket/User/FormRegPrivato">Iscriviti come privato</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="reg_negozio.tpl">Iscriviti come negozio</a>
+            <a class="dropdown-item" href="/vinylwebmarket/User/FormRegNegozio">Iscriviti come negozio</a>
           </div>
       </ul>
       <form class="form-inline my-2 my-lg-0">

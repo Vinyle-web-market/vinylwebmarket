@@ -57,7 +57,8 @@ class CFrontController
                 $view->mostraErrore($errore);
             }
             */
-        } else { //richiesta per la Homepage
+        }
+        else { //richiesta per la Homepage
             $controller = new CHomepage();
             $controller->impostaPagina();
         }

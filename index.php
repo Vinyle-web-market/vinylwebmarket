@@ -1,20 +1,35 @@
 <?php
 include_once("AutoLoad.php");
+
 //$controller = new CHomepage();
 //$controller->impostaPagina();
+//SI LANCIA CON LOCALHOST /vinylwebmarket/
+$fc = new CFrontController();
+$fc->run();
+
+
+
+
+
+
+/*
 $path = $_SERVER['REQUEST_URI'];
+echo $path;
+echo"----------------";
 $array = explode('/', $path);
 print_r($array);
 array_shift($array);
+
 echo"----------------";
-print_r($array);
 
 $count = count($array);
 echo"-----------------------------------------------------------------";
 echo $count;
-$p="C".$array[1];
-$vero=class_exists($p);
- var_dump($vero);
+echo"----------------";
+$p="C".$array[0];
+echo $p;
+//$vero=class_exists($p);
+ //var_dump($vero);
 
 
 if ($array[$count - 1] == null) {
@@ -47,7 +62,9 @@ if (count($array) != 1) {
                  exit;
              }
            */
+      /*
         }
+   */
         /*
         else {
             $errore="Pagina non trovata";
@@ -55,11 +72,14 @@ if (count($array) != 1) {
             $view->mostraErrore($errore);
         }
         */
+/*
     } else { //richiesta per la Homepage
         $controller = new CHomepage();
         $controller->impostaPagina();
     }
 }
+*/
+
 
 //echo $controller;
 //echo " "."----------------".$path;

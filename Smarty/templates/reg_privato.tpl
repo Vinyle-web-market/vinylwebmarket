@@ -18,7 +18,7 @@
 
   <nav class="navbar navbar sticky-top navbar-dark bg-dark">
     <div class="container=50px">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/vinylwebmarket/">
       <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
       Vinyl Web Market
     </a>
@@ -29,7 +29,7 @@
       <div class="container=50px">
 
       </div>
-      <a class="navbar-brand" href="Homepage.tpl">Home</a>
+      <a class="navbar-brand" href="/vinylwebmarket/">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -44,9 +44,9 @@
               Iscriviti
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="reg_privato.tpl">Iscriviti come privato</a>
+              <a class="dropdown-item" href="/vinylwebmarket/User/FormRegPrivato">Iscriviti come privato</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="reg_negozio.tpl">Iscriviti come negozio</a>
+              <a class="dropdown-item" href="vinylwebmarket/User/FormRegNegozio">Iscriviti come negozio</a>
             </div>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -62,27 +62,33 @@
                       <p>Iscriviti al nostro sito web come privato:</p>
                   </div>
 
-                  <div class="form-content" action="/vinylwebmarket/User/registrazione_privato" method="POST">
+                  <form class="form-content" action="/vinylwebmarket/User/registrazione_privato" method="POST">
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Name *" value="username"/>
+                                  <input type="text" class="form-control" placeholder="Choose your Useraname *" name="username"/>
                               </div>
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Phone Number *" value="email"/>
+                                  <input type="text" class="form-control" placeholder="Your phone *" name="telefono"/>
+                              </div>
+                              <div class="form-group">
+                                  <input type="text" class="form-control" placeholder="Your Email *" name="email"/>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Password *" value="password"/>
+                                  <input type="text" class="form-control" placeholder="Your Name *" name="nome"/>
                               </div>
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Confirm Password *" value="password"/>
+                                  <input type="text" class="form-control" placeholder="Your Subname *" name="cognome"/>
+                              </div>
+                              <div class="form-group">
+                                  <input type="password" class="form-control" placeholder=" Password *" name="password"/>
                               </div>
                           </div>
                       </div>
-                      <button type="button" class="btnSubmit">Iscriviti</button>
-                  </div>
+                      <button type="submit" class="btnSubmit">Iscriviti</button>
+                  </form>
               </div>
           </div>
 
