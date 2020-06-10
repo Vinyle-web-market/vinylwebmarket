@@ -42,10 +42,12 @@ class CFrontController
                     } else {
                         $c->$metodo();
                     }
-                } else {
+                }
+                /*else {
                     header('HTTP/1.1 405 Method Not Allowed');
                     exit;
                 }
+                */
 
             }
             /*

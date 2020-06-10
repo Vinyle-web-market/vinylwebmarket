@@ -4,10 +4,18 @@ include_once("AutoLoad.php");
 //$controller->impostaPagina();
 $path = $_SERVER['REQUEST_URI'];
 $array = explode('/', $path);
-
+print_r($array);
 array_shift($array);
+echo"----------------";
+print_r($array);
 
 $count = count($array);
+echo"-----------------------------------------------------------------";
+echo $count;
+$p="C".$array[1];
+$vero=class_exists($p);
+ var_dump($vero);
+
 
 if ($array[$count - 1] == null) {
     unset($array[$count - 1]);
@@ -34,26 +42,27 @@ if (count($array) != 1) {
             } else {
                 $c->$metodo();
             }
-        } else {
-            header('HTTP/1.1 405 Method Not Allowed');
-            exit;
+            /* } else {
+                 header('HTTP/1.1 405 Method Not Allowed');
+                 exit;
+             }
+           */
         }
-
+        /*
+        else {
+            $errore="Pagina non trovata";
+            $view = new VError();
+            $view->mostraErrore($errore);
+        }
+        */
+    } else { //richiesta per la Homepage
+        $controller = new CHomepage();
+        $controller->impostaPagina();
     }
-    /*
-    else {
-        $errore="Pagina non trovata";
-        $view = new VError();
-        $view->mostraErrore($errore);
-    }
-    */
-} else { //richiesta per la Homepage
-    $controller = new CHomepage();
-    $controller->impostaPagina();
 }
 
-echo $controller;
-echo " "."----------------".$path;
+//echo $controller;
+//echo " "."----------------".$path;
 
 
 //$fc = new CFrontController();
