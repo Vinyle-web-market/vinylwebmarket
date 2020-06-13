@@ -12,7 +12,7 @@ class VHomepage
     //public function Home($utente){
          public function Home(){
         //$this->smarty->assign("utente",$utente);
-        $this->smarty->display("HomePage.tpl");
+        $this->smarty->display("Homepage.tpl");
 
     }
 }
