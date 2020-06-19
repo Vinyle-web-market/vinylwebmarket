@@ -5,11 +5,12 @@ class EImageVinile extends EImage
 {
   private $idVin;
 
-  public function __construct($fname,int $idV)
+  public function __construct($fname, $data, $type,$id)
   {
-      parent::__construct($fname);
-      $this->idVin=$idV;
+      parent::__construct($fname, $data, $type);
+      $this->idVin=$id;
   }
+
 
     /**
      * @return mixed

@@ -14,9 +14,10 @@ class EImage
 
 //-------------------------COSTRUTTORE-------------------------
 
-    public function __construct($fname){
+    public function __construct($fname,$data,$type){
         $this->filename=$fname;
-        //$this->dataImage=NULL;
+        $this->dataImage=$data;
+        $this->MimeType=$type;
     }
 
     /**

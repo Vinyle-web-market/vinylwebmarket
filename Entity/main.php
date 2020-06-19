@@ -491,7 +491,32 @@ echo $id1[1]->toString();
 echo "<br>"."<br>";
 echo $id1[2]->toString();
 */
+
+//------------OPERAZIONI/TEST IMMAGINI---------------------
 print_r($_FILES);
+$path = $_FILES['foto']['tmp_name'];
+echo"<hr>";
+echo $path;
+$file=fopen($path,'rb');
+$miao=fread($file,filesize($path));
+echo"<hr>";
+//echo $miao;
+echo"<hr>";
+$name=$_FILES['foto']["name"];
+$type=$_FILES['foto']["type"];
+$dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
+$dataimage=base64_decode($dataimage);
+$immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
+var_dump($immagine);
+
+
+
+$f=new FImage();
+$f1=$f->store($immagine,'foto');
+echo"<hr>";
+echo $f1;
+
+
 
 ?>
 
