@@ -491,16 +491,7 @@ echo $id1[1]->toString();
 echo "<br>"."<br>";
 echo $id1[2]->toString();
 */
-
-
-//try {
-    $V = new VUser();
-    $V->form_mostra();
-   // }
-  //  catch(SmartyException $e){
-  //      echo "Attenzione errore: " . $e->getMessage();
-   // }
-
+print_r($_FILES);
 
 ?>
 

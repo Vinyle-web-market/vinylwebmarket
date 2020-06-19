@@ -160,6 +160,31 @@ class FDataBase
             }
         }
 
+    /**
+     * Funzione che permette di salvare nel Database una immagine. Ritorna l'id dell'oggetto inserito oppure una schermata di errore.
+     * @param $class
+     * @param $filename
+     * @param EImage $media
+     * @return mixed
+     */
+    public function storeMedia($class, EImage $media,$filename) {
+        try {
+            $this->db->beginTransaction();
+            $query = "INSERT INTO ".$class::getTableName(get_class($media))." VALUES ".$class::getValuesName($media);
+            $pdost = $this->db->prepare($query);
+            $class::bind($pdost, $media,$filename);
+            $pdost->execute();
+            $id=$this->db->lastInsertId();
+            $this->db->commit();
+
+            return $id;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+
     public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
     {
         try {

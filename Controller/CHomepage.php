@@ -5,7 +5,7 @@ class CHomepage
 {
     public function impostaPagina()
     {
-        $view = new VHomePage();
+        $view = new VHomepage();
         $view->Home();
     }
 
