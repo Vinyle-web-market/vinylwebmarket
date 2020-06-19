@@ -167,12 +167,12 @@ class FDataBase
      * @param EImage $media
      * @return mixed
      */
-    public function storeMedia($class, EImage $media,$filename) {
+    public function storeMedia($class, EImage $media) {
         try {
             $this->db->beginTransaction();
             $query = "INSERT INTO ".$class::getTableName(get_class($media))." VALUES ".$class::getValuesName($media);
             $pdost = $this->db->prepare($query);
-            $class::bind($pdost, $media,$filename);
+            $class::bind($pdost, $media);
             $pdost->execute();
             $id=$this->db->lastInsertId();
             $this->db->commit();

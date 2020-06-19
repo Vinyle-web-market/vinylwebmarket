@@ -506,7 +506,7 @@ $name=$_FILES['foto']["name"];
 $type=$_FILES['foto']["type"];
 $dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
 $dataimage=base64_decode($dataimage);
-$immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
+$immagine=new EImageVinile($name,$dataimage,$type,2);
 var_dump($immagine);
 
 

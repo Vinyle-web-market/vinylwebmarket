@@ -32,14 +32,12 @@ class FImage
     }
      */
 
-    public static function bind($pdost,$media,$nome_file) {
-        $path = $_FILES[$nome_file]['tmp_name'];
-        $file=fopen($path,'rb') or die ("impossibile aprire il file!");
+    public static function bind($pdost,$media) {
         if ($media instanceof EImage) {
             $pdost->bindValue(":id",           NULL,                                PDO::PARAM_INT);
             $pdost->bindValue(":filename",     $media->getFilename(),               PDO::PARAM_STR);
             $pdost->bindValue(":mimetype",     $media->getMimeType(),               PDO::PARAM_STR);
-            $pdost->bindValue(':dataimage',     fread($file,filesize($path)),        PDO::PARAM_LOB);
+            $pdost->bindValue(':dataimage',    $media->getDataImage(),        PDO::PARAM_LOB);
 
             if ($media instanceof EImageUtente) {
                 $pdost->bindValue(":email_utente", $media->getEmailUtente(),         PDO::PARAM_STR);
@@ -49,8 +47,6 @@ class FImage
         } else {
             die("Not a media!!");
         }
-        unset($file);
-        unlink($path);
     }
 
     /**
@@ -91,10 +87,10 @@ class FImage
         return null;
     }
 
-    public static function store(EImage $media,$nomefile) {
+    public static function store(EImage $media) {
         $db = FDatabase::getInstance();
 
-        $id = $db->storeMedia(static::getClassName(), $media,$nomefile);
+        $id = $db->storeMedia(static::getClassName(), $media);
 
         $media->setId($id);
 
