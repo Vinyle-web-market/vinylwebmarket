@@ -5,7 +5,7 @@ class FImage
 {
 
 
-    private static string $className       = "FImage";
+    private static string $className       = "FMedia";
 
     private static string $tableImgUtente  = "imageutente";
 
@@ -39,7 +39,7 @@ class FImage
             $pdost->bindValue(":id",           NULL,                                PDO::PARAM_INT);
             $pdost->bindValue(":filename",     $media->getFilename(),               PDO::PARAM_STR);
             $pdost->bindValue(":mimetype",     $media->getMimeType(),               PDO::PARAM_STR);
-            $pdost->bindValue(':dataimage',     fread($file,filesize($path)),        PDO::PARAM_LOB);
+            $pdost->bindValue(':immagine',     fread($file,filesize($path)),        PDO::PARAM_LOB);
 
             if ($media instanceof EImageUtente) {
                 $pdost->bindValue(":email_utente", $media->getEmailUtente(),         PDO::PARAM_STR);
@@ -91,14 +91,12 @@ class FImage
         return null;
     }
 
-    public static function store(EImage $media,$nomefile) {
+    public static function store(EMedia $media,$nomefile) {
         $db = FDatabase::getInstance();
 
         $id = $db->storeMedia(static::getClassName(), $media,$nomefile);
 
         $media->setId($id);
-
-        return $id;
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-
+include_once("./View/VHomepage.php");
 class VHomepage
 {
     private $smarty;

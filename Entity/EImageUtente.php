@@ -27,7 +27,7 @@ class EImageUtente extends EImage
     /**
      * @param mixed $emailUtente
      */
-    public function setEmailUtente($emailUtente): void
+    public function setEmailUtente ($emailUtente): void
     {
         $this->emailUtente = $emailUtente;
     }
