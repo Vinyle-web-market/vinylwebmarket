@@ -13,7 +13,7 @@
 <nav class="navbar navbar sticky-top navbar-dark bg-dark">
   <div class="container=50px">
   <a class="navbar-brand" href="#">
-    <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+    <img src="././Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
     Vinyl Web Market
   </a>
   </div>
