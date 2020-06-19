@@ -86,7 +86,7 @@ class EImage
 
     /**
      * Verificano la corrispondenza con il valore in input con i requisiti richiesti
-     * @param $type valore inserito
+     * @param $type
      * @return bool
      */
     public function valPic($type) {

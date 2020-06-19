@@ -77,6 +77,7 @@ class FDataBase
             echo "ATTENZIONE ERRORE: " . $err->getMessage();
             return null;
         }
+        return true;
     }
 
 //field chiave primaria della classe a cui fa riferimentO
