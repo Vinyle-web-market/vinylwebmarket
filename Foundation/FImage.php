@@ -53,7 +53,7 @@ class FImage
      * Funzione che ritorna il nome della classe.
      * @return string
      */
-    public static function getClassName() {
+    public static function getClass() {
         return self::$className;
     }
 
@@ -62,7 +62,7 @@ class FImage
      * @param string $media
      * @return string|null
      */
-    public static function getTableName(string $media) {
+    public static function getTable(string $media) {
         if ($media       === "EImageUtente") {
             return self::$tableImgUtente;
         } elseif ($media === "EImageVinile") {
@@ -77,7 +77,7 @@ class FImage
      * @param EImage $media
      * @return string|null
      */
-    public static function getValuesName(EImage $media) {
+    public static function getValues(EImage $media) {
         if ($media instanceof EImageUtente) {
             return self::$valuesImgUtente;
         } else if ($media instanceof EImageVinile) {
@@ -90,11 +90,16 @@ class FImage
     public static function store(EImage $media) {
         $db = FDatabase::getInstance();
 
-        $id = $db->storeMedia(static::getClassName(), $media);
+        $id = $db->storeMedia(static::getClass(), $media);
 
         $media->setId($id);
 
         return $id;
+    }
+
+    public static function delete($field, $id){
+        $db=FDatabase::getInstance();
+        $db->deleteP(static::getClass(), $field, $id);
     }
 
 

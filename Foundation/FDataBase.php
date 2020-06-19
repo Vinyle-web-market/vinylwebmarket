@@ -171,7 +171,7 @@ class FDataBase
     public function storeMedia($class, EImage $media) {
         try {
             $this->db->beginTransaction();
-            $query = "INSERT INTO ".$class::getTableName(get_class($media))." VALUES ".$class::getValuesName($media);
+            $query = "INSERT INTO ".$class::getTable(get_class($media))." VALUES ".$class::getValues($media);
             $pdost = $this->db->prepare($query);
             $class::bind($pdost, $media);
             $pdost->execute();
