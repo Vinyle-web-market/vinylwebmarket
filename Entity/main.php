@@ -493,17 +493,20 @@ echo $id1[2]->toString();
 */
 
 //------------OPERAZIONI/TEST IMMAGINI---------------------
-/*
+
  // OPERAZIONI DA FARE IN CONTROLLER PRIMA DI INVOCARE I COSTRUTTORI E METODI
+
 echo"<hr>";
+/*
 $name=$_FILES['foto']["name"];
 $type=$_FILES['foto']["type"];
 $dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
 $dataimage=base64_decode($dataimage);
 $immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
+
 var_dump($immagine);
-
-
+*/
+/*
 //-----------STORE
 $f=new FImage();
 $f1=$f->storeI($immagine,'foto');
@@ -516,14 +519,16 @@ $f=new FImage();
 $f1=$f->deleteI('EImageVinile','id','2');
 var_dump($f1);
 */
-
+/*
 //----------LOAD
 $f=new Fimage();
 $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
+*/
 
-
-
+$idpriv=new FPersistentManager();
+$id=$idpriv->loadImg('EImageUtente', 'id', '1');
+var_dump($id);
 
 
 

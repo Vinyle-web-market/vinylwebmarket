@@ -98,6 +98,7 @@ class FImage
     }
 
     public static function deleteI(string $categoriaImage,$field, $id){
+        $result = false;
         $db=FDatabase::getInstance();
         if($categoriaImage === 'EImageUtente')
         $result=$db->deleteMedia('EImageUtente', $field, $id);
@@ -105,7 +106,17 @@ class FImage
             $result=$db->deleteMedia('EImageVinile', $field, $id);
          return $result;
     }
-
+/*
+    public static function exist($keyField, $id)
+    {
+        $db = FDatabase::getInstance();
+        $exist = $db->existP(self::getClass(), $keyField, $id);
+        if ($exist != null)
+            return true;
+        else
+            return false;
+    }
+*/
 
     public static function loadI(string $categoriaImage,$field,$id){
         $image=null;
