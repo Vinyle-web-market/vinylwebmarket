@@ -101,6 +101,7 @@ class FDataBase
         return $eliminato;
     }
 
+
     public function updateP($Fclass, $field, $newvalue, $keyField, $id)
     {
         try {
@@ -185,6 +186,73 @@ class FDataBase
             return null;
         }
     }
+    //categoriaImmagine è EImageUtente o EImageVinile
+    public function deleteMedia(string $categoriaImmagine, $keyField, $id)
+    {
+        try {
+            $Fclass='FImage';
+            $eliminato = NULL;
+            $this->db->beginTransaction();
+           // $presente = $this->existP($Fclass, $keyField, $id);
+            //if ($presente) {
+                $sql = "DELETE FROM " . $Fclass::getTable($categoriaImmagine) . " WHERE " . $keyField . "='" . $id . "'";
+                $pdost = $this->db->prepare($sql);
+                $pdost->execute();
+                $this->db->commit();
+                $eliminato = TRUE;
+         //   }
+        } catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            $eliminato = FALSE;
+        }
+        return $eliminato;
+    }
+
+    public function loadMedia($categoriaImage,$keyField,$id){
+        $Fclass='FImage';
+        try{
+            $sql="SELECT * FROM ".$Fclass::getTable($categoriaImage)." WHERE ".$keyField."='".$id."';";
+            $pdost = $this->db->prepare($sql);
+            $pdost->execute();
+            $nload=$pdost->rowCount();
+            if($nload==0)
+                $result=NULL;
+            else if($nload==1)
+                $result=$pdost->fetch(PDO::FETCH_ASSOC);
+            else {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($e = $pdost->fetch())
+                    $result[] = $e;
+            }
+            return $result;
+
+        }
+        catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            return null;
+        }
+    }
+
+    public function countLoadMedia (string $categoriaImage, $keyField, $id)
+    {
+        $Fclass='FImage';
+        try {
+            $this->db->beginTransaction();
+            $query = "SELECT * FROM " . $Fclass::getTable($categoriaImage) . " WHERE " . $keyField . "='" . $id . "';";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            $this->dbCloseConnection();
+            return $num;
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+
+
 
     public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
     {

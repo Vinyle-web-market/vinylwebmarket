@@ -27,8 +27,22 @@ class FPersistentManager
         $classe_foundation::store($object);
     }
 
+    public static function storeImg(EImage $media){
+        $result=null;
+        $fclass='FImage';
+        $result=$fclass::storeI($media);
+        return $result;
+    }
+
     public static function delete($field,$value,$Fclass) {
         $Fclass::delete($field,$value);  //
+    }
+
+    public static function deleteImg(string $categoriaImage,$field, $id){
+        $result=null;
+        $fclass='FImage';
+        $result=$fclass::deleteI($categoriaImage,$field,$id);
+        return $result;
     }
 
     public static function exist($field, $value ,$Fclass) {
@@ -42,6 +56,16 @@ class FPersistentManager
         $result = $Fclass::load($field,$value);
         return $result;
     }
+
+    public static function loadImg(string $categoriaImage,$field,$id){
+        $result=null;
+        $fclass='FImage';
+        $result=$fclass::loadI($categoriaImage,$field,$id);
+        return $result;
+
+    }
+
+
 
 
     /** Metodo che permette l'aggiornamento del valore di un campo passato per parametro */

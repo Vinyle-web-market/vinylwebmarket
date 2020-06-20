@@ -493,28 +493,37 @@ echo $id1[2]->toString();
 */
 
 //------------OPERAZIONI/TEST IMMAGINI---------------------
-print_r($_FILES);
-$path = $_FILES['foto']['tmp_name'];
-echo"<hr>";
-echo $path;
-$file=fopen($path,'rb');
-$miao=fread($file,filesize($path));
-echo"<hr>";
-//echo $miao;
+/*
+ // OPERAZIONI DA FARE IN CONTROLLER PRIMA DI INVOCARE I COSTRUTTORI E METODI
 echo"<hr>";
 $name=$_FILES['foto']["name"];
 $type=$_FILES['foto']["type"];
 $dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
 $dataimage=base64_decode($dataimage);
-$immagine=new EImageVinile($name,$dataimage,$type,2);
+$immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
 var_dump($immagine);
 
 
-
+//-----------STORE
 $f=new FImage();
-$f1=$f->store($immagine,'foto');
+$f1=$f->storeI($immagine,'foto');
 echo"<hr>";
 echo $f1;
+*/
+//---------DELETE
+/*
+$f=new FImage();
+$f1=$f->deleteI('EImageVinile','id','2');
+var_dump($f1);
+*/
+
+//----------LOAD
+$f=new Fimage();
+$f1=$f->loadI('EImageVinile','id','4');
+var_dump($f1);
+
+
+
 
 
 
