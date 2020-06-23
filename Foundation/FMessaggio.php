@@ -48,7 +48,7 @@ class FMessaggio
 
     public function store(EMessaggio $m)
     {
-        $db = FDataBase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
+        $db = FDatabase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
         $id =$db->storeP($m, self::getClass());
         if ($id)
             return $id;
@@ -59,7 +59,7 @@ class FMessaggio
     public function exist ($field, $id)
     {
         $exist = false;
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $exist = $db->existP(static::getClass(), $field, $id);
         if($exist)
             return $exist = true;
@@ -68,7 +68,7 @@ class FMessaggio
     }
 
     public function delete($keyField,$id){
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $id = $db->deleteP(self::getClass(),$keyField,$id);
         if ($id)
             return $id;

@@ -1,7 +1,7 @@
 <?php
 include("EUtente_loggato.php");
 
-class Evinile
+class EVinile
 {
     /**
      * identificativo univoco annuncio
@@ -25,9 +25,9 @@ class Evinile
     private $quantita;
 
 
-    function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
+    function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
     {
-        $this->venditore = new EUtente_Loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
+        $this->venditore = new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
         $this->titolo = $tit;
         $this->artista = $art;
         $this->genere = $gen;
@@ -63,9 +63,9 @@ class Evinile
 
     /**Metodo che ci permette di cambiare il
      * nome utente del venditore
-     * @return EUtente_Loggato
+     * @return EUtente_loggato
      */
-    function setUserVenditore(EUtente_Loggato $vend)
+    function setUserVenditore(EUtente_loggato $vend)
     {
           $this->venditore = $vend;
     }

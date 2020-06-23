@@ -45,7 +45,7 @@ class FAbbonamento
     //OPERAZIONI CRUD
     public static function store(EAbbonamento $a)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $id = $db->storeP($a, self::getClass());
         if ($id)
             return $id;
@@ -55,7 +55,7 @@ class FAbbonamento
 
     public static function delete($keyField, $id)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $execute = $db->deleteP(self::getClass(), $keyField, $id);
         if ($execute)
             return true;
@@ -77,7 +77,7 @@ class FAbbonamento
     public static function update($field, $newvalue, $keyField, $id)
     {
         $result = false;
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $result = $db->updateP(self::getClass(), $field, $newvalue, $keyField, $id);
         if($result)
             return $result;

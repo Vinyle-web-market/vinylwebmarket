@@ -1,7 +1,7 @@
 <?php
 
 
-class EUtente_Loggato
+class EUtente_loggato
 {
     private $username;
     private $email;

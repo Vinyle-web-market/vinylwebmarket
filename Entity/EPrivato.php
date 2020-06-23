@@ -1,7 +1,7 @@
 <?php
 
 
-class EPrivato extends EUtente_Loggato {
+class EPrivato extends EUtente_loggato {
 
        private $nome;
        private $cognome;

@@ -46,9 +46,9 @@ class FUtente_loggato
 
     //OPERAZIONI CRUD
 
-    public static function store(EUtente_Loggato $u)
+    public static function store(EUtente_loggato $u)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $exist = $db->existP(self::getClass(),"email",$u->getEmail());
         if($exist==TRUE)
            return "Utente ".$u->getEmail()." già esistente nel Database";
@@ -60,7 +60,7 @@ class FUtente_loggato
 
     public static function delete($keyField, $id)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $execute = $db->deleteP(self::getClass(), $keyField, $id);
         if ($execute)
             return true;
@@ -81,7 +81,7 @@ class FUtente_loggato
     public static function update($field, $newvalue, $keyField, $id)
     {
         $result = false;
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $result = $db->updateP(self::getClass(), $field, $newvalue, $keyField, $id);
         if($result)
             return $result;
@@ -95,14 +95,14 @@ class FUtente_loggato
         $result = $db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $utente = new EUtente_Loggato($result['username'], $result['password'], $result['telefono'], $result['stato']);
+            $utente = new EUtente_loggato($result['username'], $result['password'], $result['telefono'], $result['stato']);
             $utente->setEmail($result['email']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
-                    $utente []= new EUtente_Loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'], $result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
+                    $utente []= new EUtente_loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'], $result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
                     $utente[$i]->setEmail($result[$i]['email']);
 
                 }
@@ -112,7 +112,7 @@ class FUtente_loggato
     }
 
     public static function login($email, $pass){
-        $db=FDataBase::getInstance();
+        $db=FDatabase::getInstance();
         $r=$db->loginP($email, $pass);
         if ($r!=null)
             echo "accesso eseguito";

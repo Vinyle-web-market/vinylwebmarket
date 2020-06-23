@@ -50,7 +50,7 @@ class FNegozio
 
     public static function store(ENegozio $n)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $exist = $db->existP("FUtente_loggato","email",$n->getEmail());
         // $control=$db->static::exist("email",$u->getEmail());
         if($exist!=NULL)
@@ -69,7 +69,7 @@ class FNegozio
     public function exist ($field, $id)
     {
         $exist = false;
-        $db = FDataBase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
+        $db = FDatabase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
         $exist = $db->exist(static::getClass(), $field, $id);
         if($exist)
             return $exist = true;

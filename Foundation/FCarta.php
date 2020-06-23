@@ -46,7 +46,7 @@ class FCarta
     }
     //OPERAZIONI CRUD
     public static function store(ECarta $c){
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
        $id=$db->storeP($c,self::getClass());
        if ($id)
            return $id;
@@ -55,7 +55,7 @@ class FCarta
     }
 
     public static function delete($keyField,$id){
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $id=$db->deleteP(self::getClass(),$keyField,$id);
         if ($id)
             return $id;
@@ -65,7 +65,7 @@ class FCarta
 
     public static function exist($keyField,$id)
     {
-        $db=FDataBase::getInstance();
+        $db=FDatabase::getInstance();
         $exist=$db->existP(self::getClass(),$keyField,$id);
         if($exist!=NULL)
             return true;

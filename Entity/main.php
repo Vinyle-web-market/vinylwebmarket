@@ -311,16 +311,16 @@ echo $e;
 /*
 //-----------EXIST FABBONAMENTO------------
 $abb=new FAbbonamento();
-$abb_r=$abb->exist("id","1");
-echo $abb_r;
+$abb_r=$abb->exist("id","90");
+var_dump($abb_r);
 //-----------------------------------------
 */
 
 /*
 //--------EXIST FMEASSAGGIO--------
 $mex=new FMessaggio();
-$ex=$mex->exist("id","2");
-echo $ex;
+$ex=$mex->exist("id","20");
+var_dump($ex);
 //----------------------------------
 */
 
@@ -382,13 +382,13 @@ echo $a->toString();
 //---------------------------------------
 */
 
-/*
+
 //----------LOAD FUTENTE_LOGGATO-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('email', 'claudio97@virgilio.it');
+$out=$out->load('email', 'gianluca@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-*/
+
 
 /*
 //----------LOAD FPRIVATO-----------------------------------------FUNZIONANTE 100%
@@ -526,10 +526,11 @@ $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-$idpriv=new FPersistentManager();
-$id=$idpriv->loadImg('EImageUtente', 'id', '1');
+/*
+$idpriv=new FVinile();
+$id=$idpriv->load('titolo','domani smetto');
 var_dump($id);
-
+*/
 
 
 ?>

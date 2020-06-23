@@ -1,6 +1,6 @@
 <?php
 
-class FDataBase
+class FDatabase
 {
     //approccio statico,una sola istanza
     private static $instance;
@@ -29,7 +29,7 @@ class FDataBase
     public static function getInstance()
     {
         if (self::$instance == null) {
-            self::$instance = new FDataBase();
+            self::$instance = new FDatabase();
         }
         return self::$instance;
     }
@@ -77,7 +77,6 @@ class FDataBase
             echo "ATTENZIONE ERRORE: " . $err->getMessage();
             return null;
         }
-        return true;
     }
 
 //field chiave primaria della classe a cui fa riferimentO
@@ -291,7 +290,7 @@ class FDataBase
                             if ($query == null)
                                 $query = "SELECT * FROM " . $class::getTable() . " WHERE space ='" . $condizioni . "'";
                             else
-                                $query = $query . " AND condizioni ='" . $condizioni . "'";
+                                $query = $query . " AND condizione ='" . $condizioni . "'";
                             break;
                         case 5:
                             if ($query == null)

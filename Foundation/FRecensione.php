@@ -45,7 +45,7 @@ class FRecensione
 
     public static function store (ERecensione $r)
     {
-        $db=FDataBase::getInstance();
+        $db=FDatabase::getInstance();
         $id=$db->storeP($r, self::getClass());
         if($id)
             return $id;
@@ -56,7 +56,7 @@ class FRecensione
     public function exist ($field, $id)
     {
         $exist = false;
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $exist = $db->existP(static::getClass(), $field, $id);
         if($exist)
             return $exist = true;
@@ -65,7 +65,7 @@ class FRecensione
     }
 
     public static function delete($keyField,$id){
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $id=$db->deleteP(self::getClass(),$keyField,$id);
         if ($id)
             return $id;

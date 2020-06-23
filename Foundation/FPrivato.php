@@ -43,7 +43,7 @@ class FPrivato
 
     public static function store(Eprivato $p)
     {
-        $db = FDataBase::getInstance();
+        $db = FDatabase::getInstance();
         $exist = $db->existP("FUtente_loggato","email",$p->getEmail());
         // $control=$db->static::exist("email",$u->getEmail());
         if($exist==TRUE)
@@ -66,7 +66,7 @@ class FPrivato
 
     public static function exist($keyField,$id)
     {
-        $db=FDataBase::getInstance();
+        $db=FDatabase::getInstance();
         $exist=$db->existP(self::getClass(),$keyField,$id);
         if($exist!=NULL)
             return true;
