@@ -1,5 +1,4 @@
 <?php
-include("EUtente_loggato.php");
 
 class EVinile
 {

@@ -114,6 +114,7 @@ class FVinile
 
     public static function load($field, $id)
     {
+        $utenteloggato= null;
         $vinile = null;
         $db = FDatabase::getInstance();
         $resultLoadDB = $db->loadP(static::getClass(), $field, $id);

@@ -311,16 +311,16 @@ echo $e;
 /*
 //-----------EXIST FABBONAMENTO------------
 $abb=new FAbbonamento();
-$abb_r=$abb->exist("id","90");
-var_dump($abb_r);
+$abb_r=$abb->exist("id","1");
+echo $abb_r;
 //-----------------------------------------
 */
 
 /*
 //--------EXIST FMEASSAGGIO--------
 $mex=new FMessaggio();
-$ex=$mex->exist("id","20");
-var_dump($ex);
+$ex=$mex->exist("id","2");
+echo $ex;
 //----------------------------------
 */
 
@@ -332,18 +332,18 @@ echo $rec_r;
 //----------------------------------------------------
 */
 
-/*
+
 //---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
-$vin=new FVinile();
-$vin_r=$vin->load("venditore", "cicco@rgilio.it");
-var_dump($vin_r);
-echo "<br>"."<br>";
-echo $vin_r[0]->toString();
-echo "<br>"."<br>";
-echo $vin_r[1]->toString();
+$vin=new FPersistentManager();
+$vin_r=$vin->load("venditore", "rugg67@virgilio.it",'FVinile');
+//var_dump($vin_r);
+//echo "<br>"."<br>";
+echo $vin_r->toString();
+//echo "<br>"."<br>";
+//cho $vin_r[1]->toString();
 //--------------------------------------------------------
-*/
+
 
 /*
 //------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
@@ -382,13 +382,13 @@ echo $a->toString();
 //---------------------------------------
 */
 
-
+/*
 //----------LOAD FUTENTE_LOGGATO-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('email', 'gianluca@virgilio.it');
+$out=$out->load('email', 'claudio97@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-
+*/
 
 /*
 //----------LOAD FPRIVATO-----------------------------------------FUNZIONANTE 100%
@@ -493,20 +493,17 @@ echo $id1[2]->toString();
 */
 
 //------------OPERAZIONI/TEST IMMAGINI---------------------
-
- // OPERAZIONI DA FARE IN CONTROLLER PRIMA DI INVOCARE I COSTRUTTORI E METODI
-
-echo"<hr>";
 /*
+ // OPERAZIONI DA FARE IN CONTROLLER PRIMA DI INVOCARE I COSTRUTTORI E METODI
+echo"<hr>";
 $name=$_FILES['foto']["name"];
 $type=$_FILES['foto']["type"];
 $dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
 $dataimage=base64_decode($dataimage);
 $immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
-
 var_dump($immagine);
-*/
-/*
+
+
 //-----------STORE
 $f=new FImage();
 $f1=$f->storeI($immagine,'foto');
@@ -518,19 +515,15 @@ echo $f1;
 $f=new FImage();
 $f1=$f->deleteI('EImageVinile','id','2');
 var_dump($f1);
-*/
-/*
-//----------LOAD
+
 $f=new Fimage();
 $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-/*
-$idpriv=new FVinile();
-$id=$idpriv->load('titolo','domani smetto');
-var_dump($id);
-*/
+
+
+
 
 
 ?>

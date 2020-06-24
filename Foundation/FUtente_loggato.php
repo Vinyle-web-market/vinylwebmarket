@@ -95,15 +95,15 @@ class FUtente_loggato
         $result = $db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
         if(($result!=null) && ($rows_number == 1)) {
-            $utente = new EUtente_loggato($result['username'], $result['password'], $result['telefono'], $result['stato']);
-            $utente->setEmail($result['email']);
+            $utente = new EUtente_loggato($result['username'], $result['email'], $result['password'], $result['telefono']);
+            //$utente->setEmail($result['email']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
                 $mezzo = array();
                 for($i=0; $i<count($result); $i++){
-                    $utente []= new EUtente_loggato($result[$i]['username'],$result[$i]['password'],$result[$i]['telefono'], $result[$i]['stato']);  //ARRAY DI ARRAY ATTENTO
-                    $utente[$i]->setEmail($result[$i]['email']);
+                    $utente []= new EUtente_loggato($result[$i]['username'],$result[$i]['email'],$result[$i]['password'], $result[$i]['telefono']);  //ARRAY DI ARRAY ATTENTO
+                    //$utente[$i]->setEmail($result[$i]['email']);
 
                 }
             }
