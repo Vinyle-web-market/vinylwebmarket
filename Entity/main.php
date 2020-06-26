@@ -63,10 +63,10 @@ print "prova toString ".$carta->toString()."<br>";
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="ciok82?.";
-$email="carlo82@virgilio.it";
-$pw="ciaksigira";
-$tel="334587896";
+$nom="ciok82";
+$email="carlo82virgilio.it";
+$pw="ciii";
+$tel="3345765961";
 $nome="carlo";
 $cogn="fonzi";
 //$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
@@ -74,6 +74,7 @@ $cogn="fonzi";
 //echo "<hr>";
 try {
     $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+    print " PROVA toString <br> ".$utente1->toString()."<br>";
 } catch (Exception $e) {
     print $e->getMessage();
 }

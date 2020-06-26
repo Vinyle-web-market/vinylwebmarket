@@ -85,6 +85,21 @@ class EInputControl
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    public function testPhone(string $phone):bool{
+        $x=str_replace(" ","",$phone);
+        $accettato = preg_match('/[0-9]$/', $x);
+        if($accettato and strlen($x)>8){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public function testIntestatario(string $intestatario){
+        $test = preg_match('/[A-Za-z]$/', $intestatario);
+        return $test;
+    }
+
     public function testCardNumber(string $num ):bool {
         $x=str_replace(" ","",$num);
         $accettato = preg_match('/[0-9]$/', $x);

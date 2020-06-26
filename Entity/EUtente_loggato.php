@@ -24,7 +24,7 @@ class EUtente_loggato
         $this->setUsername($name);
         $this->setEmail($mail);
         $this->setPassword($pw);
-        $this->phone = $tel;
+        $this->setPhone($tel);
         $this->state =true;
         $this->_recensioni=array();
     }
@@ -83,7 +83,11 @@ class EUtente_loggato
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if (EInputControl::getInstance()->testEmail($email)) {
+            $this->email = $email;
+        } else {
+            throw new Exception("Email non valida");
+        }
     }
 
     /**
@@ -103,7 +107,11 @@ class EUtente_loggato
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        if (EInputControl::getInstance()->testPhone($phone)) {
+            $this->password = $phone;
+        } else {
+            throw new Exception("Numero di telefono non valido");
+        }
     }
 
 
