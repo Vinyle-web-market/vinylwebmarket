@@ -16,13 +16,14 @@ class ECarta
      * @param String $numeroCarta
      * @param int $cvv
      * @param string $scadenza
+     *  @throws Exception, se almeno uno dei parametri passato al costruttore non rispetta la relativa sintassi.
      */
     function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
     {
-        $this->intestat=$intestatario;
-        $this->num=$numeroCarta;
-        $this->scad=$scadenza;
-        $this->codcvv=$cvv;
+        $this->setIntestat($intestatario);
+        $this->setNum($numeroCarta);
+        $this->setScad($scadenza);
+        $this->setCodcvv($cvv);
     }
 
     //METODI SET
@@ -32,7 +33,11 @@ class ECarta
      */
     function setIntestat($intestat)
     {
+        if (EInputControl::getInstance()->testIntestatario($intestat)) {
         $this->intestat = $intestat;
+        } else {
+            throw new Exception( 'Intestatario inserito non valido!');
+        }
     }
 
     /** Questo metodo setta il nome dell'intestatario della carta
@@ -40,7 +45,11 @@ class ECarta
      */
     function setNum($num)
     {
-        $this->num = $num;
+        if (EInputControl::getInstance()->testCardNumber($num)) {
+            $this->num = $num;
+        } else {
+           throw new Exception( 'Numero di carta non valido!');
+        }
     }
 
     /** Questo metodo setta la scadenza della carta
@@ -48,7 +57,11 @@ class ECarta
      */
     function setScad($scad)
     {
+        if (EInputControl::getInstance()->testDate($scad)) {
         $this->scad = $scad;
+        } else {
+            throw new Exception( 'Data inserita non valida!');
+        }
     }
 
     /** Questo metodo setta il cvv della carta
@@ -56,7 +69,11 @@ class ECarta
      */
     function setCodcvv($codcvv)
     {
-        $this->codcvv = $codcvv;
+        if (EInputControl::getInstance()->testCvv($codcvv)) {
+            $this->codcvv = $codcvv;
+        } else {
+            throw new Exception( 'Codice CVV inserito non valido!');
+        }
     }
 
     /** Questo metodo setta l'ID della carta
