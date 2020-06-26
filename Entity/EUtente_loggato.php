@@ -11,12 +11,19 @@ class EUtente_loggato
     private $_recensioni;
 
     //COSTRUTTORE
-
+    /**
+     * EUtente constructor.
+     * @param string $name, username dell'utente
+     * @param string $mail, email dell'utente.
+     * @param string $password, password dell'utente.
+     * @param string $tel, telefono dell'utente.
+     * @throws Exception, se almeno uno dei parametri passato al costruttore non rispetta la relativa sintassi.
+     */
     public function __construct($name, $mail, $pw, $tel)
     {
-        $this->username = $name;
-        $this->email = $mail;
-        $this->password = $pw;
+        $this->setUsername($name);
+        $this->setEmail($mail);
+        $this->setPassword($pw);
         $this->phone = $tel;
         $this->state =true;
         $this->_recensioni=array();
@@ -70,6 +77,7 @@ class EUtente_loggato
     //METODI SET
 
 
+
     /**
      * @param mixed $email
      */
@@ -83,7 +91,11 @@ class EUtente_loggato
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        if (EInputControl::getInstance()->testPassword($password)) {
+            $this->password = $password;
+        } else {
+            throw new Exception("Password non valida");
+        }
     }
 
     /**
@@ -120,7 +132,12 @@ class EUtente_loggato
      */
     public function setUsername($username)
     {
-        $this->username = $username;
+        if (EInputControl::getInstance()->testUsername($username)) {
+            str_replace("\'", "'", $username);
+            $this->username = $username;
+        } else {
+            throw new Exception("Username non corretto");
+        }
     }
 
 //eiei

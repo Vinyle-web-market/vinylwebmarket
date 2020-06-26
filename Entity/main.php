@@ -29,7 +29,6 @@ include ("../Foundation/FPersistentManager.php");
 include ("../View/VUser.php");
 */
 
-
 //-------MAIN ORDINATO:
 //-------1. COSTRUTTORI CLASSI ENTITY
 //-------2. OPERAZIONI CRUD
@@ -60,21 +59,26 @@ print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="ciok82";
+$nom="ciok82?.";
 $email="carlo82@virgilio.it";
 $pw="ciaksigira";
 $tel="334587896";
 $nome="carlo";
 $cogn="fonzi";
-$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
-print " PROVA toString <br> ".$utente1->toString()."<br>";
-echo "<hr>";
+//$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+//print " PROVA toString <br> ".$utente1->toString()."<br>";
+//echo "<hr>";
+try {
+    $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+} catch (Exception $e) {
+    print $e->getMessage();
+}
 //-------------------------------------------------------------------------------------
-*/
+
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -332,7 +336,7 @@ echo $rec_r;
 //----------------------------------------------------
 */
 
-
+/*
 //---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
 $vin=new FPersistentManager();
@@ -343,7 +347,7 @@ echo $vin_r->toString();
 //echo "<br>"."<br>";
 //cho $vin_r[1]->toString();
 //--------------------------------------------------------
-
+*/
 
 /*
 //------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
@@ -520,8 +524,6 @@ $f=new Fimage();
 $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
-
-
 
 
 

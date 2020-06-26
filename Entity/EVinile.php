@@ -62,7 +62,6 @@ class EVinile
 
     /**Metodo che ci permette di cambiare il
      * nome utente del venditore
-     * @return EUtente_loggato
      */
     function setUserVenditore(EUtente_loggato $vend)
     {
