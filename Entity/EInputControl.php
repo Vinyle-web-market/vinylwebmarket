@@ -93,7 +93,7 @@ class EInputControl
         }
         else
             return false;
-    }
+       }
 
     public function testIntestatario(string $intestatario){
         $test = preg_match('/[A-Za-z]$/', $intestatario);

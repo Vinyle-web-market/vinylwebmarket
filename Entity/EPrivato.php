@@ -13,8 +13,8 @@ class EPrivato extends EUtente_loggato {
             public function __construct($name, $mail, $pw, $tel,$nom,$cog)
                {
                       parent::__construct($name, $mail, $pw, $tel);
-                      $this->nome=$nom;
-                      $this->cognome=$cog;
+                      $this->setNome($nom);
+                      $this->setCognome($cog);
                }
 
        //METODI GET
@@ -42,7 +42,12 @@ class EPrivato extends EUtente_loggato {
      */
     public function setNome($nome)
     {
-        $this->nome = $nome;
+        if (EInputControl::getInstance()->testName($nome)) {
+            str_replace("\'", "'", $nome);
+            $this->nome = $nome;
+        } else {
+            throw new Exception("Nome non valido");
+        }
     }
 
     /**Metodo che ci permette di cambiare il cognome del privato
@@ -50,7 +55,13 @@ class EPrivato extends EUtente_loggato {
      */
     public function setCognome($cognome)
     {
-        $this->cognome = $cognome;
+        if (EInputControl::getInstance()->testName($cognome)) {
+            str_replace("\'", "'", $cognome);
+            $this->cognome = $cognome;
+        } else {
+            throw new Exception("Nome non valido");
+        }
+
     }
     /*Metodo che ci permette di stampare a video tutti gli
       attributi della classe EPrivato*/
