@@ -15,7 +15,7 @@ class EAbbonamento
     function __construct()
     {
         $this->date ="0000-00-00";
-        $this->stato="non attivo";
+        $this->stato = false;
     }
 
     //METODI SET
@@ -27,7 +27,7 @@ class EAbbonamento
     }
 
     /** Questo metodo setta lo stato dell'abbonamento
-     * @param String $status
+     * @param bool $status
      */
     function setStato($status)
     {
@@ -52,9 +52,9 @@ class EAbbonamento
     }
 
     /** Questo metodo ritorna lo stato dell'abbonamento
-     * @return String
+     * @return bool
      */
-    function getStato()
+    public function isStato()
     {
         return $this->stato;
     }
@@ -71,7 +71,8 @@ class EAbbonamento
     /**metodo che restituisce una stringa con i dati relativi all'abbonamento
      * @return string
      */
-    function toString() {
+    function toString()
+    {
         return "Data rinnovo: ".$this->date."\n".
                 "Stato: ".$this->stato;
     }
@@ -91,7 +92,7 @@ class EAbbonamento
     public function AggiornaAbbonamento($n_mesiPagati){
         $data =date("j-m-Y",mktime(0,0,0,date('m')+$n_mesiPagati,date('j'),date('Y')));
         $this->date=$data;
-        $this->stato="attivo";
+        $this->stato = true;
     }
 
 }

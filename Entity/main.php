@@ -44,42 +44,46 @@ include ("../View/VUser.php");
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
+$abb->AggiornaAbbonamento('4');
 print "prova toString ".$abb->toString()."<br>";
 //----------------------------------------------------------
 */
 
 /*
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
-$intestatarioCarta="toninoo selli";
-$numeroCarta="40603566";
+$intestatarioCarta="toninoo selli11";
+$numeroCarta="4060356640603566";
 $scadenzaCarta="27/09/2026";
-$codiceCVV="728";
-$carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
-print "prova toString ".$carta->toString()."<br>";
-//----------------------------------------------------------------------------------
-*/
-
-
-//---------COSTRUTTORE EPRIVATO------------------------------------------------------
-echo "<h3>prove EPrivato</h3>";
-//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="ciok82";
-$email="carlo82virgilio.it";
-$pw="ciii";
-$tel="3345765961";
-$nome="carlo";
-$cogn="fonzi";
-//$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
-//print " PROVA toString <br> ".$utente1->toString()."<br>";
-//echo "<hr>";
+$codiceCVV="777";
+//$carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
+//print "prova toString ".$carta->toString()."<br>";
 try {
-    $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
-    print " PROVA toString <br> ".$utente1->toString()."<br>";
+     $carta = new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
+    print "prova toString ".$carta->toString()."<br>";
 } catch (Exception $e) {
     print $e->getMessage();
 }
-//-------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------
+*/
 
+/*
+//---------COSTRUTTORE EPRIVATO------------------------------------------------------
+echo "<h3>prove EPrivato</h3>";
+//public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
+$nom="cioccio";
+$email="carlovitali@virgilio.it";
+$pw="buongiorno";
+$tel="3345765961";
+$nome="carlo";
+$cogn="fonzi";
+$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+print " PROVA toString <br> ".$utente1->toString()."<br>";
+echo "<hr>";
+$idpriv=new FPrivato();
+$id=$idpriv->store($utente1);
+echo $id;
+//-------------------------------------------------------------------------------------
+*/
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -176,7 +180,7 @@ $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
 //----------------------------------------------------
-/*
+*/
 
 /*
 //----------STORE FPRIVATO--------------FUNZIOANTE 100%
@@ -185,6 +189,7 @@ $id=$idpriv->store($utente1);
 echo $id;
 //--------------------------------------
 */
+
 /*  //store con PM
 $idpriv=new FPersistentManager();
 $id=$idpriv->store($utente1);
@@ -316,8 +321,8 @@ echo $e;
 /*
 //-----------EXIST FABBONAMENTO------------
 $abb=new FAbbonamento();
-$abb_r=$abb->exist("id","1");
-echo $abb_r;
+$abb_r=$abb->exist("id","99");
+var_dump($abb_r);
 //-----------------------------------------
 */
 
