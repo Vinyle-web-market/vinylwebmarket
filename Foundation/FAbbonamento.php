@@ -14,7 +14,7 @@ class FAbbonamento
     {
         $pdost->bindValue(':id', NULL, PDO::PARAM_INT);
         $pdost->bindValue(':scadenza', $a->getData(), PDO::PARAM_STR);
-        $pdost->bindValue(':stato', $a->getStato(), PDO::PARAM_STR);
+        $pdost->bindValue(':stato', $a->isStato(), PDO::PARAM_BOOL);
     }
 
 

@@ -50,10 +50,10 @@ print "prova toString ".$abb->toString()."<br>";
 
 /*
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
-$intestatarioCarta="anthnoy scarselli";
+$intestatarioCarta="toninoo selli";
 $numeroCarta="40603566";
-$scadenzaCarta="27/09/2028";
-$codiceCVV="755";
+$scadenzaCarta="27/09/2026";
+$codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
@@ -63,36 +63,33 @@ print "prova toString ".$carta->toString()."<br>";
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
-$nom="mario1997";
-$email="mariolino@virgilio.it";
-$pw="mariomario";
-$tel="33457606060";
-$nome="mario";
+$nom="ciok82";
+$email="carlo82virgilio.it";
+$pw="ciii";
+$tel="3345765961";
+$nome="carlo";
 $cogn="fonzi";
-
+//$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+//print " PROVA toString <br> ".$utente1->toString()."<br>";
+//echo "<hr>";
 try {
     $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
+    print " PROVA toString <br> ".$utente1->toString()."<br>";
 } catch (Exception $e) {
     print $e->getMessage();
 }
-$pm=new FPrivato();
-$pm->store($utente1);
-print " PROVA toString <br> ".$utente1->toString()."<br>";
-
-
-
-
+//-------------------------------------------------------------------------------------
 
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
-$nom="tonytony";
-$emai="anthonino@virgilio.it";
+$nom="ZioTonye";
+$emai="ZioTony@virgeilio.it";
 $passw="pappepepino";
 $tele="3313476567";
-$nomeNeg="tonylshop";
+$nomeNeg="Vynilshop";
 $iva="19856784611";
 $indirizzo="via Paolo Fabbri 23";
 $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$abb);
@@ -139,7 +136,7 @@ $nome="claudio";
 $email="claudio97@virgilio.it";
 $pw="pippo";
 $tel="3345756889";
-$u=new EUtente_loggato($nome,$email,$pw,$tel);
+$u=new EUtente_Loggato($nome,$email,$pw,$tel);
 print " PROVA toString <br> ".$u->toString()."<br>";
 echo "<hr>";
 //-----------------------------------------------------------
@@ -173,14 +170,13 @@ var_dump($id2);
 //--------------------------------------
 */
 
-
 /*
 //---------------------STORE FABBONAMENTO------------
 $idabb=new FAbbonamento();
 $idabb=$idabb->store($abb);
 var_dump($idabb);
 //----------------------------------------------------
-*/
+/*
 
 /*
 //----------STORE FPRIVATO--------------FUNZIOANTE 100%
@@ -193,7 +189,7 @@ echo $id;
 $idpriv=new FPersistentManager();
 $id=$idpriv->store($utente1);
 echo $id;
-*/
+/*
 
 
 /*
