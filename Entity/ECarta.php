@@ -116,9 +116,9 @@ class ECarta
     function toString()
     {
         return "Codice carta: ".$this->num."\n".
-                "Intestata a: ".$this->intestat."\n".
-                "Scadenza: ".$this->scad."\n".
-                "CVV: ".$this->codcvv;
+            "Intestata a: ".$this->intestat."\n".
+            "Scadenza: ".$this->scad."\n".
+            "CVV: ".$this->codcvv;
     }
 
 }

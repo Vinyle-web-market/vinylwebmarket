@@ -62,7 +62,7 @@
                       <p>Iscriviti al nostro sito web come privato:</p>
                   </div>
 
-                  <form class="form-content" action="/vinylwebmarket/User/registrazione_privato" method="POST">
+                  <form class="form-content" action="/vinylwebmarket/User/registrazionePrivato" method="POST">
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">

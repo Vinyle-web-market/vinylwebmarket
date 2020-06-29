@@ -3,7 +3,6 @@
 
 class EUtente_loggato
 {
-    private $username;
     private $email;
     private $password;
     private $phone;
@@ -136,7 +135,7 @@ class EUtente_loggato
     function toStringRecensioni()
     {
         return "Username: " . $this->username . "\n" .
-               "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
+            "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
     }
 
 

@@ -12,11 +12,9 @@ class CFrontController
 
         $path = $_SERVER['REQUEST_URI'];
         $array = explode('/', $path);
-        print_r ($array);
         array_shift($array);
 
         $count = count($array);
-        print_r ($array);
 
         if ($array[$count - 1] == null) {
             unset($array[$count - 1]);
