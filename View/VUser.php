@@ -15,7 +15,21 @@ class VUser
     //form di registrazione del privato
     public function formRegistrazionePrivato() {
         $this->smarty->display('reg_privato.tpl');
-
+    }
+    //Errore durante la registrazione
+    public function ErrorRegistrazionePrivato ( string $error) {
+        switch ($error) {
+            case "email":
+                $this->smarty->assign('errorEmail',"errore");
+                break;
+            case "typeimg" :
+                $this->smarty->assign('errorType',"errore");
+                break;
+            case "size" :
+                $this->smarty->assign('errorSize',"errore");
+                break;
+        }
+        $this->smarty->display('reg_privato.tpl');
     }
 
     //form di registrazione del Negozio

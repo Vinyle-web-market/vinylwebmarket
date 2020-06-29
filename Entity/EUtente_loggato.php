@@ -3,7 +3,6 @@
 
 class EUtente_loggato
 {
-    private $username;
     private $email;
     private $password;
     private $phone;
@@ -11,20 +10,13 @@ class EUtente_loggato
     private $_recensioni;
 
     //COSTRUTTORE
-    /**
-     * EUtente constructor.
-     * @param string $name, username dell'utente
-     * @param string $mail, email dell'utente.
-     * @param string $password, password dell'utente.
-     * @param string $tel, telefono dell'utente.
-     * @throws Exception, se almeno uno dei parametri passato al costruttore non rispetta la relativa sintassi.
-     */
+
     public function __construct($name, $mail, $pw, $tel)
     {
-        $this->setUsername($name);
-        $this->setEmail($mail);
-        $this->setPassword($pw);
-        $this->setPhone($tel);
+        $this->username = $name;
+        $this->email = $mail;
+        $this->password = $pw;
+        $this->phone = $tel;
         $this->state =true;
         $this->_recensioni=array();
     }
@@ -77,17 +69,12 @@ class EUtente_loggato
     //METODI SET
 
 
-
     /**
      * @param mixed $email
      */
     public function setEmail($email)
     {
-        if (EInputControl::getInstance()->testEmail($email)) {
-            $this->email = $email;
-        } else {
-            throw new Exception("Email non valida");
-        }
+        $this->email = $email;
     }
 
     /**
@@ -95,11 +82,7 @@ class EUtente_loggato
      */
     public function setPassword($password)
     {
-        if (EInputControl::getInstance()->testPassword($password)) {
-            $this->password = $password;
-        } else {
-            throw new Exception("Password non valida");
-        }
+        $this->password = $password;
     }
 
     /**
@@ -107,11 +90,7 @@ class EUtente_loggato
      */
     public function setPhone($phone)
     {
-        if (EInputControl::getInstance()->testPhone($phone)) {
-            $this->password = $phone;
-        } else {
-            throw new Exception("Numero di telefono non valido");
-        }
+        $this->phone = $phone;
     }
 
 
@@ -140,12 +119,7 @@ class EUtente_loggato
      */
     public function setUsername($username)
     {
-        if (EInputControl::getInstance()->testUsername($username)) {
-            str_replace("\'", "'", $username);
-            $this->username = $username;
-        } else {
-            throw new Exception("Username non corretto");
-        }
+        $this->username = $username;
     }
 
 //eiei
@@ -161,7 +135,7 @@ class EUtente_loggato
     function toStringRecensioni()
     {
         return "Username: " . $this->username . "\n" .
-               "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
+            "Recensioni: ".$this->arrayToString($this->_recensioni)."\n";
     }
 
 

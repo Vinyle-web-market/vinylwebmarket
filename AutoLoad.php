@@ -22,7 +22,7 @@ function my_autoloader($class_name) {
 
 }
 
-//include_once 'Session.php';
+include_once 'Session.php';
 
 //include_once 'Smarty/Smarty.class.php';
 
