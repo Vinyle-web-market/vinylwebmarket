@@ -16,14 +16,13 @@ class ECarta
      * @param String $numeroCarta
      * @param int $cvv
      * @param string $scadenza
-     *  @throws Exception, se almeno uno dei parametri passato al costruttore non rispetta la relativa sintassi.
      */
     function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
     {
-        $this->setIntestat($intestatario);
-        $this->setNum($numeroCarta);
-        $this->setScad($scadenza);
-        $this->setCodcvv($cvv);
+        $this->intestat=$intestatario;
+        $this->num=$numeroCarta;
+        $this->scad=$scadenza;
+        $this->codcvv=$cvv;
     }
 
     //METODI SET
@@ -33,11 +32,7 @@ class ECarta
      */
     function setIntestat($intestat)
     {
-        if (EInputControl::getInstance()->testIntestatario($intestat)) {
         $this->intestat = $intestat;
-        } else {
-            throw new Exception( 'Intestatario inserito non valido!');
-        }
     }
 
     /** Questo metodo setta il nome dell'intestatario della carta
@@ -45,11 +40,7 @@ class ECarta
      */
     function setNum($num)
     {
-        if (EInputControl::getInstance()->testCardNumber($num)) {
-            $this->num = $num;
-        } else {
-           throw new Exception( 'Numero di carta non valido!');
-        }
+        $this->num = $num;
     }
 
     /** Questo metodo setta la scadenza della carta
@@ -57,11 +48,7 @@ class ECarta
      */
     function setScad($scad)
     {
-        if (EInputControl::getInstance()->testDate($scad)) {
         $this->scad = $scad;
-        } else {
-            throw new Exception( 'Data inserita non valida!');
-        }
     }
 
     /** Questo metodo setta il cvv della carta
@@ -69,11 +56,7 @@ class ECarta
      */
     function setCodcvv($codcvv)
     {
-        if (EInputControl::getInstance()->testCvv($codcvv)) {
-            $this->codcvv = $codcvv;
-        } else {
-            throw new Exception( 'Codice CVV inserito non valido!');
-        }
+        $this->codcvv = $codcvv;
     }
 
     /** Questo metodo setta l'ID della carta
@@ -133,9 +116,9 @@ class ECarta
     function toString()
     {
         return "Codice carta: ".$this->num."\n".
-                "Intestata a: ".$this->intestat."\n".
-                "Scadenza: ".$this->scad."\n".
-                "CVV: ".$this->codcvv;
+            "Intestata a: ".$this->intestat."\n".
+            "Scadenza: ".$this->scad."\n".
+            "CVV: ".$this->codcvv;
     }
 
 }
