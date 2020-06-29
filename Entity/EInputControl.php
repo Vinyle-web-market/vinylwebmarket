@@ -95,6 +95,10 @@ class EInputControl
             return false;
        }
 
+       public function validPrivato(EPrivato $privato){
+
+       }
+
     public function testIntestatario(string $intestatario){
         $test = preg_match('/[A-Za-z]$/', $intestatario);
         return $test;
