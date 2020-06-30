@@ -125,6 +125,44 @@ class EInputControl
 
     }
 
+    public function validNegozio(ENegozio $negozio){
+        $err=array();
+        $test=static::testUsername($negozio->getUsername());
+        if (!$test)
+            array_push($err,"username");
+
+        $test=static::testName($negozio->getNameShop());
+        if(!$test)
+            array_push($err,"nome");
+
+        $test=static::testIva($negozio->getPIva());
+        if(!$test)
+            array_push($err,"partitaiva");
+
+        $test=static::testPassword($negozio->getPassword());
+        if(!$test)
+            array_push($err,"password");
+
+        $test=static::testEmail($negozio->getEmail());
+        if(!$test)
+            array_push($err,"email");
+
+        $test=static::testCardNumber($negozio->getCarta()->getNum());
+        if(!$test)
+            array_push($err,"numerocarta");
+
+        $test=static::testCvv($negozio->getCarta()->getCodcvv());
+        if(!$test)
+            array_push($err,"cvv");
+
+        $test=static::testIntestatario($negozio->getCarta()->getIntestat());
+        if(!$test)
+            array_push($err,"intestatario");
+
+        return $err;
+
+    }
+
     public function testIntestatario(string $intestatario){
         $test = preg_match('/[A-Za-z]$/', $intestatario);
         return $test;
@@ -149,6 +187,16 @@ class EInputControl
         }
         else
             return false;
+         }
+
+         public function testIva(string $iva):bool{
+             $accettato = preg_match('/^[0-9]{11}$/', $iva);
+             if($accettato){
+                 return true;
+             }
+             else
+                 return false;
+
          }
 
     /**

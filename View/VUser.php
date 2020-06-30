@@ -21,7 +21,7 @@ class VUser
 
         switch ($errori) {
             case "email":
-                $this->smarty->assign('errorEmail',"errore");
+                $this->smarty->assign('errorEmailExist',"errore");
                 break;
             case "typeimg" :
                 $this->smarty->assign('errorType',"errore");
@@ -63,6 +63,22 @@ class VUser
     //form di registrazione del Negozio
     public function formRegistrazioneNegozio() {
             $this->smarty->display('reg_negozio.tpl');
+    }
+
+    public function ErrorRegistrazioneNegozio (string $errori) {
+
+        switch ($errori) {
+            case "email":
+                $this->smarty->assign('errorEmail',"errore");
+                break;
+            case "typeimg" :
+                $this->smarty->assign('errorType',"errore");
+                break;
+            case "size" :
+                $this->smarty->assign('errorSize',"errore");
+                break;
+        }
+        $this->smarty->display('reg_negozio.tpl');
     }
 
 

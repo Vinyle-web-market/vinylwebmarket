@@ -59,7 +59,7 @@ print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
@@ -81,7 +81,7 @@ $cogn="fonzi";
 
 
 //-------------------------------------------------------------------------------------
-*/
+
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -151,13 +151,13 @@ $out= new FUtente_loggato();
 $out=$out->load('email', 'rugg67@virgilio.it');
 //---------------------------------------------------------------------
 echo "<h3> Prova Vinile </h3>";
-$titolo = "metfsdgfto";
-$artist = "31";
-$gen = "kkkfdgfgff";
+$titolo = "domani smetto";
+$artist = "articolo 31";
+$gen = "rap";
 $ng = "66";
-$cond = "usfsgato";
+$cond = "usato";
 $pr = "€7.99";
-$des = "anno 2001,gfsettimo album per i cantanti milanesi";
+$des = "anno 2001,settimo album per i cantanti milanesi";
 $quant = "5";
 $vinile = new Evinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 echo "Test toString ".$vinile->toString()."br";
@@ -528,10 +528,6 @@ $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-
- $a=new FVinile();
- $r=$a->loadSixVinyls();
- var_dump($r);
 
 
 

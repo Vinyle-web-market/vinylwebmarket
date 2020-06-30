@@ -15,7 +15,7 @@ class EAbbonamento
     function __construct()
     {
         $this->date ="0000-00-00";
-        $this->stato = false;
+        $this->stato = 0;
     }
 
     //METODI SET
