@@ -17,6 +17,7 @@ class VUser
         $this->smarty->display('reg_privato.tpl');
     }
     //Errore durante la registrazione
+    /*
     public function ErrorRegistrazionePrivato (string $errori) {
 
         switch ($errori) {
@@ -32,9 +33,21 @@ class VUser
         }
         $this->smarty->display('reg_privato.tpl');
     }
+    */
 
     //Errore durante la registrazione
-    public function ErrorInputRegistrazionePrivato (array $errori) {
+    public function ErrorInputRegistrazionePrivato ($errori,$errore) {
+        switch ($errore) {
+            case "email":
+                $this->smarty->assign('errorEmailExist',"errore");
+                break;
+            case "typeimg" :
+                $this->smarty->assign('errorType',"errore");
+                break;
+            case "size" :
+                $this->smarty->assign('errorSize',"errore");
+                break;
+        }
         foreach ($errori as $err){
             switch($err){
                 case "username":
@@ -57,6 +70,22 @@ class VUser
                     break;
             }
         }
+        /*
+        foreach ($errori as $err){
+            if($err=="username")
+            $this->smarty->assign('errorUsername',"errore");
+            if($err=="email")
+            $this->smarty->assign('errorEmail',"errore");
+            if($err=="cognome")
+            $this->smarty->assign('errorCognome',"errore");
+            if($err=="nome")
+            $this->smarty->assign('errorNome',"errore");
+            if($err=="telefono")
+            $this->smarty->assign('errorTelefono',"errore");
+            if($err=="password")
+            $this->smarty->assign('errorPassword',"errore");
+        }
+        */
         $this->smarty->display('reg_privato.tpl');
     }
 

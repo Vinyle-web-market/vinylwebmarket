@@ -76,8 +76,39 @@ $cogn="fonzi";
     print " PROVA toString <br> ".$utente1->toString()."<br>";
     echo "<hr>";
     $c=EInputControl::getInstance();
-    $control=$c->validPrivato($utente1);
-    print_r($control);
+    echo "<hr>";
+    $err=$c->validPrivato($utente1);
+    print_r($err);
+    echo "<br>";
+    /*
+    if($err){
+        echo 'ciao';
+    }
+    echo "<br>";
+    foreach ($err as $error){
+        echo "<br>";
+        echo $error;
+    }
+    */
+
+echo "<br>";
+foreach ($err as $error) {
+            if($error=="username")
+                echo "username";
+            if($error=="email")
+                echo "email";
+            if($error=="cognome")
+                echo "cognome";
+            if($error=="nome")
+                echo "nome";
+            if($error=="telefono")
+                echo "telefono";
+            if($error=="password")
+                echo "password";
+
+}
+
+
 
 
 //-------------------------------------------------------------------------------------

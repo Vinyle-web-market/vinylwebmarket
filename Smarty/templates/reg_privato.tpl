@@ -124,7 +124,7 @@
                    </form>
                   {if $errorSize!='ok'}
                       <div style="color: red;">
-                          <p align="center">Attenzione! Formato immagine troppo grande!  </p>
+                          <p align="center">Attenzione! File troppo grande!  </p>
                       </div>
                   {/if}
                   {if $errorType!='ok'}
@@ -139,12 +139,12 @@
                   {/if}
                   {if $errorUsername!='ok'}
                       <div style="color: red;">
-                          <p align="center">Attenzione! Non si possono inserire simboli!  </p>
+                          <p align="center">Attenzione!Nell'username non sono ammessi simboli!  </p>
                       </div>
                   {/if}
                   {if $errorEmail!='ok'}
                       <div style="color: red;">
-                          <p align="center">Attenzione! Email non valida!  </p>
+                          <p align="center">Attenzione! formato Email non valida!  </p>
                       </div>
                   {/if}
                   {if $errorCognome!='ok'}
@@ -159,7 +159,7 @@
                   {/if}
                   {if $errorTelefono!='ok'}
                       <div style="color: red;">
-                          <p align="center">Attenzione! Telfono non valido!  </p>
+                          <p align="center">Attenzione! Telefono non valido!  </p>
                       </div>
                   {/if}
                   {if $errorPassword!='ok'}
@@ -171,7 +171,7 @@
            </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="/vinylwebmarkwt/Smarty/js/bootstrap.js"></script>
+  <script src="/vinylwebmarket/Smarty/js/bootstrap.js"></script>
 
  </body>
 

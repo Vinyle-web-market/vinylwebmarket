@@ -36,29 +36,31 @@ class CUser
         $pm = new FPersistentManager();
         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
         $view2 = new VUser();
-        $err=null;
+        $err=array();
+        $error_stringa="";
         //POTENZIALE ERRORE QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         if ($veremail) {
-            $error_email = "email";
-            $view2->ErrorRegistrazionePrivato($error_email);
+            $error_stringa = "email";
+            $view2->ErrorInputRegistrazionePrivato($err,$error_stringa);
 
         } else {
             $privato = new EPrivato($username, $email, $password, $telefono, $nome, $cognome);
             $input = EInputControl::getInstance();
             $err = $input->validPrivato($privato);
-        if (!$err) {
-                $view2->ErrorInputRegistrazionePrivato($err);
+        if ($err) {
+            echo "ciao stronzo";
+                $view2->ErrorInputRegistrazionePrivato($err,$error_stringa);
             }
-            if ($privato != null) {
+            else if ($privato != null) {
             if (isset($_FILES['file'])) {
                 $nome_file = 'file';
                 $img = static::uploadImage($privato,"registrazionePrivato",$nome_file);
                 switch ($img) {
                     case "size":
-                        $view2->ErrorRegistrazionePrivato("size");
+                        $view2->ErrorInputRegistrazionePrivato($err,"size");
                         break;
                     case "type":
-                        $view2->ErrorRegistrazionePrivato("typeimg");
+                        $view2->ErrorInputRegistrazionePrivato($err,"typeimg");
                         break;
                     case "ok":
                         header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
@@ -89,7 +91,7 @@ class CUser
             static::controlRegistrazioneNegozio();
         }
     }
-
+    /*
     public function controlRegistrazioneNegozio(){
         $ris = "ok";
         $username = $_POST["username"];
@@ -144,6 +146,7 @@ class CUser
         }
 
     }
+    */
 
     static function uploadImage($utente,$funz,$nome_file) {
         $pm = new FPersistentManager();
@@ -194,6 +197,7 @@ class CUser
                     //return "ok";
                     $ris = "ok";
                     */
+
                 }
                 elseif ($funz = "registrazioneTrasportatore") {
                     $a = static:: reg_immagine_mezzo_tra($utente,$max_size,$nome,true,$nome_file);
@@ -209,6 +213,7 @@ class CUser
         }
         return $ris;
     }
+
 
 
 
