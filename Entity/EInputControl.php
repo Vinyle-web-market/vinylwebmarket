@@ -96,8 +96,34 @@ class EInputControl
        }
 
        public function validPrivato(EPrivato $privato){
+         $err=array();
+         $test=static::testUsername($privato->getUsername());
+         if (!$test)
+             array_push($err,"username");
 
-       }
+         $test=static::testName($privato->getNome());
+         if(!$test)
+             array_push($err,"nome");
+
+           $test=static::testName($privato->getCognome());
+           if(!$test)
+               array_push($err,"cognome");
+
+           $test=static::testPhone($privato->getPhone());
+           if(!$test)
+               array_push($err,"telefono");
+
+           $test=static::testPassword($privato->getPassword());
+           if(!$test)
+               array_push($err,"password");
+
+           $test=static::testEmail($privato->getEmail());
+           if(!$test)
+               array_push($err,"email");
+
+           return $err;
+
+    }
 
     public function testIntestatario(string $intestatario){
         $test = preg_match('/[A-Za-z]$/', $intestatario);

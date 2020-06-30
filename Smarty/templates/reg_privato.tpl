@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <title>reg_negozio</title>
 
-    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
-    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
+  <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
+  <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="login.tpl">Log In</a>
+            <a class="nav-link" href="login.html">Log In</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,39 +62,59 @@
                       <p>Iscriviti al nostro sito web come privato:</p>
                   </div>
 
-                  <form class="form-content" action="/vinylwebmarket/User/registrazionePrivato" method="POST">
+                  <form  enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/User/registrazionePrivato" method="POST">
                       <div class="row">
                           <div class="col-md-6">
+
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" name="email"/>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password"/>
+                            </div>
+
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Choose your Useraname *" name="username"/>
+                                  <input type="text" class="form-control" placeholder="Useraname" name="username"/>
                               </div>
-                              <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your phone *" name="telefono"/>
-                              </div>
-                              <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Email *" name="email"/>
-                              </div>
+
+
+
                           </div>
+
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Name *" name="nome"/>
+                                  <input type="text" class="form-control" placeholder="Nome" name="nome"/>
                               </div>
+
                               <div class="form-group">
-                                  <input type="text" class="form-control" placeholder="Your Subname *" name="cognome"/>
+                                  <input type="text" class="form-control" placeholder="Cognome" name="cognome"/>
                               </div>
+
                               <div class="form-group">
-                                  <input type="password" class="form-control" placeholder=" Password *" name="password"/>
+                                  <input type="text" class="form-control" placeholder="Telefono" name="telefono"/>
                               </div>
+
+
                           </div>
-                      </div>
-                      <button type="submit" class="btnSubmit">Iscriviti</button>
-                  </form>
-              </div>
-          </div>
+                          <br>
+                          <div class="col-md-6">
+                              <div class="custom-file">
+                               <input type="file" class="custom-file-input" id="customFile" name="file">
+                               <label class="custom-file-label" for="customFile">Carica foto profilo</label>
+                                  <!-- <input type="file" name="file" />-->
+                               </div>
+                           </div>
+                       </div>
+                       <button type="submit" class="btnSubmit">Iscriviti</button>
+                   </form>
+               </div>
+           </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
 
-</body>
+ </body>
 
-</html>
+ </html>

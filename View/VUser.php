@@ -17,8 +17,9 @@ class VUser
         $this->smarty->display('reg_privato.tpl');
     }
     //Errore durante la registrazione
-    public function ErrorRegistrazionePrivato ( string $error) {
-        switch ($error) {
+    public function ErrorRegistrazionePrivato (string $errori) {
+
+        switch ($errori) {
             case "email":
                 $this->smarty->assign('errorEmail',"errore");
                 break;
@@ -32,9 +33,37 @@ class VUser
         $this->smarty->display('reg_privato.tpl');
     }
 
+    //Errore durante la registrazione
+    public function ErrorInputRegistrazionePrivato (array $errori) {
+        foreach ($errori as $err){
+            switch($err){
+                case "username":
+                    $this->smarty->assign('errorUsername',"errore");
+                    break;
+                case "email":
+                    $this->smarty->assign('errorEmail',"errore");
+                    break;
+                case "cognome":
+                    $this->smarty->assign('errorCognome',"errore");
+                    break;
+                case "nome":
+                    $this->smarty->assign('errorNome',"errore");
+                    break;
+                case "telefono":
+                    $this->smarty->assign('errorTelefono',"errore");
+                    break;
+                case "password":
+                    $this->smarty->assign('errorPassword',"errore");
+                    break;
+            }
+        }
+        $this->smarty->display('reg_privato.tpl');
+    }
+
     //form di registrazione del Negozio
     public function formRegistrazioneNegozio() {
             $this->smarty->display('reg_negozio.tpl');
     }
+
 
 }

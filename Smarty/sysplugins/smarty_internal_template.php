@@ -1,4 +1,5 @@
 <?php
+ob_start();
 /**
  * Smarty Internal Plugin Template
  * This file contains the Smarty template engine

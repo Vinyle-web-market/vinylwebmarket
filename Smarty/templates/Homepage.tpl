@@ -5,7 +5,7 @@
     <title>index</title>
 
     <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
-    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
 
   </head>
 <body>
@@ -13,7 +13,7 @@
 <nav class="navbar navbar sticky-top navbar-dark bg-dark">
   <div class="container=50px">
   <a class="navbar-brand" href="#">
-    <img src="././Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+    <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
     Vinyl Web Market
   </a>
   </div>
@@ -23,7 +23,7 @@
     <div class="container=50px">
 
     </div>
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" href="Homepage.html">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,8 +31,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="login.tpl">Log In</a>
+          <a class="nav-link" href="chisiamo.html">Chi siamo?</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Log In</a>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Iscriviti
@@ -50,33 +54,227 @@
     </div>
   </nav>
 
-  <div class="container">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+      <div class="container cta-100 ">
+        <div class="container">
+          <div class="row blog">
+            <div class="col-md-12">
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#blogCarousel" data-slide-to="1"></li>
+                </ol>
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="row">
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <!-- primo vinile -->
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile0.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <!-- secondo vinile -->
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile1.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <!--terzo vinile-->
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile2.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+                  <div class="carousel-item ">
+                    <div class="row">
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile3.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile4.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
 
-    <p class="lead"> Grazie per aver incrociato il mio cammino! Ci sono molte cose per cui ringrazio il Signore ogni giorno, tu sei sempre tra quelle. Solo due righe per ringraziarti per le cose belle che porti nella mia vita. Conoscendo te ho conosciuto la bontà e la disponibilità.</p>
 
-  </div>
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                            <!--Image-->
+                            <figure> <img alt="" src="../../Utility/immagini/vinile5.jpg"> </figure>
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>Titolo vinile</h5>
+                              </a>
+                            </div>
+                            <!--Data-->
+                            <div class="item-box-blog-data" style="padding: px 15px;">
+                              <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                            </div>
+                            <!--Text-->
+                            <div class="item-box-blog-text">
+                              <p>descrizione del prodotto e maggiori informazioni</p>
+                            </div>
+                             <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <!--Read More Button-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+                </div>
+                <!--.carousel-inner-->
+              </div>
+              <!--.Carousel-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>

@@ -64,20 +64,22 @@ print "prova toString ".$carta->toString()."<br>";
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
 $nom="ciok82";
-$email="carlo82virgilio.it";
+$email="carlo82@virgilio.it";
 $pw="ciii";
-$tel="3345765961";
+$tel="33457";
 $nome="carlo";
 $cogn="fonzi";
 //$utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
 //print " PROVA toString <br> ".$utente1->toString()."<br>";
 //echo "<hr>";
-try {
     $utente1=new EPrivato($nom,$email,$pw,$tel,$nome,$cogn);
     print " PROVA toString <br> ".$utente1->toString()."<br>";
-} catch (Exception $e) {
-    print $e->getMessage();
-}
+    echo "<hr>";
+    $c=EInputControl::getInstance();
+    $control=$c->validPrivato($utente1);
+    print_r($control);
+
+
 //-------------------------------------------------------------------------------------
 
 
