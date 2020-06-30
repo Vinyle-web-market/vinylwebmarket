@@ -61,7 +61,7 @@ class CUser
                         $view2->ErrorRegistrazionePrivato("typeimg");
                         break;
                     case "ok":
-                        header('Location:/vinylwebmarket/');
+                        header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
                         break;
                 }
                 }
