@@ -1,6 +1,6 @@
 <?php
 
-class EVinile
+class Evinile
 {
     /**
      * identificativo univoco annuncio
@@ -197,7 +197,7 @@ class EVinile
     }
     /*Metodo che ci permette di stampare
      * a video tutti gli attributi della
-     * classe EVinile
+     * classe Evinile
      */
     function toString()
     {

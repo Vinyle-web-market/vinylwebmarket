@@ -373,8 +373,33 @@ class FDatabase
             return null;
         }
     }
-    
-    
+
+    public function prendiVinile ()
+    {
+        try {
+            $query = "SELECT * FROM vinile;";
+            $pdost = $this->db->prepare($query);
+            $pdost->execute();
+            $rowsNumber = $pdost->rowCount();
+            if ($rowsNumber == 0) {
+                $result = null;
+            } elseif ($rowsNumber == 1) {
+                $result = $pdost->fetch(PDO::FETCH_ASSOC);
+                return $result['id_vinile'];
+            } else {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $pdost->fetch())
+                    $result[] = $row['id_vinile'];
+                return $result;
+            }
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
     
     
     
