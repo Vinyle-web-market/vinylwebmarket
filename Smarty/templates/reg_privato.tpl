@@ -32,7 +32,7 @@
   <nav class="navbar navbar sticky-top navbar-dark bg-dark">
     <div class="container=50px">
     <a class="navbar-brand" href="/vinylwebmarket/">
-      <img src="/vinylwebmarket/Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+      <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
       Vinyl Web Market
     </a>
     </div>
@@ -135,6 +135,36 @@
                   {if $errorEmailExist!='ok'}
                       <div style="color: red;">
                           <p align="center">Attenzione! Email già esistente!  </p>
+                      </div>
+                  {/if}
+                  {if $errorUsername!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Non si possono inserire simboli!  </p>
+                      </div>
+                  {/if}
+                  {if $errorEmail!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Email non valida!  </p>
+                      </div>
+                  {/if}
+                  {if $errorCognome!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Cognome non valido!  </p>
+                      </div>
+                  {/if}
+                  {if $errorNome!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Nome non valido!  </p>
+                      </div>
+                  {/if}
+                  {if $errorTelefono!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Telfono non valido!  </p>
+                      </div>
+                  {/if}
+                  {if $errorPassword!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
                       </div>
                   {/if}
                </div>
