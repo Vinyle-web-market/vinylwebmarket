@@ -1,25 +1,38 @@
 <!DOCTYPE html>
+{assign var='errorSize' value=$errorSize|default:'ok'}
+{assign var='errorType' value=$errorType|default:'ok'}
+{assign var='errorEmailExist' value=$errorEmailExist|default:'ok'}
+{assign var='errorUsername' value=$errorUsername|default:'ok'}
+{assign var='errorEmail' value=$errorEmail|default:'ok'}
+{assign var='errorCognome' value=$errorCognome|default:'ok'}
+{assign var='errorNome' value=$errorNome|default:'ok'}
+{assign var='errorTelefono' value=$errorTelefono|default:'ok'}
+{assign var='errorPassword' value=$errorPassword|default:'ok'}
 <html lang="en">
 <head>
 
   <meta charset="utf-8">
   <title>reg_negozio</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\bootstrap.css">
-  <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 </head>
-
 <body>
 
   <nav class="navbar navbar sticky-top navbar-dark bg-dark">
     <div class="container=50px">
     <a class="navbar-brand" href="/vinylwebmarket/">
-      <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+      <img src="/vinylwebmarket/Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
       Vinyl Web Market
     </a>
     </div>
@@ -39,15 +52,15 @@
           <li class="nav-item">
             <a class="nav-link" href="login.html">Log In</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Iscriviti
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/vinylwebmarket/User/FormRegPrivato">Iscriviti come privato</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="vinylwebmarket/User/FormRegNegozio">Iscriviti come negozio</a>
-            </div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Iscriviti
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/vinylwebmarket/User/FormRegPrivato">Iscriviti come privato</a>              <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/vinylwebmarket/User/FormRegNegozio">Iscriviti come negozio</a>            </div>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -109,11 +122,26 @@
                        </div>
                        <button type="submit" class="btnSubmit">Iscriviti</button>
                    </form>
+                  {if $errorSize!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Formato immagine troppo grande!  </p>
+                      </div>
+                  {/if}
+                  {if $errorType!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+                      </div>
+                  {/if}
+                  {if $errorEmailExist!='ok'}
+                      <div style="color: red;">
+                          <p align="center">Attenzione! Email già esistente!  </p>
+                      </div>
+                  {/if}
                </div>
            </div>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/vinylwebmarkwt/Smarty/js/bootstrap.js"></script>
 
  </body>
 
