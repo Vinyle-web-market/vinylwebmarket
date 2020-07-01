@@ -207,7 +207,7 @@
                       {/if}
                       {if $errorPartitaiva!='ok'}
                           <div style="color: red;">
-                              <p align="center">Attenzione! Cognome non valido!  </p>
+                              <p align="center">Attenzione! Partita Iva non valido!  </p>
                           </div>
                       {/if}
                       {if $errorNome!='ok'}
@@ -217,7 +217,7 @@
                       {/if}
                       {if $errorNumerocarta!='ok'}
                           <div style="color: red;">
-                              <p align="center">Attenzione! Telefono non valido!  </p>
+                              <p align="center">Attenzione! Numero carta non valido!  </p>
                           </div>
                       {/if}
                       {if $errorPassword!='ok'}
@@ -227,12 +227,12 @@
                       {/if}
                       {if $errorCvv!='ok'}
                           <div style="color: red;">
-                              <p align="center">Attenzione! Telefono non valido!  </p>
+                              <p align="center">Attenzione! CVV non valido!  </p>
                           </div>
                       {/if}
                       {if $errorIntestatario!='ok'}
                           <div style="color: red;">
-                              <p align="center">Attenzione! Telefono non valido!  </p>
+                              <p align="center">Attenzione! Intestatario non valido!  </p>
                           </div>
                       {/if}
                   </div>
