@@ -59,7 +59,7 @@ print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
 */
 
-
+/*
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
 echo "<h3>prove EPrivato</h3>";
 //public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nom,$cog)
@@ -80,39 +80,8 @@ $cogn="fonzi";
     $err=$c->validPrivato($utente1);
     print_r($err);
     echo "<br>";
-    /*
-    if($err){
-        echo 'ciao';
-    }
-    echo "<br>";
-    foreach ($err as $error){
-        echo "<br>";
-        echo $error;
-    }
-    */
-
-echo "<br>";
-foreach ($err as $error) {
-            if($error=="username")
-                echo "username";
-            if($error=="email")
-                echo "email";
-            if($error=="cognome")
-                echo "cognome";
-            if($error=="nome")
-                echo "nome";
-            if($error=="telefono")
-                echo "telefono";
-            if($error=="password")
-                echo "password";
-
-}
-
-
-
-
-//-------------------------------------------------------------------------------------
-
+    //-------------------------------------------------------------------------------------
+*/
 
 /*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
@@ -558,6 +527,8 @@ $f=new Fimage();
 $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
+
+print_r($_POST);
 
 
 

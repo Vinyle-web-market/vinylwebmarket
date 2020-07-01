@@ -94,18 +94,54 @@ class VUser
             $this->smarty->display('reg_negozio.tpl');
     }
 
-    public function ErrorRegistrazioneNegozio (string $errori) {
-
-        switch ($errori) {
+    public function ErrorInputRegistrazioneNegozio ($errori,$errore)
+    {
+        switch ($errore) {
             case "email":
-                $this->smarty->assign('errorEmail',"errore");
+                $this->smarty->assign('errorEmailExist', "errore");
                 break;
             case "typeimg" :
-                $this->smarty->assign('errorType',"errore");
+                $this->smarty->assign('errorType', "errore");
                 break;
             case "size" :
-                $this->smarty->assign('errorSize',"errore");
+                $this->smarty->assign('errorSize', "errore");
                 break;
+        }
+        foreach ($errori as $err) {
+            switch ($err) {
+                case "username":
+                    $this->smarty->assign('errorUsername', "errore");
+                    break;
+
+                case "nome":
+                    $this->smarty->assign('errorNome', "errore");
+                    break;
+
+                case "partitaiva":
+                    $this->smarty->assign('errorPartitaiva', "errore");
+                    break;
+
+                case "password":
+                    $this->smarty->assign('errorPassword', "errore");
+                    break;
+
+                case "email":
+                    $this->smarty->assign('errorEmail', "errore");
+                    break;
+
+                case "numerocarta":
+                    $this->smarty->assign('errorNumerocarta', "errore");
+                    break;
+
+                case "cvv":
+                    $this->smarty->assign('errorCvv', "errore");
+                    break;
+
+                case "intestatario":
+                    $this->smarty->assign('errorIntestatario', "errore");
+                    break;
+
+            }
         }
         $this->smarty->display('reg_negozio.tpl');
     }

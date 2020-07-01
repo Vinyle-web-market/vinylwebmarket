@@ -48,7 +48,6 @@ class CUser
             $input = EInputControl::getInstance();
             $err = $input->validPrivato($privato);
         if ($err) {
-            echo "ciao stronzo";
                 $view2->ErrorInputRegistrazionePrivato($err,$error_stringa);
             }
             else if ($privato != null) {
@@ -91,7 +90,7 @@ class CUser
             static::controlRegistrazioneNegozio();
         }
     }
-    /*
+
     public function controlRegistrazioneNegozio(){
         $ris = "ok";
         $username = $_POST["username"];
@@ -110,11 +109,12 @@ class CUser
         $pm = new FPersistentManager();
         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
         $view2 = new VUser();
-        $err=null;
+        $err=array();
+        $error_stringa="";
         //POTENZIALE ERRORE QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         if ($veremail) {
             $error_email = "email";
-            $view2->ErrorRegistrazioneNegozio($error_email);
+            $view2->ErrorInputRegistrazioneNegozio($err,$error_email);
 
         } else {
             $abb=new EAbbonamento();
@@ -123,19 +123,19 @@ class CUser
             $input = EInputControl::getInstance();
             $err = $input->validNegozio($negozio);
             //Rivederer da qui
-            if (!$err) {
-                $view2->ErrorInputRegistrazionePrivato($err);
+            if ($err) {
+                $view2->ErrorInputRegistrazioneNegozio($err,$error_stringa);
             }
             if ($negozio != null) {
                 if (isset($_FILES['file'])) {
                     $nome_file = 'file';
-                    $img = static::uploadImage($privato,"registrazionePrivato",$nome_file);
+                    $img = static::uploadImage($negozio,"registrazionePrivato",$nome_file);
                     switch ($img) {
                         case "size":
-                            $view2->ErrorRegistrazionePrivato("size");
+                            $view2->ErrorInputRegistrazioneNegozio("size");
                             break;
                         case "type":
-                            $view2->ErrorRegistrazionePrivato("typeimg");
+                            $view2->ErrorInputRegistrazioneNegozio("typeimg");
                             break;
                         case "ok":
                             header('Location:/vinylwebmarket/');
@@ -146,7 +146,7 @@ class CUser
         }
 
     }
-    */
+
 
     static function uploadImage($utente,$funz,$nome_file) {
         $pm = new FPersistentManager();

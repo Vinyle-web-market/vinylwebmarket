@@ -79,7 +79,7 @@
                       </div>
 
                       <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Nome negozio" name="nome negozio"/>
+                          <input type="text" class="form-control" placeholder="Nome negozio" name="nomenegozio"/>
                       </div>
 
                       <div class="form-group">
@@ -95,7 +95,7 @@
                       <input type="text" class="form-control" placeholder="Indirizzo" name="indirizzo"/>
                   </div>
                   <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Partita Iva" name="partita iva"/>
+                      <input type="text" class="form-control" placeholder="Partita Iva" name="partitaiva"/>
                   </div>
                     </div>
                   <br>
@@ -114,19 +114,19 @@
                           <fieldset>
                               <div class="form-group">
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Nome e cognome intestatrio">
+                                      <input type="text" class="form-control" name="intestatario" id="card-holder-name" placeholder="Nome e cognome intestatrio">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-9">
-                                      <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Numero carta di credito/debito">
+                                      <input type="text" class="form-control" name="numerocarta" id="card-number" placeholder="Numero carta di credito/debito">
                                   </div>
                               </div>
                               <div class="form-group">
                                   <div class="col-sm-9">
 
                                           <div class="col-xs-3">
-                                              <select class="form-control" name="expiry-month">
+                                              <select class="form-control" name="mese">
 
                                                   <option value="01">Jan (01)</option>
                                                   <option value="02">Feb (02)</option>
@@ -144,19 +144,19 @@
                                           </div>
                                       <br>
                                           <div class="col-xs-3">
-                                              <select class="form-control" name="expiry-year">
+                                              <select class="form-control" name="anno">
 
-                                                  <option value="20">2020</option>
-                                                  <option value="21">2021</option>
-                                                  <option value="22">2022</option>
-                                                  <option value="23">2023</option>
-                                                  <option value="13">2024</option>
-                                                  <option value="14">2025</option>
-                                                  <option value="15">2026</option>
-                                                  <option value="16">2027</option>
-                                                  <option value="17">2028</option>
-                                                  <option value="18">2029</option>
-                                                  <option value="19">2030</option>
+                                                  <option value="2020">2020</option>
+                                                  <option value="2021">2021</option>
+                                                  <option value="2022">2022</option>
+                                                  <option value="2023">2023</option>
+                                                  <option value="2024">2024</option>
+                                                  <option value="2025">2025</option>
+                                                  <option value="2026">2026</option>
+                                                  <option value="2027">2027</option>
+                                                  <option value="2028">2028</option>
+                                                  <option value="2029">2029</option>
+                                                  <option value="2030">2030</option>
                                               </select>
                                           </div>
 
@@ -170,9 +170,9 @@
                           </fieldset>
                       </form>
                   </div>
-
+                  <button type="submit" class="btnSubmit">Iscriviti</button>
               </div>
-              <button type="submit" class="btnSubmit">Iscriviti</button>
+             <!-- <button type="submit" class="btnSubmit">Iscriviti</button> -->
           </form>
       </div>
   </div>
