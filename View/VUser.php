@@ -154,5 +154,19 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
+    /**
+     * Display login in caso di login non effettuato
+     * @throws SmartyException
+     * passo la variabile exist con true se l'email è salvato nel db
+     */
+    public function loginError($exist,$valoreMail) {
+        if($exist=="esiste"){
+            $this->smarty->assign("emailExist","exist");
+            $this->smarty->assign("valoreEmail",$valoreMail);
+                            }
+        $this->smarty->assign('errorLogin',"errore");
+        $this->smarty->display('login.tpl');
+    }
+
 
 }

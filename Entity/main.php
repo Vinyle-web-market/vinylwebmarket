@@ -530,8 +530,8 @@ var_dump($f1);
 
 
 $pm=new FPersistentManager();
-$utente=$pm->loginUtente("vannydonny","Vannyvanny");
-var_dump($utente);
+$utente=$pm->loginUtente("ruggero.cruciani@virlio.it","Ruggioruggio");
+$utente->toString();
 
 
 

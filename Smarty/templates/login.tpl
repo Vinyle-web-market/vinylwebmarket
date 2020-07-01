@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {assign var='emailExist' value=$emailExist|default:'ok'}
 {assign var='errorLogin' value=$errorLogin|default:'ok'}
+{assign var='valoreEmail' value=$valoreEmail|default:'non settato'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -61,32 +62,34 @@
         </div>
       </nav>
 
+    <form class="form-content" action="/vinylwebmarket/User/login" method="POST">
       <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login:</h3>
-
+                    {if $valoreEmail!='non settato'}
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email" value="" />
+                            <input type="text" class="form-control" placeholder="{$valoreEmail}" name="email" />
                         </div>
+                    {/if}
+                    {if $valoreEmail=='non settato'}
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" name="email" />
+                    </div>
+                    {/if}
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password" value="" />
+                            <input type="password" class="form-control" placeholder="Your Password" name="password" />
                         </div>
-                    {if $emailExist!='ok'}
+                    {if $errorLogin!='ok'}
                         <div style="color: red;">
                             <p align="center">Attenzione! Password errata!  </p>
                         </div>
                     {/if}
-                    {if $errorLogin!='ok'}
-                        <div style="color: red;">
-                            <p align="center">Attenzione! Credenziali errate!  </p>
-                        </div>
-                    {/if}
-                        <div class="btnSubmit">
-                            <a class="nav-link" href="homepage_privato.html">Log In</a>
+                            <button type="submit" class="btnSubmit">Iscriviti</button>
                         </div>
                 </div>
             </div>
+    </form>
         </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

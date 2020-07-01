@@ -226,7 +226,7 @@ class CUser
                 */
             }
             else{
-                $view=new VUtente();
+                $view=new VUser();
                 $view->formLogin();
             }
         }elseif ($_SERVER['REQUEST_METHOD']=="POST")
@@ -241,14 +241,21 @@ class CUser
      * 4) se si verifica la presenza di particolari cookie avviene il reindirizzamento alla pagina specifica.
      */
     static function checkLogin() {
-        $view = new VUtente();
+        $view = new VUser();
+        $email="";
+        $valoreMail="non settato";
         $pm = new FPersistentManager();
-        $utente = $pm->loadLogin($_POST['email'], $_POST['password']);
-        if ($utente != null && $utente->getState() != false) {
+        $exist=$pm->exist('email',$_POST['email'],"FUtente_loggato");
+        if($exist){
+            $email="esiste";
+            $valoreMail=$_POST['email'];
+        }
+        $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
+        if ($utente != null && $utente->isState() != false) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
-                $salvare = serialize($utente);
-                $_SESSION['utente'] = $salvare;
+                $salva_sessione = serialize($utente);
+                $_SESSION['utente'] = $salva_sessione;
                 if ($_POST['email'] != 'admin@admin.com') {
                     if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']){
                         header('Location: /FillSpaceWEB/Messaggi/chat');
@@ -269,7 +276,7 @@ class CUser
             }
         }
         else {
-            $view->loginError();
+            $view->loginError($email,$valoreMail);
         }
     }
 
