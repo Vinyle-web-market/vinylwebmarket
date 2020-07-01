@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+{assign var='errorSize' value=$errorSize|default:'ok'}
+{assign var='errorType' value=$errorType|default:'ok'}
+{assign var='errorEmailExist' value=$errorEmailExist|default:'ok'}
+{assign var='errorUsername' value=$errorUsername|default:'ok'}
+{assign var='errorEmail' value=$errorEmail|default:'ok'}
+{assign var='errorNome' value=$errorNome|default:'ok'}
+{assign var='errorPartitaiva' value=$errorPartitaiva|default:'ok'}
+{assign var='errorIntestatario' value=$errorIntestatario|default:'ok'}
+{assign var='errorCvv' value=$errorCvv|default:'ok'}
+{assign var='errorNumerocarta' value=$errorNumerocarta|default:'ok'}
+{assign var='errorPassword' value=$errorPassword|default:'ok'}
 <html lang="en">
 <head>
 
@@ -169,6 +180,61 @@
                               </div>
                           </fieldset>
                       </form>
+                      {if $errorSize!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! File troppo grande!  </p>
+                          </div>
+                      {/if}
+                      {if $errorType!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+                          </div>
+                      {/if}
+                      {if $errorEmailExist!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Email già esistente!  </p>
+                          </div>
+                      {/if}
+                      {if $errorUsername!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione!Nell'username non sono ammessi simboli!  </p>
+                          </div>
+                      {/if}
+                      {if $errorEmail!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! formato Email non valida!  </p>
+                          </div>
+                      {/if}
+                      {if $errorPartitaiva!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Cognome non valido!  </p>
+                          </div>
+                      {/if}
+                      {if $errorNome!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Nome non valido!  </p>
+                          </div>
+                      {/if}
+                      {if $errorNumerocarta!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Telefono non valido!  </p>
+                          </div>
+                      {/if}
+                      {if $errorPassword!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
+                          </div>
+                      {/if}
+                      {if $errorCvv!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Telefono non valido!  </p>
+                          </div>
+                      {/if}
+                      {if $errorIntestatario!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Telefono non valido!  </p>
+                          </div>
+                      {/if}
                   </div>
                   <button type="submit" class="btnSubmit">Iscriviti</button>
               </div>
