@@ -146,5 +146,13 @@ class VUser
         $this->smarty->display('reg_negozio.tpl');
     }
 
+    /**
+     * Funzione che si occupa di gestire la visualizzazione della form di login
+     * @throws SmartyException
+     */
+    public function formLogin(){
+        $this->smarty->display('login.tpl');
+    }
+
 
 }

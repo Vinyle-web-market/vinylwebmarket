@@ -168,7 +168,7 @@ class EInputControl
         return $test;
     }
 
-    public function testCardNumber(string $num ):bool {
+    public function testCardNumber(string $num):bool {
         $x=str_replace(" ","",$num);
         $accettato = preg_match('/[0-9]$/', $x);
         if($accettato and strlen($x)==16){

@@ -110,12 +110,23 @@ class FUtente_loggato
         }
         return $utente;
     }
-
+    //ritorna oggetto utente,fa una load
     public static function login($email, $pass){
+        $utente=null;
         $db=FDatabase::getInstance();
-        $r=$db->loginP($email, $pass);
-        if ($r!=null)
-            echo "accesso eseguito";
-        else echo "accesso non eseguito";
+        $result=$db->loginP($email, $pass);
+        print_r($result);
+        if (isset($result)){
+            $privato = FPrivato::load("email_privato" , $result["email"]);
+            $negozio = FNegozio::load("email_negozio" , $result["email"]);
+            $admin = static::load("email", $result["email"]);
+            if ($privato)
+                $utente = $privato;
+            elseif ($negozio)
+                $utente = $negozio;
+            elseif ($admin)
+                $utente = $admin;
+        }
+        return $utente;
     }
 }

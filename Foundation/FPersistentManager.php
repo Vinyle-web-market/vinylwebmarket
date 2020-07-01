@@ -91,6 +91,11 @@ class FPersistentManager
         return $rec;
     }
 
+    public static function loginUtente ($user, $pass) {
+        $ris = null;
+        $ris = FUtente_loggato::login($user, $pass);
+        return $ris;
+    }
 
 
 

@@ -528,7 +528,11 @@ $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-print_r($_POST);
+
+$pm=new FPersistentManager();
+$utente=$pm->loginUtente("vannydonny","Vannyvanny");
+var_dump($utente);
+
 
 
 
