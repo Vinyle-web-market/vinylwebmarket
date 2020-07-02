@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{assign var='nome' value=$nome}
+{assign var='cognome' value=$cognome}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -30,7 +32,7 @@
         <div class="container=50px">
 
         </div>
-        <a class="navbar-brand" href="Homepage.html">Home</a>
+        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,13 +40,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="chisiamo.html">Chi siamo?</a>
+              <a class="nav-link" href="/vinylwebmarket/Chisiamo/info">Chi siamo?</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Homepage.html">Log Out</a>
+              <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profilo_privato.html">Profilo</a>
+              <a class="nav-link" href="/vinylwebmarket/User/profile">Profilo</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -68,7 +70,7 @@
   				<!-- SIDEBAR USER TITLE -->
   				<div class="profile-usertitle">
   					<div class="profile-usertitle-name">
-  						NOME NEGOZIO
+  						{$nome}{$negozio}
   					</div>
   					<div class="profile-usertitle-job">
   						<br>
@@ -114,8 +116,8 @@
 </div>
 <br>
 <br>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
 
   </body>
 </html>
