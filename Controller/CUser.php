@@ -62,7 +62,7 @@ class CUser
                         $view2->ErrorInputRegistrazionePrivato($err,"typeimg");
                         break;
                     case "ok":
-                        header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
+                        header('Location:/vinylwebmarket/Homepage/impostaPaginaULprivato');
                         break;
                 }
                 }
@@ -140,7 +140,7 @@ class CUser
                             $view2->ErrorInputRegistrazioneNegozio($err,"typeimg");
                             break;
                         case "ok":
-                            header('Location:/vinylwebmarket/');
+                            header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
                             break;
                     }
                 }
@@ -239,6 +239,7 @@ class CUser
      * 2) se l'utente ed è attivo, avviene il reindirizzamaneto alla homepage degli annunci;
      * 3) se le credenziali inserite rispettano i vincoli per l'amministratore, avviene il reindirizamento alla homepage dell'amministratore;
      * 4) se si verifica la presenza di particolari cookie avviene il reindirizzamento alla pagina specifica.
+     * @throws SmartyException
      */
     static function checkLogin() {
         $view = new VUser();
@@ -252,10 +253,12 @@ class CUser
         }
         $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
         if ($utente != null && $utente->isState() != false) {
-            if (session_status() == PHP_SESSION_NONE) {
+            $sessione=Session::getInstance();
+            $sessione->setUtenteLoggato($utente);
+            /*if (session_status() == PHP_SESSION_NONE) {
                 session_start();
                 $salva_sessione = serialize($utente);
-                $_SESSION['utente'] = $salva_sessione;
+                $_SESSION['utente'] = $salva_sessione;*/
                 if ($_POST['email'] != 'admin@admin.com') {
                     if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']){
                         header('Location: /FillSpaceWEB/Messaggi/chat');
@@ -266,17 +269,50 @@ class CUser
                     else {
                         if (isset($_COOKIE['chat']))
                             setcookie("chat", null, time() - 900,"/");
-                        else
-                            header('Location: /FillSpaceWEB/');
+                        else {
+                            if(get_class($utente)== "EPrivato")
+                                 header('Location: /vinylwebmarket/Homepage/impostaPaginaULprivato/');
+                            else
+                                header('Location: /vinylwebmarket/Homepage/impostaPaginaULnegozio/');
+                        }
                     }
                 }
                 else {
                     header('Location: /FillSpaceWEB/Admin/homepage');
                 }
-            }
+           // }
         }
         else {
             $view->loginError($email,$valoreMail);
+        }
+    }
+
+    /** Funzione che mostra il profilo dell'utente loggato.
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati, avviene il reindirizzamento al profilo.
+     *    Tale reindirizzamento avviene tramite il controllo se si è un Privato o negozio;
+     * 2) altrimenti, avviene il reindirizzamento alla form di login
+     */
+    static function profile() {
+        $view = new VUser();
+        $pm = new FPersistentManager();
+        if($_SERVER['REQUEST_METHOD'] == "GET") {
+            $sessione=Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+                $utente=$sessione->getUtente();
+               // $utente = unserialize($_SESSION['utente']);
+                if (get_class($utente) == "EPrivato") {
+                    $img = $pm->loadImg("email_utente", $utente->getEmail(), "FImage");
+                    $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                    //RECENSIONI
+                    $view->profilePrivato($utente, $vinili, $img);
+                } else {
+                    $img = $pm->loadImg("email_negozio", $utente->getEmail(), "FImage");
+                    $annunci = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                    //RECENSIONI
+                    $view->profileNegozio($utente, $annunci, $img,);
+                }
+            } else
+                header('Location: /vinylwebmarket/User/login');
         }
     }
 
