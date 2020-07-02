@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>homepage utente loggato</title>
+    <title>homepage privato</title>
+
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -43,10 +44,10 @@
           <a class="nav-link" href="/vinylwebmarket/Chisiamo/info">Chi siamo?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/vinylwebmarket/">Log Out</a>
+          <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profilo_privato.html">Profilo</a>
+          <a class="nav-link" href="/vinylwebmarket/User/profile">Profilo</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -85,7 +86,7 @@
                               <!--Date-->
                               <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket//Utility/immagini/vinile0.jpg"> </figure>
+                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
@@ -115,7 +116,7 @@
                               <!--Date-->
                               <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket//Utility/immagini/vinile1.jpg"> </figure>
+                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile1.jpg"> </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
@@ -146,7 +147,7 @@
                               <!--Date-->
                               <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket//Utility/immagini/vinile2.jpg"> </figure>
+                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile2.jpg"> </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
@@ -182,7 +183,7 @@
                               <!--Date-->
                               <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket//Utility/immagini/vinile3.jpg"> </figure>
+                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile3.jpg"> </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
@@ -212,7 +213,7 @@
                               <!--Date-->
                               <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                               <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket//Utility/immagini/vinile4.jpg"> </figure>
+                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile4.jpg"> </figure>
                             </div>
                             <div class="item-box-blog-body">
                               <!--Heading-->
