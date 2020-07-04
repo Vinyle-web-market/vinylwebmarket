@@ -530,8 +530,8 @@ var_dump($f1);
 
 
 $pm=new FPersistentManager();
-$utente=$pm->loginUtente("ruggero.cruciani@virlio.it","Ruggioruggio");
-$utente->toString();
+$miao=$pm->deleteImg("EImageUtente","email_utente","Michele@virgilio.it");
+var_dump($miao);
 
 
 

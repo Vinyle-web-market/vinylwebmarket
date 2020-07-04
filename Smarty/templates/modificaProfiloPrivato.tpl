@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+{assign var='userlogged' value=$userlogged|default:'nouser'}
+{assign var='errorEmail' value=$errorEmail|default:'ok'}
+{assign var='errorPassw' value=$errorPassw|default:'ok'}
+{assign var='errorSize' value=$errorSize|default:'ok'}
+{assign var='errorType' value=$errorType|default:'ok'}
+{assign var='errorEmailInput' value=$errorEmailInput|default:'ok'}
+{assign var='errorUsername' value=$errorUsername|default:'ok'}
+{assign var='errorCognome' value=$errorCognome|default:'ok'}
+{assign var='errorNome' value=$errorNome|default:'ok'}
+{assign var='errorTelefono' value=$errorTelefono|default:'ok'}
+{assign var='errorPassword' value=$errorPassword|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -59,43 +70,92 @@
                           <p>Inserisci i campi che desideri modificare:</p>
                           <p>Reinserisci i campi che intendi mantenere.</p>
                       </div>
-                      <form class="form-content" action="/vinylwebmarket/User/registrazione_privato" method="POST">
+                      <form enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
                           <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email" name="email"/>
+                                    <input type="text" class="form-control" placeholder="Email" value="{$email}" name="email"/>
                                 </div>
                                   <div class="form-group">
-                                      <input type="password" class="form-control" placeholder="Vecchia password" name="old_password"/>
+                                      <input type="password" class="form-control" placeholder="Vecchia password-CAMPO OBBLIGATORIO" name="old_password" required/>
                                   </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Nuova password" name="new_password"/>
                                 </div>
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Useraname" name="username"/>
+                                      <input type="text" class="form-control" placeholder="Username" value="{$username}" name="username"/>
                                   </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Nome" name="nome"/>
+                                      <input type="text" class="form-control" placeholder="Nome" value="{$nome}" name="nome"/>
                                   </div>
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Cognome" name="cognome"/>
+                                      <input type="text" class="form-control" placeholder="Cognome" value="{$cognome}" name="cognome"/>
                                   </div>
 
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Telefono" name="telefono"/>
+                                      <input type="text" class="form-control" placeholder="Telefono" value="{$telefono}" name="telefono"/>
                                   </div>
                               </div>
                               <br>
                               <div class="col-md-6">
                                   <div class="custom-file">
-                                   <input type="file" class="custom-file-input" id="customFile">
-                                   <label class="custom-file-label" for="customFile">Carica nuova foto profilo</label>
+                                      <input type="file" class="custom-file-input" id="customFile" name="file">
+                                   <label class="custom-file-label" for="customFile">Inserisci nuova foto profilo</label>
                                   </div>
                               </div>
                           </div>
-                          <button type="submit" class="btnSubmit">Aggiorna</button>
+                          <div class="form-group">
+                              <button type="submit" class="btnSubmit">Aggiorna</button>
+                          </div>
+                          <hr>
+                      {if $errorEmail!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Cambiare Email poichè già assegnata!</p>
+                          </div>
+                      {/if}
+                      <!--  </form> -->
+                      {if $errorPassw!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Password errata!</p>
+                          </div>
+                      {/if}
+                      {if $errorSize!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato immagine troppo grande!  </p>
+                          </div>
+                      {/if}
+                      {if $errorType!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+                          </div>
+                      {/if}
+                      {if $errorEmailInput!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione!Formato email non Valido! </p>
+                          </div>
+                      {/if}
+                          {if $errorCognome!='ok'}
+                              <div style="color: red;">
+                                  <p align="center">Attenzione! Cognome non valido!  </p>
+                              </div>
+                          {/if}
+                          {if $errorNome!='ok'}
+                              <div style="color: red;">
+                                  <p align="center">Attenzione! Nome non valido!  </p>
+                              </div>
+                          {/if}
+                          {if $errorTelefono!='ok'}
+                              <div style="color: red;">
+                                  <p align="center">Attenzione! Telefono non valido!  </p>
+                              </div>
+                          {/if}
+                          {if $errorPassword!='ok'}
+                              <div style="color: red;">
+                                  <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
+                              </div>
+                          {/if}
                       </form>
                   </div>
               </div>

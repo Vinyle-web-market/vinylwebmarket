@@ -224,8 +224,8 @@ class VUser
             case "errorEmail" :
                 $this->smarty->assign('errorEmail', "errore");
                 break;
-            case "ErrorEmailExist" :
-                $this->smarty->assign("errorEmailExist","errore");
+            case "ErrorEmailInput" :
+                $this->smarty->assign("errorEmailInput","errore");
                 break;
             case "errorPassw":
                 $this->smarty->assign('errorPassword', "errore");
@@ -249,7 +249,8 @@ class VUser
         $this->smarty->assign('username',$utente->getUsername());
         $this->smarty->assign('nome',$utente->getNome());
         $this->smarty->assign('email',$utente->getEmail());
-        $this->smarty->assign('cognome',$utente->getName());
+        $this->smarty->assign('cognome',$utente->getCognome());
+        $this->smarty->assign('telefono',$utente->getPhone());
         $this->smarty->display('modificaProfiloPrivato.tpl');
     }
 

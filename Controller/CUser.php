@@ -187,11 +187,14 @@ class CUser
                         //return "ok";
                         $ris = "ok";
                     } elseif ($funz == "modificaUtente") {
+                        $imagex=$pm->loadImg("EImageUtente","email_utente",$utente->getEmail());
+                        if($imagex) {
+                            $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
+                        }
                         //public static function deleteImg(string $categoriaImage,$field, $id){
                         $img = $_FILES["file"];
                         $data = file_get_contents($img["tmp_name"]);
                         $data = base64_encode($data);
-                        $pm->deleteImg("EImageUtente","email_utente",$utente->getEmail());
                         $mutente = new EImageUtente($img["name"],$data,$img["type"], $utente->getEmail());
                         $pm->storeImg($mutente);
                         //return "ok";
@@ -356,10 +359,10 @@ class CUser
                         $statoimg = static::modificaprofiloimmagine($utente);
                         if ($statoimg) {
                             static::updateCampi($utente);
-                            $newutente = $pm->load("emailUtente", $utente->getEmail(), "FCliente");
+                            $newutente = $pm->load("email_privato", $utente->getEmail(), "FPrivato");
                             $salvare = serialize($newutente);
                             $_SESSION['utente'] = $salvare;
-                            header('Location: /FillSpaceWEB/Utente/profile');
+                            header('Location: /vinylwebmarket/User/profile');
                         }
                     } else {  //se vuole cambiare anche l'email
                         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
@@ -372,17 +375,16 @@ class CUser
                                 static::updateCampi($utente);
                                 $input=EInputControl::getInstance();
                                 if($input->testEmail($_POST['email'])){
-                                $pm->update("email", $_POST['email'], "email", $utente->getEmail(), "FCliente");
+                                $pm->update("email", $_POST['email'], "email", $utente->getEmail(), "FUtente_loggato");
                                 $newutente = $pm->load("email_privato", $_POST['email'], "FPrivato");
                                     $img1 = $pm->loadImg("EImageUtente", "email_utente",$utente->getEmail());
                                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
-                                    $view->profilePrivato($utente, $vinili, $img);
                                     $sessione->setUtenteLoggato($newutente);
                                 //$salvare = serialize($newutente);
                                 //$_SESSION['utente'] = $salvare;
                                 $view->profilePrivato($newutente, $vinili, $img1);
                                 }else{
-                                    $view->formModificaProfiloPrivato($utente, $img, "errorEmailExist");
+                                    $view->formModificaProfiloPrivato($utente, $img, "errorEmailInput");
                                 }
                             }
                         }
@@ -413,17 +415,17 @@ class CUser
                 $view->ErrorInputModificaPrivato($err);
             }
             if ($utente->getUsername() != $_POST['username'])
-                $pm->update("username", $_POST['nome'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
            // if ($utente->getEmail() != $_POST['email'])
             //    $pm->update("email", $_POST['email'], "email", $utente->getEmail(), $classeDB);
             if ($_POST['new_password'] != "")
-                $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), "FUtente_loggato");
             if ($utente->getPhone() != $_POST['telefono'])
-                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(),"FUtente_loggato");
             if ($utente->getNome() != $_POST['nome'])
-                $pm->update("nome", $_POST['nome'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("nome", $_POST['nome'], "email_privato", $utente->getEmail(), $classeDB);
             if ($utente->getCognome() != $_POST['cognome'])
-                $pm->update("cognome", $_POST['cognome'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("cognome", $_POST['cognome'], "email_privato", $utente->getEmail(), $classeDB);
     }
         if(get_class($utente) == "ENegozio") {
             $classeDB="FNegozio";
@@ -433,19 +435,19 @@ class CUser
                 $view->ErrorInputModificaNegozio($err);
             }
             if ($utente->getUsername() != $_POST['username'])
-                $pm->update("username", $_POST['username'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
           //  if ($utente->getEmail() != $_POST['email'])
             //    $pm->update("email", $_POST['email'], "email", $utente->getEmail(), $classeDB);
             if ($_POST['new_password'] != "")
-                $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), "FUtente_loggato");
             if ($utente->getPhone() != $_POST['telefono'])
-                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(), "FUtente_loggato");
             if ($utente->getNameShop() != $_POST['nomenegozio'])
-                $pm->update("nomenegozio", $_POST['nomenegozio'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("nomenegozio", $_POST['nomenegozio'], "email_negozio", $utente->getEmail(), $classeDB);
             if ($utente->getPIva() != $_POST['partitaiva'])
-                $pm->update("partitaiva", $_POST['partitaiva'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("partitaiva", $_POST['partitaiva'], "email_negozio", $utente->getEmail(), $classeDB);
             if ($utente->getAddress() != $_POST['indirizzo'])
-                $pm->update("indirizzo", $_POST['indirizzo'], "email", $utente->getEmail(), $classeDB);
+                $pm->update("indirizzo", $_POST['indirizzo'], "email_negozio", $utente->getEmail(), $classeDB);
         }
     }
 
@@ -454,7 +456,7 @@ class CUser
         $pm = new FPersistentManager();
         $ris = true;
         $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
-        if (get_class($utente) == "ECliente") {
+        if (get_class($utente) == "EPrivato") {
             if (isset($_FILES['file'])) {
                 $nome_file = 'file';
                 $img = static::uploadImage($utente, "modificaUtente",$nome_file);
