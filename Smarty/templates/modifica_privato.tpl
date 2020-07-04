@@ -65,8 +65,11 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Email" name="email"/>
                                 </div>
+                                  <div class="form-group">
+                                      <input type="password" class="form-control" placeholder="Vecchia password" name="old_password"/>
+                                  </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" name="password"/>
+                                    <input type="password" class="form-control" placeholder="Nuova password" name="new_password"/>
                                 </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Useraname" name="username"/>
@@ -88,7 +91,7 @@
                               <div class="col-md-6">
                                   <div class="custom-file">
                                    <input type="file" class="custom-file-input" id="customFile">
-                                   <label class="custom-file-label" for="customFile">Carica foto profilo</label>
+                                   <label class="custom-file-label" for="customFile">Carica nuova foto profilo</label>
                                   </div>
                               </div>
                           </div>
