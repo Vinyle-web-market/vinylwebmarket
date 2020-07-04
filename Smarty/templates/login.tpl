@@ -85,7 +85,10 @@
                             <p align="center">Attenzione! Password errata!  </p>
                         </div>
                     {/if}
-                            <button type="submit" class="btnSubmit">Iscriviti</button>
+
+                        <button class="align-content-center" type="submit" class="btnSubmit">Login</button>
+
+
                         </div>
                 </div>
             </div>

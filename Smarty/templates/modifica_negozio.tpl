@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-{assign var='nome' value=$nome}
-{assign var='cognome' value=$cognome}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>profilo privato</title>
-      <!-- CSS only -->
+    <title>modifica profilo privato</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
       <!-- JS, Popper.js, and jQuery -->
@@ -16,12 +13,13 @@
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <!------ Include the above in your HEAD tag ---------->
+      <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULnegozio">
         <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
@@ -32,16 +30,13 @@
         <div class="container=50px">
 
         </div>
-        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">Home</a>
+        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULnegozio">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/vinylwebmarket/Chisiamo/info">Chi siamo?</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
@@ -57,68 +52,52 @@
           </form>
         </div>
       </nav>
+      <div class="container register-form">
+                  <div class="form">
+                      <div class="note">
+                        <p>Inserisci i campi che desideri modificare:</p>
+                        <p>Reinserisci i campi che intendi mantenere.</p>
+                      </div>
 
-      <div class="container">
-      <div class="row profile">
-  		<div class="col-md-3">
-  			<div class="profile-sidebar">
-  				<!-- SIDEBAR USERPIC -->
-  				<div class="profile-userpic">
-  					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" width="300" height="300" class="img-responsive" alt="">
-  				</div>
-  				<!-- END SIDEBAR USERPIC -->
-  				<!-- SIDEBAR USER TITLE -->
-  				<div class="profile-usertitle">
-  					<div class="profile-usertitle-name">
-  						{$nome}
-                        {$cognome}
-  					</div>
-  					<div class="profile-usertitle-job">
-  						<br>
-  					</div>
-  				</div>
-  				<!-- END SIDEBAR USER TITLE -->
+                      <div class="form-content">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Email" value=""/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Password" value=""/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Nome negozio" value=""/>
+                                  </div>
 
-  				<!-- SIDEBAR MENU -->
-  				<div class="profile-usermenu">
-            <li>
-              <a href="messaggi.html">
-              <i class="glyphicon glyphicon-user"></i>
-              Messaggio </a>
-            </li>
-              <li>
-                <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                Vendi vinile </a>
-              </li>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Telefono" value=""/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Indirizzo" value=""/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Partita IVA" value=""/>
+                                  </div>
 
-  						<li>
-  							<a href="#">
-  							<i class="glyphicon glyphicon-user"></i>
-  							Impostazioni account </a>
-  						</li>
-
-  						<li>
-  							<a href="#" target="_blank">
-  							<i class="glyphicon glyphicon-user"></i>
-  							Aiuto </a>
-  						</li>
-
-  				</div>
-  				<!-- END MENU -->
-			</div>
-		</div>
-		<div class="col-md-9">
-            <div class="profile-content">
-			   Ciò che si deve inserire nel profilo
-            </div>
-		</div>
-	</div>
-</div>
-<br>
-<br>
+                              </div>
+                              <br>
+                              <div class="col-md-6">
+                                  <div class="custom-file">
+                                   <input type="file" class="custom-file-input" id="customFile">
+                                   <label class="custom-file-label" for="customFile">Carica foto profilo</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <button type="button" class="btnSubmit">Aggiorna</button>
+                      </div>
+                  </div>
+              </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
-
   </body>
 </html>
