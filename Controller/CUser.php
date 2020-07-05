@@ -358,11 +358,12 @@ class CUser
                     if ($utente->getEmail() == $_POST['email']) {
                         $statoimg = static::modificaprofiloimmagine($utente);
                         if ($statoimg) {
-                            static::updateCampi($utente);
+                            $err=static::updateCampi($utente);
                             $newutente = $pm->load("email_privato", $utente->getEmail(), "FPrivato");
-                            $salvare = serialize($newutente);
-                            $_SESSION['utente'] = $salvare;
-                            header('Location: /vinylwebmarket/User/profile');
+                                $salvare = serialize($newutente);
+                                $_SESSION['utente'] = $salvare;
+                                header('Location: /vinylwebmarket/User/profile');
+
                         }
                     } else {  //se vuole cambiare anche l'email
                         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
@@ -406,34 +407,25 @@ class CUser
     static function updateCampi($utente) {
         $pm = new FPersistentManager();
         $view=new Vuser;
+        $result=array();
+        $input = EInputControl::getInstance();
         //public static function update($field, $newValue, $keyField, $idValue ,$Fclass)
-        if (get_class($utente) == "EPrivato"){
-            $classeDB="FPrivato";
-            $input = EInputControl::getInstance();
-            $err = $input->validPrivato($utente);
-            if ($err) {
-                $view->ErrorInputModificaPrivato($err);
-            }
-            if ($utente->getUsername() != $_POST['username'])
+        if (get_class($utente) == "EPrivato") {
+            $classeDB = "FPrivato";
+            if ($utente->getUsername() != $_POST['username'] and $input->testUsername($_POST['username']))
                 $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
-           // if ($utente->getEmail() != $_POST['email'])
-            //    $pm->update("email", $_POST['email'], "email", $utente->getEmail(), $classeDB);
-            if ($_POST['new_password'] != "")
+            if ($_POST['new_password'] != "" and $input->testPassword($_POST['new_password']))
                 $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), "FUtente_loggato");
-            if ($utente->getPhone() != $_POST['telefono'])
-                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(),"FUtente_loggato");
-            if ($utente->getNome() != $_POST['nome'])
+            if ($utente->getPhone() != $_POST['telefono'] and $input->testPhone($_POST['telefono']))
+                $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(), "FUtente_loggato");
+            if ($utente->getNome() != $_POST['nome'] and $input->testName($_POST['nome']))
                 $pm->update("nome", $_POST['nome'], "email_privato", $utente->getEmail(), $classeDB);
-            if ($utente->getCognome() != $_POST['cognome'])
+            if ($utente->getCognome() != $_POST['cognome'] and $input->testName($_POST['nome']))
                 $pm->update("cognome", $_POST['cognome'], "email_privato", $utente->getEmail(), $classeDB);
-    }
+        }
         if(get_class($utente) == "ENegozio") {
             $classeDB="FNegozio";
             $input = EInputControl::getInstance();
-            $err = $input->validNegozio($utente);
-            if ($err) {
-                $view->ErrorInputModificaNegozio($err);
-            }
             if ($utente->getUsername() != $_POST['username'])
                 $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
           //  if ($utente->getEmail() != $_POST['email'])

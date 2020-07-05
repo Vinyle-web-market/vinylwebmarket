@@ -63,9 +63,12 @@
   		<div class="col-md-3">
   			<div class="profile-sidebar">
   				<!-- SIDEBAR USERPIC -->
+
   				<div class="profile-userpic">
+                    <a href="/vinylwebmarket/Homepage/modificaProfilo">
   					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" width="300" height="300" class="img-responsive" alt="">
-  				</div>
+                    </a>
+                </div>
   				<!-- END SIDEBAR USERPIC -->
   				<!-- SIDEBAR USER TITLE -->
   				<div class="profile-usertitle">

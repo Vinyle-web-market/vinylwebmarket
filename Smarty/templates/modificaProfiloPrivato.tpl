@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {assign var='userlogged' value=$userlogged|default:'nouser'}
 {assign var='errorEmail' value=$errorEmail|default:'ok'}
-{assign var='errorPassw' value=$errorPassw|default:'ok'}
+{assign var='errorPassword' value=$errorPassword|default:'ok'}
 {assign var='errorSize' value=$errorSize|default:'ok'}
 {assign var='errorType' value=$errorType|default:'ok'}
 {assign var='errorEmailInput' value=$errorEmailInput|default:'ok'}
@@ -9,7 +9,7 @@
 {assign var='errorCognome' value=$errorCognome|default:'ok'}
 {assign var='errorNome' value=$errorNome|default:'ok'}
 {assign var='errorTelefono' value=$errorTelefono|default:'ok'}
-{assign var='errorPassword' value=$errorPassword|default:'ok'}
+{assign var='errorPasswordInput' value=$errorPasswordInput|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -88,7 +88,7 @@
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Nome" value="{$nome}" name="nome"/>
+                                      <input type="text" class="form-control" placeholder="Nome" value="{$nome}" pattern="[a-zA-Z]+\"  name="nome"/>
                                   </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Cognome" value="{$cognome}" name="cognome"/>
@@ -99,12 +99,12 @@
                                   </div>
                               </div>
                               <br>
-                              <div class="col-md-6">
-                                  <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile" name="file">
-                                   <label class="custom-file-label" for="customFile">Inserisci nuova foto profilo</label>
-                                  </div>
-                              </div>
+                              <!-- <div class="col-md-6">
+                                   <div class="custom-file">
+                                       <input type="file" class="custom-file-input" id="customFile" name="file">
+                                    <label class="custom-file-label" for="customFile">Inserisci nuova foto profilo</label>
+                                   </div>
+                              </div>-->
                           </div>
                           <div class="form-group">
                               <button type="submit" class="btnSubmit">Aggiorna</button>
@@ -116,7 +116,7 @@
                           </div>
                       {/if}
                       <!--  </form> -->
-                      {if $errorPassw!='ok'}
+                      {if $errorPassword!='ok'}
                           <div style="color: red;">
                               <p align="center">Password errata!</p>
                           </div>
@@ -151,7 +151,7 @@
                                   <p align="center">Attenzione! Telefono non valido!  </p>
                               </div>
                           {/if}
-                          {if $errorPassword!='ok'}
+                          {if $errorPasswordInput!='ok'}
                               <div style="color: red;">
                                   <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
                               </div>

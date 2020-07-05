@@ -227,7 +227,7 @@ class VUser
             case "ErrorEmailInput" :
                 $this->smarty->assign("errorEmailInput","errore");
                 break;
-            case "errorPassw":
+            case "errorPassword":
                 $this->smarty->assign('errorPassword', "errore");
                 break;
             case "errorSize" :
@@ -271,7 +271,7 @@ class VUser
                     break;
 
                 case "password":
-                    $this->smarty->assign('errorPassword', "errore");
+                    $this->smarty->assign('errorPasswordInput', "errore");
                     break;
 
                 case "email":
@@ -302,7 +302,7 @@ class VUser
                     $this->smarty->assign('errorTelefono', "errore");
                     break;
                 case "password":
-                    $this->smarty->assign('errorPassword', "errore");
+                    $this->smarty->assign('errorPasswordInput', "errore");
                     break;
             }
             $this->smarty->display('modificaProfiloPrivato.tpl');
