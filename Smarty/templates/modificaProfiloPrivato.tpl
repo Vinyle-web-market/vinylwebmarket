@@ -177,20 +177,26 @@
 
             var telefono = document.forms["form_mod"]["telefono"].value;
             let exp1 = /^([0-9 '-]*)$/;
-            if (!telefono.match(exp)) {
+            if (!telefono.match(exp1)) {
                 if(telefono.length<7){
                 alert("Inserisci un numero di telefono corretto");
                 return false;
             }}
             var  username= document.forms["form_mod"]["username"].value;
             let exp2 = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-            if (!username.match(exp)) {
+            if (!username.match(exp2)) {
                 alert("Inserisci un username corretto!!!");
                 return false;
             }
             var  password= document.forms["form_mod"]["new_password"].value;
             if (password!="" && password<7) {
                 alert("Inserisci password di almeno 8 caratteri!!!");
+                return false;
+            }
+            var email = document.forms["form_mod"]["email"].value;
+            let exp3 = /^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/;
+            if (!nome.match(exp3)) {
+                alert("Inserisci un email corretta!");
                 return false;
             }
 
