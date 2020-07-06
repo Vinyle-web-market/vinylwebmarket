@@ -187,10 +187,7 @@ class CUser
                         //return "ok";
                         $ris = "ok";
                     } elseif ($funz == "modificaUtente") {
-                        $imagex=$pm->loadImg("EImageUtente","email_utente",$utente->getEmail());
-                        if($imagex) {
-                            $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
-                        }
+                        $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
                         //public static function deleteImg(string $categoriaImage,$field, $id){
                         $img = $_FILES["file"];
                         $data = file_get_contents($img["tmp_name"]);
@@ -319,11 +316,11 @@ class CUser
                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
                     //RECENSIONI
                     $view->profilePrivato($utente, $vinili, $img);
-                } else {
+                } elseif(get_class($utente) == "ENegozio") {
                     $img = $pm->loadImg("EImageVinile", "email_utente", $utente->getEmail());
                     $annunci = $pm->load("venditore", $utente->getEmail(), "FVinile");
                     //RECENSIONI
-                    $view->profileNegozio($utente, $annunci, $img,);
+                    $view->profileNegozio($utente, $annunci, $img);
                 }
             } else
                 header('Location: /vinylwebmarket/User/login');
@@ -343,7 +340,7 @@ class CUser
                 $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                 if (get_class($utente) == "EPrivato") {
                     $view->formModificaProfiloPrivato($utente, $img, "ok");
-                } else {
+                } elseif(get_class($utente) == "ENegozio") {
                     $view->formModificaProfiloNegozio($utente, $img , "ok");
                 }
             } else
@@ -356,23 +353,17 @@ class CUser
             if (get_class($utente) == "EPrivato") {
                 if ($utente->getPassword() == $_POST['old_password']) {
                     if ($utente->getEmail() == $_POST['email']) {
-                        $statoimg = static::modificaprofiloimmagine($utente);
-                        if ($statoimg) {
                             $err=static::updateCampi($utente);
                             $newutente = $pm->load("email_privato", $utente->getEmail(), "FPrivato");
                                 $salvare = serialize($newutente);
                                 $_SESSION['utente'] = $salvare;
                                 header('Location: /vinylwebmarket/User/profile');
-
-                        }
                     } else {  //se vuole cambiare anche l'email
                         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
                         if ($veremail) {
                             //UTENTE GIA NEL DB
                             $view->formModificaProfiloPrivato($utente, $img, "errorEmail");
                         } else {
-                            $statoimg = static::modificaprofiloimmagine($utente);
-                            if ($statoimg) {
                                 static::updateCampi($utente);
                                 $input=EInputControl::getInstance();
                                 if($input->testEmail($_POST['email'])){
@@ -387,7 +378,7 @@ class CUser
                                 }else{
                                     $view->formModificaProfiloPrivato($utente, $img, "errorEmailInput");
                                 }
-                            }
+
                         }
                     }
                 } else {
@@ -395,8 +386,43 @@ class CUser
                     $view->formModificaProfiloPrivato($utente, $img, "errorPassword");
                 }
             }
-        }
+            elseif (get_class($utente) == "ENegozio"){
+                if ($utente->getPassword() == $_POST['old_password']) {
+                    if ($utente->getEmail() == $_POST['email']) {
+                        $err=static::updateCampi($utente);
+                        $newutente = $pm->load("email_negozio", $utente->getEmail(), "FNegozio");
+                        $salvare = serialize($newutente);
+                        $_SESSION['utente'] = $salvare;
+                        header('Location: /vinylwebmarket/User/profile');
+                    }
+                    else {
+                        $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
+                        if ($veremail) {
+                            $view->formModificaProfiloNegozio($utente, $img, "errorEmail");
+                        }
+                        else {
+                            static::updateCampi($utente);
+                            $input = EInputControl::getInstance();
+                            if ($input->testEmail($_POST['email'])) {
+                                $pm->update("email", $_POST['email'], "email", $utente->getEmail(), "FUtente_loggato");
+                                $newutente = $pm->load("email_negozio", $_POST['email'], "FNegozio");
+                                $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
+                                $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                                $sessione->setUtenteLoggato($newutente);
+                                //$salvare = serialize($newutente);
+                                //$_SESSION['utente'] = $salvare;
+                                $view->profileNegozio($newutente, $vinili, $img1);
+                            } else {
+                                $view->formModificaProfiloNegozio($utente, $img, "errorEmailInput");
+                            }
+                        }
+                    }
+                }else{
+                    $view->formModificaProfiloNegozio($utente, $img, "errorPassword");
+                }
 
+            }
+        }
     }
     /**
      * Funzione che si occupa di fare tutti i controlli necessari per aggiornare i coli campi che un utente desidera modificare
@@ -426,26 +452,41 @@ class CUser
         if(get_class($utente) == "ENegozio") {
             $classeDB="FNegozio";
             $input = EInputControl::getInstance();
-            if ($utente->getUsername() != $_POST['username'])
+            if ($utente->getUsername() != $_POST['username'] and $input->testUsername($_POST['username']))
                 $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
           //  if ($utente->getEmail() != $_POST['email'])
             //    $pm->update("email", $_POST['email'], "email", $utente->getEmail(), $classeDB);
-            if ($_POST['new_password'] != "")
+            if ($_POST['new_password'] != "" and $input->testPassword($_POST['new_password']))
                 $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), "FUtente_loggato");
-            if ($utente->getPhone() != $_POST['telefono'])
+            if ($utente->getPhone() != $_POST['telefono'] and $input->testPhone($_POST['telefono']))
                 $pm->update("telefono", $_POST['telefono'], "email", $utente->getEmail(), "FUtente_loggato");
             if ($utente->getNameShop() != $_POST['nomenegozio'])
-                $pm->update("nomenegozio", $_POST['nomenegozio'], "email_negozio", $utente->getEmail(), $classeDB);
-            if ($utente->getPIva() != $_POST['partitaiva'])
+                $pm->update("nome", $_POST['nomenegozio'], "email_negozio", $utente->getEmail(), $classeDB);
+            if ($utente->getPIva() != $_POST['partitaiva'] and $input->testIva($_POST['partitaiva']))
                 $pm->update("partitaiva", $_POST['partitaiva'], "email_negozio", $utente->getEmail(), $classeDB);
             if ($utente->getAddress() != $_POST['indirizzo'])
                 $pm->update("indirizzo", $_POST['indirizzo'], "email_negozio", $utente->getEmail(), $classeDB);
         }
     }
 
-    static function modificaprofiloimmagine($utente) {
-        $view = new VUser();
+    /*
+    public function modificaProfiloImage() {
         $pm = new FPersistentManager();
+        $view = new VUser();
+        //session_start();
+        $sessione=Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                //$utente = unserialize($_SESSION['utente']);
+                $utente=$sessione->getUtente();
+                    $view->formModificaProfiloImage($utente,"ok");
+            } else {
+                header('Location: /vinylwebmarket/User/login');
+            }
+        }
+        elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            echo "ciao";
+            $utente=$sessione->getUtente();
         $ris = true;
         $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
         if (get_class($utente) == "EPrivato") {
@@ -455,14 +496,14 @@ class CUser
                 switch ($img) {
                     case "size":
                         $ris = false;
-                        $view->formModificaProfiloPrivato($utente, $img1, "errorSize");
+                        $view->formModificaProfiloImage($utente,"errorSize");
                         break;
                     case "type":
                         $ris = false;
-                        $view->formModificaProfiloPrivato($utente, $img1, "errorType");
+                        $view->formModificaProfiloImage($utente, "errorType");
                         break;
                     case "ok":
-                        $ris = true;
+                        header('Location: /vinylwebmarket/User/profile');
                         break;
                 }
             }
@@ -485,29 +526,11 @@ class CUser
                         $ris = true;
                         break;
                 }
-                if ($ris == true) {
-                    if ($_FILES['imm_mezzo']['name'] != null) {
-                        $nome_file_img = "imm_mezzo";
-                        $img_m = static::upload_media_mezzo($utente,$nome_file_img);
-                        switch ($img_m) {
-                            case "size":
-                                $ris = false;
-                                $view->formmodificatrasp($utente, $mezzo, $img1, $img_mezzo, "errorSizeM");
-                                break;
-                            case "type":
-                                $ris = false;
-                                $view->formmodificatrasp($utente, $mezzo, $img1, $img_mezzo, "errorTypeM");
-                                break;
-                            case "ok":
-                                $ris = true;
-                                break;
-                        }
-                    }
-                }
+            }
             }
         }
-        return $ris;
     }
+    */
 
 
 

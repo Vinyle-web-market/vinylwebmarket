@@ -254,6 +254,42 @@ class VUser
         $this->smarty->display('modificaProfiloPrivato.tpl');
     }
 
+    public function formModificaProfiloNegozio($utente, $image, $errore) {
+        switch ($errore) {
+            case "errorEmail" :
+                $this->smarty->assign('errorEmail', "errore");
+                break;
+            case "ErrorEmailInput" :
+                $this->smarty->assign("errorEmailInput","errore");
+                break;
+            case "errorPassword":
+                $this->smarty->assign('errorPassword', "errore");
+                break;
+            case "errorSize" :
+                $this->smarty->assign('errorSize', "errore");
+                break;
+            case "errorType" :
+                $this->smarty->assign('errorType', "errore");
+                break;
+        }
+        if (isset($img)) {
+            $pic64 = base64_encode($img->getDataImage());
+        }
+        else {
+            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
+            $pic64 = base64_encode($data);
+        }
+        $this->smarty->assign('userlogged',"loggato");
+        $this->smarty->assign('pic64',$pic64);
+        $this->smarty->assign('username',$utente->getUsername());
+        $this->smarty->assign('email',$utente->getEmail());
+        $this->smarty->assign('telefono',$utente->getPhone());
+        $this->smarty->assign('partitaiva',$utente->getPIva());
+        $this->smarty->assign('nomenegozio',$utente->getNameShop());
+        $this->smarty->assign('indirizzo',$utente->getAddress());
+        $this->smarty->display('modificaProfiloNegozio.tpl');
+    }
+/*
     public function ErrorInputModificaNegozio($errori)
     {
         foreach ($errori as $err) {
@@ -281,6 +317,7 @@ class VUser
         }
         $this->smarty->display('modificaProfiloNegozio.tpl');
     }
+*/
 
     public function ErrorInputModificaPrivato($errori)
     {
@@ -308,6 +345,20 @@ class VUser
             $this->smarty->display('modificaProfiloPrivato.tpl');
         }
     }
+
+    /*
+    public function formModificaProfiloImage($utente, $errore) {
+        switch ($errore) {
+            case "errorSize" :
+                $this->smarty->assign('errorSize', "errore");
+                break;
+            case "errorType" :
+                $this->smarty->assign('errorType', "errore");
+                break;
+        }
+        $this->smarty->display('modificaProfiloImage.tpl');
+    }
+    */
 
 
 }

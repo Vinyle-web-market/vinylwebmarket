@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+{assign var='userlogged' value=$userlogged|default:'nouser'}
+{assign var='errorEmail' value=$errorEmail|default:'ok'}
+{assign var='errorPassword' value=$errorPassword|default:'ok'}
+{assign var='errorSize' value=$errorSize|default:'ok'}
+{assign var='errorType' value=$errorType|default:'ok'}
+{assign var='errorEmailInput' value=$errorEmailInput|default:'ok'}
+{assign var='errorUsername' value=$errorUsername|default:'ok'}
+{assign var='errorPartitaiva' value=$errorPartitaiva|default:'ok'}
+{assign var='errorTelefono' value=$errorTelefono|default:'ok'}
+{assign var='errorPasswordInput' value=$errorPasswordInput|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -52,51 +62,99 @@
           </form>
         </div>
       </nav>
-      <div class="container register-form">
-                  <div class="form">
-                      <div class="note">
-                        <p>Inserisci i campi che desideri modificare:</p>
-                        <p>Reinserisci i campi che intendi mantenere.</p>
-                      </div>
 
-                      <div class="form-content">
-                          <div class="row">
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Email" value=""/>
-                                  </div>
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Password" value=""/>
-                                  </div>
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Nome negozio" value=""/>
-                                  </div>
-
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Telefono" value=""/>
-                                  </div>
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Indirizzo" value=""/>
-                                  </div>
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Partita IVA" value=""/>
-                                  </div>
-
-                              </div>
-                              <br>
-                              <div class="col-md-6">
-                                  <div class="custom-file">
-                                   <input type="file" class="custom-file-input" id="customFile">
-                                   <label class="custom-file-label" for="customFile">Carica foto profilo</label>
-                                  </div>
-                              </div>
-                          </div>
-                          <button type="button" class="btnSubmit">Aggiorna</button>
-                      </div>
-                  </div>
-              </div>
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <p>Inserisci i campi che desideri modificare:</p>
+                <p>Reinserisci i campi che intendi mantenere.</p>
+            </div>
+            <form enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Email" value="{$email}" name="email"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Vecchia password-CAMPO OBBLIGATORIO" name="old_password" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Nuova password" name="new_password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" value="{$username}" name="username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nome negozio" value="{$nomenegozio}" name="nomenegozio"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Telefono" value="{$telefono}" name="telefono"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Indirizzo" value="{$indirizzo}" name="indirizzo"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Partita IVA" value="{$partitaiva}" name="partitaiva"/>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- <div class="col-md-6">
+                         <div class="custom-file">
+                             <input type="file" class="custom-file-input" id="customFile" name="file">
+                          <label class="custom-file-label" for="customFile">Inserisci nuova foto profilo</label>
+                         </div>
+                    </div>-->
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btnSubmit">Aggiorna</button>
+                </div>
+                <hr>
+                {if $errorEmail!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Cambiare Email poichè già assegnata!</p>
+                    </div>
+                {/if}
+                <!--  </form> -->
+                {if $errorPassword!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Password errata!</p>
+                    </div>
+                {/if}
+                {if $errorSize!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione! Formato immagine troppo grande!  </p>
+                    </div>
+                {/if}
+                {if $errorType!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+                    </div>
+                {/if}
+                {if $errorEmailInput!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione!Formato email non Valido! </p>
+                    </div>
+                {/if}
+                {if $errorTelefono!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione! Telefono non valido!  </p>
+                    </div>
+                {/if}
+                {if $errorPasswordInput!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
+                    </div>
+                {/if}
+                {if $errorPartitaiva!='ok'}
+                    <div style="color: red;">
+                        <p align="center">Attenzione! La partita iva ha 11 cifre!  </p>
+                    </div>
+                {/if}
+            </form>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>

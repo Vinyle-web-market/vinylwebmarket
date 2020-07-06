@@ -70,7 +70,7 @@
                           <p>Inserisci i campi che desideri modificare:</p>
                           <p>Reinserisci i campi che intendi mantenere.</p>
                       </div>
-                      <form enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
+                      <form enctype="multipart/form-data" name="form_mod" onsubmit="return validateForm()" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
                           <div class="row">
                               <div class="col-md-6">
                                 <div class="form-group">
@@ -88,7 +88,7 @@
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Nome" value="{$nome}" pattern="[a-zA-Z]+\"  name="nome"/>
+                                      <input type="text" class="form-control" placeholder="Nome" value="{$nome}"  name="nome"/>
                                   </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Cognome" value="{$cognome}" name="cognome"/>
@@ -159,6 +159,44 @@
                       </form>
                   </div>
               </div>
+
+    <script>
+        function validateForm() {
+            var nome = document.forms["form_mod"]["nome"].value;
+            let exp = /^([a-zA-Z '-]*)$/;
+            if (!nome.match(exp)) {
+                alert("Inserisci un nome corretto,solo caratteri!");
+                return false;
+            }
+
+            var  cognome= document.forms["form_mod"]["cognome"].value;
+            if (!cognome.match(exp)) {
+                alert("Inserisci un cognome corretto,solo caratteri!");
+                return false;
+            }
+
+            var telefono = document.forms["form_mod"]["telefono"].value;
+            let exp1 = /^([0-9 '-]*)$/;
+            if (!telefono.match(exp)) {
+                if(telefono.length<7){
+                alert("Inserisci un numero di telefono corretto");
+                return false;
+            }}
+            var  username= document.forms["form_mod"]["username"].value;
+            let exp2 = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+            if (!username.match(exp)) {
+                alert("Inserisci un username corretto!!!");
+                return false;
+            }
+            var  password= document.forms["form_mod"]["new_password"].value;
+            if (password!="" && password<7) {
+                alert("Inserisci password di almeno 8 caratteri!!!");
+                return false;
+            }
+
+        }
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>

@@ -91,7 +91,7 @@
             </li>
 
 						<li>
-							<a href="#">
+							<a href="/vinylwebmarket/User/modificaProfilo">
 							<i class="glyphicon glyphicon-user"></i>
 							Impostazioni account </a>
 						</li>
