@@ -360,5 +360,37 @@ class VUser
     }
     */
 
+    public function formModificaCarta($utente,$errore){
+        switch ($errore) {
+            case "errorEmail" :
+                $this->smarty->assign('errorEmail', "errore");
+                break;
+            case "ErrorEmailInput" :
+                $this->smarty->assign("errorEmailInput","errore");
+                break;
+            case "errorPassword":
+                $this->smarty->assign('errorPassword', "errore");
+                break;
+            case "errorSize" :
+                $this->smarty->assign('errorSize', "errore");
+                break;
+            case "errorType" :
+                $this->smarty->assign('errorType', "errore");
+                break;
+        }
+        $this->smarty->assign('userlogged',"loggato");
+
+        $this->smarty->assign('username',$utente->getUsername());
+        $this->smarty->assign('email',$utente->getEmail());
+        $this->smarty->assign('telefono',$utente->getPhone());
+        $this->smarty->assign('partitaiva',$utente->getPIva());
+        $this->smarty->assign('nomenegozio',$utente->getNameShop());
+        $this->smarty->assign('indirizzo',$utente->getAddress());
+        $this->smarty->display('modificaProfiloNegozio.tpl');
+    }
+
+
+
+
 
 }

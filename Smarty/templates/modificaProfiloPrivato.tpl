@@ -194,8 +194,8 @@
                 return false;
             }
             var email = document.forms["form_mod"]["email"].value;
-            let exp3 = /^[A-z0-9\.\+_-]+@[A-z0-9\._-]+\.[A-z]{2,6}$/;
-            if (!nome.match(exp3)) {
+            let exp3 =/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/  ;
+            if (!email.match(exp3)) {
                 alert("Inserisci un email corretta!");
                 return false;
             }

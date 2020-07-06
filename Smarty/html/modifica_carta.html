@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Inserisci carta</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar sticky-top navbar-dark bg-dark">
+      <div class="container=50px">
+      <a class="navbar-brand" href="#">
+        <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+        Vinyl Web Market
+      </a>
+      </div>
+    </nav>
+
+      <nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
+        <div class="container=50px">
+
+        </div>
+        <a class="navbar-brand" href="homepage_utente_loggato.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="chisiamo.html">Chi siamo?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Homepage.html">Log Out</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profilo_negozio.html">Profilo</a>
+            </li>
+
+            <li class="nav-item dropdown">
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="container">
+        <form class="form-horizontal" role="form" action="/vinylwebmarket/User/modificaCarta" method="post">
+          <fieldset>
+            <legend>Utilizza un'altra carta</legend>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="card-holder-name">Nome intestatario</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="intestatario" id="card-holder-name" placeholder="Nome e cognome intestatrio">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="card-number">Numero carta</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="numerocarta" id="card-number" placeholder="Numero carta di credito/debito">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="expiry-month">Data scadenza:</label>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <select class="form-control" name="mese">
+
+                      <option value="01">Jan (01)</option>
+                      <option value="02">Feb (02)</option>
+                      <option value="03">Mar (03)</option>
+                      <option value="04">Apr (04)</option>
+                      <option value="05">May (05)</option>
+                      <option value="06">June (06)</option>
+                      <option value="07">July (07)</option>
+                      <option value="08">Aug (08)</option>
+                      <option value="09">Sep (09)</option>
+                      <option value="10">Oct (10)</option>
+                      <option value="11">Nov (11)</option>
+                      <option value="12">Dec (12)</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-3">
+                    <select class="form-control" name="anno">
+
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="cvv">Codice CVV</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Codice di sicurezza CVV">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="button" class="btn btn-success">AGGIORNA</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+
+  </body>
+</html>

@@ -532,15 +532,21 @@ class CUser
     }
     */
 
+    public function modificaCarta(){
+        $pm = new FPersistentManager();
+        $view = new VUser();
+        //session_start();
+        $sessione=Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                $utente=$sessione->getUtente();
+                  $view->formModificaCarta($utente, "ok");
 
+            } else
+                header('Location: /vinylwebmarket/User/login');
+        }
 
-
-
-
-
-
-
-
+    }
 
 
 
