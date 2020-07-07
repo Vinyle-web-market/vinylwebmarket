@@ -432,7 +432,7 @@ class CUser
      */
     static function updateCampi($utente) {
         $pm = new FPersistentManager();
-        $view=new Vuser;
+        $view=new VUser();
         $result=array();
         $input = EInputControl::getInstance();
         //public static function update($field, $newValue, $keyField, $idValue ,$Fclass)

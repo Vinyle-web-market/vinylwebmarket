@@ -4,19 +4,12 @@
 {assign var='errorPassword' value=$errorPassword|default:'ok'}
 {assign var='errorSize' value=$errorSize|default:'ok'}
 {assign var='errorType' value=$errorType|default:'ok'}
-{assign var='errorEmailInput' value=$errorEmailInput|default:'ok'}
-{assign var='errorUsername' value=$errorUsername|default:'ok'}
-{assign var='errorCognome' value=$errorCognome|default:'ok'}
-{assign var='errorNome' value=$errorNome|default:'ok'}
-{assign var='errorTelefono' value=$errorTelefono|default:'ok'}
-{assign var='errorPasswordInput' value=$errorPasswordInput|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>modifica profilo privato</title>
       <!-- CSS only -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
       <!-- JS, Popper.js, and jQuery -->
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -131,31 +124,6 @@
                               <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
                           </div>
                       {/if}
-                      {if $errorEmailInput!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione!Formato email non Valido! </p>
-                          </div>
-                      {/if}
-                          {if $errorCognome!='ok'}
-                              <div style="color: red;">
-                                  <p align="center">Attenzione! Cognome non valido!  </p>
-                              </div>
-                          {/if}
-                          {if $errorNome!='ok'}
-                              <div style="color: red;">
-                                  <p align="center">Attenzione! Nome non valido!  </p>
-                              </div>
-                          {/if}
-                          {if $errorTelefono!='ok'}
-                              <div style="color: red;">
-                                  <p align="center">Attenzione! Telefono non valido!  </p>
-                              </div>
-                          {/if}
-                          {if $errorPasswordInput!='ok'}
-                              <div style="color: red;">
-                                  <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
-                              </div>
-                          {/if}
                       </form>
                   </div>
               </div>
@@ -202,7 +170,6 @@
 
         }
     </script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>

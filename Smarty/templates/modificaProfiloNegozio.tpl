@@ -69,7 +69,7 @@
                 <p>Inserisci i campi che desideri modificare:</p>
                 <p>Reinserisci i campi che intendi mantenere.</p>
             </div>
-            <form enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
+            <form enctype="multipart/form-data" name="form_mod" onsubmit="return validateForm()" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -132,29 +132,51 @@
                         <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
                     </div>
                 {/if}
-                {if $errorEmailInput!='ok'}
-                    <div style="color: red;">
-                        <p align="center">Attenzione!Formato email non Valido! </p>
-                    </div>
-                {/if}
-                {if $errorTelefono!='ok'}
-                    <div style="color: red;">
-                        <p align="center">Attenzione! Telefono non valido!  </p>
-                    </div>
-                {/if}
-                {if $errorPasswordInput!='ok'}
-                    <div style="color: red;">
-                        <p align="center">Attenzione! La password deve avere più di 8 caratteri!  </p>
-                    </div>
-                {/if}
-                {if $errorPartitaiva!='ok'}
-                    <div style="color: red;">
-                        <p align="center">Attenzione! La partita iva ha 11 cifre!  </p>
-                    </div>
-                {/if}
             </form>
         </div>
     </div>
+    <script>
+        function validateForm() {
+            var nome = document.forms["form_mod"]["nomenegozio"].value;
+            let exp = /^([a-zA-Z '-]*)$/;
+            if (!nome.match(exp)) {
+                alert("Inserisci un nome corretto,solo caratteri!");
+                return false;
+            }
+
+            var  partitaiva= document.forms["form_mod"]["partitaiva"].value;
+            if (partitaiva.length!=11) {
+                alert("Inserisci una partita iva corretta!");
+                return false;
+            }
+
+            var telefono = document.forms["form_mod"]["telefono"].value;
+            let exp1 = /^([0-9 '-]*)$/;
+            if (!telefono.match(exp1)) {
+                if(telefono.length<7){
+                    alert("Inserisci un numero di telefono corretto");
+                    return false;
+                }}
+            var  username= document.forms["form_mod"]["username"].value;
+            let exp2 = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+            if (!username.match(exp2)) {
+                alert("Inserisci un username corretto!!!");
+                return false;
+            }
+            var  password= document.forms["form_mod"]["new_password"].value;
+            if (password!="" && password<7) {
+                alert("Inserisci password di almeno 8 caratteri!!!");
+                return false;
+            }
+            var email = document.forms["form_mod"]["email"].value;
+            let exp3 =/^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/  ;
+            if (!email.match(exp3)) {
+                alert("Inserisci un email corretta!");
+                return false;
+            }
+
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>
