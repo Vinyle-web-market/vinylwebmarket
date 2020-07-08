@@ -410,13 +410,13 @@ echo $o[1]->toString();
 //------------------------------------------------------------------------
 */
 
-/*
+
 //----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
-$out=$n->load('email_negozio', 'ZioTony@virgeilio.it');
+$out=$n->load('email_negozio', 'negozio@negozio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-*/
+
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------
@@ -528,14 +528,19 @@ $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-
+/*
 $pm=new FPersistentManager();
 $miao=$pm->deleteImg("EImageUtente","email_utente","Michele@virgilio.it");
 var_dump($miao);
-
-
-
-
+*/
+/*
+$id=new FCarta();
+//$a=new EAbbonamento();
+$a=$id->load("id",60);
+var_dump($a);
+echo "<br>";
+//echo $a->toString();
+*/
 
 ?>
 
