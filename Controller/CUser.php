@@ -9,22 +9,22 @@ class CUser
         $view->formRegistrazionePrivato();
     }
 
-        public function registrazionePrivato()
-        {
-            if ($_SERVER['REQUEST_METHOD'] == "GET") {
-                $sessione = Session::getInstance();
-                if ($sessione->isLoggedUtente()) {
-                    header('Location: /vinylwebmarket/');
-                } else {
-                    $view = new VRegistrazione();
-                    $view->formRegistrazionePrivato();
-                }
-            }else if($_SERVER['REQUEST_METHOD']=="POST") {
+    public function registrazionePrivato()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $sessione = Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+                header('Location: /vinylwebmarket/');
+            } else {
+                $view = new VRegistrazione();
+                $view->formRegistrazionePrivato();
+            }
+        } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
             static::controlRegistrazionePrivato();
         }
-	}
+    }
 
-	public function controlRegistrazionePrivato()
+    public function controlRegistrazionePrivato()
     {
         $nome = $_POST["nome"];
         $cognome = $_POST["cognome"];
@@ -36,39 +36,37 @@ class CUser
         $pm = new FPersistentManager();
         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
         $view2 = new VUser();
-        $err=array();
-        $error_stringa="";
-        //POTENZIALE ERRORE QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+        $err = array();
+        $error_stringa = "";
         if ($veremail) {
             $error_stringa = "email";
-            $view2->ErrorInputRegistrazionePrivato($err,$error_stringa);
+            $view2->ErrorInputRegistrazionePrivato($err, $error_stringa);
 
         } else {
             $privato = new EPrivato($username, $email, $password, $telefono, $nome, $cognome);
             $input = EInputControl::getInstance();
             $err = $input->validPrivato($privato);
-        if ($err) {
-                $view2->ErrorInputRegistrazionePrivato($err,$error_stringa);
-            }
-            else if ($privato != null) {
-            if (isset($_FILES['file'])) {
-                $nome_file = 'file';
-                $img = static::uploadImage($privato,"registrazionePrivato",$nome_file);
-                switch ($img) {
-                    case "size":
-                        $view2->ErrorInputRegistrazionePrivato($err,"size");
-                        break;
-                    case "type":
-                        $view2->ErrorInputRegistrazionePrivato($err,"typeimg");
-                        break;
-                    case "ok":
-                        header('Location:/vinylwebmarket/Homepage/impostaPaginaULprivato');
-                        break;
+            if ($err) {
+                $view2->ErrorInputRegistrazionePrivato($err, $error_stringa);
+            } else if ($privato != null) {
+                if (isset($_FILES['file'])) {
+                    $nome_file = 'file';
+                    $img = static::uploadImage($privato, "registrazionePrivato", $nome_file);
+                    switch ($img) {
+                        case "size":
+                            $view2->ErrorInputRegistrazionePrivato($err, "size");
+                            break;
+                        case "type":
+                            $view2->ErrorInputRegistrazionePrivato($err, "typeimg");
+                            break;
+                        case "ok":
+                            header('Location:/vinylwebmarket/Homepage/impostaPaginaULprivato');
+                            break;
+                    }
                 }
-                }
-            }
             }
         }
+    }
 
     public function FormRegNegozio()
     {
@@ -86,12 +84,13 @@ class CUser
                 $view = new VRegistrazione();
                 $view->formRegistrazioneNegozio();
             }
-        }else if($_SERVER['REQUEST_METHOD']=="POST") {
+        } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
             static::controlRegistrazioneNegozio();
         }
     }
 
-    public function controlRegistrazioneNegozio(){
+    public function controlRegistrazioneNegozio()
+    {
         $ris = "ok";
         $username = $_POST["username"];
         $email = $_POST["email"];
@@ -101,43 +100,42 @@ class CUser
         $iva = $_POST["partitaiva"];
         $indirizzo = $_POST["indirizzo"];
         //carta
-        $numeroCarta=$_POST["numerocarta"];
-        $cvv=$_POST["cvv"];
-        $intestatario=$_POST["intestatario"];
-        $mese=$_POST["mese"];
-        $anno=$_POST["anno"];
-        $scadenza=$anno."-".$mese."-01";
+        $numeroCarta = $_POST["numerocarta"];
+        $cvv = $_POST["cvv"];
+        $intestatario = $_POST["intestatario"];
+        $mese = $_POST["mese"];
+        $anno = $_POST["anno"];
+        $scadenza = $anno . "-" . $mese . "-01";
         $ris = "ok";
         $pm = new FPersistentManager();
         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
         $view2 = new VUser();
-        $err=array();
-        $error_stringa="";
+        $err = array();
+        $error_stringa = "";
         //POTENZIALE ERRORE QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         if ($veremail) {
             $error_email = "email";
-            $view2->ErrorInputRegistrazioneNegozio($err,$error_email);
+            $view2->ErrorInputRegistrazioneNegozio($err, $error_email);
 
         } else {
-            $abb=new EAbbonamento();
-            $carta=new ECarta($intestatario,$numeroCarta,$scadenza,$cvv);
-            $negozio = new ENegozio($username, $email, $password, $telefono, $nomeNegozio, $iva,$indirizzo,$carta,$abb);
+            $abb = new EAbbonamento();
+            $carta = new ECarta($intestatario, $numeroCarta, $scadenza, $cvv);
+            $negozio = new ENegozio($username, $email, $password, $telefono, $nomeNegozio, $iva, $indirizzo, $carta, $abb);
             $input = EInputControl::getInstance();
             $err = $input->validNegozio($negozio);
             //Rivederer da qui
             if ($err) {
-                $view2->ErrorInputRegistrazioneNegozio($err,$error_stringa);
-            }
-            else if ($negozio != null) {
+                $view2->ErrorInputRegistrazioneNegozio($err, $error_stringa);
+            } else if ($negozio != null) {
                 if (isset($_FILES['file'])) {
                     $nome_file = 'file';
-                    $img = static::uploadImage($negozio,"registrazioneNegozio",$nome_file);
+                    $img = static::uploadImage($negozio, "registrazioneNegozio", $nome_file);
                     switch ($img) {
                         case "size":
-                            $view2->ErrorInputRegistrazioneNegozio($err,"size");
+                            $view2->ErrorInputRegistrazioneNegozio($err, "size");
                             break;
                         case "type":
-                            $view2->ErrorInputRegistrazioneNegozio($err,"typeimg");
+                            $view2->ErrorInputRegistrazioneNegozio($err, "typeimg");
                             break;
                         case "ok":
                             header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
@@ -150,7 +148,7 @@ class CUser
     }
 
 
-    static function uploadImage($utente,$funz,$nome_file)
+    static function uploadImage($utente, $funz, $nome_file)
     {
         $pm = new FPersistentManager();
 
@@ -171,53 +169,54 @@ class CUser
                 //return "ok";
                 $ris = "ok";
             }
-            } else {
-                if ($size > $max_size) {
-                    //Il file è troppo grande
-                    //return "size";
-                    $ris = "size";
-                }//$type = $_FILES[$nome_file]['type'];
-                elseif ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
-                    if ($funz == "registrazionePrivato" || $funz = "registrazioneNegozio") {
-                        $data = file_get_contents($img["tmp_name"]);
-                        $data = base64_encode($data);
-                        $pm->store($utente);
-                        $mutente = new EImageUtente($name, $data, $type, $utente->getEmail());
-                        $pm->storeImg($mutente);
-                        //return "ok";
-                        $ris = "ok";
-                    } elseif ($funz == "modificaUtente") {
-                        $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
-                        //public static function deleteImg(string $categoriaImage,$field, $id){
-                        $img = $_FILES["file"];
-                        $data = file_get_contents($img["tmp_name"]);
-                        $data = base64_encode($data);
-                        $mutente = new EImageUtente($img["name"],$data,$img["type"], $utente->getEmail());
-                        $pm->storeImg($mutente);
-                        //return "ok";
-                        $ris = "ok";
+        } else {
+            if ($size > $max_size) {
+                //Il file è troppo grande
+                //return "size";
+                $ris = "size";
+            }//$type = $_FILES[$nome_file]['type'];
+            elseif ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
+                if ($funz == "registrazionePrivato" || $funz = "registrazioneNegozio") {
+                    $data = file_get_contents($img["tmp_name"]);
+                    $data = base64_encode($data);
+                    $pm->store($utente);
+                    $mutente = new EImageUtente($name, $data, $type, $utente->getEmail());
+                    $pm->storeImg($mutente);
+                    //return "ok";
+                    $ris = "ok";
+                } elseif ($funz == "modificaUtente") {
+                    $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
+                    //public static function deleteImg(string $categoriaImage,$field, $id){
+                    $img = $_FILES["file"];
+                    $data = file_get_contents($img["tmp_name"]);
+                    $data = base64_encode($data);
+                    $mutente = new EImageUtente($img["name"], $data, $img["type"], $utente->getEmail());
+                    $pm->storeImg($mutente);
+                    //return "ok";
+                    $ris = "ok";
 
-                    }
-                } else {
-                    //formato diverso
-                    //return "type";
-                    $ris = "type";
                 }
+            } else {
+                //formato diverso
+                //return "type";
+                $ris = "type";
             }
-            return $ris;
         }
+        return $ris;
+    }
 
     /**
      * login di un utente registrato:
      * 1) se il metodo della richiesta HTTP è GET:
      *   - se l'utente è già loggato viene reindirizzato alla homepage;
-     * 	 - se l'utente non è loggato si viene indirizzati alla form di login;
+     *     - se l'utente non è loggato si viene indirizzati alla form di login;
      * 2) se il metodo della richiesta HTTP è POST viene richiamata la funzione verifica().
      */
-    static function login (){
-        if($_SERVER['REQUEST_METHOD']=="GET"){
+    static function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $sessione = Session::getInstance();
-            if($sessione->isLoggedUtente()) {
+            if ($sessione->isLoggedUtente()) {
                 $pm = new FPersistentManager();
                 //CARICAMENTO PROFILO
                 /*
@@ -225,12 +224,11 @@ class CUser
                 $result = $pm->loadTrasporti();
                 $view->loginOk($result);
                 */
-            }
-            else{
-                $view=new VUser();
+            } else {
+                $view = new VUser();
                 $view->formLogin();
             }
-        }elseif ($_SERVER['REQUEST_METHOD']=="POST")
+        } elseif ($_SERVER['REQUEST_METHOD'] == "POST")
             static::checkLogin();
     }
 
@@ -252,49 +250,46 @@ class CUser
      * 4) se si verifica la presenza di particolari cookie avviene il reindirizzamento alla pagina specifica.
      * @throws SmartyException
      */
-    static function checkLogin() {
+    static function checkLogin()
+    {
         $view = new VUser();
-        $email="";
-        $valoreMail="non settato";
+        $email = "";
+        $valoreMail = "non settato";
         $pm = new FPersistentManager();
-        $exist=$pm->exist('email',$_POST['email'],"FUtente_loggato");
-        if($exist){
-            $email="esiste";
-            $valoreMail=$_POST['email'];
+        $exist = $pm->exist('email', $_POST['email'], "FUtente_loggato");
+        if ($exist) {
+            $email = "esiste";
+            $valoreMail = $_POST['email'];
         }
         $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
         if ($utente != null && $utente->isState() != false) {
-            $sessione=Session::getInstance();
+            $sessione = Session::getInstance();
             $sessione->setUtenteLoggato($utente);
             /*if (session_status() == PHP_SESSION_NONE) {
                 session_start();
                 $salva_sessione = serialize($utente);
                 $_SESSION['utente'] = $salva_sessione;*/
-                if ($_POST['email'] != 'admin@admin.com') {
-                    if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']){
-                        header('Location: /FillSpaceWEB/Messaggi/chat');
-                    }
-                    elseif (isset($_COOKIE['nome_visitato'])) {
-                        header('Location: /FillSpaceWEB/Utente/dettaglioutente');
-                    }
+            if ($_POST['email'] != 'admin@admin.com') {
+                if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']) {
+                    header('Location: /FillSpaceWEB/Messaggi/chat');
+                } elseif (isset($_COOKIE['nome_visitato'])) {
+                    header('Location: /FillSpaceWEB/Utente/dettaglioutente');
+                } else {
+                    if (isset($_COOKIE['chat']))
+                        setcookie("chat", null, time() - 900, "/");
                     else {
-                        if (isset($_COOKIE['chat']))
-                            setcookie("chat", null, time() - 900,"/");
-                        else {
-                            if(get_class($utente)== "EPrivato")
-                                 header('Location: /vinylwebmarket/Homepage/impostaPaginaULprivato/');
-                            else
-                                header('Location: /vinylwebmarket/Homepage/impostaPaginaULnegozio/');
-                        }
+                        if (get_class($utente) == "EPrivato")
+                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULprivato/');
+                        else
+                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULnegozio/');
                     }
                 }
-                else {
-                    header('Location: /FillSpaceWEB/Admin/homepage');
-                }
-           // }
-        }
-        else {
-            $view->loginError($email,$valoreMail);
+            } else {
+                header('Location: /FillSpaceWEB/Admin/homepage');
+            }
+            // }
+        } else {
+            $view->loginError($email, $valoreMail);
         }
     }
 
@@ -303,20 +298,21 @@ class CUser
      *    Tale reindirizzamento avviene tramite il controllo se si è un Privato o negozio;
      * 2) altrimenti, avviene il reindirizzamento alla form di login
      */
-    static function profile() {
+    static function profile()
+    {
         $view = new VUser();
         $pm = new FPersistentManager();
-        if($_SERVER['REQUEST_METHOD'] == "GET") {
-            $sessione=Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
-                $utente=$sessione->getUtente();
-               // $utente = unserialize($_SESSION['utente']);
+                $utente = $sessione->getUtente();
+                // $utente = unserialize($_SESSION['utente']);
                 if (get_class($utente) == "EPrivato") {
-                    $img = $pm->loadImg("EImageUtente", "email_utente",$utente->getEmail());
+                    $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
                     //RECENSIONI
                     $view->profilePrivato($utente, $vinili, $img);
-                } elseif(get_class($utente) == "ENegozio") {
+                } elseif (get_class($utente) == "ENegozio") {
                     $img = $pm->loadImg("EImageVinile", "email_utente", $utente->getEmail());
                     $annunci = $pm->load("venditore", $utente->getEmail(), "FVinile");
                     //RECENSIONI
@@ -332,52 +328,51 @@ class CUser
         $pm = new FPersistentManager();
         $view = new VUser();
         //session_start();
-        $sessione=Session::getInstance();
+        $sessione = Session::getInstance();
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             if ($sessione->isLoggedUtente()) {
                 //$utente = unserialize($_SESSION['utente']);
-                $utente=$sessione->getUtente();
+                $utente = $sessione->getUtente();
                 $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                 if (get_class($utente) == "EPrivato") {
                     $view->formModificaProfiloPrivato($utente, $img, "ok");
-                } elseif(get_class($utente) == "ENegozio") {
-                    $view->formModificaProfiloNegozio($utente, $img , "ok");
+                } elseif (get_class($utente) == "ENegozio") {
+                    $view->formModificaProfiloNegozio($utente, $img, "ok");
                 }
             } else
                 header('Location: /vinylwebmarket/User/login');
-        }
-        elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             //$utente = unserialize($_SESSION['utente']);
-            $utente=$sessione->getUtente();
+            $utente = $sessione->getUtente();
             $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
             if (get_class($utente) == "EPrivato") {
                 if ($utente->getPassword() == $_POST['old_password']) {
                     if ($utente->getEmail() == $_POST['email']) {
-                            $err=static::updateCampi($utente);
-                            $newutente = $pm->load("email_privato", $utente->getEmail(), "FPrivato");
-                                $salvare = serialize($newutente);
-                                $_SESSION['utente'] = $salvare;
-                                header('Location: /vinylwebmarket/User/profile');
+                        $err = static::updateCampi($utente);
+                        $newutente = $pm->load("email_privato", $utente->getEmail(), "FPrivato");
+                        $salvare = serialize($newutente);
+                        $_SESSION['utente'] = $salvare;
+                        header('Location: /vinylwebmarket/User/profile');
                     } else {  //se vuole cambiare anche l'email
                         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
                         if ($veremail) {
                             //UTENTE GIA NEL DB
                             $view->formModificaProfiloPrivato($utente, $img, "errorEmail");
                         } else {
-                                static::updateCampi($utente);
-                                $input=EInputControl::getInstance();
-                                if($input->testEmail($_POST['email'])){
+                            static::updateCampi($utente);
+                            $input = EInputControl::getInstance();
+                            if ($input->testEmail($_POST['email'])) {
                                 $pm->update("email", $_POST['email'], "email", $utente->getEmail(), "FUtente_loggato");
                                 $newutente = $pm->load("email_privato", $_POST['email'], "FPrivato");
-                                    $img1 = $pm->loadImg("EImageUtente", "email_utente",$utente->getEmail());
-                                    $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
-                                    $sessione->setUtenteLoggato($newutente);
+                                $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
+                                $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                                $sessione->setUtenteLoggato($newutente);
                                 //$salvare = serialize($newutente);
                                 //$_SESSION['utente'] = $salvare;
                                 $view->profilePrivato($newutente, $vinili, $img1);
-                                }else{
-                                    $view->formModificaProfiloPrivato($utente, $img, "errorEmailInput");
-                                }
+                            } else {
+                                $view->formModificaProfiloPrivato($utente, $img, "errorEmailInput");
+                            }
 
                         }
                     }
@@ -385,22 +380,19 @@ class CUser
                     //ERRORE PASSWORD
                     $view->formModificaProfiloPrivato($utente, $img, "errorPassword");
                 }
-            }
-            elseif (get_class($utente) == "ENegozio"){
+            } elseif (get_class($utente) == "ENegozio") {
                 if ($utente->getPassword() == $_POST['old_password']) {
                     if ($utente->getEmail() == $_POST['email']) {
-                        $err=static::updateCampi($utente);
+                        $err = static::updateCampi($utente);
                         $newutente = $pm->load("email_negozio", $utente->getEmail(), "FNegozio");
                         $salvare = serialize($newutente);
                         $_SESSION['utente'] = $salvare;
                         header('Location: /vinylwebmarket/User/profile');
-                    }
-                    else {
+                    } else {
                         $veremail = $pm->exist("email", $_POST['email'], "FUtente_loggato");
                         if ($veremail) {
                             $view->formModificaProfiloNegozio($utente, $img, "errorEmail");
-                        }
-                        else {
+                        } else {
                             static::updateCampi($utente);
                             $input = EInputControl::getInstance();
                             if ($input->testEmail($_POST['email'])) {
@@ -417,23 +409,24 @@ class CUser
                             }
                         }
                     }
-                }else{
+                } else {
                     $view->formModificaProfiloNegozio($utente, $img, "errorPassword");
                 }
 
             }
         }
     }
+
     /**
      * Funzione che si occupa di fare tutti i controlli necessari per aggiornare i coli campi che un utente desidera modificare
      * nella sua form di modifica profilo
      * @param $utente obj rappresentante l'utente
-
      */
-    static function updateCampi($utente) {
+    static function updateCampi($utente)
+    {
         $pm = new FPersistentManager();
-        $view=new VUser();
-        $result=array();
+        $view = new VUser();
+        $result = array();
         $input = EInputControl::getInstance();
         //public static function update($field, $newValue, $keyField, $idValue ,$Fclass)
         if (get_class($utente) == "EPrivato") {
@@ -449,12 +442,12 @@ class CUser
             if ($utente->getCognome() != $_POST['cognome'] and $input->testName($_POST['nome']))
                 $pm->update("cognome", $_POST['cognome'], "email_privato", $utente->getEmail(), $classeDB);
         }
-        if(get_class($utente) == "ENegozio") {
-            $classeDB="FNegozio";
+        if (get_class($utente) == "ENegozio") {
+            $classeDB = "FNegozio";
             $input = EInputControl::getInstance();
             if ($utente->getUsername() != $_POST['username'] and $input->testUsername($_POST['username']))
                 $pm->update("username", $_POST['username'], "email", $utente->getEmail(), "FUtente_loggato");
-          //  if ($utente->getEmail() != $_POST['email'])
+            //  if ($utente->getEmail() != $_POST['email'])
             //    $pm->update("email", $_POST['email'], "email", $utente->getEmail(), $classeDB);
             if ($_POST['new_password'] != "" and $input->testPassword($_POST['new_password']))
                 $pm->update("password", $_POST['new_password'], "email", $utente->getEmail(), "FUtente_loggato");
@@ -532,21 +525,183 @@ class CUser
     }
     */
 
-    public function modificaCarta(){
+    public function modificaCarta()
+    {
         $pm = new FPersistentManager();
         $view = new VUser();
         //session_start();
-        $sessione=Session::getInstance();
+        $sessione = Session::getInstance();
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             if ($sessione->isLoggedUtente()) {
-                $utente=$sessione->getUtente();
-                  $view->formModificaCarta($utente, "ok");
-
+                $utente = $sessione->getUtente();
+                $view->formModificaCarta($utente, "ok");
             } else
                 header('Location: /vinylwebmarket/User/login');
+        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            //$utente = unserialize($_SESSION['utente']);
+            $utente = $sessione->getUtente();
+            $controllo = static::updateCarta($utente);
+            if($controllo=="ok"){
+            $newutente = $pm->load("email_negozio",$utente->getEmail(), "FNegozio");
+            $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
+            $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+            $sessione->setUtenteLoggato($newutente);
+            //$salvare = serialize($newutente);
+            //$_SESSION['utente'] = $salvare;
+            $view->profileNegozio($newutente, $vinili, $img1);
+            }
         }
-
     }
+
+    static function updateCarta($utente){
+        $pm = new FPersistentManager();
+        $view = new Vuser;
+        $controllo="ok";
+        //public static function exist($field, $value ,$Fclass) {
+        $exist=$pm->exist("numero",$_POST['numerocarta'],"Fcarta");
+        if ($exist) {
+            $view->formModificaCarta($utente, "errorNumberExist");
+            $controllo="errore";
+        } else {
+            //public static function update($field, $newValue, $keyField, $idValue ,$Fclass) {
+           // $pm->load("email_negozio",$utente->getEmail(),"FNegozio");
+            $input = EInputControl::getInstance();
+            if($input->testCardNumber($_POST['numerocarta']) and $input->testCvv($_POST['cvv']) and $input->testIntestatario($_POST['intestatario'])){
+              $pm->update("numero",$_POST['numerocarta'],"id",$utente->getCarta()->getId(),"FCarta");
+                $pm->update("cvv",$_POST['cvv'],"id",$utente->getCarta()->getId(),"FCarta");
+                $pm->update("intestatario",$_POST['intestatario'],"id",$utente->getCarta()->getId(),"FCarta");
+                $mese = $_POST["mese"];
+                $anno = $_POST["anno"];
+                $scadenza = $anno . "-" . $mese . "-01";
+                $pm->update("scadenza",$scadenza,"id",$utente->getCarta()->getId(),"FCarta");
+            }
+            else{
+                $view->formModificaCarta($utente, "errorInput");
+                $controllo="errore";
+            }
+        }
+        return $controllo;
+    }
+
+    public function viewProfilePublic(){
+        $sessione = Session::getInstance();
+        if($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                header('Location: /vinylwebmarket/User/profile');
+                //header('Location: /vinylwebmarket/');
+            }
+            else
+                header('Location: /FillSpaceWEB/Utente/login');
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "POST") {
+            $view = new VUser();
+            $pm = new FPersistentManager();
+            if (isset($_POST['email'])) {
+                static::return_dettaglioutente($_POST['email']);
+            } elseif (isset($_POST['azione'])) {
+                if ($sessione->isLoggedUtente()) {
+                    $ute = unserialize($_SESSION['utente']);
+                    if (isset($_POST['rate']))
+                        $rec = new ERecensione($_POST['commento'], $_POST['rate'], $ute->getEmail(), $_POST['conveyor']);
+                    else
+                        $rec = new ERecensione($_POST['commento'], 0, $ute->getEmail(), $_POST['conveyor']);
+                    $pm->store($rec);
+                    $tra = $pm->load("emailUtente", $_POST['conveyor'], "FTrasportatore");
+                    if (isset($tra)) {
+                        $img = $pm->load("emailutente",$_POST['conveyor'], "FMediaUtente");
+                        list ($imgMezzo,$imgrecensioni) = static::set_profilo_tra($tra);
+                        $lista_rec = static::info_cliente_rec($tra);
+                        $view->profilopubblico_tra($tra, $tra->getEmail(),$img,$imgMezzo,$imgrecensioni,$lista_rec,"si");
+                    }
+                } else {
+                    setcookie("nome_visitato", $_POST['conveyor'], time()+900);
+                    header('Location: /FillSpaceWEB/Utente/login');
+                }
+            }
+        }
+        elseif(isset($_COOKIE['visitato'])) {
+            static::return_dettaglioutente($_COOKIE['visitato']);
+        }
+    }
+    //visitato è l email
+    static function return_dettaglioutente($visitato){
+        if (isset($_COOKIE['visita'])) {
+            setcookie("visita", null, time()-900);
+        }
+        $view = new VUser();
+        $pm = new FPersistentManager();
+        $privato = $pm->load("email_privato", $visitato, "FPrivato");
+        $negozio = $pm->load("email_negozio", $visitato, "FNegozio");
+        if (isset($negozio)) {
+            $img = $pm->loadImg("emailutente", $visitato, "FImage");
+            $imgrecensioni = static::ImageReviews($negozio);
+            $rec = static::info_cliente_rec($negozio);
+            $sessione = Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+                $utente=$sessione->getUtente();
+                //$utente = unserialize($_SESSION['utente']);
+                if ( $visitato == $utente->getEmail())
+                    //se ha cercato lui stesso non si contatta da solo:)
+                    $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"no");
+                else
+                    $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
+            }
+            else
+                $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
+        } else {
+            $img = $pm->loadImg("emailutente", $visitato, "FImage");
+            $imgrecensioni = static::ImageReviews($privato);
+            $rec = static::info_cliente_rec($privato);
+            $sessione = Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+                $utente=$sessione->getUtente();
+               // $utente = unserialize($_SESSION['utente']);
+                if ( $visitato == $utente->getEmail())
+                    $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"no");
+                else
+                    $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"si");
+            }
+            else
+                $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"si");
+        }
+    }
+
+    static function ImageReviews($user) {
+        $pm = new FPersistentManager();
+        $recensioniImage = null;
+        //$recensioni = $pm->load("emailConveyor", $tra->getEmail(), "FRecensione");
+        $recensioni = $pm->load("destinatario",$user->getEmail(),"FRecensione");
+        if (isset($recensioni)) {
+            if (is_array($recensioni)) {
+                foreach ($recensioni as $item) {
+                    $recensioniImage = $pm->loadImg("email_utente",$item->getUsernameMittente(),"FImage");
+                    //$recensioniImage = $pm->load("emailutente", $item->getEmailClient(), "FMediaUtente");
+                }
+            } else {
+                $recensioniImage = $pm->loadImg("email_utente",$recensioni->getUsernameMittente(), "FImage");
+            }
+        }
+        return $recensioniImage;
+    }
+
+    static function info_cliente_rec ($user) {
+        $pm = new FPersistentManager();
+        $rec = $user->getRecensioni(); // SEMPRE UN ARRAY
+        if(count($rec) > 1) {
+            foreach ($rec as $r) {
+                $ute = $pm->load("email", $r->getUsernameMittente(), "FUtente_loggato");
+                $r->setUsernameMittente($ute);
+            }
+        }
+        elseif (count($rec) == 1) {
+            $ute = $pm->load("email", $rec[0]->getUsernameMittente(), "FUtente_loggato");
+            $rec[0]->setUsernameMittente($ute);
+        }
+        return $rec;
+    }
+
+
+
 
 
 

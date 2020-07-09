@@ -362,20 +362,11 @@ class VUser
 
     public function formModificaCarta($utente,$errore){
         switch ($errore) {
-            case "errorEmail" :
-                $this->smarty->assign('errorEmail', "errore");
+            case "errorNumberExist" :
+                $this->smarty->assign('errorNumberExist', "errore");
                 break;
-            case "ErrorEmailInput" :
-                $this->smarty->assign("errorEmailInput","errore");
-                break;
-            case "errorPassword":
-                $this->smarty->assign('errorPassword', "errore");
-                break;
-            case "errorSize" :
-                $this->smarty->assign('errorSize', "errore");
-                break;
-            case "errorType" :
-                $this->smarty->assign('errorType', "errore");
+            case "errorInput" :
+                $this->smarty->assign("errorInput","errore");
                 break;
         }
         $this->smarty->assign('userlogged',"loggato");
@@ -386,7 +377,83 @@ class VUser
         $this->smarty->assign('partitaiva',$utente->getPIva());
         $this->smarty->assign('nomenegozio',$utente->getNameShop());
         $this->smarty->assign('indirizzo',$utente->getAddress());
-        $this->smarty->display('modificaProfiloNegozio.tpl');
+        $this->smarty->display('modificaCarta.tpl');
+    }
+
+    public function profilopubblico($user, $emailvisitato, $img,$imgrec,$rec,$cont) {
+       // if (count($rec) == 0)
+       //     $this->smarty->assign('media_voto', 0);
+       // else
+       //     $this->smarty->assign('media_voto', $user->averageMark());
+        list($typeR,$pic64rec) = $this->SetImageRecensione($imgrec);
+        if ($cont == "no")
+            $this->smarty->assign('contatta', $cont);
+        if ($typeR == null && $pic64rec == null)
+            $this->smarty->assign('immagine', "/FillSpaceWEB/Smarty/immagini/user.png");
+        if (isset($imgrec)) {
+            if (is_array($imgrec)) {
+                $this->smarty->assign('typeR', $typeR);
+                $this->smarty->assign('pic64rec', $pic64rec);
+                $this->smarty->assign('n_recensioni', count($imgrec) - 1);
+            }
+            else {
+                $t[] = $typeR;
+                $im[] = $pic64rec;
+                $this->smarty->assign('typeR', $t);
+                $this->smarty->assign('pic64rec', $im);
+                $this->smarty->assign('n_recensioni', 0);
+            }
+        }
+        else
+            $this->smarty->assign('n_recensioni', 0);
+        $this->smarty->assign('rec',$rec);
+        list($type,$pic64) = $this->setImage($img, 'user');
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('pic64', $pic64);
+        $sessione = Session::getInstance();
+        if ($sessione->isLoggedUtente())
+            $this->smarty->assign('userlogged',"loggato");
+        $this->smarty->assign('email',$user);
+        $this->smarty->assign('username',$user->getUsername());
+        $this->smarty->assign('email',$user->getEmail());
+        $this->smarty->assign('telefono',$user->getPhone());
+        $this->smarty->display('profilo_pub.tpl');
+
+    }
+
+    public function SetImageRecensione ($imgrec) {
+        $type = null;
+        $pic64 = null;
+        if (is_array($imgrec)) {
+            foreach ($imgrec as $item) {
+                if (isset($item)) {
+                    $pic64[] = base64_encode($item->getDataImage());
+                    $type[] = $item->getMimeType();
+                } else {
+                    $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
+                    $pic64[] = base64_encode($data);
+                    $type[] = "image/png";
+                }
+            }
+        }
+        elseif (isset($imgrec)) {
+            $pic64 = base64_encode($imgrec->getDataImage());
+            $type = $imgrec->getMimeType();
+        }
+        return array($type, $pic64);
+    }
+
+    public function setImage($image, $tipo) {
+        if (isset($image)) {
+            $pic64 = base64_encode($image->getData());
+            $type = $image->getType();
+        }
+        elseif ($tipo == 'user') {
+            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/FillSpaceWEB/Smarty/immagini/user.png');
+            $pic64= base64_encode($data);
+            $type = "image/png";
+        }
+        return array($type, $pic64);
     }
 
 
