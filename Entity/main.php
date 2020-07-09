@@ -46,12 +46,12 @@ echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
 //----------------------------------------------------------
-*/
 
-/*
+
+
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
 $intestatarioCarta="toninoo selli";
-$numeroCarta="40603566";
+$numeroCarta="4060356612345671";
 $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
@@ -389,6 +389,11 @@ echo $a->toString();
 //---------------------------------------
 */
 
+$pm=new FPersistentManager();
+$negozio=$pm->load("email_negozio","alberto@virgilio.it","FNegozio");
+var_dump($negozio);
+
+
 /*
 //----------LOAD FUTENTE_LOGGATO-----------------------------------------
 $out= new FUtente_loggato();
@@ -413,7 +418,7 @@ echo $o[1]->toString();
 /*
 //----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
-$out=$n->load('email_negozio', 'ZioTony@virgeilio.it');
+$out=$n->load('email_negozio', 'alberto@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
 */
@@ -528,14 +533,14 @@ $f1=$f->loadI('EImageVinile','id','4');
 var_dump($f1);
 */
 
-
+/*
 $pm=new FPersistentManager();
-$miao=$pm->deleteImg("EImageUtente","email_utente","Michele@virgilio.it");
+$miao=$pm->update("numero","2345123412341234","id","56","FCarta");
 var_dump($miao);
-
-
-
-
+*/
+/*
+var_dump($utente2->getCarta());
+*/
 
 ?>
 

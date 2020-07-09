@@ -96,6 +96,12 @@
 							Impostazioni account </a>
 						</li>
 
+                    <li>
+                        <a href="/vinylwebmarket/User/modificaCarta">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Aggiorna carta </a>
+                    </li>
+
 						<li>
 							<a href="#" target="_blank">
 							<i class="glyphicon glyphicon-user"></i>

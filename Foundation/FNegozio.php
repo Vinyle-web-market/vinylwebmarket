@@ -97,6 +97,8 @@ class FNegozio
             $carta = FCarta::load('id', $result['id_carta']);
             $abbonamento = FAbbonamento::load('id', $result['id_abbonamento']);
             $neg = new ENegozio($utente_loggato->getUsername(), $utente_loggato->getEmail(), $utente_loggato->getPassword(), $utente_loggato->getPhone(), $result['nome'], $result['partitaiva'], $result['indirizzo'], $carta, $abbonamento);
+            $neg->setCarta($carta)->setId($result['id_carta']);
+            $neg->setAbbonamento($abbonamento)->setId($result['id_abbonamento']);
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $neg = array();
@@ -108,7 +110,8 @@ class FNegozio
                     $carta[] = FCarta::load('id', $result[$i]['id_carta']);
                     $abbonamento[] = FAbbonamento::load('id', $result[$i]['id_abbonamento']);
                     $neg[] = new ENegozio($utente_loggato[$i]->getUsername(), $utente_loggato[$i]->getEmail(), $utente_loggato[$i]->getPassword(), $utente_loggato[$i]->getPhone(), $result[$i]['nome'], $result[$i]['partitaiva'], $result[$i]['indirizzo'], $carta[$i], $abbonamento[$i]);
-
+                    $neg[$i]->setCarta($carta[$i])->setId($result[$i]['id_carta']);
+                    $neg[$i]->setAbbonamento($abbonamento[$i])->setId($result[$i]['id_abbonamento']);
                 }
             }
         }

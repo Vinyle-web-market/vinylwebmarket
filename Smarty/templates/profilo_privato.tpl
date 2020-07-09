@@ -51,8 +51,8 @@
 
             <li class="nav-item dropdown">
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/User/viewProfilePublic" method="post">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="email">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -106,6 +106,11 @@
   							<i class="glyphicon glyphicon-user"></i>
   							Aiuto </a>
   						</li>
+                    <li>
+                        <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Pubblica </a>
+                    </li>
 
   				</div>
   				<!-- END MENU -->
