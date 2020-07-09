@@ -8,6 +8,10 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
@@ -45,14 +49,19 @@
           </form>
         </div>
       </nav>
+
+
+
+
       <div class="container">
       <div class="row profile">
   		<div class="col-md-3">
   			<div class="profile-sidebar">
   				<!-- SIDEBAR USERPIC -->
   				<div class="profile-userpic">
-  					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" width="300" height="300" class="img-responsive" alt="">
+  					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" class="img-responsive">
   				</div>
+          	  <hr color=black>
   				<!-- END SIDEBAR USERPIC -->
   				<!-- SIDEBAR USER TITLE -->
   				<div class="profile-usertitle">
@@ -60,11 +69,11 @@
   						NOME NEGOZIO
   					</div>
   					<div class="profile-usertitle-job">
-  						<br>
+
   					</div>
   				</div>
   				<!-- END SIDEBAR USER TITLE -->
-
+	  <hr color=black>
   				<!-- SIDEBAR MENU -->
   				<div class="profile-usermenu">
             <li>
@@ -82,102 +91,99 @@
               <i class="glyphicon glyphicon-user"></i>
               Telefono </a>
             </li>
-  				</div>
+            <hr color=black>
+            <a>
+            <i class="glyphicon glyphicon-user"></i>
+                            <button type="button" class="btn-product">Invia un messaggio</button> </a>
+                              <hr color=black>
+                            <a href="vinilivendita.html">
+                            <i class="glyphicon glyphicon-user"></i>
+                                            <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
+          </div>
+          	  <hr color=black>
   				<!-- END MENU -->
 			</div>
 		</div>
+
+
+
 		<div class="col-md-9">
-            <div class="profile-content">
-              <h4 class="text-center">Vinili in vendita:</h4>
+      <br>
+              <h3 class="text-center">Recensione dell utente:</h3>
+          <hr color=black>
+          <section class="reviews py-5" id="reviews">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="one-reivew">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="#">Utente che scrive la recensione</a>
+                                            </div>
+                                              <div class="col-md-6">
+                                                  <small>May 04, 2018</small>
+                                              </div>
 
-         	<div class="col-md-18">
-     			<div class="col-sm-6 col-md-4">
-     				<div class="thumbnail" >
-     					<h4 class="text-center"><span class="label label-info">Titolo Vinile</span></h4>
-     					<img src="../../Utility/immagini/vinile0.jpg" class="img-responsive">
-     					<div class="caption">
-     						<div class="row">
-     							<div class="col-md-8 col-xs-6">
-     								<h3>Artista</h3>
-     							</div>
-     							<div class="col-md-6 col-xs-6 price">
-     								<h3>
-     								<label>Prezzo</label></h3>
-     							</div>
-     						</div>
-     						<p>Descrizione</p>
-     						<div class="row">
-     							<div class="col-md-6">
-
-     							</div>
-     							<div class="col-md-6">
-     								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Contatta il venditore</a></div>
-     						</div>
-                <p><hr></p>
-     					</div>
-     				</div>
-     			</div>
-          <div class="col-sm-6 col-md-4">
-     				<div class="thumbnail" >
-     					<h4 class="text-center"><span class="label label-info">Titolo Vinile</span></h4>
-     					<img src="../../Utility/immagini/vinile1.jpg" class="img-responsive">
-     					<div class="caption">
-     						<div class="row">
-     							<div class="col-md-6 col-xs-6">
-     								<h3>Artista</h3>
-     							</div>
-     							<div class="col-md-6 col-xs-6 price">
-     								<h3>
-     								<label>Prezzo</label></h3>
-     							</div>
-     						</div>
-     						<p>Descrizione</p>
-     						<div class="row">
-     							<div class="col-md-6">
-
-     							</div>
-     							<div class="col-md-6">
-     								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Contatta il venditore</a></div>
-     						</div>
-                <p><hr></p>
-     					</div>
-     				</div>
-     			</div>
-          <div class="col-sm-6 col-md-4">
-     				<div class="thumbnail" >
-     					<h4 class="text-center"><span class="label label-info">Titolo Vinile</span></h4>
-     					<img src="../../Utility/immagini/vinile2.jpg" class="img-responsive">
-     					<div class="caption">
-     						<div class="row">
-     							<div class="col-md-6 col-xs-6">
-     								<h3>Artista</h3>
-     							</div>
-     							<div class="col-md-6 col-xs-6 price">
-     								<h3>
-     								<label>Prezzo</label></h3>
-     							</div>
-     						</div>
-     						<p>Descrizione</p>
-     						<div class="row">
-     							<div class="col-md-6">
-
-     							</div>
-     							<div class="col-md-6">
-     								<a href="#" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Contatta il venditore</a></div>
-     						</div>
-                <p><hr></p>
-     					</div>
-     				</div>
-     			</div>
-
-     			</div>
+                                          </div>
+                                          <div class="row text-success">
+                                              <div class="col-md-12">
+                                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                              </div>
+                                          </div>
+                          
+                                          <div class="row pt-2">
+                                              <div class="col-md-12">
+                                                  <b>Worse web hosting company</b>
 
 
+                                                  <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                              </div>
+                                          </div>
+                                          <hr color=black>
+                                          </div>
+                                          <div class="one-reivew">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <a href="#">Utente che scrive la recensione</a>
+                                            </div>
+                                              <div class="col-md-6">
+                                                  <small>May 04, 2018</small>
+                                              </div>
 
-     </div>
-            </div>
-		</div>
-	</div>
+                                          </div>
+                                          <div class="row text-success">
+                                              <div class="col-md-12">
+                                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                              </div>
+                                          </div>
+
+
+                                          <div class="row pt-2">
+                                              <div class="col-md-12">
+                                                  <b>Worse web hosting company</b>
+                                                  <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                              </div>
+                                          </div>
+
+                                          </div>
+                                      </div>
+
+
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </section>
+
+		</div
 </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="../js/bootstrap.js"></script>
