@@ -46,186 +46,75 @@
           </form>
         </div>
       </nav>
+      <div class="container register-form">
+                  <div class="form">
+                      <div class="note">
+                          <p>INserisci il tuo vinile in vendita: </p>
+                      </div>
 
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
+                      <div class="form-content">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Titolo:" name="titolo"/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Artista:" name="artista"/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Genere:" name="genere"/>
+                                  </div>
 
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-12">
-    		     <div id="accordion">
+                                    <div class="col-xs-3">
+                                      <select class="form-control" name="numerogiri">
+
+                                        <option value="33">33 giri</option>
+                                        <option value="45">45 giri</option>
+                                        <option value="78">78 giri</option>
+                                      </select>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-3">
+                                      <select class="form-control" name="condizioni">
+
+                                        <option value="nuovo">nuovo</option>
+                                        <option value="usato">usato</option>
+
+                                      </select>
+                                    </div>
+                                    <br>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Descrizione: " name="descrizione"/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Prezzo: " name="prezzo"/>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Quantità: " name="quantita"/>
+                                  </div>
+
+                              <br>
+                              <div class="col-md-6">
+                                  <div class="custom-file">
+                                   <input type="file" class="custom-file-input" id="customFile">
+                                   <label class="custom-file-label" for="customFile">Carica foto 1</label>
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <div class="custom-file">
+                                   <input type="file" class="custom-file-input" id="customFile">
+                                   <label class="custom-file-label" for="customFile">Carica foto 2</label>
+                                  </div>
+                              </div>
+                              <br>
+                              <div class="col-md-12">
+                              <button type="button" class="btnSubmit">Inserisci vinile in vendita</button>
+                          </div>
+                          </div>
 
                   </div>
+              </div>
 
-                      <div class="card">
-                        <div class="card-header">
-                          <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                            Titolo e Foto
-                          </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" data-parent="#accordion">
-                          <div class="card-body">
-                            <div class="container">
-                            	<div class="row">
-                                 <div class="col-md-6 border card-body">
-                                    <form class="form-horizontal">
-                                      <div class="form-group">
-                                        <label for="expectedprice" class="control-label col-xs-4">Titolo del vinile:</label>
-                                        <div class="col-xs-8">
-                                          <div class="input-group">
-                                            <div class="input-group-addon">
-                                              <i class="fa fa-inr"></i>
-                                            </div>
-                                            <input id="expectedprice" name="expectedprice" class="form-control" type="text">
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                    </form>
-
-
-                                 </div>
-                                 <div class="col-md-6">
-                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile">
-                                      <label class="custom-file-label" for="customFile">1. Upload Photos</label>
-                                     </div>
-                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile">
-                                      <label class="custom-file-label" for="customFile"> 2.  Upload Photos </label>
-                                     </div>
-                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" id="customFile">
-                                      <label class="custom-file-label" for="customFile">3. Upload Photos </label>
-                                     </div>
-                                 </div>
-
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-
-                                            <div class="card">
-                                              <div class="card-header">
-                                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
-                                                  Informazioni sul vinile
-                                                </a>
-                                              </div>
-                                              <div id="collapseFour" class="collapse" data-parent="#accordion">
-                                                <div class="card-body">
-                                                  <div class="container">
-                                                  	<div class="row">
-                                                       <div class="col-md-6 border card-body">
-                                                          <form class="form-horizontal">
-                                                            <div class="form-group">
-                                                              <label for="expectedprice" class="control-label col-xs-4">Autore del vinile:</label>
-                                                              <div class="col-xs-8">
-                                                                <div class="input-group">
-                                                                  <div class="input-group-addon">
-                                                                    <i class="fa fa-inr"></i>
-                                                                  </div>
-                                                                  <input id="expectedprice" name="expectedprice" class="form-control" type="text">
-                                                                </div>
-                                                              </div>
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                              <label for="expectedprice" class="control-label col-xs-4">Prezzo del vinile:</label>
-                                                              <div class="col-xs-8">
-                                                                <div class="input-group">
-                                                                  <div class="input-group-addon">
-                                                                    <i class="fa fa-inr"></i>
-                                                                  </div>
-                                                                  <input id="expectedprice" name="expectedprice" class="form-control" type="text">
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                              <label for="expectedprice" class="control-label col-xs-4">Genere del vinile:</label>
-                                                              <div class="col-xs-8">
-                                                                <div class="input-group">
-                                                                  <div class="input-group-addon">
-                                                                    <i class="fa fa-inr"></i>
-                                                                  </div>
-                                                                  <input id="expectedprice" name="expectedprice" class="form-control" type="text">
-                                                                </div>
-                                                              </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                              <label for="carcolor" class="control-label col-xs-4">Condizioni:</label>
-                                                              <div class="col-xs-8">
-                                                                <select id="carcolor" name="carcolor" class="select form-control">
-                                                                  <option value="white">Nuovo</option>
-                                                                  <option value="grey">Usato</option>
-                                                                </select>
-                                                              </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                              <label for="carcolor" class="control-label col-xs-4">Numero di giri del vinile:</label>
-                                                              <div class="col-xs-8">
-                                                                <select id="carcolor" name="carcolor" class="select form-control">
-                                                                  <option value="white">33</option>
-                                                                  <option value="grey">45</option>
-                                                                  <option value="grey">78</option>
-                                                                </select>
-                                                              </div>
-                                                            </div
-                                                          </form>
-                                                       </div>
-
-                                                      </div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-
-
-
-
-                      <div class="card">
-                        <div class="card-header">
-                          <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-                            Descrizione e quantità:
-                          </a>
-                        </div>
-                        <div id="collapseFive" class="collapse" data-parent="#accordion">
-                          <div class="card-body">
-                            <div class="row">
-                                 <div class="col-md-6 border card-body">
-                                    <small>Descrizione:</small>
-                                    <form class="form-horizontal">
-                                      <div class="form-group">
-                                        <label for="textarea" class="control-label col-xs-4">Inserisci una descrizione del vinile in vendita:</label>
-                                        <div class="col-xs-8">
-                                          <textarea id="textarea" name="textarea" cols="40" rows="5" class="form-control"></textarea>
-                                        </div>
-                                      </div>
-                                    </form>
-
-                                    <div class="form-group">
-                                      <label for="expectedprice" class="control-label col-xs-4">Quantità dei vinili in vendita:</label>
-                                      <div class="col-xs-8">
-                                        <div class="input-group">
-                                          <div class="input-group-addon">
-                                            <i class="fa fa-inr"></i>
-                                          </div>
-                                          <input id="expectedprice" name="expectedprice" class="form-control" type="text">
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-    		</div>
-    	</div>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
