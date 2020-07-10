@@ -89,13 +89,7 @@
               <i class="glyphicon glyphicon-user"></i>
               Messaggio </a>
             </li>
-              <li>
-                <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                Vendi vinile </a>
-              </li>
-
-  						<li>
+                    <li>
   							<a href="/vinylwebmarket/User/modificaProfilo">
   							<i class="glyphicon glyphicon-user"></i>
   							Impostazioni account </a>
@@ -109,7 +103,7 @@
                     <li>
                         <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
                             <i class="glyphicon glyphicon-user"></i>
-                            Pubblica </a>
+                            Pubblica e vendi i tuoi vinili </a>
                     </li>
 
   				</div>

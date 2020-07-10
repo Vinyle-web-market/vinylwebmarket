@@ -80,8 +80,8 @@ class CVinile
             } else {
                 $type = $_FILES[$nome_file]['type'];
                 $img = $_FILES["file"];
-                $data = file_get_contents($img["tmp_name"]);
-                $data = base64_encode($data);
+                $data=file_get_contents($_FILES[$nome_file]["tmp_name"]);
+                $data=base64_decode($data);
                 if ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
                     $nome = $_FILES[$nome_file]['name'];
                     //$immagine = file_get_contents($_FILES[$nome_file]['tmp_name']);
@@ -122,21 +122,21 @@ class CVinile
             //public function __construct($fname, $data, $type,$id)
             $idAn = $pm->store($new_vinile);
             $m_vinile = new EImageVinile($nome,$data,$type,$idAn);
-            $pm->storeImage($m_vinile,'file');
+            $pm->storeImage($m_vinile);
             $ris = "ok";
         }
         elseif ($stato == "no_img" && $stato_1 == "ok_img") {
             $idAn = $pm->store($new_vinile);
             $m_vinile = new EImageVinile($nome_1,$data_1,$type_1,$idAn);
-            $pm->storeMedia($m_vinile,'file_1');
+            $pm->storeImg($m_vinile);
             $ris = "ok";
         }
         elseif ($stato == "ok_img" && $stato_1 == "ok_img") {
             $idAn = $pm->store($new_vinile);
             $m_vinile1 = new EImageVinile($nome_1,$data_1,$type_1,$idAn);
-            $pm->storeMedia($m_vinile1,'file_1');
+            $r=$pm->storeImg($m_vinile1);
             $m_vinile = new EImageVinile($nome,$data,$type,$idAn);
-            $pm->storeMedia($m_vinile,'file');
+            $pm->storeImg($m_vinile);
             $ris = "ok";
         }
         return array ($ris,$idAn);
@@ -160,8 +160,9 @@ class CVinile
             // $utente = unserialize($_SESSION['utente']);
             $utente=$sessione->getUtente();
             //new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
-            $utente_log=new EUtente_loggato($utente->getUsername(), $utente>getEmail(), $utente->getPassword(), $utente->getPhone());
-            $new_vinile = new Evinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'],$_POST['artista'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'],$_POST['descrizione'],$_POST['quantita']);
+            $utente_log=new EUtente_loggato($utente->getUsername(),$utente->getEmail(), $utente->getPassword(), $utente->getPhone());
+            //function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
+            $new_vinile = new Evinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'],$_POST['descrizione'],$_POST['quantita']);
             list ($stato, $nome, $type,$data) =static::uploadImg('file');
             list ($stato_1, $nome_1, $type_1,$data_1) =static::uploadImg('file_1');
             list($fun, $idAn) = static::test_img($stato, $nome, $type,$data, $stato_1, $nome_1, $type_1,$data_1, $new_vinile);
@@ -173,6 +174,49 @@ class CVinile
                 $view->formVinile($utente, "no");
             }
         }
+    }
+
+    /**
+     * Funzione con il compito di indirizzare alla pagina pagina specifica dell'annuncio selezionato
+     * @param $id id dell'annuncio selezionato
+     */
+    static function dettagliVinile($id){
+        $nome = null;
+        $cognome=null;
+        $nomenegozio=null;
+        $indirizzo=null;
+        $partitaiva=null;
+        $view = new VVinile();
+        $pm = new FPersistentManager();
+        //ublic static function load($field, $value,$Fclass) {
+        $result = $pm->load("id_vinile", $id, "FVinile");
+        $data_p = $result->getDepartureDate();
+        if(get_class($result->getVenditore())=="EPrivato") {
+            $nome = $result->getVenditore()->getNome();
+            $cognome = $result->getVenditore()->getCognome();
+        }elseif(get_class($result->getVenditore())=="ENegozio"){
+            $nomenegozio= $result->getVenditore()->getNameShop();
+            $indirizzo=$result->getVenditore()->getAddress();
+            $partitaiva=$result->getVenditore()->getPIva();
+        }
+        $username = $result->getVenditore()->getUsername();
+        $email = $result->getVenditore()->getEmail();
+        $telefono = $result->getVenditore()->getPhone();
+        //public static function loadImg(string $categoriaImage,$field,$id){
+        $img_utente = $pm->loadImg("EImageUtente","email_utente",$result->getVenditore()->getEmail(),);
+        $id = $result->getId();
+        $med_annuncio = $pm->loadImg("EImageVinile","id_vinile",$id);
+        $sessione = Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+                $utente = $sessione->getUtente();
+            //$utente = unserialize($_SESSION['utente']);
+            if ($result->getVenditore()->getEmail() == $utente->getEmail())
+                $view->dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,"no");
+            else
+                $view->dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,"si");
+        }
+        else
+            $view->dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,"si");
     }
 
 
