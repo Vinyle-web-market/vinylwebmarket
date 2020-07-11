@@ -591,7 +591,7 @@ class CUser
                 //header('Location: /vinylwebmarket/');
             }
             else
-                header('Location: /FillSpaceWEB/Utente/login');
+                header('Location: //vinylwebmarket/User/login');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "POST") {
             $view = new VUser();

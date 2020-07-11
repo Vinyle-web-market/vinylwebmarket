@@ -199,7 +199,7 @@ class Evinile
      * a video tutti gli attributi della
      * classe Evinile
      */
-    function toString()
+    public function toString()
     {
         return
                "Titolo vinile: ".$this->titolo."\n".

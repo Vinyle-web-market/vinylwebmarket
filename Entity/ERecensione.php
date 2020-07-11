@@ -116,7 +116,7 @@ class ERecensione
 
     /*Metodo che ci permette di stampare a video tutti gli
      attributi della classe Recensione*/
-    function toString()
+    public function toString()
     {
         return "Voto con stella: ".$this->votostelle."\n".
                "Testo: ".$this->testo."\n".

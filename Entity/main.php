@@ -50,8 +50,8 @@ print "prova toString ".$abb->toString()."<br>";
 
 
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
-$intestatarioCarta="toninoo selli";
-$numeroCarta="4060356612345671";
+$intestatarioCarta="claudio cruciani";
+$numeroCarta="0000356612345671";
 $scadenzaCarta="27/09/2026";
 $codiceCVV="728";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
@@ -88,7 +88,7 @@ $cogn="fonzi";
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
 $nom="ZioTonye";
-$emai="ZioTony@virgeilio.it";
+$emai="miaomiao@virgilio.it";
 $passw="pappepepino";
 $tele="3313476567";
 $nomeNeg="Vynilshop";
@@ -144,14 +144,14 @@ echo "<hr>";
 //-----------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('email', 'rugg67@virgilio.it');
+$out=$out->load('email', 'Michele@virgilio.it');
 //---------------------------------------------------------------------
 echo "<h3> Prova Vinile </h3>";
-$titolo = "domani smetto";
+$titolo = "Il bello d esser brutti";
 $artist = "articolo 31";
 $gen = "rap";
 $ng = "66";
@@ -160,9 +160,9 @@ $pr = "€7.99";
 $des = "anno 2001,settimo album per i cantanti milanesi";
 $quant = "5";
 $vinile = new Evinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-echo "Test toString ".$vinile->toString()."br";
+
 //------------------------------------------------------------------------------------------
-*/
+
 
 /*
 //-----------------STORE FCARTA-------
@@ -187,17 +187,18 @@ $id=$idpriv->store($utente1);
 echo $id;
 //--------------------------------------
 */
-/*  //store con PM
+/* //store con PM
 $idpriv=new FPersistentManager();
 $id=$idpriv->store($utente1);
 echo $id;
-/*
+*/
 
 
 /*
 //-------STORE FNEGOZIO------------
-$idneg=new FNegozio();
-$idneg->store($utente2);
+$pm=new FPersistentManager();
+$idneg=$pm->store($utente2);
+//var_dump($idneg);
 //---------------------------------
 */
 
@@ -225,13 +226,14 @@ var_dump($email);
 //----------------------------------------
 */
 
-/*
+
 //-------STORE FVINILE-------
-$id=new FVinile();
+$id=new FPersistentManager();
 $id1=$id->store($vinile);
+echo "<hr>";
 var_dump($id1);
 //---------------------------
-*/
+
 
 /*
 //-----------DELETE FABBONAMENTO--------
@@ -388,11 +390,11 @@ echo "<br>";
 echo $a->toString();
 //---------------------------------------
 */
-
+/*
 $pm=new FPersistentManager();
 $negozio=$pm->load("email_negozio","alberto@virgilio.it","FNegozio");
 var_dump($negozio);
-
+*/
 
 /*
 //----------LOAD FUTENTE_LOGGATO-----------------------------------------
@@ -512,13 +514,12 @@ $name=$_FILES['foto']["name"];
 $type=$_FILES['foto']["type"];
 $dataimage=file_get_contents($_FILES['foto']["tmp_name"]);
 $dataimage=base64_decode($dataimage);
-$immagine=new EImageUtente($name,$dataimage,$type,'gianluca@virgilio.it');
-var_dump($immagine);
+$immagine=new EImageVinile($name,$dataimage,$type,10);
 
 
 //-----------STORE
-$f=new FImage();
-$f1=$f->storeI($immagine,'foto');
+$f=new FPersistentManager();
+$f1=$f->storeImg($immagine);
 echo"<hr>";
 echo $f1;
 */

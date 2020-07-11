@@ -24,7 +24,9 @@ class FPersistentManager
         //$PM=static::getInstance();  //
         $classe_entity = get_class($object);
         $classe_foundation = str_replace("E", "F", $classe_entity);
-        $classe_foundation::store($object);
+        $id=$classe_foundation::store($object);
+        return $id;
+
     }
 
     public static function storeImg(EImage $media){

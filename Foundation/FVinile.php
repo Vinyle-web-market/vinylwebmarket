@@ -55,13 +55,11 @@ class FVinile
         $db = FDatabase::getInstance();
         $exist = FUtente_loggato::exist("email", $vinile->getVenditore()->getEmail());
         if ($exist == TRUE) {
-
-            $db->storeP($vinile, static::getClass());
-            return "operazione riuscita";
+            $id=$db->storeP($vinile, static::getClass());
         } else {
-            $str = "operazione non riuscita";
-            return $str;
+            return null;
         }
+        return $id;
     }
 
 
