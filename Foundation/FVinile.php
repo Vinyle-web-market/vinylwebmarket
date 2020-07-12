@@ -121,6 +121,7 @@ class FVinile
             $utenteloggato = FUtente_loggato::load("email", $resultLoadDB["venditore"]);
             //function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
             $vinile = new Evinile($utenteloggato, $resultLoadDB["titolo"], $resultLoadDB["artista"], $resultLoadDB["genere"], $resultLoadDB["ngiri"], $resultLoadDB["condizione"], $resultLoadDB["prezzo"], $resultLoadDB["descrizione"], $resultLoadDB["quantita"]);
+            $vinile->setId($resultLoadDB['id_vinile']);
         } else {
             if (($resultLoadDB != null) && ($rows_number > 1)) {
                 $vinile = array();
@@ -128,6 +129,7 @@ class FVinile
                 for ($i = 0; $i < count($resultLoadDB); $i++) {
                     $utenteloggato[] = FUtente_loggato::load("email", $resultLoadDB[$i]["venditore"]);
                     $vinile[$i] = new Evinile($utenteloggato[$i], $resultLoadDB[$i]["titolo"], $resultLoadDB[$i]["artista"], $resultLoadDB[$i]["genere"], $resultLoadDB[$i]["ngiri"], $resultLoadDB[$i]["condizione"], $resultLoadDB[$i]["prezzo"], $resultLoadDB[$i]["descrizione"], $resultLoadDB[$i]["quantita"]);
+                    $vinile[$i]->setId($resultLoadDB[$i]['id_vinile']);
                 }
             }
         }
@@ -166,18 +168,31 @@ class FVinile
         return $vinile;
      }
 
-     function loadSixVinyls(){
+     public static function loadSixVinyls(){
          $vinile = null;
+         $load=null;
+         $img=null;
          $db = FDatabase::getInstance();
          $vinile= $db->prendiVinile();
          rsort($vinile);
-         for ($i=0; $i<6; $i++) {
-             $result[$i]=$vinile[$i];
-             $load[$i]=FVinile::load('id_vinile', $result[$i]);
+         if(count($vinile)<6)
+             $n=count($vinile);
+         else
+             $n=6;
+         for ($i=0; $i<$n; $i++) {
+                 //ublic static function loadI(string $categoriaImage,$field,$id){
+             // echo '<br>';
+                 $img[$i] = FImage::loadI1("EImageVinile", "id_vinile", $vinile[$i]);
+                 $result[$i] = $vinile[$i];
+                 $load[$i] = FVinile::load('id_vinile', $result[$i]);
+            //var_dump($load[$i]);
+            // echo '<br>';
+            // var_dump($img[$i]);
+             //echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';
+
          }
+         return array($load,$img);
+    }
 
-         return $load;
-
-     }
 }
 

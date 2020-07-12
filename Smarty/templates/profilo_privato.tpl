@@ -66,7 +66,7 @@
 
   				<div class="profile-userpic">
                     <a href="/vinylwebmarket/User/modificaProfiloImage">
-  					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" width="300" height="300" class="img-responsive" alt="">
+  					<img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive" alt="img non disponibile">
                     </a>
                 </div>
   				<!-- END SIDEBAR USERPIC -->

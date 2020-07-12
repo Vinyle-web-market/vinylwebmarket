@@ -68,6 +68,7 @@ class CVinile
         $ris = "no_img";
         $type = null;
         $nome = null;
+        $data=null;
         $max_size = 300000;
         $result = is_uploaded_file($_FILES[$nome_file]['tmp_name']);
         if (!$result) {
@@ -80,10 +81,11 @@ class CVinile
             } else {
                 $type = $_FILES[$nome_file]['type'];
                 $img = $_FILES["file"];
-                $data=file_get_contents($_FILES[$nome_file]["tmp_name"]);
-                $data=base64_decode($data);
+                //$data=file_get_contents($_FILES[$nome_file]["tmp_name"]);
+               // $data=base64_decode($data);
                 if ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
                     $nome = $_FILES[$nome_file]['name'];
+                    $data = $_FILES[$nome_file]['tmp_name'];
                     //$immagine = file_get_contents($_FILES[$nome_file]['tmp_name']);
                     //$immagine = addslashes($immagine);
                     $ris = "ok_img";
@@ -122,7 +124,7 @@ class CVinile
             //public function __construct($fname, $data, $type,$id)
             $idAn = $pm->store($new_vinile);
             $m_vinile = new EImageVinile($nome,$data,$type,$idAn);
-            $pm->storeImage($m_vinile);
+            $pm->storeImg($m_vinile);
             $ris = "ok";
         }
         elseif ($stato == "no_img" && $stato_1 == "ok_img") {
@@ -203,7 +205,7 @@ class CVinile
         $email = $result->getVenditore()->getEmail();
         $telefono = $result->getVenditore()->getPhone();
         //public static function loadImg(string $categoriaImage,$field,$id){
-        $img_utente = $pm->loadImg("EImageUtente","email_utente",$result->getVenditore()->getEmail(),);
+        $img_utente = $pm->loadImg("EImageUtente","email_utente",$result->getVenditore()->getEmail());
         $id = $result->getId();
         $med_annuncio = $pm->loadImg("EImageVinile","id_vinile",$id);
         $sessione = Session::getInstance();

@@ -99,6 +99,12 @@ class FPersistentManager
         return $ris;
     }
 
+    public function vinylHome(){
+        $ris=null;
+        $ris=FVinile::loadSixVinyls();
+        return $ris;
+    }
+
 
 
 }

@@ -177,10 +177,10 @@ class CUser
             }//$type = $_FILES[$nome_file]['type'];
             elseif ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/jpg') {
                 if ($funz == "registrazionePrivato" || $funz = "registrazioneNegozio") {
-                    $data = file_get_contents($img["tmp_name"]);
-                    $data = base64_encode($data);
+                    //$data = file_get_contents($img["tmp_name"]);
+                    // $data = base64_encode($data);
                     $pm->store($utente);
-                    $mutente = new EImageUtente($name, $data, $type, $utente->getEmail());
+                    $mutente = new EImageUtente($name, $img["tmp_name"], $type, $utente->getEmail());
                     $pm->storeImg($mutente);
                     //return "ok";
                     $ris = "ok";
@@ -188,9 +188,9 @@ class CUser
                     $pm->deleteImg("EImageUtente", "email_utente", $utente->getEmail());
                     //public static function deleteImg(string $categoriaImage,$field, $id){
                     $img = $_FILES["file"];
-                    $data = file_get_contents($img["tmp_name"]);
-                    $data = base64_encode($data);
-                    $mutente = new EImageUtente($img["name"], $data, $img["type"], $utente->getEmail());
+                    //$data = file_get_contents($img["tmp_name"]);
+                    //$data = base64_encode($data);
+                    $mutente = new EImageUtente($img["name"], $img["tmp_name"], $img["type"], $utente->getEmail());
                     $pm->storeImg($mutente);
                     //return "ok";
                     $ris = "ok";
@@ -633,7 +633,7 @@ class CUser
         $privato = $pm->load("email_privato", $visitato, "FPrivato");
         $negozio = $pm->load("email_negozio", $visitato, "FNegozio");
         if (isset($negozio)) {
-            $img = $pm->loadImg("emailutente", $visitato, "FImage");
+            $img = $pm->loadImg("FImageUtente","email_utente" , $visitato);
             $imgrecensioni = static::ImageReviews($negozio);
             $rec = static::info_cliente_rec($negozio);
             $sessione = Session::getInstance();
@@ -649,7 +649,7 @@ class CUser
             else
                 $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
         } else {
-            $img = $pm->loadImg("emailutente", $visitato, "FImage");
+            $img = $pm->loadImg("FImageUtente","email_utente" , $visitato);
             $imgrecensioni = static::ImageReviews($privato);
             $rec = static::info_cliente_rec($privato);
             $sessione = Session::getInstance();

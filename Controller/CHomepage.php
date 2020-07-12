@@ -5,8 +5,12 @@ class CHomepage
 {
     public function impostaPagina()
     {
+        $result=null;
+        $img=null;
         $view = new VHomepage();
-        $view->Home();
+        $pm = new FPersistentManager();
+        list($result,$img) = $pm->vinylHome();
+        $view->Home($result,$img);
     }
     public function impostaPaginaULnegozio()
     {

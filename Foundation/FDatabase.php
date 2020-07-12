@@ -232,6 +232,36 @@ class FDatabase
             return null;
         }
     }
+    //se sono due immagini vinili ne torna una sola
+    /*
+    public function loadMedia2($categoriaImage,$keyField,$id){
+        $Fclass='FImage';
+        try{
+            $sql="SELECT * FROM ".$Fclass::getTable($categoriaImage)." WHERE ".$keyField."='".$id."';";
+            $pdost = $this->db->prepare($sql);
+            $pdost->execute();
+            $nload=$pdost->rowCount();
+            if($nload==0)
+                $result=NULL;
+            else if($nload==1)
+                $result=$pdost->fetch(PDO::FETCH_ASSOC);
+            else {
+                $result2 = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($e = $pdost->fetch())
+                    $result2[] = $e;
+                $result=$result2[0];
+            }
+            //var_dump($result);
+            return $result;
+
+        }
+        catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            return null;
+        }
+    }
+    */
 
     public function countLoadMedia (string $categoriaImage, $keyField, $id)
     {

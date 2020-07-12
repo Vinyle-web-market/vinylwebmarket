@@ -176,7 +176,7 @@ class VUser
     public function profilePrivato($user, $vinili, $image)
     {
         if (isset($image)) {
-            $pic64 = base64_encode($image->getDataImage());
+            $pic64 = $image->getDataImage();
             $type = $image->getMimeType();
         } else {
             $data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
@@ -190,13 +190,14 @@ class VUser
         $this->smarty->assign('cognome', $user->getCognome());
         $this->smarty->assign('email', $user->getEmail());
         $this->smarty->assign('array', $vinili);
+        //$this->smarty->display('claudia.tpl');
         $this->smarty->display('profilo_privato.tpl');
     }
 
     public function profileNegozio($user, $vinili, $image)
     {
         if (isset($image)) {
-            $pic64 = base64_encode($image->getDataImage());
+            $pic64 = $image->getDataImage();
             $type = $image->getMimeType();
         } else {
             $data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
@@ -209,6 +210,7 @@ class VUser
         $this->smarty->assign('nomeNegozio', $user->getNameShop());
         $this->smarty->assign('email', $user->getEmail());
         $this->smarty->assign('array', $vinili);
+        //$this->smarty->display('claudia.tpl');
         $this->smarty->display('profilo_negozio.tpl');
     }
 
@@ -273,7 +275,7 @@ class VUser
                 break;
         }
         if (isset($img)) {
-            $pic64 = base64_encode($img->getDataImage());
+            $pic64 = $img->getDataImage();
         }
         else {
             $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
@@ -427,17 +429,17 @@ class VUser
         if (is_array($imgrec)) {
             foreach ($imgrec as $item) {
                 if (isset($item)) {
-                    $pic64[] = base64_encode($item->getDataImage());
+                    $pic64[] = $item->getDataImage();
                     $type[] = $item->getMimeType();
                 } else {
                     $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
-                    $pic64[] = base64_encode($data);
+                    $pic64[] =$data;
                     $type[] = "image/png";
                 }
             }
         }
         elseif (isset($imgrec)) {
-            $pic64 = base64_encode($imgrec->getDataImage());
+            $pic64 = $imgrec->getDataImage();
             $type = $imgrec->getMimeType();
         }
         return array($type, $pic64);
@@ -445,7 +447,7 @@ class VUser
 
     public function setImage($image, $tipo) {
         if (isset($image)) {
-            $pic64 = base64_encode($image->getData());
+            $pic64 = $image->getDataImage();
             $type = $image->getType();
         }
         elseif ($tipo == 'user') {

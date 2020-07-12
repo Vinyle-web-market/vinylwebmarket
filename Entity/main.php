@@ -144,7 +144,7 @@ echo "<hr>";
 //-----------------------------------------------------------
 */
 
-
+/*
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
@@ -162,7 +162,7 @@ $quant = "5";
 $vinile = new Evinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 
 //------------------------------------------------------------------------------------------
-
+*/
 
 /*
 //-----------------STORE FCARTA-------
@@ -226,14 +226,14 @@ var_dump($email);
 //----------------------------------------
 */
 
-
+/*
 //-------STORE FVINILE-------
 $id=new FPersistentManager();
 $id1=$id->store($vinile);
 echo "<hr>";
 var_dump($id1);
 //---------------------------
-
+*/
 
 /*
 //-----------DELETE FABBONAMENTO--------
@@ -542,6 +542,76 @@ var_dump($miao);
 /*
 var_dump($utente2->getCarta());
 */
+/*
+$pm=new FPersistentManager();
+list($r,$r2) = $pm->vinylHome();
+
+var_dump($r);
+echo "<br>";echo "<br>";echo "<br>";
+echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+var_dump($r2);
+echo "<br>";echo "<br>";echo "<br>";
+echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";echo "<br>";
+*/
+
+/*
+// recupero alcune informazioni sul file inviato
+$nome_file_temporaneo = $_FILES['file_inviato']['tmp_name'];
+$nome_file_vero = $_FILES['file_inviato']['name'];
+$tipo_file = $_FILES['file_inviato']['type'];
+
+// leggo il contenuto del file
+$dati_file = file_get_contents($nome_file_temporaneo);
+
+$pm=new FPersistentManager();
+$f1=$pm->loadImg('EImageVinile','id','11');
+$pic64 = base64_encode($f1->getDataImage());
+var_dump($pic64);
+*/
+
+// OPERAZIONI DA FARE IN CONTROLLER PRIMA DI INVOCARE I COSTRUTTORI E METODI
+/*
+echo"<hr>";
+$name=$_FILES['foto']["name"];
+$type=$_FILES['foto']["type"];
+$dataimage=$_FILES['foto']["tmp_name"];
+//$dataimage=file_get_contents($dataimage);
+//$dataimage = addslashes($dataimage);
+//$dataimage=base64_decode($dataimage); noooooooooooooooooo
+$immagine=new EImageUtente($name,$dataimage,$type,'pazzo999@virgilio.it');
+
+
+//-----------STORE
+$f=new FPersistentManager();
+$f1=$f->storeImg($immagine);
+echo"<hr>";
+echo $f1;
+*/
+/*
+$f=new FPersistentManager();
+$img=$f->loadImg('EImageVinile','id_vinile','27');
+$final=base64_encode($img->getDataImage());
+var_dump($final);
+*/
+/*
+$f=new FPersistentManager();
+$img=$f->loadImg('EImageUtente','id','43');
+var_dump($img);
+*/
+
+$n=new FPersistentManager();
+list($r1,$r2)=$n->vinylHome();
+var_dump($r1);
+echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";
+var_dump($r2);
+
+
+
+
+
+
+
+
 
 ?>
 

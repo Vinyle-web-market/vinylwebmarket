@@ -90,18 +90,19 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>
-                          </div>
-                          <div class="item-box-blog-body">
-                            <!--Heading-->
+                            <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                            <figure><img alt="immagine vinile vuota"  src="data:{$type[0]};base64,{$pic64[0]}"></figure>
+                            </div>
+                            <div class="item-box-blog-body">
+                              <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[0]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i>{$vinili[0]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[0]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -120,18 +121,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile1.jpg"> </figure>
+                            <figure><img alt="immagine vinile vuota" width="60" height="60" src="data:{$type[1]};base64,{$pic64[1]}"> <figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[1]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i> {$vinili[1]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[1]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -151,18 +152,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile2.jpg"> </figure>
+                            <figure> <img alt="" src="data:{$type[2]};base64,{$pic64[2]}"> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[2]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i>{$vinili[2]->getVenditore()->getUsername()} <i class="fa fa-comments-o"></i> {$vinili[2]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -187,18 +188,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile3.jpg"> </figure>
+                            <figure> <img alt="" src="data:{$type[3]};base64,{$pic64[3]}"> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[3]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i>{$vinili[3]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[3]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -217,18 +218,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile4.jpg"> </figure>
+                            <figure> <img alt="" src="data:{$type[4]};base64,{$pic64[4]}"> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[4]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i>{$vinili[4]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[4]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -247,18 +248,18 @@
                             <!--Date-->
                             <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                             <!--Image-->
-                            <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile5.jpg"> </figure>
+                            <figure> <img alt="" src="data:{$type[5]};base64,{$pic64[5]}"> </figure>
                           </div>
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
                               <a href="#" tabindex="0">
-                                <h5>Titolo vinile</h5>
+                                <h5>{$vinili[5]->getTitolo()}</h5>
                               </a>
                             </div>
                             <!--Data-->
                             <div class="item-box-blog-data" style="padding: px 15px;">
-                              <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
+                              <p><i class="fa fa-user-o"></i>{$vinili[5]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[5]->getPrezzo()}</p>
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
@@ -281,7 +282,6 @@
           </div>
         </div>
       </div>
-
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

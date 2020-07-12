@@ -55,12 +55,12 @@ class VVinile
 
         if (is_array($med_annuncio)) {
             foreach ($med_annuncio as $item) {
-                $pic64ann[] = base64_encode($item->getDataImage());
+                $pic64ann[] = $item->getDataImage();
                 $typeA[] = $item->getMimeType();
             }
         }
         elseif (isset($med_annuncio)) {
-            $pic64ann = base64_encode($med_annuncio->getDataImage());
+            $pic64ann = $med_annuncio->getDataImage();
             $typeA = $med_annuncio->getMimeType();
         }
         if (isset($med_annuncio)) {

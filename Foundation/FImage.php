@@ -33,11 +33,13 @@ class FImage
      */
 
     public static function bind($pdost,$media) {
+        $dataimage=file_get_contents($media->getDataImage());
+        $dataimage = addslashes($dataimage);
         if ($media instanceof EImage) {
             $pdost->bindValue(":id",           NULL,                                PDO::PARAM_INT);
             $pdost->bindValue(":filename",     $media->getFilename(),               PDO::PARAM_STR);
             $pdost->bindValue(":mimetype",     $media->getMimeType(),               PDO::PARAM_STR);
-            $pdost->bindValue(':dataimage',    $media->getDataImage(),        PDO::PARAM_LOB);
+            $pdost->bindValue(':dataimage',    $dataimage,        PDO::PARAM_LOB);
 
             if ($media instanceof EImageUtente) {
                 $pdost->bindValue(":email_utente", $media->getEmailUtente(),         PDO::PARAM_STR);
@@ -127,14 +129,16 @@ class FImage
             $num = $db->countLoadMedia($categoriaImage, $field, $id);
             if(($result!=null) && ($num == 1)) {
                 // ($fname, $data, $type,$mail)
-                $image=new EImageUtente($result['filename'],$result['mimetype'],$result['dataimage'],$result['email_utente']);
+                $data=base64_encode(stripslashes($result['dataimage']));
+                $image=new EImageUtente($result['filename'],$data,$result['mimetype'],$result['email_utente']);
                 $image->setId($result['id']);
             }
             else {
                 if(($result!=null) && ($num > 1)){
                     $image = array();
                     for($i=0; $i<count($result); $i++){
-                        $image[]=new EImageUtente($result[$i]['filename'],$result[$i]['mimetype'],$result['dataimage'],$result[$i]['email_utente']);
+                        $data=base64_encode(stripslashes($result[$i]['dataimage']));
+                        $image[]=new EImageUtente($result[$i]['filename'],$data,$result[$i]['mimetype'],$result[$i]['email_utente']);
                         $image[$i]->setId($result[$i]['id']);
                     }
                 }
@@ -145,14 +149,16 @@ class FImage
             $num = $db->countLoadMedia($categoriaImage, $field, $id);
             if(($result!=null) && ($num == 1)) {
                 // ($fname, $data, $type,$mail)
-                $image=new EImageVinile($result['filename'],$result['mimetype'],$result['dataimage'],$result['id_vinile']);
+                $data=base64_encode(stripslashes($result['dataimage']));
+                $image=new EImageVinile($result['filename'],$data,$result['mimetype'],$result['id_vinile']);
                 $image->setId($result['id']);
             }
             else {
                 if(($result!=null) && ($num > 1)){
                     $image = array();
                     for($i=0; $i<count($result); $i++){
-                        $image[]=new EImageVinile($result[$i]['filename'],$result[$i]['mimetype'],$result['dataimage'],$result[$i]['id_vinile']);
+                        $data=base64_encode(stripslashes($result[$i]['dataimage']));
+                        $image[]=new EImageVinile($result[$i]['filename'],$data,$result[$i]['mimetype'],$result[$i]['id_vinile']);
                         $image[$i]->setId($result[$i]['id']);
                     }
                 }
@@ -160,6 +166,33 @@ class FImage
         }
         return $image;
     }
+
+    //per caricare solo 1 foto se ce ne sono 2
+    public static function loadI1(string $categoriaImage,$field,$id){
+        $image=null;
+        $Fclass=static::getClass();
+        $db=FDatabase::getInstance();
+        $result = $db->loadMedia('EImageVinile', $field, $id);
+        $num = $db->countLoadMedia($categoriaImage, $field, $id);
+        if(($result!=null) && ($num == 1)) {
+            // ($fname, $data, $type,$mail)
+            $data=base64_encode(stripslashes($result['dataimage']));
+            $image1=new EImageVinile($result['filename'],$data,$result['mimetype'],$result['id_vinile']);
+            $image1->setId($result['id']);
+        }
+        else {
+            if(($result!=null) && ($num > 1)){
+                $image = array();
+                for($i=0; $i<count($result); $i++){
+                    $data=base64_encode(stripslashes($result[$i]['dataimage']));
+                    $image[]=new EImageVinile($result[$i]['filename'],$data,$result[$i]['mimetype'],$result[$i]['id_vinile']);
+                    $image[$i]->setId($result[$i]['id']);
+                }
+                $image1=$image[0];
+            }
+        }
+return $image1;
+}
 
 
 
