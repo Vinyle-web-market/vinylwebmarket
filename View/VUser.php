@@ -391,7 +391,7 @@ class VUser
         if ($cont == "no")
             $this->smarty->assign('contatta', $cont);
         if ($typeR == null && $pic64rec == null)
-            $this->smarty->assign('immagine', "/FillSpaceWEB/Smarty/immagini/user.png");
+            $this->smarty->assign('immagine', "/vinylwebmarket/Smarty/immagini/user.png");
         if (isset($imgrec)) {
             if (is_array($imgrec)) {
                 $this->smarty->assign('typeR', $typeR);

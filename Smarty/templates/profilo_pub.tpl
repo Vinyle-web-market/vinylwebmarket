@@ -49,143 +49,282 @@
         </div>
       </nav>
 
+    {if $tipoutente=='privato'}
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive">
+                    </div>
+                    <hr color=black>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            {$nome} {$cognome}
+                        </div>
+                        <div class="profile-usertitle-job">
 
-
-
-      <div class="container">
-      <div class="row profile">
-  		<div class="col-md-3">
-  			<div class="profile-sidebar">
-  				<!-- SIDEBAR USERPIC -->
-  				<div class="profile-userpic">
-  					<img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive">
-  				</div>
-          	  <hr color=black>
-  				<!-- END SIDEBAR USERPIC -->
-  				<!-- SIDEBAR USER TITLE -->
-  				<div class="profile-usertitle">
-  					<div class="profile-usertitle-name">
-                        {$nome} {$cognome}
-  					</div>
-  					<div class="profile-usertitle-job">
-
-  					</div>
-  				</div>
-  				<!-- END SIDEBAR USER TITLE -->
-	  <hr color=black>
-  				<!-- SIDEBAR MENU -->
-  				<div class="profile-usermenu">
-            <li>
-              <a>
-              <i class="glyphicon glyphicon-user"></i>
-                  {$username}
-              </a>
-            </li>
-            <li>
-              <a>
-              <i class="glyphicon glyphicon-user"></i>
-                  {$email} </a>
-            </li>
-            <li>
-              <a>
-              <i class="glyphicon glyphicon-user"></i>
-                  {$telefono}
-               </a>
-            </li>
-            <hr color=black>
-            <a>
-            <i class="glyphicon glyphicon-user"></i>
-                            <button type="button" class="btn-product">Invia un messaggio</button> </a>
-                              <hr color=black>
-                            <a href="vinilivendita.html">
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <hr color=black>
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                {$username}
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                {$email} </a>
+                        </li>
+                        <li>
+                            <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                {$telefono}
+                            </a>
+                        </li>
+                        <hr color=black>
+                        <a>
                             <i class="glyphicon glyphicon-user"></i>
-                                            <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
-          </div>
-          	  <hr color=black>
-  				<!-- END MENU -->
-			</div>
-		</div>
+                            <button type="button" class="btn-product">Invia un messaggio</button> </a>
+                        <hr color=black>
+                        <a href="vinilivendita.html">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
+                    </div>
+                    <hr color=black>
+                    <!-- END MENU -->
+                </div>
+            </div>
 
 
 
-		<div class="col-md-9">
-      <br>
-              <h3 class="text-center">Recensione dell utente:</h3>
-          <hr color=black>
-          <section class="reviews py-5" id="reviews">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="card">
-                              <div class="card-body">
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <div class="one-reivew">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                                <a href="#">Utente che scrive la recensione</a>
+            <div class="col-md-9">
+                <br>
+                <h3 class="text-center">Recensione dell utente:</h3>
+                <hr color=black>
+                <section class="reviews py-5" id="reviews">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="one-reivew">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a href="#">Utente che scrive la recensione</a>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <small>May 04, 2018</small>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row text-success">
+                                                        <div class="col-md-12">
+                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row pt-2">
+                                                        <div class="col-md-12">
+                                                            <b>Worse web hosting company</b>
+
+
+                                                            <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr color=black>
+                                                </div>
+                                                <div class="one-reivew">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <a href="#">Utente che scrive la recensione</a>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <small>May 04, 2018</small>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row text-success">
+                                                        <div class="col-md-12">
+                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row pt-2">
+                                                        <div class="col-md-12">
+                                                            <b>Worse web hosting company</b>
+                                                            <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                              <div class="col-md-6">
-                                                  <small>May 04, 2018</small>
-                                              </div>
-
-                                          </div>
-                                          <div class="row text-success">
-                                              <div class="col-md-12">
-                                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                              </div>
-                                          </div>
-                          
-                                          <div class="row pt-2">
-                                              <div class="col-md-12">
-                                                  <b>Worse web hosting company</b>
 
 
-                                                  <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
-                                              </div>
-                                          </div>
-                                          <hr color=black>
-                                          </div>
-                                          <div class="one-reivew">
-                                          <div class="row">
-                                            <div class="col-md-6">
-                                                <a href="#">Utente che scrive la recensione</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div
+        </div>
+    {/if}
+
+        {if $tipoutente=='negozio'}
+        <div class="container">
+            <div class="row profile">
+                <div class="col-md-3">
+                    <div class="profile-sidebar">
+                        <!-- SIDEBAR USERPIC -->
+                        <div class="profile-userpic">
+                            <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive">
+                        </div>
+                        <hr color=black>
+                        <!-- END SIDEBAR USERPIC -->
+                        <!-- SIDEBAR USER TITLE -->
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name">
+                                {$nomenegozio}
+                            </div>
+                            <div class="profile-usertitle-job">
+
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <hr color=black>
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <li>
+                                <a>
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    {$email}
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    {$indirizzo} </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    {$partitaiva}
+                                </a>
+                            </li>
+                            <hr color=black>
+                            <a>
+                                <i class="glyphicon glyphicon-user"></i>
+                                <button type="button" class="btn-product">Invia un messaggio</button> </a>
+                            <hr color=black>
+                            <a href="vinilivendita.html">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
+                        </div>
+                        <hr color=black>
+                        <!-- END MENU -->
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-9">
+                    <br>
+                    <h3 class="text-center">Recensione dell utente:</h3>
+                    <hr color=black>
+                    <section class="reviews py-5" id="reviews">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="one-reivew">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#">Utente che scrive la recensione</a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <small>May 04, 2018</small>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row text-success">
+                                                            <div class="col-md-12">
+                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row pt-2">
+                                                            <div class="col-md-12">
+                                                                <b>Worse web hosting company</b>
+
+
+                                                                <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr color=black>
+                                                    </div>
+                                                    <div class="one-reivew">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#">Utente che scrive la recensione</a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <small>May 04, 2018</small>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row text-success">
+                                                            <div class="col-md-12">
+                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="row pt-2">
+                                                            <div class="col-md-12">
+                                                                <b>Worse web hosting company</b>
+                                                                <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
                                             </div>
-                                              <div class="col-md-6">
-                                                  <small>May 04, 2018</small>
-                                              </div>
 
-                                          </div>
-                                          <div class="row text-success">
-                                              <div class="col-md-12">
-                                                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                              </div>
-                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </section>
 
-                                          <div class="row pt-2">
-                                              <div class="col-md-12">
-                                                  <b>Worse web hosting company</b>
-                                                  <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
-                                              </div>
-                                          </div>
-
-                                          </div>
-                                      </div>
+                </div
+            </div>
+            {/if}
 
 
-                                  </div>
 
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-              </div>
-          </section>
-
-		</div
-</div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>
