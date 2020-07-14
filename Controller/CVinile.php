@@ -192,7 +192,6 @@ class CVinile
         $pm = new FPersistentManager();
         //ublic static function load($field, $value,$Fclass) {
         $result = $pm->load("id_vinile", $id, "FVinile");
-        $data_p = $result->getDepartureDate();
         if(get_class($result->getVenditore())=="EPrivato") {
             $nome = $result->getVenditore()->getNome();
             $cognome = $result->getVenditore()->getCognome();

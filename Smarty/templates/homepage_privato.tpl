@@ -92,7 +92,7 @@
                         <div class="item-box-blog-body">
                           <!--Heading-->
                           <div class="item-box-blog-heading">
-                            <a href="#" tabindex="0">
+                            <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[0]->getId()}}" tabindex="0">
                               <h5>{$vinili[0]->getTitolo()}</h5>
                             </a>
                           </div>

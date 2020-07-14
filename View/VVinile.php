@@ -55,23 +55,23 @@ class VVinile
 
         if (is_array($med_annuncio)) {
             foreach ($med_annuncio as $item) {
-                $pic64ann[] = $item->getDataImage();
-                $typeA[] = $item->getMimeType();
+                $pic64Vin[] = $item->getDataImage();
+                $typeVin[] = $item->getMimeType();
             }
         }
         elseif (isset($med_annuncio)) {
-            $pic64ann = $med_annuncio->getDataImage();
-            $typeA = $med_annuncio->getMimeType();
+            $pic64Vin = $med_annuncio->getDataImage();
+            $typeVin = $med_annuncio->getMimeType();
         }
         if (isset($med_annuncio)) {
             if (is_array($med_annuncio)) {
-                $this->smarty->assign('typeA', $typeA);
-                $this->smarty->assign('pic64ann', $pic64ann);
+                $this->smarty->assign('typeVin', $typeVin);
+                $this->smarty->assign('pic64Vin', $pic64Vin);
                 $this->smarty->assign('n_img_annuncio', count($med_annuncio) - 1);
             }
             else {
-                $this->smarty->assign('typeA', $typeA);
-                $this->smarty->assign('pic64ann', $pic64ann);
+                $this->smarty->assign('typeVin', $typeVin);
+                $this->smarty->assign('pic64Vin', $pic64Vin);
             }
             //$this->smarty->assign('n_img_annuncio', count($med_annuncio) - 1);
         }
@@ -104,7 +104,7 @@ class VVinile
         if(!$partitaiva)
             $this->smarty->assign('partitaiva', $partitaiva);
 
-            $this->smarty->display('dettagliVinyl.tpl');
+            $this->smarty->display('dettagliVinile.tpl');
         }
 
 
