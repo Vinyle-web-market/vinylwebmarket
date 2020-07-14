@@ -50,8 +50,8 @@
 
             <li class="nav-item dropdown">
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/User/viewProfilePublic" method="post">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="email">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -60,11 +60,11 @@
     <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
-			<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" width="300" height="300" class="img-responsive" alt="">
-				</div>
+            <div class="profile-userpic">
+                <a href="/vinylwebmarket/User/modificaProfiloImage">
+                    <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive" alt="img non disponibile">
+                </a>
+            </div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
@@ -84,11 +84,6 @@
             <i class="glyphicon glyphicon-user"></i>
             Messaggio </a>
           </li>
-            <li>
-              <a href="#">
-              <i class="glyphicon glyphicon-user"></i>
-              Vendi vinile </a>
-            </li>
 
 						<li>
 							<a href="/vinylwebmarket/User/modificaProfilo">
@@ -106,7 +101,12 @@
 							<a href="#" target="_blank">
 							<i class="glyphicon glyphicon-user"></i>
 							Aiuto </a>
-						</li>
+
+                    <li>
+                        <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Pubblica e vendi i tuoi vinili </a>
+                    </li>
 
 				</div>
 				<!-- END MENU -->

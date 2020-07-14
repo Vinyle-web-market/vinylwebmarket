@@ -12,7 +12,7 @@ include_once("../AutoLoad.php");
 include("EAbbonamento.php");
 include("ECarta.php");
 include("ERecensione.php");
-include("Evinile.php");
+include("EVinile.php");
 include("EPrivato.php");
 include("ENegozio.php");
 include ("EMessaggio.php");
@@ -159,7 +159,7 @@ $cond = "usato";
 $pr = "€7.99";
 $des = "anno 2001,settimo album per i cantanti milanesi";
 $quant = "5";
-$vinile = new Evinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
+$vinile = new EVinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
 
 //------------------------------------------------------------------------------------------
 */
