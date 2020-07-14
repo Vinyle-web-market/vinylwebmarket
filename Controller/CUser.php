@@ -278,10 +278,12 @@ class CUser
                     if (isset($_COOKIE['chat']))
                         setcookie("chat", null, time() - 900, "/");
                     else {
-                        if (get_class($utente) == "EPrivato")
-                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULprivato/');
-                        else
-                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULnegozio/');
+                        if (get_class($utente) == "EPrivato") {
+                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULprivato');
+                        }
+                        elseif(get_class($utente) == "ENegozio") {
+                            header('Location: /vinylwebmarket/Homepage/impostaPaginaULnegozio');
+                        }
                     }
                 }
             } else {

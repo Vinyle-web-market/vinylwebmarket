@@ -59,226 +59,233 @@
     </div>
   </nav>
 
-  <div class="container">
 
 
 
 
 
-        <div class="container cta-100 ">
-          <div class="container">
-            <div class="row blog">
-              <div class="col-md-12">
-                <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#blogCarousel" data-slide-to="1"></li>
-                  </ol>
-                  <!-- Carousel items -->
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <div class="row">
 
-                        <!-- primo vinile -->
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                              <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
-                          </div>
+    <div class="container cta-100 ">
+      <div class="container">
+        <div class="row blog">
+          <div class="col-md-12">
+            <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#blogCarousel" data-slide-to="1"></li>
+              </ol>
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row">
+
+                    <!-- primo vinile -->
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                          <figure><img alt="immagine vinile vuota"  src="data:{$type[0]};base64,{$pic64[0]}"></figure>
                         </div>
-
-                        <!-- secondo vinile -->
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile1.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                              <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[0]->getTitolo()}</h5>
+                            </a>
                           </div>
-                        </div>
-
-                        <!--terzo vinile-->
-
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile2.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                              <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i>{$vinili[0]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[0]->getPrezzo()}</p>
                           </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione</p>
+                          </div>
+                         <!-- <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>-->
+                          <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                            <input type="text" hidden name="email" value="{$vinili[0]->getVenditore()->getEmail()}" />
+                            <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                          </form>
+                          <!--Read More Button-->
                         </div>
                       </div>
-                      <!--.row-->
                     </div>
-                    <!--.item-->
-                    <div class="carousel-item ">
-                      <div class="row">
 
-
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile3.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome Venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                              <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
-                          </div>
+                    <!-- secondo vinile -->
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <figure><img alt="immagine vinile vuota" width="60" height="60" src="data:{$type[1]};base64,{$pic64[1]}"> <figure>
                         </div>
-
-
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile4.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                              <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[1]->getTitolo()}</h5>
+                            </a>
                           </div>
-                        </div>
-
-
-                        <div class="col-md-4" >
-                          <div class="item-box-blog">
-                            <div class="item-box-blog-image">
-                              <!--Date-->
-                              <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
-                              <!--Image-->
-                              <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile5.jpg"> </figure>
-                            </div>
-                            <div class="item-box-blog-body">
-                              <!--Heading-->
-                              <div class="item-box-blog-heading">
-                                <a href="#" tabindex="0">
-                                  <h5>Titolo vinile</h5>
-                                </a>
-                              </div>
-                              <!--Data-->
-                              <div class="item-box-blog-data" style="padding: px 15px;">
-                                <p><i class="fa fa-user-o"></i> Nome venditore, <i class="fa fa-comments-o"></i> Prezzo</p>
-                              </div>
-                              <!--Text-->
-                              <div class="item-box-blog-text">
-                                <p>descrizione del prodotto e maggiori informazioni</p>
-                              </div>
-                               <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                              <!--Read More Button-->
-                            </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i> {$vinili[1]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[1]->getPrezzo()}</p>
                           </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione del prodotto e maggiori informazioni</p>
+                          </div>
+                          <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                            <input type="text" hidden name="email" value="{$vinili[1]->getVenditore()->getEmail()}" />
+                            <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                          </form>
+                          <!--Read More Button-->
                         </div>
                       </div>
-                      <!--.row-->
                     </div>
-                    <!--.item-->
+
+                    <!--terzo vinile-->
+
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <figure> <img alt="" src="data:{$type[2]};base64,{$pic64[2]}"> </figure>
+                        </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[2]->getTitolo()}</h5>
+                            </a>
+                          </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i>{$vinili[2]->getVenditore()->getUsername()} <i class="fa fa-comments-o"></i> {$vinili[2]->getPrezzo()}</p>
+                          </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione del prodotto e maggiori informazioni</p>
+                          </div>
+                          <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                          <!--Read More Button-->
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <!--.carousel-inner-->
+                  <!--.row-->
                 </div>
-                <!--.Carousel-->
+                <!--.item-->
+                <div class="carousel-item ">
+                  <div class="row">
+
+
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <figure> <img alt="" src="data:{$type[3]};base64,{$pic64[3]}"> </figure>
+                        </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[3]->getTitolo()}</h5>
+                            </a>
+                          </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i>{$vinili[3]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[3]->getPrezzo()}</p>
+                          </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione del prodotto e maggiori informazioni</p>
+                          </div>
+                          <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                          <!--Read More Button-->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <figure> <img alt="" src="data:{$type[4]};base64,{$pic64[4]}"> </figure>
+                        </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[4]->getTitolo()}</h5>
+                            </a>
+                          </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i>{$vinili[4]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[4]->getPrezzo()}</p>
+                          </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione del prodotto e maggiori informazioni</p>
+                          </div>
+                          <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                          <!--Read More Button-->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-4" >
+                      <div class="item-box-blog">
+                        <div class="item-box-blog-image">
+                          <!--Date-->
+                          <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
+                          <!--Image-->
+                          <figure> <img alt="" src="data:{$type[5]};base64,{$pic64[5]}"> </figure>
+                        </div>
+                        <div class="item-box-blog-body">
+                          <!--Heading-->
+                          <div class="item-box-blog-heading">
+                            <a href="#" tabindex="0">
+                              <h5>{$vinili[5]->getTitolo()}</h5>
+                            </a>
+                          </div>
+                          <!--Data-->
+                          <div class="item-box-blog-data" style="padding: px 15px;">
+                            <p><i class="fa fa-user-o"></i>{$vinili[5]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[5]->getPrezzo()}</p>
+                          </div>
+                          <!--Text-->
+                          <div class="item-box-blog-text">
+                            <p>descrizione del prodotto e maggiori informazioni</p>
+                          </div>
+                          <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                          <!--Read More Button-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--.row-->
+                </div>
+                <!--.item-->
               </div>
+              <!--.carousel-inner-->
             </div>
+            <!--.Carousel-->
           </div>
         </div>
+      </div>
+    </div>
 
-  </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>

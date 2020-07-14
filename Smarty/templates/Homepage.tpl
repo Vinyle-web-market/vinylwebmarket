@@ -106,7 +106,7 @@
                             </div>
                             <!--Text-->
                             <div class="item-box-blog-text">
-                              <p>descrizione del prodotto e maggiori informazioni</p>
+                              <p>descrizione</p>
                             </div>
                             <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
                             <!--Read More Button-->

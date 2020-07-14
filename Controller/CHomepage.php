@@ -14,12 +14,20 @@ class CHomepage
     }
     public function impostaPaginaULnegozio()
     {
+        $result=null;
+        $img=null;
         $view = new VHomepageUL();
-        $view->HomeULprivato();
+        $pm = new FPersistentManager();
+        list($result,$img) = $pm->vinylHome();
+        $view->HomeULnegozio($result,$img);
     }
     public function impostaPaginaULprivato()
     {
+        $result=null;
+        $img=null;
         $view = new VHomepageUL();
-        $view->HomeULnegozio();
+        $pm = new FPersistentManager();
+        list($result,$img) = $pm->vinylHome();
+        $view->HomeULprivato($result,$img);
     }
 }
