@@ -3,9 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>profilo privato pubblico</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <link rel="stylesheet" href="\vinylwebmarket\Smarty\js\bootstrap.js">
+      <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -17,7 +16,7 @@
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
       <a class="navbar-brand" href="#">
-        <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
       </div>
@@ -186,6 +185,6 @@
 		</div
 </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="../js/bootstrap.js"></script>
+          <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
   </body>
 </html>

@@ -451,7 +451,7 @@ class VUser
             $type = $image->getType();
         }
         elseif ($tipo == 'user') {
-            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/FillSpaceWEB/Smarty/immagini/user.png');
+            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
             $pic64= base64_encode($data);
             $type = "image/png";
         }
