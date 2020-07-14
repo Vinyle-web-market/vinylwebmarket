@@ -415,10 +415,24 @@ class VUser
         $sessione = Session::getInstance();
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
-        $this->smarty->assign('email',$user);
+
+
         $this->smarty->assign('username',$user->getUsername());
         $this->smarty->assign('email',$user->getEmail());
         $this->smarty->assign('telefono',$user->getPhone());
+
+        if(get_class($user)=="EPrivato"){
+            $this->smarty->assign('tipoutente',"privato");
+            $this->smarty->assign('nome',$user->getNome());
+            $this->smarty->assign('email',$user->getEmail());
+            $this->smarty->assign('cognome',$user->getCognome());
+        }
+        elseif (get_class($user)=="ENegozio"){
+            $this->smarty->assign('tipoutente',"negozio");
+            $this->smarty->assign('partitaiva',$user->getPIva());
+            $this->smarty->assign('nomenegozio',$user->getNameShop());
+            $this->smarty->assign('indirizzo',$user->getAddress());
+        }
         $this->smarty->display('profilo_pub.tpl');
 
     }
@@ -448,7 +462,7 @@ class VUser
     public function setImage($image, $tipo) {
         if (isset($image)) {
             $pic64 = $image->getDataImage();
-            $type = $image->getType();
+            $type = $image->getMimeType();
         }
         elseif ($tipo == 'user') {
             $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');

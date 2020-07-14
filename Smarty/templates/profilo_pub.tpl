@@ -58,14 +58,14 @@
   			<div class="profile-sidebar">
   				<!-- SIDEBAR USERPIC -->
   				<div class="profile-userpic">
-  					<img src="https://static.vecteezy.com/system/resources/previews/000/550/731/non_2x/user-icon-vector.jpg" class="img-responsive">
+  					<img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive">
   				</div>
           	  <hr color=black>
   				<!-- END SIDEBAR USERPIC -->
   				<!-- SIDEBAR USER TITLE -->
   				<div class="profile-usertitle">
   					<div class="profile-usertitle-name">
-  						NOME NEGOZIO
+                        {$nome} {$cognome}
   					</div>
   					<div class="profile-usertitle-job">
 
@@ -78,17 +78,19 @@
             <li>
               <a>
               <i class="glyphicon glyphicon-user"></i>
-              Nome </a>
+                  {$username}
+              </a>
             </li>
             <li>
               <a>
               <i class="glyphicon glyphicon-user"></i>
-              Cognome </a>
+                  {$email} </a>
             </li>
             <li>
               <a>
               <i class="glyphicon glyphicon-user"></i>
-              Telefono </a>
+                  {$telefono}
+               </a>
             </li>
             <hr color=black>
             <a>

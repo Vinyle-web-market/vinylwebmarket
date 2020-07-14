@@ -635,7 +635,8 @@ class CUser
         $privato = $pm->load("email_privato", $visitato, "FPrivato");
         $negozio = $pm->load("email_negozio", $visitato, "FNegozio");
         if (isset($negozio)) {
-            $img = $pm->loadImg("FImageUtente","email_utente" , $visitato);
+            $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
+
             $imgrecensioni = static::ImageReviews($negozio);
             $rec = static::info_cliente_rec($negozio);
             $sessione = Session::getInstance();
@@ -651,7 +652,7 @@ class CUser
             else
                 $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
         } else {
-            $img = $pm->loadImg("FImageUtente","email_utente" , $visitato);
+            $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
             $imgrecensioni = static::ImageReviews($privato);
             $rec = static::info_cliente_rec($privato);
             $sessione = Session::getInstance();
@@ -676,11 +677,11 @@ class CUser
         if (isset($recensioni)) {
             if (is_array($recensioni)) {
                 foreach ($recensioni as $item) {
-                    $recensioniImage = $pm->loadImg("email_utente",$item->getUsernameMittente(),"FImage");
+                    $recensioniImage[] = $pm->loadImg("EImageUtente","email_utente",$item->getUsernameMittente());
                     //$recensioniImage = $pm->load("emailutente", $item->getEmailClient(), "FMediaUtente");
                 }
             } else {
-                $recensioniImage = $pm->loadImg("email_utente",$recensioni->getUsernameMittente(), "FImage");
+                $recensioniImage = $pm->loadImg("EImageUtente","email_utente",$recensioni->getUsernameMittente());
             }
         }
         return $recensioniImage;
