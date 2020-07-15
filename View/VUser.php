@@ -433,6 +433,7 @@ class VUser
             $this->smarty->assign('nomenegozio',$user->getNameShop());
             $this->smarty->assign('indirizzo',$user->getAddress());
         }
+        //var_dump($rec);
         $this->smarty->display('profilo_pub.tpl');
 
     }

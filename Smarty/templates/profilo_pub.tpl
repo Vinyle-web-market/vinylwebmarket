@@ -121,7 +121,7 @@
                                                 <div class="one-reivew">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <a href="#">Utente che scrive la recensione</a>
+                                                            <a href="#">{$rec->getUsernameMittente()}</a>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <small>May 04, 2018</small>
@@ -139,7 +139,7 @@
                                                             <b>Worse web hosting company</b>
 
 
-                                                            <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                            <p>{$rec->getTesto()}</p>
                                                         </div>
                                                     </div>
                                                     <hr color=black>
@@ -258,7 +258,7 @@
                                                     <div class="one-reivew">
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <a href="#">Utente che scrive la recensione</a>
+                                                                <a href="#">{$rec->getUsernameMittente()}</a>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <small>May 04, 2018</small>
@@ -276,7 +276,7 @@
                                                                 <b>Worse web hosting company</b>
 
 
-                                                                <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
+                                                                <p>{$rec->getTesto()}</p>
                                                             </div>
                                                         </div>
                                                         <hr color=black>

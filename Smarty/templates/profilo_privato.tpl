@@ -21,7 +21,7 @@
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
-      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">
+      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">
         <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
@@ -32,7 +32,7 @@
         <div class="container=50px">
 
         </div>
-        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">Home</a>
+        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

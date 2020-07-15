@@ -95,7 +95,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del vinillle</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[0]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                                                </form>
                                                 <!--Read More Button-->
                                             </div>
                                         </div>
@@ -125,7 +128,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del prodotto e maggiori informazioni</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[1]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                                                </form>
                                                 <!--Read More Button-->
                                             </div>
                                         </div>
