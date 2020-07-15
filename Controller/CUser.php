@@ -272,8 +272,8 @@ class CUser
             if ($_POST['email'] != 'admin@admin.com') {
                 if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']) {
                     header('Location: /FillSpaceWEB/Messaggi/chat');
-                } elseif (isset($_COOKIE['nome_visitato'])) {
-                    header('Location: /FillSpaceWEB/Utente/dettaglioutente');
+                } elseif (isset($_COOKIE['profilo_visitato'])) {
+                    header('Location: /vinylwebmarket/User/viewProfilePublic');
                 } else {
                     if (isset($_COOKIE['chat']))
                         setcookie("chat", null, time() - 900, "/");
@@ -287,7 +287,7 @@ class CUser
                     }
                 }
             } else {
-                header('Location: /FillSpaceWEB/Admin/homepage');
+                header('Location: /vinylwebmarket/Admin/homepage');
             }
             // }
         } else {
@@ -600,7 +600,7 @@ class CUser
             $pm = new FPersistentManager();
             if (isset($_POST['email'])) {
                 static::return_dettaglioutente($_POST['email']);
-            } elseif (isset($_POST['azione'])) {
+            }/*  elseif (isset($_POST['azione'])) {
                 if ($sessione->isLoggedUtente()) {
                     $ute = unserialize($_SESSION['utente']);
                     if (isset($_POST['rate']))
@@ -619,16 +619,16 @@ class CUser
                     setcookie("nome_visitato", $_POST['conveyor'], time()+900);
                     header('Location: /FillSpaceWEB/Utente/login');
                 }
-            }
+            }*/
         }
-        elseif(isset($_COOKIE['visitato'])) {
-            static::return_dettaglioutente($_COOKIE['visitato']);
+        elseif(isset($_COOKIE['profilo_visitato'])) {
+            static::return_dettaglioutente($_COOKIE['profilo_visitato']);
         }
     }
     //visitato è l email
     static function return_dettaglioutente($visitato){
-        if (isset($_COOKIE['visita'])) {
-            setcookie("visita", null, time()-900);
+        if (isset($_COOKIE['profilo_visitato'])) {
+            setcookie("profilo_visitato", null, time()-900);
         }
         $view = new VUser();
         $pm = new FPersistentManager();
