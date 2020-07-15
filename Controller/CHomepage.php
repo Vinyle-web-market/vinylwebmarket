@@ -12,6 +12,17 @@ class CHomepage
         list($result,$img) = $pm->vinylHome();
         $view->Home($result,$img);
     }
+
+    public function impostaPaginaUL()
+    {
+        $result=null;
+        $img=null;
+        $view = new VHomepage();
+        $pm = new FPersistentManager();
+        list($result,$img) = $pm->vinylHome();
+        $view->HomeUL($result,$img);
+    }
+
     public function impostaPaginaULnegozio()
     {
         $result=null;

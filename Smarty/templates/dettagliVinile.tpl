@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Annuncio</title>
-<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="/vinylwebmarket/Smarty/css/bootstrap.min.css">
     <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -16,8 +16,8 @@
 
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
-      <a class="navbar-brand" href="#">
-        <img src="../../Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">
+        <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
       </div>
@@ -27,7 +27,7 @@
         <div class="container=50px">
 
         </div>
-        <a class="navbar-brand" href="Homepage.html">Home</a>
+        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,10 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Homepage.html">Log Out</a>
+              <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profilo_privato.html">Profilo</a>
+              <a class="nav-link" href="/vinylwebmarket/User/profile">Profilo</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -57,16 +57,38 @@
                  <div class="single-product-area mt-80 mb-80">
                      <div class="container">
                          <div class="row">
+
+                            {if $n_img_annuncio==2}
                              <div class="col-md-5">
                                  <div class="product-details-large" id="ProductPhoto">
-                                     <a href="../../Utility/immagini/battisti.jpg">
-                                         <img id="ProductPhotoImg" class="product-zoom"  src="data:{$typeVin[1]};base64,{$pic64Vin[1]}"></a>
+                                     <a href="data:{$typeVin[0]};base64,{$pic64Vin[0]}">
+                                         <img id="ProductPhotoImg" class="product-zoom"  src="data:{$typeVin[0]};base64,{$pic64Vin[0]}"></a>
                                  </div>
                                  <div id="ProductThumbs" class="product-thumbnail owl-carousel">
-                                     <a href="../../Utility/immagini/battisti1.jpg">
-                                         <img src="data:{$typeVin[0]};base64,{$pic64Vin[0]}"></a>
+                                     <a href="data:{$typeVin[1]};base64,{$pic64Vin[1]}">
+                                         <img src="data:{$typeVin[1]};base64,{$pic64Vin[1]}"></a>
                                  </div>
                              </div>
+                             {/if}
+
+                             {if $n_img_annuncio==1}
+                                 <div class="col-md-5">
+                                     <div class="product-details-large" id="ProductPhoto">
+                                         <a href="data:{$typeVin};base64,{$pic64Vin}">
+                                             <img id="ProductPhotoImg" class="product-zoom"  src="data:{$typeVin};base64,{$pic64Vin}"></a>
+                                     </div>
+                                 </div>
+                             {/if}
+
+                             {if $n_img_annuncio==0}
+                                 <div class="col-md-5">
+                                     <div class="product-details-large" id="ProductPhoto">
+                                         <a href="/vinylwebmarket/Utility/immagini/fotovinileassente.jpg">
+                                             <img id="ProductPhotoImg" class="product-zoom"  src="data:{$typeVin[1]};base64,{$pic64Vin[1]}"></a>
+                                     </div>
+                                 </div>
+                             {/if}
+
                              <div class="col-md-7">
                                  <div class="single-product-content">
                                      <form method="post" id="AddToCartForm" accept-charset="UTF-8" class="shopify-product-form" enctype="multipart/form-data">
@@ -151,6 +173,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../js/bootstrap.js"></script>
+<script src="/vinylwebmarket/Smarty/js/bootstrap.js"></script>
 </body>
 </html>

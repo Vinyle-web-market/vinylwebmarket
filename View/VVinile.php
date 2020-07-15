@@ -67,11 +67,12 @@ class VVinile
             if (is_array($med_annuncio)) {
                 $this->smarty->assign('typeVin', $typeVin);
                 $this->smarty->assign('pic64Vin', $pic64Vin);
-                $this->smarty->assign('n_img_annuncio', count($med_annuncio) - 1);
+                $this->smarty->assign('n_img_annuncio', 2);
             }
             else {
                 $this->smarty->assign('typeVin', $typeVin);
                 $this->smarty->assign('pic64Vin', $pic64Vin);
+                $this->smarty->assign('n_img_annuncio', 1);
             }
             //$this->smarty->assign('n_img_annuncio', count($med_annuncio) - 1);
         }
