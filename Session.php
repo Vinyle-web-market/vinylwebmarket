@@ -8,7 +8,7 @@ class Session
 
     /**
      * Metodo che restituisce l'unica istanza dell'oggetto.
-     * @return Sessione l'istanza dell'oggetto.
+     * @return Session l'istanza dell'oggetto.
      */
     public static function getInstance(){ //restituisce l'unica istanza (creandola se non esiste gia)
         if(static::$instance==null){
@@ -53,7 +53,7 @@ class Session
 
     /**
      * Metodo che recupera l'utente loggato dai dati di sessione
-     * @return EUtente loggato
+     * @return EUtente_loggato
      */
     public function getUtente(){
         if(session_status()==PHP_SESSION_NONE){
