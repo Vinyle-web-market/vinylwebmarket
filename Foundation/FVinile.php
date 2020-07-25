@@ -4,7 +4,7 @@
 class FVinile
 {
     private static $table = "vinile";
-    private static $values = "(:id_vinile, :venditore, :titolo, :artista, :genere, :ngiri, :condizione, :prezzo, :descrizione, :quantita)";
+    private static $values = "(:id_vinile, :venditore, :titolo, :artista, :genere, :ngiri, :condizione, :prezzo, :descrizione, :quantita, :visibility)";
     private static $class = "FVinile";
 
     public function __construct()
@@ -24,6 +24,7 @@ class FVinile
         $pdost->bindValue(':prezzo', $vinile->getPrezzo(), PDO::PARAM_STR);
         $pdost->bindValue(':descrizione', $vinile->getDescrizione(), PDO::PARAM_STR);
         $pdost->bindValue(':quantita', $vinile->getQuantita(), PDO::PARAM_INT);
+        $pdost->bindValue(':visibility',$vinile->isVisibility(), PDO::PARAM_BOOL);
     }
 
     /**
@@ -120,16 +121,18 @@ class FVinile
         if (($resultLoadDB != null) && ($rows_number == 1)) {
             $utenteloggato = FUtente_loggato::load("email", $resultLoadDB["venditore"]);
             //function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
-            $vinile = new EVinile($utenteloggato, $resultLoadDB["titolo"], $resultLoadDB["artista"], $resultLoadDB["genere"], $resultLoadDB["ngiri"], $resultLoadDB["condizione"], $resultLoadDB["prezzo"], $resultLoadDB["descrizione"], $resultLoadDB["quantita"]);
+            $vinile = new EVinile($utenteloggato, $resultLoadDB["titolo"], $resultLoadDB["artista"], $resultLoadDB["genere"], $resultLoadDB["ngiri"], $resultLoadDB["condizione"], $resultLoadDB["prezzo"], $resultLoadDB["descrizione"], $resultLoadDB["quantita"],);
             $vinile->setId($resultLoadDB['id_vinile']);
+           // $vinile->setVisibility($resultLoadDB['visibility']);  //vedere se ci andrà messa
         } else {
             if (($resultLoadDB != null) && ($rows_number > 1)) {
                 $vinile = array();
                 $utenteloggato = array();
                 for ($i = 0; $i < count($resultLoadDB); $i++) {
                     $utenteloggato[] = FUtente_loggato::load("email", $resultLoadDB[$i]["venditore"]);
-                    $vinile[$i] = new EVinile($utenteloggato[$i], $resultLoadDB[$i]["titolo"], $resultLoadDB[$i]["artista"], $resultLoadDB[$i]["genere"], $resultLoadDB[$i]["ngiri"], $resultLoadDB[$i]["condizione"], $resultLoadDB[$i]["prezzo"], $resultLoadDB[$i]["descrizione"], $resultLoadDB[$i]["quantita"]);
+                    $vinile[$i] = new EVinile($utenteloggato[$i], $resultLoadDB[$i]["titolo"], $resultLoadDB[$i]["artista"], $resultLoadDB[$i]["genere"], $resultLoadDB[$i]["ngiri"], $resultLoadDB[$i]["condizione"], $resultLoadDB[$i]["prezzo"], $resultLoadDB[$i]["descrizione"], $resultLoadDB[$i]["quantita"],);
                     $vinile[$i]->setId($resultLoadDB[$i]['id_vinile']);
+                   // $vinile[$i]->setVisibility($resultLoadDB[$i]['visibility']); //vedere se ci andrà messa
                 }
             }
         }
@@ -155,20 +158,20 @@ class FVinile
         echo "<br>".$rows_number;
         if (($result != null) && ($rows_number == 1)) {
             $utente_loggato = FUtente_loggato::load("email", $result["venditore"]);
-            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"]);
+            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],);
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $vinile[] = array();
                 for ($i = 0; $i < count($result); $i++) {
                     $utente_loggato[] = FUtente_loggato::load("email", $result[$i]["venditore"]);
-                    $vinile[$i] = new EVinile($utente_loggato[$i], $result[$i]["titolo"], $result[$i]["artista"], $result[$i]["genere"], $result[$i]["ngiri"], $result[$i]["condizione"], $result[$i]["prezzo"], $result[$i]["descrizione"], $result[$i]["quantita"]);
+                    $vinile[$i] = new EVinile($utente_loggato[$i], $result[$i]["titolo"], $result[$i]["artista"], $result[$i]["genere"], $result[$i]["ngiri"], $result[$i]["condizione"], $result[$i]["prezzo"], $result[$i]["descrizione"], $result[$i]["quantita"],);
                 }
             }
         }
         return $vinile;
      }
-
-     public static function loadSixVinyls(){
+     public static function loadSixVinyls()
+     {
          $vinile = null;
          $load=null;
          $img=null;
@@ -179,7 +182,8 @@ class FVinile
              $n=count($vinile);
          else
              $n=6;
-         for ($i=0; $i<$n; $i++) {
+         for ($i=0; $i<$n; $i++)
+         {
                  //ublic static function loadI(string $categoriaImage,$field,$id){
              // echo '<br>';
                  $img[$i] = FImage::loadI1("EImageVinile", "id_vinile", $vinile[$i]);

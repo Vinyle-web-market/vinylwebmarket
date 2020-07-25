@@ -134,35 +134,37 @@ print "Test to String: ".$mex->toString()."<br>";
 /*
 //------------COSTRUTTORE EUTENTE_LOGGATO------------------
 echo "<h3>prove EUtente_loggato</h3>";
-$nome="claudio";
-$email="claudio97@virgilio.it";
-$pw="pippo";
-$tel="3345756889";
-$u=new EUtente_Loggato($nome,$email,$pw,$tel);
-print " PROVA toString <br> ".$u->toString()."<br>";
+$nome="Gianluca Nanni";
+$email="nannus97@gmail.com";
+$pw="1234567";
+$tel="3462758331";
+$out=new EUtente_Loggato($nome,$email,$pw,$tel);
+print " PROVA toString <br> ".$out->toString()."<br>";
 echo "<hr>";
 //-----------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('email', 'Michele@virgilio.it');
+$out=$out->load('email', 'nannus97@gmail.com');
 //---------------------------------------------------------------------
 echo "<h3> Prova Vinile </h3>";
-$titolo = "Il bello d esser brutti";
-$artist = "articolo 31";
-$gen = "rap";
-$ng = "66";
-$cond = "usato";
-$pr = "€7.99";
-$des = "anno 2001,settimo album per i cantanti milanesi";
-$quant = "5";
+$titolo = "Immagina";
+$artist = "Gordo Ciccione";
+$gen = "blues";
+$ng = "78";
+$cond = "Usato";
+$pr = "€4.99";
+$des = "Anno 2020. Album molto scadente.";
+$quant = "2";
+$visibility = false;
 $vinile = new EVinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quant);
-
+$vinile->setVisibility($visibility);
+var_dump($vinile);
 //------------------------------------------------------------------------------------------
-*/
+
 
 /*
 //-----------------STORE FCARTA-------
@@ -221,7 +223,7 @@ var_dump($idmex);
 /*
 //--------STORE FUTENTE_LOGGATO-----------
 $email = new FUtente_loggato();
-$email = $email->store($u);
+$email = $email->store($out);
 var_dump($email);
 //----------------------------------------
 */
@@ -341,18 +343,18 @@ echo $rec_r;
 //----------------------------------------------------
 */
 
-/*
+
 //---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
 $vin=new FPersistentManager();
-$vin_r=$vin->load("venditore", "rugg67@virgilio.it",'FVinile');
+$vin_r=$vin->load("venditore", "nannus97@gmail.com",'FVinile');
 //var_dump($vin_r);
 //echo "<br>"."<br>";
-echo $vin_r->toString();
+var_dump($vin_r);
 //echo "<br>"."<br>";
 //cho $vin_r[1]->toString();
 //--------------------------------------------------------
-*/
+
 
 /*
 //------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
@@ -599,12 +601,13 @@ $img=$f->loadImg('EImageUtente','id','43');
 var_dump($img);
 */
 
+/*
 $n=new FPersistentManager();
 list($r1,$r2)=$n->vinylHome();
 var_dump($r1);
 echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";
 var_dump($r2);
-
+*/
 
 
 

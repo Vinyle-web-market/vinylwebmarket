@@ -170,6 +170,7 @@ class FImage
     //per caricare solo 1 foto se ce ne sono 2
     public static function loadI1(string $categoriaImage,$field,$id){
         $image=null;
+        $image1 = null;
         $Fclass=static::getClass();
         $db=FDatabase::getInstance();
         $result = $db->loadMedia('EImageVinile', $field, $id);

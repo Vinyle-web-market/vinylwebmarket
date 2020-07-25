@@ -22,7 +22,7 @@ class EVinile
     private $prezzo;
     private $descrizione;
     private $quantita;
-
+    private $visibility;
 
     function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
     {
@@ -35,6 +35,7 @@ class EVinile
         $this->prezzo = $pr;
         $this->descrizione = $des;
         $this->quantita = $quan;
+        $this->visibility = true;
     }
     /**Metodo che ci permette di prendere l'Id
      * @return mixed
@@ -195,10 +196,29 @@ class EVinile
     {
         $this->quantita = $quantita;
     }
-    /*Metodo che ci permette di stampare
-     * a video tutti gli attributi della
-     * classe EVinile
+
+    /** Metodo che ci permette di prendere
+     * la visibilità del vinile in mostra da un utente
+     * @return bool
      */
+    function isVisibility()
+    {
+        return $this->visibility;
+    }
+
+    /**Metodo che ci permette di cambiare
+     * la visibilità del vinile in mostra da un utente
+     * @param bool $visibility
+     */
+    function setVisibility(bool $visibility)
+    {
+        $this->visibility = $visibility;
+    }
+
+        /*Metodo che ci permette di stampare
+         * a video tutti gli attributi della
+         * classe EVinile
+         */
     public function toString()
     {
         return
