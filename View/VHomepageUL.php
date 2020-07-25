@@ -20,7 +20,6 @@ class VHomepageUL
                      }
                  }
              }
-
              elseif (isset($img)) {
                  $pic64 = $img->getDataImage();
                  $type = $img->getMimeType();
@@ -76,4 +75,5 @@ class VHomepageUL
 
         $this->smarty->display('homepage_negozio.tpl');
     }
+
 }

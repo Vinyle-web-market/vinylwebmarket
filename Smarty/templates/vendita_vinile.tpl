@@ -83,8 +83,8 @@
                                     <div class="col-xs-3">
                                       <select class="form-control" name="condizioni">
 
-                                        <option value="nuovo">nuovo</option>
-                                        <option value="usato">usato</option>
+                                        <option value="nuovo">Nuovo</option>
+                                        <option value="usato">Usato</option>
 
                                       </select>
                                     </div>
@@ -103,13 +103,13 @@
                               <div class="col-md-6">
                                   <div class="custom-file">
                                    <input type="file" class="custom-file-input" id="customFile" name="file">
-                                   <label class="custom-file-label" for="customFile">Carica foto 1</label>
+                                   <label class="custom-file-label" for="customFile">Carica foto vinile posteriore </label>
                                   </div>
                                   <br>
                                   <br>
                                   <div class="custom-file">
                                    <input type="file" class="custom-file-input" id="customFile" name="file_1">
-                                   <label class="custom-file-label" for="customFile">Carica foto 2</label>
+                                   <label class="custom-file-label" for="customFile">Carica foto vinile anteriore </label>
                                   </div>
                               </div>
                               <br>
