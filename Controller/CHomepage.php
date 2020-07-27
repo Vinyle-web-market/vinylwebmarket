@@ -41,4 +41,5 @@ class CHomepage
         list($result,$img) = $pm->vinylHome();
         $view->HomeULprivato($result,$img);
     }
+
 }

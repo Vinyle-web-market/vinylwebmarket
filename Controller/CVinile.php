@@ -164,7 +164,7 @@ class CVinile
             //new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
             $utente_log=new EUtente_loggato($utente->getUsername(),$utente->getEmail(), $utente->getPassword(), $utente->getPhone());
             //function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
-            $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'],$_POST['descrizione'],$_POST['quantita']);
+            $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita'],);
             list ($stato, $nome, $type,$data) =static::uploadImg('file');
             list ($stato_1, $nome_1, $type_1,$data_1) =static::uploadImg('file_1');
             list($fun, $idAn) = static::test_img($stato, $nome, $type,$data, $stato_1, $nome_1, $type_1,$data_1, $new_vinile);
