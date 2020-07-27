@@ -47,7 +47,7 @@ class CAdmin
             else
                 $end = $sessione->logout();
 
-            header('Location: /vinylwebmarket/User/login');
+            //header('Location: /vinylwebmarket/Admin/homepage');
         }
     }
 
@@ -71,11 +71,11 @@ class CAdmin
             {
                 foreach ($utenti as $item)
                 {
-                    $img[] = $pm->load("email_utente", $item->getEmail(), "FImage");
+                    $img[] = $pm->loadImg("EImageUtente", "email_utente", $item->getEmail());
                 }
             }
             else
-                $img = $pm->load("email_utente", $utenti->getEmail(), "FImage");
+                $img =  $pm->loadImg("EImageUtente", "email_utente", $utenti->getEmail());
         }
         return $img;
     }
@@ -328,7 +328,7 @@ class CAdmin
                     elseif (isset($viniliAttivi))
                         $utentiAttivi = $viniliAttivi->getVenditore()->getEmail();     //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()->getEmail()
 
-                    $img_attivi = static::set_immagini($utentiAttivi);
+                    $img_attivi = static::caricamento_immagini($utentiAttivi);
                     $viniliBannati = $pm->load("visibility", 0, "FVinile");
                     $utentiBannati = null;
                     if (is_array($viniliBannati))
@@ -339,7 +339,7 @@ class CAdmin
                     elseif (isset($viniliBannati))
                         $utentiBannati = $viniliBannati->getVenditore()->getEmail();      //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()->getEmail()
 
-                    $img_bann = static::set_immagini($utentiBannati);
+                    $img_bann = static::caricamento_immagini($utentiBannati);
                     $view->showPaginaVinili($viniliAttivi, $viniliBannati, $img_attivi, $img_bann);
                 }
                 else
@@ -350,7 +350,7 @@ class CAdmin
             }
             else
                 $end = $sessione->logout();
-            header('Location: /vinylwebmarket/User/login');
+           // header('Location: /vinylwebmarket/User/login');
         }
     }
 
