@@ -283,9 +283,9 @@ class CUser
 
                     }
                 }
-            } else {
-                header('Location: /vinylwebmarket/Admin/homepage');
             }
+            else header('Location: /vinylwebmarket/Admin/homepage');
+
             // }
         } else {
             $view->loginError($email, $valoreMail);
