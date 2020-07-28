@@ -17,7 +17,7 @@
 <body>
 <nav class="navbar navbar sticky-top navbar-dark bg-dark">
     <div class="container=50px">
-        <a class="navbar-brand" href="/vinylwebmarket/Admin/HomeAdmin">
+        <a class="navbar-brand" href="/vinylwebmarket/Admin/homepage">
             <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
             Vinyl Web Market
         </a>
@@ -27,13 +27,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/vinylwebmarket/Admin/HomeAdmin">Homepage</a>
+                <a class="nav-link" href="/vinylwebmarket/Admin/homepage">Homepage</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Visualizza recensioni</a>
+                <a class="nav-link" href="/vinylwebmarket/Admin/elencoRecensioni">Visualizza recensioni</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/vinylwebmarket/Admin/elencoVinili">Visualizza vinili</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/vinylwebmarket/Admin/elencoAbbonamenti">Visualizza abbonamenti</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
