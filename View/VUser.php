@@ -210,7 +210,6 @@ class VUser
         $this->smarty->assign('nomeNegozio', $user->getNameShop());
         $this->smarty->assign('email', $user->getEmail());
         $this->smarty->assign('array', $vinili);
-        //$this->smarty->display('claudia.tpl');
         $this->smarty->display('profilo_negozio.tpl');
     }
 
@@ -409,6 +408,7 @@ class VUser
         else
             $this->smarty->assign('n_recensioni', 0);
         $this->smarty->assign('rec',$rec);
+        $this->smarty->assign('media_rec',static::media($rec));
         list($type,$pic64) = $this->setImage($img, 'user');
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);
@@ -458,6 +458,25 @@ class VUser
             $type = $imgrec->getMimeType();
         }
         return array($type, $pic64);
+    }
+
+    static function media($rec){
+        $s=null;
+        if (is_array($rec)) {
+            foreach ($rec as $item) {
+                $s=$s+$item->getVotostelle();
+            }
+            $m=$s/count($rec);
+            return $m;
+        }
+        elseif($rec!=null){
+            return $rec->getVotostelle();
+        }
+        else {
+            return $s; //vale null in caso
+        }
+
+
     }
 
     public function setImage($image, $tipo) {

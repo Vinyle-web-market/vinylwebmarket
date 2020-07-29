@@ -96,7 +96,7 @@
                             <div class="item-box-blog-body">
                               <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[0]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -108,7 +108,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione</p>
                             </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                            <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>
@@ -126,7 +126,7 @@
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[1]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -138,7 +138,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione del prodotto e maggiori informazioni</p>
                             </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
+                            <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il Venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>
@@ -157,7 +157,7 @@
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[2]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -169,7 +169,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione del prodotto e maggiori informazioni</p>
                             </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>
@@ -193,7 +193,7 @@
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[3]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -205,7 +205,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione del prodotto e maggiori informazioni</p>
                             </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>
@@ -223,7 +223,7 @@
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[4]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -235,7 +235,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione del prodotto e maggiori informazioni</p>
                             </div>
-                            <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                            <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>
@@ -253,7 +253,7 @@
                           <div class="item-box-blog-body">
                             <!--Heading-->
                             <div class="item-box-blog-heading">
-                              <a href="#" tabindex="0">
+                              <a href="/vinylwebmarket/User/login" tabindex="0">
                                 <h5>{$vinili[5]->getTitolo()}</h5>
                               </a>
                             </div>
@@ -265,7 +265,7 @@
                             <div class="item-box-blog-text">
                               <p>descrizione del prodotto e maggiori informazioni</p>
                             </div>
-                             <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
+                             <div class="mt"> <a href="/vinylwebmarket/User/login" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
                             <!--Read More Button-->
                           </div>
                         </div>

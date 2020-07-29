@@ -83,7 +83,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[0]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[0]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -97,7 +97,7 @@
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[0]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
                                                 <!--Read More Button-->
                                             </div>
@@ -116,7 +116,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[1]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[1]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -150,7 +150,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[2]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[2]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -162,8 +162,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del prodotto e maggiori informazioni</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                                                <!--Read More Button-->
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[2]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +188,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[3]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[3]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -198,8 +200,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del prodotto e maggiori informazioni</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                                                <!--Read More Button-->
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[3]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +220,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[4]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[4]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -228,8 +232,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del prodotto e maggiori informazioni</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                                                <!--Read More Button-->
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[4]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +252,7 @@
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href="#" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[5]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[5]->getTitolo()}</h5>
                                                     </a>
                                                 </div>
@@ -258,8 +264,10 @@
                                                 <div class="item-box-blog-text">
                                                     <p>descrizione del prodotto e maggiori informazioni</p>
                                                 </div>
-                                                <div class="mt"> <a href="#" tabindex="0" class="btn white read">Contatta il venditore!</a> </div>
-                                                <!--Read More Button-->
+                                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                                    <input type="text" hidden name="email" value="{$vinili[5]->getVenditore()->getEmail()}" />
+                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

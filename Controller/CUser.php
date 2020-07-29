@@ -312,7 +312,7 @@ class CUser
                     //RECENSIONI
                     $view->profilePrivato($utente, $vinili, $img);
                 } elseif (get_class($utente) == "ENegozio") {
-                    $img = $pm->loadImg("EImageVinile", "email_utente", $utente->getEmail());
+                    $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                     $annunci = $pm->load("venditore", $utente->getEmail(), "FVinile");
                     //RECENSIONI
                     $view->profileNegozio($utente, $annunci, $img);
@@ -635,7 +635,8 @@ class CUser
             $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
 
             $imgrecensioni = static::ImageReviews($negozio);
-            $rec = static::info_cliente_rec($negozio);
+            //$rec = static::info_cliente_rec($negozio);
+            $rec=$pm->load("destinatario",$visitato,"FRecensione");
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
                 $utente=$sessione->getUtente();
@@ -651,7 +652,8 @@ class CUser
         } else {
             $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
             $imgrecensioni = static::ImageReviews($privato);
-            $rec = static::info_cliente_rec($privato);
+            //$rec = static::info_cliente_rec($privato);
+            $rec=$pm->load("destinatario",$visitato,"FRecensione");
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
                 $utente=$sessione->getUtente();
@@ -686,7 +688,7 @@ class CUser
 
     static function info_cliente_rec ($user) {
         $pm = new FPersistentManager();
-        $rec = $user->getRecensioni(); // SEMPRE UN ARRAY
+        /*$rec = $user->getRecensioni(); // SEMPRE UN ARRAY
         if(count($rec) > 1) {
             foreach ($rec as $r) {
                 $ute = $pm->load("email", $r->getUsernameMittente(), "FUtente_loggato");
@@ -698,6 +700,10 @@ class CUser
             $rec[0]->setUsernameMittente($ute);
         }
         return $rec;
+        */
+
+
+
     }
 
 

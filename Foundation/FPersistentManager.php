@@ -64,9 +64,16 @@ class FPersistentManager
         $fclass='FImage';
         $result=$fclass::loadI($categoriaImage,$field,$id);
         return $result;
-
     }
 
+   // public static function loadI1(string $categoriaImage,$field,$id){
+    //per caricare immagini per risolvere il problema di 2 immagini per il vinile
+    public static function loadImg2(string $categoriaImage,$field,$id){
+        $result=null;
+        $fclass='FImage';
+        $result=$fclass::loadI1($categoriaImage,$field,$id);
+        return $result;
+    }
 
 
 

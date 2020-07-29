@@ -30,7 +30,8 @@ class CRecensione
                         $img = $pm->loadImg("EImageUtente", "email_utente", $negozio->getEmail());
 
                         $imgrecensioni = CUser::ImageReviews($negozio);
-                        $rec = CUser::info_cliente_rec($negozio);
+                       // $rec = CUser::info_cliente_rec($negozio);
+                        $rec=$pm->load("destinatario",$_POST['destinatario'],"FRecensione");
                         $sessione = Session::getInstance();
                         if ($sessione->isLoggedUtente()) {
                             $utente = $sessione->getUtente();
@@ -45,7 +46,8 @@ class CRecensione
                     } else {
                         $img = $pm->loadImg("EImageUtente", "email_utente", $privato->getEmail());
                         $imgrecensioni = CUser::ImageReviews($privato);
-                        $rec = CUser::info_cliente_rec($privato);
+                        //$rec = CUser::info_cliente_rec($privato);
+                        $rec=$pm->load("destinatario",$_POST['destinatario'],"FRecensione");
                         $sessione = Session::getInstance();
                         if ($sessione->isLoggedUtente()) {
                             $utente = $sessione->getUtente();
@@ -102,5 +104,6 @@ class CRecensione
         return $rec;
     }
     */
+
 
 }

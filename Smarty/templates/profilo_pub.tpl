@@ -105,7 +105,7 @@
             </div>
 
 
-
+            {if $rec!=null}
             <div class="col-md-9">
                 <br>
                 <h3 class="text-center">Recensione dell utente:</h3>
@@ -130,7 +130,21 @@
                                                     </div>
                                                     <div class="row text-success">
                                                         <div class="col-md-12">
+                                                            {if $rec->getVotostelle()==5}
                                                             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            {/if}
+                                                            {if $rec->getVotostelle()==4}
+                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            {/if}
+                                                            {if $rec->getVotostelle()==3}
+                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            {/if}
+                                                            {if $rec->getVotostelle()==2}
+                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                            {/if}
+                                                            {if $rec->getVotostelle()==1}
+                                                                <i class="fa fa-star"></i>
+                                                            {/if}
                                                         </div>
                                                     </div>
 
@@ -182,9 +196,17 @@
                     </div>
                 </section>
 
-            </div
+            </div>
+            {/if}
+
+            {if $rec==null}
+            <div class="col-md-9">
+                <br>
+                <h3 class="text-center">-Nessuna Recensione-</h3>
+            </div>
         </div>
     {/if}
+        {/if}
 
         {if $tipoutente=='negozio'}
         <div class="container">
@@ -242,10 +264,10 @@
                 </div>
 
 
-
+                {if $rec!=null}
                 <div class="col-md-9">
                     <br>
-                    <h3 class="text-center">Recensione dell utente:</h3>
+                    <h3 class="text-center"><b>Valutazione media degli utenti : {$media_rec}/5</b></h3>
                     <hr color=black>
                     <section class="reviews py-5" id="reviews">
                         <div class="container">
@@ -267,7 +289,21 @@
                                                         </div>
                                                         <div class="row text-success">
                                                             <div class="col-md-12">
-                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {if $rec->getVotostelle()==5}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec->getVotostelle()==4}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec->getVotostelle()==3}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec->getVotostelle()==2}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec->getVotostelle()==1}
+                                                                    <i class="fa fa-star"></i>
+                                                                {/if}
                                                             </div>
                                                         </div>
 
@@ -322,6 +358,15 @@
                 </div
             </div>
             {/if}
+
+            {if $rec==null}
+                <div class="col-md-9">
+                    <br>
+                    <h3 class="text-center">-Nessuna Recensione-</h3>
+                </div>
+                </div>
+            {/if}
+        {/if}
 
 
 
