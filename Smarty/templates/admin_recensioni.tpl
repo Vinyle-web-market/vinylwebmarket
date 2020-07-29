@@ -1,5 +1,4 @@
 {assign var='immagine' value=$immagine|default:'ok'}
-{assign var='immagine_1' value=$immagine_1|default:'ok'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -30,7 +29,7 @@
                 <a class="nav-link" href="/vinylwebmarket/Admin/homepage">Homepage</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/vinylwebmarket/Admin/elencoRecensioni">Visualizza recensioni</a>
+                <a class="nav-link" href="/vinylwebmarket/Admin/elencoVinili">Visualizza vinili</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/vinylwebmarket/Admin/elencoAbbonamenti">Visualizza abbonamenti</a>
@@ -48,16 +47,15 @@
 <main role="main" class="container">
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded shadow-sm">
         <div class="lh-100">
-            <h6 class="mb-0 text-white lh-100">Elenco vinili:</h6>
+            <h6 class="mb-0 text-white lh-100">Elenco recensioni</h6>
         </div>
     </div>
 
-    <!-- ANNUNCI ATTIVI -->
+    <!-- ELENCO RECENSIONI -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">VINILI ATTIVI</h6>
         <div class=" text-muted pt-3 ">
-            {if $viniliAttivi}
-                {if is_array($viniliAttivi)}
+            {if $recensioni}
+                {if is_array($recensioni)}
                     {for $i=0 to $n_attivi}
                         <div class="row border-bottom">
                             <div class="col-md-1 mt-2 mb-2">
@@ -69,13 +67,14 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$viniliAttivi[$i]->getVenditore()->getEmail()} </strong>
-                                    {$viniliAttivi[$i]->getTitolo()} {$viniliAttivi[$i]->getArtista()}
+                                    <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente} {$recensioni[$i]->getUsernameDestinatario} </strong>
+                                    {$recensioni[$i]->getVotostelle}
+                                    {$recensioni[$i]->getTesto()}
                                 </p>
                             </div>
-                            <div class="col-md-2 mt-3">
-                                <form action="/vinylwebmarket/Admin/bannaggioVinile/{$viniliAttivi[$i]->getId()}" method="POST">
-                                    <button class="btn btn-danger">Banna</button>
+                            <div class="col-md-2">
+                                <form action="/vinylwebmarket/Admin/eliminaRecensione/{$recensioni[$i]->getId()}" method="POST">
+                                    <button class="btn btn-danger mt-3">Elimina</button>
                                 </form>
                             </div>
                         </div>
@@ -91,75 +90,20 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliAttivi[$i]->getVenditore()->getEmail()} </strong>
-                                {$viniliAttivi[$i]->getTitolo()} {$viniliAttivi[$i]->getArtista()}
+                                <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente} {$recensioni[$i]->getUsernameDestinatario} </strong>
+                                {$recensioni[$i]->getVotostelle}
+                                {$recensioni[$i]->getTesto()}
                             </p>
                         </div>
-                        <div class="col-md-2 mt-3">
-                            <form action="/vinylwebmarket/Admin/bannaggioVinile/{$viniliAttivi->getId()}" method="POST" >
-                                <button class="btn btn-danger">Banna</button>
+                        <div class="col-md-2">
+                            <form action="/vinylwebmarket/Admin/eliminaRecensione/{$recensioni->getId()}" method="POST">
+                                <button class="btn btn-danger mt-3">Elimina</button>
                             </form>
-
                         </div>
                     </div>
                 {/if}
             {else}
-                Al momento non ci sono vinili attivi
-            {/if}
-        </div>
-    </div>
-
-    <!-- ANNUNCI BANNATI -->
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">VINILI BANNATI</h6>
-        <div class=" text-muted pt-3 border-bottom ">
-            {if $viniliBannati}
-                {if is_array($viniliBannati)}
-                    {for $i=0 to $n_bannati}
-                        <div class="row border-bottom">
-                            <div class="col-md-1 mt-2 mb-2">
-                                {if $immagine_1 == 'ok'}
-                                    <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeB[$i]};base64,{$pic64ban[$i]}"  alt="profile picture" />
-                                {else}
-                                    <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
-                                {/if}
-                            </div>
-                            <div class="col-md-9 ">
-                                <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                    {$viniliBannati->getTitolo()} {$viniliBannati[$i]->getArtista()}
-                                </p>
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <form action="/vinylwebmarket/Admin/ripristinazioneVinile/{$viniliBannati->getId()}" method="POST">
-                                    <button class="btn btn-success">Ripristina</button>
-                                </form>
-                            </div>
-                        </div>
-                    {/for}
-                {else}
-                    <div class="row">
-                        <div class="col-md-1 mt-2 mb-2">
-                            {if $immagine_1 == 'ok'}
-                                <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeB};base64,{$pic64ban}"   alt="profile picture" />
-                            {else}
-                                <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
-                            {/if}
-                        </div>
-                        <div class="col-md-9 ">
-                            <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                {$viniliBannati->getTitolo()} {$viniliBannati[$i]->getArtista()}
-                            </p>
-                        </div>
-                        <div class="col-md-2 mt-3">
-                            <form action="/vinylwebmarket/Admin/ripristinazioneVinile/{$viniliBannati->getId()}" method="POST">
-                                <button class="btn btn-success">Ripristina</button>
-                        </div>
-                    </div>
-                {/if}
-            {else}
-                Al momento non ci sono vinili bannati
+                Al momento non ci sono recensioni
             {/if}
         </div>
     </div>

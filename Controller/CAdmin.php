@@ -215,7 +215,7 @@ class CAdmin
             }
             else
                 $end = $sessione->logout();
-            header('Location: /vinylwebmarket/User/login');
+            //header('Location: /vinylwebmarket/User/login');
         }
     }
     /**
