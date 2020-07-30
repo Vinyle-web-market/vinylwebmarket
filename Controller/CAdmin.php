@@ -541,14 +541,14 @@ class CAdmin
      * @throws SmartyException
      */
 
-    static function bannaggioAbbonamento($abb, $id)
+    static function bannaggioAbbonamento($id)
     {
         $sessione = Session::getInstance();
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
             $pm->update('stato',0, 'id_abbonamento', $id,'FNegozio' );   //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
-            $pm->update('ban', 1, "id", $abb->getId(), "FAbbonamento");
+            $pm->update('ban', 1, "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
@@ -584,14 +584,14 @@ class CAdmin
      * @throws SmartyException
      */
 
-    function ripristinazioneAbbonamento($abb, $id)
+    function ripristinazioneAbbonamento( $id)
     {
         $sessione = Session::getInstance();
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
             $pm->update('stato', 1, 'id_abbonamento', $id ,'FNegozio' );     //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
-            $pm->update('ban', 0, "id", $abb->getId(), "FAbbonamento");
+            $pm->update('ban', 0, "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
