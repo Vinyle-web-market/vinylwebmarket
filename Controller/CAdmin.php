@@ -172,7 +172,7 @@ class CAdmin
             $email = $view->getEmail();
             //$utente = $pm->load("email", $email, "FUtenteloggato");
             $pm->update("stato", 1, "email", $email, "FUtente_loggato");  //aggiorniamo tutti i dati dell'utente per la sua riattivazione
-            //$pm->update("visibility",true,"emailWriter",$email,"FAnnuncio");
+            $pm->update("visibility", 1,"venditore",$email,"FVinile");  //vedere se a noi serve
             header('Location: /vinylwebmarket/Admin/homepage');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")

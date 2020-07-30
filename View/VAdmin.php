@@ -69,7 +69,7 @@ class VAdmin
     {
         list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);   //SetImageRecensione ci supporta la gestione delle immagini nelle recensioni
         if ($typeA == null && $pic64att == null)
-            $this->smarty->assign('immagine_attiva', "no");
+            $this->smarty->assign('immagine', "no");
         if (isset($img_attivi))
         {
             if (is_array($img_attivi))
@@ -88,7 +88,7 @@ class VAdmin
             $this->smarty->assign('n_attivi', 0); //tutti gli utenti sono stati bannati
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_ban);
         if ($typeB == null && $pic64ban == null)
-            $this->smarty->assign('immagine_bannata', "no");
+            $this->smarty->assign('immagine_1', "no");
         if (isset($img_ban))
         {
             if (is_array($img_ban))

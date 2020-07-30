@@ -91,8 +91,8 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliAttivi[$i]->getVenditore()->getEmail()} </strong>
-                                {$viniliAttivi[$i]->getTitolo()} {$viniliAttivi[$i]->getArtista()}
+                                <strong class="d-block text-gray-dark">{$viniliAttivi->getVenditore()->getEmail()} </strong>
+                                {$viniliAttivi->getTitolo()} {$viniliAttivi->getArtista()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">
@@ -131,7 +131,7 @@
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
-                                <form action="/vinylwebmarket/Admin/ripristinazioneVinile/{$viniliBannati->getId()}" method="POST">
+                                <form action="/vinylwebmarket/Admin/ripristinazioneVinile/{$viniliBannati[$i]->getId()}" method="POST">
                                     <button class="btn btn-success">Ripristina</button>
                                 </form>
                             </div>
@@ -148,8 +148,8 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                {$viniliBannati[$i]->getTitolo()} {$viniliBannati[$i]->getArtista()}
+                                <strong class="d-block text-gray-dark">{$viniliBannati->getVenditore()->getEmail()} </strong>
+                                {$viniliBannati->getTitolo()} {$viniliBannati->getArtista()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">

@@ -107,11 +107,11 @@ $out= new FUtente_loggato();
 $utente1=$out->load('email', 'alberto@virgilio.it');
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
-$utente2=$out->load('username', 'vannydonny');
+$utente2=$out->load('email', 'claudio@virgilio.it');
 //---------------------------------------------------------------------
 echo "<h3>prove Erecensione</h3>";
-$stelle = 5;
-$testo = "Utente super affidabile!";
+$stelle = 3;
+$testo = "Utente molto affidabile, ma con materiale non tropo eccelso!";
 $mittente = $utente1->getEmail();
 $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
