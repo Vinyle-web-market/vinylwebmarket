@@ -548,7 +548,7 @@ class CAdmin
         {
             $pm = new FPersistentManager();
             $pm->update('stato',0, 'id_abbonamento', $id,'FNegozio' );   //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
-            $pm->update('ban', 1, "id", $id, "FAbbonamento");
+            $pm->update('stato', 0, "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
@@ -591,7 +591,7 @@ class CAdmin
         {
             $pm = new FPersistentManager();
             $pm->update('stato', 1, 'id_abbonamento', $id ,'FNegozio' );     //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
-            $pm->update('ban', 1, "id", $id, "FAbbonamento");
+            $pm->update('stato',1 , "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")

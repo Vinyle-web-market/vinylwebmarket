@@ -1,5 +1,6 @@
 {assign var='immagine' value=$immagine|default:'ok'}
 {assign var='immagine_1' value=$immagine|default:'ok'}
+{assign var='abbonamentiBannati' value=$abbonamentiBannati|default:'0'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
