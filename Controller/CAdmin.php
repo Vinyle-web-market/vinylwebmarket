@@ -513,7 +513,7 @@ class CAdmin
                             $negoziBan[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
                     }
                     elseif (isset($abbonamentiBan))
-                        $negoziBan = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FNegozio');
+                        $negoziBan = $pm->load('id_abbonamento', $abbonamentiBan->getId(),'FNegozio');
 
                     $view->showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan);
                 }
