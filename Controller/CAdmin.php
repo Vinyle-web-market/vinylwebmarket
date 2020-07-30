@@ -27,15 +27,17 @@ class CAdmin
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")         //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
                     $view = new VAdmin();
                     $pm = new FPersistentManager();
-                    //visualizza elenco utenti attivi e bannati
+
                     $utentiAttivi = $pm->load('stato','1','FUtente_loggato');
                     $utentiBannati = $pm->load('stato','0','FUtente_loggato');
+
                     $img_attivi = static::caricamento_immagini_utenti($utentiAttivi);
                     $img_bann = static::caricamento_immagini_utenti($utentiBannati);
+
                     $view->HomeAdmin($utentiAttivi, $utentiBannati,$img_attivi,$img_bann);
                 }
                 else
@@ -128,7 +130,7 @@ class CAdmin
             $email = $view->getEmail();
             $utente = $pm->load('email', $email, 'FUtente_loggato');
             $pm->update('stato', $utente->setState(0), 'email', $email, 'FUtente_loggato');
-            $pm->update("visibility", 0,"venditore",$email,"FVinile");  //vedere se a noi serve
+            $pm->update("visibility", 0,"venditore",$email,"FVinile");
             header('Location: /vinylwebmarket/Admin/homepage');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
@@ -136,7 +138,7 @@ class CAdmin
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")           //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
                     header('Location: /vinylwebmarket/Admin/homepage');
                 }
@@ -148,7 +150,7 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();       //da vedere se poi serve
+                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/Admin/homepage');
             }
         }
@@ -170,9 +172,8 @@ class CAdmin
             $view = new VAdmin();
             $pm = new FPersistentManager();
             $email = $view->getEmail();
-            //$utente = $pm->load("email", $email, "FUtenteloggato");
-            $pm->update("stato", 1, "email", $email, "FUtente_loggato");  //aggiorniamo tutti i dati dell'utente per la sua riattivazione
-            $pm->update("visibility", 1,"venditore",$email,"FVinile");  //vedere se a noi serve
+            $pm->update("stato", 1, "email", $email, "FUtente_loggato");
+            $pm->update("visibility", 1,"venditore",$email,"FVinile");
             header('Location: /vinylwebmarket/Admin/homepage');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
@@ -180,7 +181,7 @@ class CAdmin
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")                      //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
                     header('Location: /vinylwebmarket/Admin/homepage');
                 }
@@ -192,7 +193,7 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();       //da vedere se poi serve
+                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -225,16 +226,13 @@ class CAdmin
                         foreach ($recensione as $rec)
                         {
                             $utente[] = $pm->load("email", $rec->getUsernameMittente(), "FUtente_loggato");
-                            $img[] = $pm->loadImg("EImageUtente", 'email_utente', $rec->getUsernameMittente());  //vedere se è corretto successivamente
-                            //$rec->setUsernameMittente($utente[]);
+                            $img[] = $pm->loadImg("EImageUtente", 'email_utente', $rec->getUsernameMittente());
                         }
                     }
                     elseif ($recensione != null)
                     {
-                        $utente = $pm->load("email", $recensione->getUsernameMittente(), "FUtente_loggato");     //rivedere questa riga (in caso rinserire getEmail()) e la successiva
-                        $img = $pm->loadImg("EImageUtente", 'email_utente', $recensione->getUsernameMittente());  //vedere se è corretto successivamente
-                        //$recensione->getUsernameMittente()->setEmail($utente);
-                        //$recensione->setEmailUtente($utente1);
+                        $utente = $pm->load("email", $recensione->getUsernameMittente(), "FUtente_loggato");
+                        $img = $pm->loadImg("EImageUtente", 'email_utente', $recensione->getUsernameMittente());
                     }
                     $view->ShowPaginaRecensioni($recensione,$img);
                 }
@@ -268,7 +266,7 @@ class CAdmin
         {
             $pm = new FPersistentManager();
             $pm->update('ban', 0,'id', $id,'FRecensione');
-            header('Location: /vinylwebmarket/Admin/elencoRecensioni'); //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/recensioni
+            header('Location: /vinylwebmarket/Admin/elencoRecensioni');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
         {
@@ -277,7 +275,7 @@ class CAdmin
                 $utente = unserialize($_SESSION['utente']);
                 if ($utente->getEmail() == "admin@admin.com")
                 {
-                    header('Location: /vinylwebmarket/Admin/elencoRecensioni'); //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/recensioni
+                    header('Location: /vinylwebmarket/Admin/elencoRecensioni');
                 }
                 else
                 {
@@ -310,7 +308,7 @@ class CAdmin
         {
             $pm = new FPersistentManager();
             $pm->delete("id", $id, "FRecensione");
-            header('Location:'); //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/recensioni
+            header('Location: /vinylwebmarket/Admin/elencoRecensioni');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
         {
@@ -319,7 +317,7 @@ class CAdmin
                 $utente = unserialize($_SESSION['utente']);
                 if ($utente->getEmail() == "admin@admin.com")
                 {
-                    header('Location: /vinylwebmarket/Admin/elencoRecensioni'); //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/recensioni
+                    header('Location: /vinylwebmarket/Admin/elencoRecensioni');
                 }
                 else
                     {
@@ -336,9 +334,9 @@ class CAdmin
     }
 
     /**
-     * Funzione utilizzata per visualizzare l'elenco dei vinili in mostra (gli annunci).
+     * Funzione utilizzata per visualizzare l'elenco dei vinili in mostra.
      * Gli anunci sono divisi in due liste: bannati e attivi (rispettivamente, per utenti attivi ed utenti bannati).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata la pagina con l'elenco di tutti gli annunci;
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata la pagina con l'elenco di tutti i vinili;
      * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una pagina di errore 401 (Authorization Required);
      * 3) altrimenti, reindirizza alla pagina di login.
      */
@@ -351,7 +349,7 @@ class CAdmin
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")               //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
                     $view = new VAdmin();
                     $pm = new FPersistentManager();
@@ -360,10 +358,10 @@ class CAdmin
                     if (is_array($viniliAttivi))
                     {
                         foreach ($viniliAttivi as $item)
-                            $utentiAttivi[] = $item->getVenditore();     //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()
+                            $utentiAttivi[] = $item->getVenditore();
                     }
                     elseif (isset($viniliAttivi))
-                        $utentiAttivi = $viniliAttivi->getVenditore();     //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()->getEmail()
+                        $utentiAttivi = $viniliAttivi->getVenditore();
                     $img_attivi = static::caricamento_immagini_vinili($viniliAttivi);
 
                     $viniliBannati = $pm->load("visibility", 0, "FVinile");
@@ -374,7 +372,7 @@ class CAdmin
                             $utentiBannati[] = $item->getVenditore();
                     }
                     elseif (isset($viniliBannati))
-                        $utentiBannati = $viniliBannati->getVenditore();      //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()->getEmail()
+                        $utentiBannati = $viniliBannati->getVenditore();
 
                     $img_bann = static::caricamento_immagini_vinili($viniliBannati);
                     $view->showPaginaVinili($viniliAttivi, $viniliBannati, $img_attivi, $img_bann);
@@ -394,9 +392,9 @@ class CAdmin
     }
 
     /**
-     * Funzione utile per cambiare lo stato di visibilità di un vinile (nel caso specifico porta la visibilità a false).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di bannare l'annuncio selezionato cambiando il suo stato di visibilità a false;
+     * Funzione utile per cambiare lo stato di visibilità di un vinile (nel caso specifico porta la visibilità a false, poiche' è stata inizializzata a true).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di bannare il vinile selezionato cambiando il suo stato di visibilità a false;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
      * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
      * @param $id del vinile da bannare
@@ -409,18 +407,17 @@ class CAdmin
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
-            //$annuncio = $pm->load("idAd", $id, "FAnnuncio");
             $pm->update("visibility", 0, "id_vinile", $id, "FVinile");
-            header('Location: /vinylwebmarket/Admin/elencoVinili');    //da cambiare in base al nostro tpl, verosibilmente sarà /vinylwebmarket/Admin/vinili
+            header('Location: /vinylwebmarket/Admin/elencoVinili');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
         {
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")         //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
-                    header('Location: /vinylwebmarket/Admin/elencoVinili');  //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/vinili
+                    header('Location: /vinylwebmarket/Admin/elencoVinili');
                 }
                 else
                     {
@@ -439,7 +436,7 @@ class CAdmin
     /**
      * Funzione utile per cambiare lo stato di visibilità di un vinile (nel caso specifico porta la visibilità a true).
      * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare l'annuncio selezionato cambiando il suo stato di visibilità a true;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
      * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
      * @param $id dei vinili da bannare da bannare
@@ -452,9 +449,8 @@ class CAdmin
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
-            //$annuncio = $pm->load("idAd", $id, "FAnnuncio");
             $pm->update("visibility", 1, "id_vinile", $id, "FVinile");
-            header('Location: /vinylwebmarket/Admin/elencoVinili');    //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/vinili
+            header('Location: /vinylwebmarket/Admin/elencoVinili');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
         {
@@ -463,7 +459,7 @@ class CAdmin
                 $utente = unserialize($_SESSION['utente']);
                 if ($utente->getEmail() == "admin@admin.com")
                 {
-                    header('Location: /vinylwebmarket/Admin/elencoVinili');   //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/vinili
+                    header('Location: /vinylwebmarket/Admin/elencoVinili');
                 }
                 else
                     {
@@ -495,7 +491,7 @@ class CAdmin
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")               //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
                     $view = new VAdmin();
                     $pm = new FPersistentManager();
@@ -504,20 +500,20 @@ class CAdmin
                     if (is_array($abbonamentiAttivi))
                     {
                         foreach ($abbonamentiAttivi as $abb)
-                            $negoziAttivi[] = $abb->getEmail();     //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()
+                            $negoziAttivi[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
                     }
                     elseif (isset($abbonamentiAttivi))
-                        $negoziAttivi->getEmail();     //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()
+                        $negoziAttivi = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FAbbonamento');
 
                     $abbonamentiBan = $pm->load("stato", 0, "FAbbonamento");
                     $negoziBan = null;
                     if (is_array($abbonamentiBan))
                     {
                         foreach ($abbonamentiBan as $abb)
-                            $negoziBan[] = $abb->getEmail();
+                            $negoziBan[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
                     }
                     elseif (isset($abbonamentiBan))
-                        $negoziBan->getEmail();      //prima era scritto getEmailWriter(), dovrebbe esser corretto getVenditore()
+                        $negoziBan = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FNegozio');
 
                     $view->showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan);
                 }
@@ -544,25 +540,25 @@ class CAdmin
      * @param $id del vinile da bannare
      * @throws SmartyException
      */
-/*
-    static function bannaggioAbbonamento($abb)
+
+    static function bannaggioAbbonamento($abb, $id)
     {
         $sessione = Session::getInstance();
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
-            $pm->update('stato',0, 'email_negozio', $abb->getEmail() );
-            $pm->update("visibility", 0, "id_vinile", $id, "FVinile");
-            header('Location: /FillSpaceWEB/Admin/annunci');    //da cambiare in base al nostro tpl, verosibilmente sarà /vinylwebmarket/Admin/vinili
+            $pm->update('stato',0, 'id_abbonamento', $id,'FNegozio' );   //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
+            $pm->update('ban', 1, "id", $abb->getId(), "FAbbonamento");
+            header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")
         {
             if ($sessione->isLoggedUtente())
             {
                 $utente = unserialize($_SESSION['utente']);
-                if ($utente->getEmail() == "admin@admin.com")         //getEmail della view
+                if ($utente->getEmail() == "admin@admin.com")
                 {
-                    header('Location: /FillSpaceWEB/Admin/annunci');  //da cambiare in base al nostro tpl, verosimilmente sarà /vinylwebmarket/Admin/vinili
+                    header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
                 }
                 else
                 {
@@ -577,6 +573,48 @@ class CAdmin
             }
         }
     }
-*/
+
+    /**
+     * Funzione utile per cambiare lo stato di visibilità di un abbonamento (nel caso specifico porta la visibilità a true).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * @param $id dei vinili da bannare da bannare
+     * @throws SmartyException
+     */
+
+    function ripristinazioneAbbonamento($abb, $id)
+    {
+        $sessione = Session::getInstance();
+        if($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            $pm = new FPersistentManager();
+            $pm->update('stato', 1, 'id_abbonamento', $id ,'FNegozio' );     //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
+            $pm->update('ban', 0, "id", $abb->getId(), "FAbbonamento");
+            header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "GET")
+        {
+            if ($sessione->isLoggedUtente())
+            {
+                $utente = unserialize($_SESSION['utente']);
+                if ($utente->getEmail() == "admin@admin.com")
+                {
+                    header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
+                }
+                else
+                {
+                    $view = new VAdmin();
+                    $view->errore('1');
+                }
+            }
+            else
+            {
+                $end = $sessione->logout();
+                header('Location: /vinylwebmarket/User/login');
+            }
+        }
+    }
 
 }
