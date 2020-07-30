@@ -100,24 +100,24 @@ echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
 */
 
-/*
+
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
 //----------load per un utente1-----------------------------------------
 $out= new FUtente_loggato();
-$utente1=$out->load('email', 'rugg67@virgilio.it');
+$utente1=$out->load('email', 'alberto@virgilio.it');
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
-$utente2=$out->load('username', 'enrico');
+$utente2=$out->load('username', 'vannydonny');
 //---------------------------------------------------------------------
 echo "<h3>prove Erecensione</h3>";
 $stelle = 5;
-$testo = "affidabile come sempre!";
+$testo = "Utente super affidabile!";
 $mittente = $utente1->getEmail();
 $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
 //-----------------------------------------------------------------------
-*/
+
 
 /*
 //---------------------COSTRUTTORE EMESSAGGIO--------------------------------
@@ -144,7 +144,7 @@ echo "<hr>";
 //-----------------------------------------------------------
 */
 
-
+/*
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
@@ -164,7 +164,7 @@ $vinile = new EVinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quan
 $vinile->setVisibility($visibility);
 var_dump($vinile);
 //------------------------------------------------------------------------------------------
-
+*/
 
 /*
 //-----------------STORE FCARTA-------
@@ -204,13 +204,13 @@ $idneg=$pm->store($utente2);
 //---------------------------------
 */
 
-/*
+
 //--------------STORE FRECENSIONE-----------
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
 //-----------------------------------------
-*/
+
 
 /*
 //----------STORE FMESSAGGIO---------------
@@ -343,7 +343,7 @@ echo $rec_r;
 //----------------------------------------------------
 */
 
-
+/*
 //---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
 $vin=new FPersistentManager();
@@ -354,7 +354,7 @@ var_dump($vin_r);
 //echo "<br>"."<br>";
 //cho $vin_r[1]->toString();
 //--------------------------------------------------------
-
+*/
 
 /*
 //------------LOAD FRECENSIONE-------------------------FUNZIONANTE 100%
