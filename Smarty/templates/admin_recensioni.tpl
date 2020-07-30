@@ -67,8 +67,8 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente} {$recensioni[$i]->getUsernameDestinatario} </strong>
-                                    {$recensioni[$i]->getVotostelle}
+                                    <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente()} {$recensioni[$i]->getUsernameDestinatario()} </strong>
+                                    {$recensioni[$i]->getVotostelle()}
                                     {$recensioni[$i]->getTesto()}
                                 </p>
                             </div>
@@ -90,8 +90,8 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente} {$recensioni[$i]->getUsernameDestinatario} </strong>
-                                {$recensioni[$i]->getVotostelle}
+                                <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente()} {$recensioni[$i]->getUsernameDestinatario()} </strong>
+                                {$recensioni[$i]->getVotostelle()}
                                 {$recensioni[$i]->getTesto()}
                             </p>
                         </div>

@@ -127,7 +127,7 @@
                             <div class="col-md-9 ">
                                 <p class="mt-1">
                                     <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                    {$viniliBannati->getTitolo()} {$viniliBannati[$i]->getArtista()}
+                                    {$viniliBannati[$i]->getTitolo()} {$viniliBannati[$i]->getArtista()}
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -149,7 +149,7 @@
                         <div class="col-md-9 ">
                             <p class="mt-1">
                                 <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                {$viniliBannati->getTitolo()} {$viniliBannati[$i]->getArtista()}
+                                {$viniliBannati[$i]->getTitolo()} {$viniliBannati[$i]->getArtista()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">
