@@ -503,7 +503,7 @@ class CAdmin
                             $negoziAttivi[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
                     }
                     elseif (isset($abbonamentiAttivi))
-                        $negoziAttivi = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FAbbonamento');
+                        $negoziAttivi = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FNegozio');
 
                     $abbonamentiBan = $pm->load("stato", 0, "FAbbonamento");
                     $negoziBan = null;
@@ -591,7 +591,7 @@ class CAdmin
         {
             $pm = new FPersistentManager();
             $pm->update('stato', 1, 'id_abbonamento', $id ,'FNegozio' );     //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
-            $pm->update('ban', 0, "id", $id, "FAbbonamento");
+            $pm->update('ban', 1, "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "GET")

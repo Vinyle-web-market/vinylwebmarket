@@ -87,6 +87,7 @@ class FAbbonamento
 
     public static function load($field, $id){
         $mezzo = null;
+        $abbonamento= null;
         $db=FDatabase::getInstance();
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);

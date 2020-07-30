@@ -50,10 +50,11 @@
     <!-- ANNUNCI ATTIVI -->
     <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">ABBONAMENTI ATTIVI</h6>
+
         <div class=" text-muted pt-3 ">
             {if $abbonamentiAttivi}
                 {if is_array($abbonamentiAttivi)}
-                    {for $i=0 to $numero_Attivi}
+                    {for $i=0 to $n_attivi}
                         <div class="row border-bottom">
                             <div class="col-md-1 mt-2 mb-2">
                                 {if $immagine == 'ok'}
@@ -110,7 +111,7 @@
         <div class=" text-muted pt-3 border-bottom ">
             {if $abbonamentiBannati}
                 {if is_array($abbonamentiBannati)}
-                    {for $i=0 to $numero_Bannati}
+                    {for $i=0 to $n_bannati}
                         <div class="row border-bottom">
                             <div class="col-md-1 mt-2 mb-2">
                                 {if $immagine_1 == 'ok'}
@@ -144,7 +145,7 @@
                         <div class="col-md-9 ">
                             <p class="mt-1">
                                 <strong class="d-block text-gray-dark">{$negoziBannati->getEmail()} </strong>
-                                {$abbonamentiBannati->getDate()}
+                                {$abbonamentiBannati->getData()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">

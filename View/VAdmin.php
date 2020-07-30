@@ -258,7 +258,7 @@ class VAdmin
             {
                 $this->smarty->assign('negoziAttivi', $negoziAttivi);
                 $this->smarty->assign('abbonamentiAttivi', $abbonamentiAttivi);
-                $this->smarty->assign('numero_Attivi', count($abbonamentiAttivi) - 1);
+                $this->smarty->assign('n_attivi', count($abbonamentiAttivi) - 1);
 
             }
             else
@@ -278,7 +278,7 @@ class VAdmin
             {
                 $this->smarty->assign('negoziBannati', $negoziBan);
                 $this->smarty->assign('abbonamentiBannati', $abbonamentiBan);
-                $this->smarty->assign('numero_Bannati', count($abbonamentiBan) - 1);
+                $this->smarty->assign('n_bannati', count($abbonamentiBan) - 1);
             }
             else
             {
