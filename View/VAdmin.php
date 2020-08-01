@@ -67,7 +67,7 @@ class VAdmin
 
     public function HomeAdmin($utentiAttivi, $utentiBannati, $img_attivi, $img_ban)
     {
-        list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);   //SetImageRecensione ci supporta la gestione delle immagini nelle recensioni
+        list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
         if ($typeA == null && $pic64att == null)
             $this->smarty->assign('immagine', "no");
         if (isset($img_attivi))
@@ -85,7 +85,8 @@ class VAdmin
                 }
         }
         else
-            $this->smarty->assign('n_attivi', 0); //tutti gli utenti sono stati bannati
+            $this->smarty->assign('n_attivi', 0);
+
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_ban);
         if ($typeB == null && $pic64ban == null)
             $this->smarty->assign('immagine_1', "no");
@@ -107,7 +108,6 @@ class VAdmin
 
         $this->smarty->assign('utenti',$utentiAttivi);
         $this->smarty->assign('utentiBan',$utentiBannati);
-
         $this->smarty->display('homepage_admin.tpl');
     }
 
@@ -162,7 +162,6 @@ class VAdmin
         list($typeA,$pic64att) = $this->SetImageRecensione($img);
         if ($typeA == null && $pic64att == null)
             $this->smarty->assign('immagine_attiva', "no");
-
         if (isset($img))
         {
             if (is_array($img))
@@ -177,9 +176,8 @@ class VAdmin
                 $this->smarty->assign('pic64att', $pic64att);
             }
         }
-        $this->smarty->assign('recensioni',$rec);           //dipende dal tpl nostro
-
-        $this->smarty->display('admin_recensioni.tpl');   //dipende dal tpl nostro
+        $this->smarty->assign('recensioni',$rec);
+        $this->smarty->display('admin_recensioni.tpl');
     }
 
     /**
@@ -191,7 +189,7 @@ class VAdmin
      * @throws SmartyException
      */
 
-    public function showPaginaVinili($viniliAttivi, $viniliBan,$img_attivi,$img_bann)
+    public function showPaginaVinili($viniliAttivi, $viniliBan, $img_attivi, $img_bann)
     {
         list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
         if ($typeA == null && $pic64att == null)
@@ -208,10 +206,10 @@ class VAdmin
                 {
                 $this->smarty->assign('typeA', $typeA);
                 $this->smarty->assign('pic64att', $pic64att);
-            }
+                }
         }
         else
-            $this->smarty->assign('n_attivi', 0);     //tutti gli utenti sono bannati
+            $this->smarty->assign('n_attivi', 0);
 
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
         if ($typeB == null && $pic64ban == null)
@@ -228,15 +226,14 @@ class VAdmin
                 {
                 $this->smarty->assign('typeB', $typeB);
                 $this->smarty->assign('pic64ban', $pic64ban);
-            }
+                }
         }
         else
             $this->smarty->assign('n_bannati', 0);
 
         $this->smarty->assign('viniliAttivi',$viniliAttivi);
         $this->smarty->assign('viniliBannati',$viniliBan);
-
-        $this->smarty->display('admin_vinili.tpl');      //dipende dal nostro tpl
+        $this->smarty->display('admin_vinili.tpl');
     }
 
     /**
@@ -245,17 +242,25 @@ class VAdmin
      * @param $abbonamentiBan array di abbonamenti bannati
      * @param $negoziAttivi array di negozi attivi
      * @param $negoziBan array di negozi bannati
+     * @param $img_attivi array di immagini di negozi attivi
+     * @param $img_bann array di immagini di negozi bannati
      * @throws SmartyException
      */
 
-    public function showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan)
+    public function showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan, $img_attivi, $img_bann)
     {
-        if ($abbonamentiAttivi == null && $negoziAttivi == null)
+        list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
+        if ($abbonamentiAttivi == null && $negoziAttivi == null && $img_attivi == null)
+        {
             $this->smarty->assign('lista_attivi', "no");
-        if (isset($abbonamentiAttivi) && isset($negoziAttivi))
+            $this->smarty->assign('immagine', "no");
+        }
+        if (isset($abbonamentiAttivi) && isset($negoziAttivi) && isset($img_attivi))
         {
             if (is_array($abbonamentiAttivi) && is_array($negoziAttivi))
             {
+                $this->smarty->assign('typeA', $typeA);
+                $this->smarty->assign('pic64att', $pic64att);
                 $this->smarty->assign('negoziAttivi', $negoziAttivi);
                 $this->smarty->assign('abbonamentiAttivi', $abbonamentiAttivi);
                 $this->smarty->assign('n_attivi', count($abbonamentiAttivi) - 1);
@@ -263,25 +268,35 @@ class VAdmin
             }
             else
             {
+                $this->smarty->assign('typeA', $typeA);
+                $this->smarty->assign('pic64att', $pic64att);
                 $this->smarty->assign('negoziAttivi', $negoziAttivi);
                 $this->smarty->assign('abbonamentiAttivi', $abbonamentiAttivi);
             }
         }
         else
-            $this->smarty->assign('abbonamentiAttivi', 0);     //tutti gli utenti sono bannati
+            $this->smarty->assign('abbonamentiAttivi', 0);
 
-        if ($abbonamentiBan == null && $negoziBan == null)
-            $this->smarty->assign('lista_bannati', "no");
-        if (isset($abbonamentiBan) && isset($negoziBan))
+        list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
+        if ($abbonamentiBan == null && $negoziBan == null && $img_bann == null)
         {
-            if (is_array($abbonamentiBan) && is_array($negoziBan))
+            $this->smarty->assign('lista_bannati', "no");
+            $this->smarty->assign('immagine_1', "no");
+        }
+        if (isset($abbonamentiBan) && isset($negoziBan) && isset($img_bann))
+        {
+            if (is_array($abbonamentiBan) && is_array($negoziBan) && is_array($img_bann))
             {
+                $this->smarty->assign('typeB', $typeB);
+                $this->smarty->assign('pic64ban', $pic64ban);
                 $this->smarty->assign('negoziBannati', $negoziBan);
                 $this->smarty->assign('abbonamentiBannati', $abbonamentiBan);
                 $this->smarty->assign('n_bannati', count($abbonamentiBan) - 1);
             }
             else
             {
+                $this->smarty->assign('typeB', $typeB);
+                $this->smarty->assign('pic64ban', $pic64ban);
                 $this->smarty->assign('negoziBannati', $negoziBan);
                 $this->smarty->assign('abbonamentiBannati', $abbonamentiBan);
             }
@@ -291,8 +306,7 @@ class VAdmin
 
         $this->smarty->assign('negoziAttivi',$negoziAttivi);
         $this->smarty->assign('negoziBannati',$negoziBan);
-
-        $this->smarty->display('admin_abbonamenti.tpl');      //dipende dal nostro tpl
+        $this->smarty->display('admin_abbonamenti.tpl');
     }
 
 }

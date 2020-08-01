@@ -78,7 +78,9 @@ class CAdmin
                 }
             }
             else
+            {
                 $img =  $pm->loadImg("EImageUtente", "email_utente", $utenti->getEmail());
+            }
         }
         return $img;
     }
@@ -107,7 +109,9 @@ class CAdmin
                 }
             }
             else
+            {
                 $img =  $pm->loadImg2("EImageVinile", "id_vinile", $vinili->getId());
+            }
         }
         return $img;
     }
@@ -362,6 +366,7 @@ class CAdmin
                     }
                     elseif (isset($viniliAttivi))
                         $utentiAttivi = $viniliAttivi->getVenditore();
+
                     $img_attivi = static::caricamento_immagini_vinili($viniliAttivi);
 
                     $viniliBannati = $pm->load("visibility", 0, "FVinile");
@@ -375,6 +380,7 @@ class CAdmin
                         $utentiBannati = $viniliBannati->getVenditore();
 
                     $img_bann = static::caricamento_immagini_vinili($viniliBannati);
+
                     $view->showPaginaVinili($viniliAttivi, $viniliBannati, $img_attivi, $img_bann);
                 }
                 else
@@ -493,29 +499,42 @@ class CAdmin
                 $utente = unserialize($_SESSION['utente']);
                 if ($utente->getEmail() == "admin@admin.com")
                 {
+
                     $view = new VAdmin();
                     $pm = new FPersistentManager();
                     $abbonamentiAttivi = $pm->load('stato', 1, "FAbbonamento");
+                    $img_attivi = null;
                     $negoziAttivi = null;
+
                     if (is_array($abbonamentiAttivi))
                     {
                         foreach ($abbonamentiAttivi as $abb)
+                        {
                             $negoziAttivi[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
+                        }
                     }
                     elseif (isset($abbonamentiAttivi))
                         $negoziAttivi = $pm->load('id_abbonamento', $abbonamentiAttivi->getId(),'FNegozio');
 
+                    $img_attivi = static::caricamento_immagini_utenti($negoziAttivi);
+
                     $abbonamentiBan = $pm->load("stato", 0, "FAbbonamento");
+                    $img_bann = null;
                     $negoziBan = null;
+
                     if (is_array($abbonamentiBan))
                     {
                         foreach ($abbonamentiBan as $abb)
+                        {
                             $negoziBan[] = $pm->load('id_abbonamento', $abb->getId(),'FNegozio');
+                        }
                     }
                     elseif (isset($abbonamentiBan))
                         $negoziBan = $pm->load('id_abbonamento', $abbonamentiBan->getId(),'FNegozio');
 
-                    $view->showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan);
+                    $img_bann = static::caricamento_immagini_utenti($negoziBan);
+
+                    $view->showPaginaAbbonamenti($abbonamentiAttivi, $abbonamentiBan, $negoziAttivi, $negoziBan, $img_attivi, $img_bann);
                 }
                 else
                     {

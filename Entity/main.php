@@ -204,13 +204,13 @@ $idneg=$pm->store($utente2);
 //---------------------------------
 */
 
-
+/*
 //--------------STORE FRECENSIONE-----------
 $idrec=new FRecensione();
 $idrec=$idrec->store($recensione);
 var_dump($idrec);
 //-----------------------------------------
-
+*/
 
 /*
 //----------STORE FMESSAGGIO---------------
