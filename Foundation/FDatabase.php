@@ -381,23 +381,31 @@ class FDatabase
     //torna tutte le recensioni 
     public function adminGetRev ()
     {
-        try {
+        try
+        {
             $query = "SELECT * FROM recensione;";
             $pdost = $this->db->prepare($query);
             $pdost->execute();
             $rowsNumber = $pdost->rowCount();
-            if ($rowsNumber == 0) {
+            if ($rowsNumber == 0)
+            {
                 $result = null;
-            } elseif ($rowsNumber == 1) {
+            }
+            elseif ($rowsNumber == 1)
+            {
                 $result = $pdost->fetch(PDO::FETCH_ASSOC);
-            } else {
+            }
+            else
+                {
                 $result = array();
                 $pdost->setFetchMode(PDO::FETCH_ASSOC);
                 while ($row = $pdost->fetch())
                     $result[] = $row;
-            }
+                }
             return array($result, $rowsNumber);
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e)
+        {
             echo "Attenzione errore: " . $e->getMessage();
             $this->db->rollBack();
             return null;
@@ -430,9 +438,43 @@ class FDatabase
             return null;
         }
     }
-    
-    
-    
+
+    //funzione che ci permette all'admin di effettuare la ricerca di parole per il controllo della recensione
+    public function ricercaP($campo,$class,$input)
+    {
+        try
+        {
+            $class = 'FRecensione';
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE " . $campo . " LIKE '%" . $input . "%';";
+            $pdost = $this->db->prepare($query);
+            $pdost->execute();
+            $rowsNumber = $pdost->rowCount();
+
+            if ($rowsNumber == 0)
+            {
+                $result = null;
+            }
+            elseif ($rowsNumber == 1)
+            {
+                $result = $pdost->fetch(PDO::FETCH_ASSOC);
+            }
+            else
+            {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $pdost->fetch())
+                    $result[] = $row;
+            }
+            return array($result, $rowsNumber);
+        }
+        catch (PDOException $e)
+        {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+
 }
 
 

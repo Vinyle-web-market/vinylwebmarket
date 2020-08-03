@@ -598,7 +598,7 @@ class CAdmin
      * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
      * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401ho (Autrization Required).
      * @param $id dei vinili da bannare da bannare
      * @throws SmartyException
      */
@@ -624,6 +624,65 @@ class CAdmin
                 }
                 else
                 {
+                    $view = new VAdmin();
+                    $view->errore('1');
+                }
+            }
+            else
+            {
+                $end = $sessione->logout();
+                header('Location: /vinylwebmarket/User/login');
+            }
+        }
+    }
+
+    /**
+     * Funzione utile per eseguire delle ricerche mirate sulle parole contenute nelle recensioni.
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco delle recensioni;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola nel testo della recensione;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Autrization Required).
+     */
+
+    static function ricercaParolaRecensione()
+    {
+        $sessione = Session::getInstance();
+        if($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            $view = new VAdmin();
+            $pm = new FPersistentManager();
+            $parola = $_POST['parola'];
+            $recensione = $pm->searchWords($parola,'FRecensione');
+            $img = null;
+
+            if (is_array($recensione))
+            {
+                foreach ($recensione as $rec)
+                {
+                    $utente[] = $pm->load("email", $rec->getUsernameMittente(), "FUtente_loggato");
+                    $img[] = $pm->loadImg("EImageUtente", 'email_utente', $rec->getUsernameMittente());
+                    //$rec->setEmailClient($utente);
+                }
+            }
+            elseif ($recensione != null)
+            {
+                $utente = $pm->load("email", $recensione->getUsernameMittente(), "FUtente_loggato");
+                $img = $pm->loadImg("EImageUtente", 'email_utente', $recensione->getUsernameMittente());
+                //$recensione->setEmailClient($ute);
+            }
+            $view->ShowPaginaRecensioni($recensione,$img);
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "GET")
+        {
+            if ($sessione->isLoggedUtente())
+            {
+                $utente = unserialize($_SESSION['utente']);
+                if ($utente->getEmail() == "admin@admin.com")
+                {
+                    header('Location: /vinylwebmarket/Admin/elencoRecensioni');
+                }
+                else
+                    {
                     $view = new VAdmin();
                     $view->errore('1');
                 }

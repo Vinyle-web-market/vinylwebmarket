@@ -100,7 +100,7 @@ echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
 */
 
-
+/*
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
 //----------load per un utente1-----------------------------------------
 $out= new FUtente_loggato();
@@ -117,7 +117,7 @@ $destinatario = $utente2->getEmail();
 $recensione = new ERecensione($stelle, $testo, $mittente, $destinatario);
 print "Test toString: ".$recensione->toString()."<br>";
 //-----------------------------------------------------------------------
-
+*/
 
 /*
 //---------------------COSTRUTTORE EMESSAGGIO--------------------------------
@@ -610,6 +610,9 @@ var_dump($r2);
 */
 
 
+$rec1 = new FPersistentManager();
+$rec2 = $rec1->searchWords('molto affidabile','FRecensione');
+var_dump($rec2);
 
 
 

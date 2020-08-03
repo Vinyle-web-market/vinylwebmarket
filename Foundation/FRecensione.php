@@ -6,9 +6,7 @@ class FRecensione
   private static $values= "(:id,:mittente,:destinatario,:testo_recensione,:voto, :ban)"; //mettere ban
   private static $class= "FRecensione";
   //METTERE COSTRUTTORE?
-    function __construct()
-    {
-    }
+    function __construct(){}
   ///
     public static function bind($pdost,ERecensione $r)
     {
@@ -124,6 +122,35 @@ class FRecensione
         return $review;
     }
 
+    /**
+     * @param $parola valore da ricercare all'interno del campo di testo della recensione
+     * @param $campo restituisce il campo interessati da tale ricerca associati alla parola in input
+     */
 
+    public static function ricercaParola($parola)
+    {
+        $rec = null;
+        $db = FDatabase::getInstance();
+        list ($result, $rows_number) = $db->ricercaP('testo_recensione',static::getClass(),$parola);
 
-}
+        if(($result != null) && ($rows_number == 1))
+        {
+            $rec = new ERecensione($result['voto'],$result['testo_recensione'],$result['mittente'],$result['destinatario']);
+            $rec->setId($result['id']);
+        }
+        else
+            {
+            if(($result != null) && ($rows_number > 1))
+            {
+                $rec = array();
+                for($i = 0; $i < count($result); $i++)
+                {
+                    $rec[] = new ERecensione($result[$i]['voto'], $result[$i]['testo_recensione'],$result[$i]['mittente'], $result[$i]['destinatario']);
+                    $rec[$i]->setId($result[$i]['id']);
+                }
+            }
+        }
+        return $rec;
+    }
+
+  }
