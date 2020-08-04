@@ -42,8 +42,8 @@
                 <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cerca parola" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/Admin/ricercaParolaUtente" method="post">
+            <input class="form-control mr-sm-2" type="search" placeholder="Cerca parola" aria-label="Search" name="parola">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

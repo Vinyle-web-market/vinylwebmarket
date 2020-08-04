@@ -124,7 +124,6 @@ class FRecensione
 
     /**
      * @param $parola valore da ricercare all'interno del campo di testo della recensione
-     * @param $campo restituisce il campo interessati da tale ricerca associati alla parola in input
      */
 
     public static function ricercaParola($parola)

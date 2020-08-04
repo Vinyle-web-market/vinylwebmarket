@@ -611,7 +611,7 @@ var_dump($r2);
 
 
 $rec1 = new FPersistentManager();
-$rec2 = $rec1->searchWords('molto affidabile','FRecensione');
+$rec2 = $rec1->searchUtenti('virgilio','FUtente_loggato');
 var_dump($rec2);
 
 

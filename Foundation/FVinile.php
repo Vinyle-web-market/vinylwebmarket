@@ -158,7 +158,7 @@ class FVinile
         echo "<br>".$rows_number;
         if (($result != null) && ($rows_number == 1)) {
             $utente_loggato = FUtente_loggato::load("email", $result["venditore"]);
-            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],);
+            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],); //forse bisogna togliere le quadre
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $vinile[] = array();
@@ -170,6 +170,7 @@ class FVinile
         }
         return $vinile;
      }
+
      public static function loadSixVinyls()
      {
          $vinile = null;
@@ -198,5 +199,36 @@ class FVinile
          return array($load,$img);
     }
 
+    /**
+     * @param $parola valore da ricercare all'interno del campo di testo del vinile
+     * @param $campo restituisce il campo interessati da tale ricerca associati alla parola in input
+     * @param $class classe a cui si vuole far riferimento
+     */
+
+    public static function ricercaParola($parola)
+    {
+        $vinile = null;
+        $db = FDatabase::getInstance();
+        list ($result, $rows_number) = $db->ricercaV(static::getClass(),$parola);
+
+        if (($result != null) && ($rows_number == 1))
+        {
+            $utente_loggato = FUtente_loggato::load("email", $result["venditore"]);
+            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],);
+        }
+        else
+            {
+            if (($result != null) && ($rows_number > 1))
+            {
+                $vinile[] = array();
+                for ($i = 0; $i < count($result); $i++)
+                {
+                    $utente_loggato[] = FUtente_loggato::load("email", $result[$i]["venditore"]);
+                    $vinile[$i] = new EVinile($utente_loggato[$i], $result[$i]["titolo"], $result[$i]["artista"], $result[$i]["genere"], $result[$i]["ngiri"], $result[$i]["condizione"], $result[$i]["prezzo"], $result[$i]["descrizione"], $result[$i]["quantita"],);
+                }
+            }
+        }
+        return $vinile;
+    }
 }
 

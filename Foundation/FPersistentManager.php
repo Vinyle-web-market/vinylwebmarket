@@ -114,6 +114,7 @@ class FPersistentManager
 
     /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
+     * @param $Fclass
      */
 
     public static function searchWords($parola,$Fclass)
@@ -123,6 +124,28 @@ class FPersistentManager
         return $ris;
     }
 
+    /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
+     *  @param parola da cercare nell'area di testo
+     * @param $Fclass
+     */
 
+    public static function ricercaVinile($parola,$Fclass)
+    {
+        $ris = null;
+        $ris = FVinile::ricercaParola($parola);
+        return $ris;
+    }
+
+    /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
+     *  @param parola da cercare nell'area di testo
+     * @param $Fclass
+     */
+
+    public static function searchUtenti($parola,$Fclass)
+    {
+        $ris = null;
+        $ris = FUtente_loggato::ricercaParola($parola);
+        return $ris;
+    }
 
 }

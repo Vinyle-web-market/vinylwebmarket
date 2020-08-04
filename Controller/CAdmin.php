@@ -695,4 +695,68 @@ class CAdmin
         }
     }
 
+    /**
+     * Funzione utile per eseguire delle ricerche di una parola all'interno dell'email degli utenti.
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola tra i nomi/cognomi degli utenti;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Autherization Required).
+     */
+    static function ricercaParolaUtente()
+    {
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            $view = new VAdmin();
+            $pm = new FPersistentManager();
+            $stringa = $_POST['parola'];
+            $result = $pm->searchUtenti($stringa,'FUtente_loggato');
+            $utentiBan = array();
+            $utentiAttivi = array();
+
+            if (is_object($result))
+            {
+                if ($result->isState() == '1')
+                    $utentiAttivi[] = $result;
+                else
+                    $utentiBan[] = $result;
+            }
+            elseif (is_array($result))
+            {
+                foreach ($result as $item)
+                {
+                    if ($item->isState() == '1')
+                        $utentiAttivi[] = $item;
+                    else
+                        $utentiBan[] = $item;
+                }
+            }
+
+            $img_attivi = static::caricamento_immagini_utenti($utentiAttivi);
+            $img_bann = static::caricamento_immagini_utenti($utentiBan);
+            $view->HomeAdmin($utentiAttivi, $utentiBan,$img_attivi,$img_bann);
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "GET")
+        {
+            if ($sessione->isLoggedUtente())
+            {
+                $utente = unserialize($_SESSION['utente']);
+                if ($utente->getEmail() == "admin@admin.com")
+                {
+                    header('Location: /vinylwebmarket/Admin/homepage');
+                }
+                else
+                    {
+                    $view = new VAdmin();
+                    $view->errore('1');
+                }
+            }
+            else
+            {
+                $end = $sessione->logout();
+                header('Location: /vinylwebmarket/User/login');
+            }
+        }
+    }
+
 }

@@ -65,7 +65,7 @@ class VAdmin
      * @throws SmartyException
      */
 
-    public function HomeAdmin($utentiAttivi, $utentiBannati, $img_attivi, $img_ban)
+    public function HomeAdmin($utentiAttivi, $utentiBannati, $img_attivi, $img_bann)
     {
         list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
         if ($typeA == null && $pic64att == null)
@@ -87,7 +87,7 @@ class VAdmin
         else
             $this->smarty->assign('n_attivi', 0);
 
-        list($typeB,$pic64ban) = $this->SetImageRecensione($img_ban);
+        list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
         if ($typeB == null && $pic64ban == null)
             $this->smarty->assign('immagine_1', "no");
         if (isset($img_ban))
