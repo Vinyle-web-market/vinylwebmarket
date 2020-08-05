@@ -245,7 +245,7 @@ class CUser
     /**
      * Controllo esistenza username e password nel db
      * 1)risultato negativo->viene ricaricata la pagina con l'aggunta dell'errore nel login.
-     * 2) se l'utente ed è attivo, avviene il reindirizzamaneto alla homepage degli annunci;
+     * 2) se l'utente esiste ed è attivo, avviene il reindirizzamaneto alla homepage degli annunci;
      * 3) se le credenziali inserite rispettano i vincoli per l'amministratore, avviene il reindirizamento alla homepage dell'amministratore;
      * 4) se si verifica la presenza di particolari cookie avviene il reindirizzamento alla pagina specifica.
      * @throws SmartyException
@@ -292,10 +292,9 @@ class CUser
         }
     }
 
-    /** Funzione che mostra il profilo dell'utente loggato.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati, avviene il reindirizzamento al profilo.
-     *    Tale reindirizzamento avviene tramite il controllo se si è un Privato o negozio;
-     * 2) altrimenti, avviene il reindirizzamento alla form di login
+    /** Profilo dell'utente dopo aver effettuato il login
+     * - metodo GET ed il Log ha avuto successo->ingresso nel proprio profilo.
+     *    -se non loggati-> reindirizzati nella form di login
      */
     static function profile()
     {
@@ -582,6 +581,21 @@ class CUser
         return $controllo;
     }
 
+    /**
+     * Function per la presentazione del profilo pubblico di un negozio o cliente
+     * Get:
+     * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo;
+     * - se il metodo è GET e non si è loggati, si viene reindirizzati alla form di login.
+     * - se il metodo della richiesta HTTP è GET, ma esiste il cookie allora questo ci permette di caricare la pagina relativa
+     *    all'utente che si stava visitando prima del login;
+     * POST:
+     * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['email'] allora viene richiamato
+     * 	  il metodo return_dettagliutente();
+     * 2) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'], dopo aver verificato se l'utenete è loggato,
+     *    si opera per poter inserire una recensione nel database sempre prelevando i valori passati con il metodo POST;
+     * 3) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'] ma non si è loggati, viene inviato un cookie
+     *    per tenere traccia delle informazioni utili per il reindirizzamento, dopo il login, alla pagina in cui ci troviamo;
+     */
     public function viewProfilePublic(){
         $sessione = Session::getInstance();
         if($_SERVER['REQUEST_METHOD'] == "GET") {
@@ -597,6 +611,7 @@ class CUser
             $pm = new FPersistentManager();
             if (isset($_POST['email'])) {
                 static::return_dettaglioutente($_POST['email']);
+                //presente in CRecensione
             }/*  elseif (isset($_POST['azione'])) {
                 if ($sessione->isLoggedUtente()) {
                     $ute = unserialize($_SESSION['utente']);
@@ -622,7 +637,11 @@ class CUser
             static::return_dettaglioutente($_COOKIE['profilo_visitato']);
         }
     }
-    //visitato è l email
+    /**
+     * Supporto per viewProfilePublic()
+     * Questa funzione recupera i dati per la presentazione del profilo pubblico di un negozio o un privato
+     * @param $visitato email del'utente di cui si vuol visitare il profilo
+     */
     static function return_dettaglioutente($visitato){
         if (isset($_COOKIE['profilo_visitato'])) {
             setcookie("profilo_visitato", null, time()-900);
@@ -668,6 +687,11 @@ class CUser
         }
     }
 
+    /**
+     * Funzione di supporto per la creazione dell'elenco delle recensioni presenti sul profilo pubblico di un utente
+     * @param $user obj EUtente_loggato
+     * @return mixed array|ERecensione
+     */
     static function ImageReviews($user) {
         $pm = new FPersistentManager();
         $recensioniImage = null;
@@ -686,25 +710,24 @@ class CUser
         return $recensioniImage;
     }
 
-    static function info_cliente_rec ($user) {
-        $pm = new FPersistentManager();
-        /*$rec = $user->getRecensioni(); // SEMPRE UN ARRAY
-        if(count($rec) > 1) {
-            foreach ($rec as $r) {
-                $ute = $pm->load("email", $r->getUsernameMittente(), "FUtente_loggato");
-                $r->setUsernameMittente($ute);
-            }
-        }
-        elseif (count($rec) == 1) {
-            $ute = $pm->load("email", $rec[0]->getUsernameMittente(), "FUtente_loggato");
-            $rec[0]->setUsernameMittente($ute);
-        }
-        return $rec;
-        */
+    /*
+   static function info_cliente_rec ($user) {
+       $pm = new FPersistentManager();
+       /*$rec = $user->getRecensioni(); // SEMPRE UN ARRAY
+       if(count($rec) > 1) {
+           foreach ($rec as $r) {
+               $ute = $pm->load("email", $r->getUsernameMittente(), "FUtente_loggato");
+               $r->setUsernameMittente($ute);
+           }
+       }
+       elseif (count($rec) == 1) {
+           $ute = $pm->load("email", $rec[0]->getUsernameMittente(), "FUtente_loggato");
+           $rec[0]->setUsernameMittente($ute);
+       }
+       return $rec;
 
-
-
-    }
+   }
+*/
 
 
 

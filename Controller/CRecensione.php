@@ -1,4 +1,18 @@
 <?php
+/**
+ * Function per recensire il servizio scambiato con un altro utente
+ * Get:
+ * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo;
+ * - se il metodo è GET e non si è loggati, si viene reindirizzati alla form di login.
+ * - se il metodo della richiesta HTTP è GET, ma esiste il cookie allora questo ci permette di caricare la pagina relativa
+ *    all'utente che si stava visitando prima del login;
+ * POST:
+ * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['recensione'] viene salvata la recensione e
+ *   e preparata la nuova pagina aggiornata
+ *   Viene anche gestito l'inserimento o no delle stelle con $_POST['voto']
+ * - se non si è loggati, viene inviato un cookie per tenere traccia delle informazioni utili per il reindirizzamento,
+ *   dopo il login, alla pagina in cui ci troviamo;
+ */
 
 
 class CRecensione
