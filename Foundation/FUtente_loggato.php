@@ -97,6 +97,7 @@ class FUtente_loggato
         if(($result!=null) && ($rows_number == 1)) {
             $utente = new EUtente_loggato($result['username'], $result['email'], $result['password'], $result['telefono']);
             //$utente->setEmail($result['email']);
+            //$utente->setState($result['stato']);
         }
         else {
             if(($result!=null) && ($rows_number > 1)){
@@ -104,7 +105,7 @@ class FUtente_loggato
                 for($i=0; $i<count($result); $i++){
                     $utente []= new EUtente_loggato($result[$i]['username'],$result[$i]['email'],$result[$i]['password'], $result[$i]['telefono']);  //ARRAY DI ARRAY ATTENTO
                     //$utente[$i]->setEmail($result[$i]['email']);
-
+                    //$utente[$i]->setState($result[$i]['stato']);
                 }
             }
         }
@@ -144,6 +145,7 @@ class FUtente_loggato
         {
             $utente = new EUtente_loggato($result['username'], $result['email'], $result['password'], $result['telefono']);
             //$utente->setEmail($result['email']);
+            $utente->setState($result['stato']);
         }
         else
             {
@@ -154,7 +156,7 @@ class FUtente_loggato
                 {
                     $utente []= new EUtente_loggato($result[$i]['username'],$result[$i]['email'],$result[$i]['password'], $result[$i]['telefono']);  //ARRAY DI ARRAY ATTENTO
                     //$utente[$i]->setEmail($result[$i]['email']);
-
+                    $utente[$i]->setState($result[$i]['stato']);
                 }
             }
         }

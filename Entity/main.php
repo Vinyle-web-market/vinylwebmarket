@@ -610,8 +610,8 @@ var_dump($r2);
 */
 
 
-$rec1 = new FPersistentManager();
-$rec2 = $rec1->searchUtenti('virgilio','FUtente_loggato');
+$rec1 = new FUtente_loggato();
+$rec2 = $rec1->update('stato','0','email','nannus97@gmail.com');
 var_dump($rec2);
 
 

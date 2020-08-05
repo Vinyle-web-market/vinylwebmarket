@@ -70,6 +70,7 @@ class VAdmin
         list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
         if ($typeA == null && $pic64att == null)
             $this->smarty->assign('immagine', "no");
+
         if (isset($img_attivi))
         {
             if (is_array($img_attivi))
@@ -89,16 +90,18 @@ class VAdmin
 
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
         if ($typeB == null && $pic64ban == null)
+
             $this->smarty->assign('immagine_1', "no");
-        if (isset($img_ban))
+        if (isset($img_bann))
         {
-            if (is_array($img_ban))
+            if (is_array($img_bann))
             {
                 $this->smarty->assign('typeB', $typeB);
                 $this->smarty->assign('pic64ban', $pic64ban);
-                $this->smarty->assign('n_bannati', count($img_ban) - 1);
+                $this->smarty->assign('n_bannati', count($img_bann) - 1);
             }
-            else {
+            else
+                {
                 $this->smarty->assign('typeB', $typeB);
                 $this->smarty->assign('pic64ban', $pic64ban);
                 }

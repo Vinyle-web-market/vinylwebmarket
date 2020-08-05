@@ -81,7 +81,7 @@ class FPersistentManager
     public static function update($field, $newValue, $keyField, $idValue ,$Fclass) {
         $result = null;
        // if ($Fclass == "FAnnuncio" || $Fclass == "FMezzo" || $Fclass == "FTappa" || $Fclass == "FTrasportatore" || $Fclass == "FUtenteloggato" || $Fclass == "FCliente")
-            $ris = $Fclass::update($field, $newValue, $keyField, $idValue);
+            $result = $Fclass::update($field, $newValue, $keyField, $idValue);
         //else
            // print ("METODO NON SUPPORTATO DALLA CLASSE");
         return $result;
@@ -114,10 +114,9 @@ class FPersistentManager
 
     /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
-     * @param $Fclass
      */
 
-    public static function searchWords($parola,$Fclass)
+    public static function searchWords($parola)
     {
         $ris = null;
         $ris = FRecensione::ricercaParola($parola);
@@ -126,10 +125,9 @@ class FPersistentManager
 
     /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
-     * @param $Fclass
      */
 
-    public static function ricercaVinile($parola,$Fclass)
+    public static function ricercaVinili($parola)
     {
         $ris = null;
         $ris = FVinile::ricercaParola($parola);
@@ -138,10 +136,9 @@ class FPersistentManager
 
     /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
-     * @param $Fclass
      */
 
-    public static function searchUtenti($parola,$Fclass)
+    public static function searchUtenti($parola)
     {
         $ris = null;
         $ris = FUtente_loggato::ricercaParola($parola);
