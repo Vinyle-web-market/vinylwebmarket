@@ -257,7 +257,7 @@ class VAdmin
         }
         if (isset($abbonamentiAttivi) && isset($negoziAttivi) && isset($img_attivi))
         {
-            if (is_array($abbonamentiAttivi) && is_array($negoziAttivi))
+            if (is_array($abbonamentiAttivi) && is_array($negoziAttivi) && is_array($img_attivi))
             {
                 $this->smarty->assign('typeA', $typeA);
                 $this->smarty->assign('pic64att', $pic64att);

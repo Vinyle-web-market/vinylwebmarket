@@ -38,7 +38,7 @@ class CAdmin
                     $img_attivi = static::caricamento_immagini_utenti($utentiAttivi);
                     $img_bann = static::caricamento_immagini_utenti($utentiBannati);
 
-                    $view->HomeAdmin($utentiAttivi, $utentiBannati,$img_attivi,$img_bann);
+                    $view->HomeAdmin($utentiAttivi,$utentiBannati,$img_attivi,$img_bann);
                 }
                 else
                     {
@@ -68,6 +68,7 @@ class CAdmin
     {
         $pm = new FPersistentManager();
         $img = null;
+
         if (isset($utenti))
         {
             if (is_array($utenti))
@@ -598,7 +599,7 @@ class CAdmin
      * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
      * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401ho (Autrization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401ho (Authorization Required).
      * @param $id dei vinili da bannare da bannare
      * @throws SmartyException
      */
@@ -641,7 +642,7 @@ class CAdmin
      * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco delle recensioni;
      * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola nel testo della recensione;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Autrization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
      */
 
     static function ricercaParolaRecensione()
@@ -652,7 +653,7 @@ class CAdmin
             $view = new VAdmin();
             $pm = new FPersistentManager();
             $parola = $_POST['parola'];
-            $recensione = $pm->searchWords($parola,'FRecensione');
+            $recensione = $pm->searchWords($parola);
             $img = null;
 
             if (is_array($recensione))
@@ -700,8 +701,9 @@ class CAdmin
      * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
      * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola tra i nomi/cognomi degli utenti;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Autherization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
      */
+
     static function ricercaParolaUtente()
     {
         $sessione = Session::getInstance();
@@ -710,7 +712,7 @@ class CAdmin
             $view = new VAdmin();
             $pm = new FPersistentManager();
             $stringa = $_POST['parola'];
-            $result = $pm->searchUtenti($stringa,'FUtente_loggato');
+            $result = $pm->searchUtenti($stringa);
             $utentiBan = array();
             $utentiAttivi = array();
 
@@ -747,6 +749,71 @@ class CAdmin
                 }
                 else
                     {
+                    $view = new VAdmin();
+                    $view->errore('1');
+                }
+            }
+            else
+            {
+                $end = $sessione->logout();
+                header('Location: /vinylwebmarket/User/login');
+            }
+        }
+    }
+
+    /**
+     * Funzione utile per eseguire delle ricerche mirate sulle parole contenute nel titolo dei vinili.
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola nel titolo del vinile;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     */
+
+    static function ricercaParolaVinile()
+    {
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            $view = new VAdmin();
+            $pm = new FPersistentManager();
+            $stringa = $_POST['parola'];
+            $result = $pm->ricercaVinili($stringa);
+            $viniliBan = array();
+            $viniliAttivi = array();
+
+            if (is_object($result))
+            {
+                if ($result->isVisibility() == '1')
+                    $viniliAttivi[] = $result;
+                else
+                    $viniliBan[] = $result;
+            }
+            elseif (is_array($result))
+            {
+                foreach ($result as $item)
+                {
+                    if ($item->isVisibility() == '1')
+                        $viniliAttivi[] = $item;
+                    else
+                        $viniliBan[] = $item;
+                }
+            }
+
+            $img_attivi = static::caricamento_immagini_vinili($viniliAttivi);
+            $img_bann = static::caricamento_immagini_vinili($viniliBan);
+            $view->showPaginaVinili($viniliAttivi,$viniliBan,$img_attivi,$img_bann);
+        }
+        elseif($_SERVER['REQUEST_METHOD'] == "GET")
+        {
+            if ($sessione->isLoggedUtente())
+            {
+                $utente = unserialize($_SESSION['utente']);
+                if ($utente->getEmail() == "admin@admin.com")
+                {
+                    header('Location: /vinylwebmarket/Admin/elencoVinili');
+                }
+                else
+                {
                     $view = new VAdmin();
                     $view->errore('1');
                 }
