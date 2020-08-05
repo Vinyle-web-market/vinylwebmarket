@@ -177,12 +177,13 @@
                 </div>
             </div>
             <hr color=black>
+                <br>
+                <h3 class="text-center">Recensione dell utente:</h3>
+
                 {if $rec!=null}
                 {if is_array($rec)}
                 {for $i=0 to $n_recensioni}
                 <div class="col-md-12">
-                    <br>
-                    <h3 class="text-center">Recensione dell utente:</h3>
                     <hr color=black>
                     <section class="reviews py-5" id="reviews">
                         <div class="container">
@@ -235,8 +236,6 @@
                                             {/for}
                                             {else}
                                             <div class="col-md-12">
-                                                <br>
-                                                <h3 class="text-center">Recensione dell utente:</h3>
                                                 <hr color=black>
                                                 <section class="reviews py-5" id="reviews">
                                                     <div class="container">
@@ -425,12 +424,14 @@
                         </div>
                     </div>
                     <hr color=black>
+                    <br>
+                    <h3 class="text-center">Recensione dell utente:</h3>
+
                     {if $rec!=null}
                         {if is_array($rec)}
                             {for $i=0 to $n_recensioni}
                     <div class="col-md-12">
-                        <br>
-                        <h3 class="text-center">Recensione dell utente:</h3>
+
                         <hr color=black>
                         <section class="reviews py-5" id="reviews">
                             <div class="container">
@@ -483,8 +484,7 @@
                             {/for}
                         {else}
                     <div class="col-md-12">
-                        <br>
-                        <h3 class="text-center">Recensione dell utente:</h3>
+
                         <hr color=black>
                         <section class="reviews py-5" id="reviews">
                             <div class="container">
