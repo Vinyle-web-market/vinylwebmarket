@@ -12,6 +12,7 @@
  *   Viene anche gestito l'inserimento o no delle stelle con $_POST['voto']
  * - se non si è loggati, viene inviato un cookie per tenere traccia delle informazioni utili per il reindirizzamento,
  *   dopo il login, alla pagina in cui ci troviamo;
+ * !!!La view relativa è in VUser in quanto ripresenta semplicemente la pagina aggiornata con l'ultima recensione
  */
 
 
@@ -25,7 +26,7 @@ class CRecensione
                 //header('Location: /vinylwebmarket/');
             }
             else
-                header('Location: //vinylwebmarket/User/login');
+                header('Location: /vinylwebmarket/User/login');
         }
         elseif($_SERVER['REQUEST_METHOD'] == "POST") {
             $view = new VUser();
@@ -33,8 +34,8 @@ class CRecensione
              if (isset($_POST['recensione'])) {
                 if ($sessione->isLoggedUtente()) {
                     $user = unserialize($_SESSION['utente']);
-                    if (isset($_POST['voto']))
-                        $review = new ERecensione($_POST['voto'], $_POST['commento'], $user->getEmail(), $_POST['destinatario']);
+                    if (isset($_POST['rate']))
+                        $review = new ERecensione($_POST['rate'], $_POST['commento'], $user->getEmail(), $_POST['destinatario']);
                     else
                         $review = new ERecensione(0, $_POST['commento'], $user->getEmail(), $_POST['destinatario']);
                     $pm->store($review);

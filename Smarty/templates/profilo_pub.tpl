@@ -108,8 +108,8 @@
                     <h3>Lascia una recensione a: <b>{$nome} {$cognome}</b> </h3>
                 </div>
             <form action="/vinylwebmarket/Recensione/Review" method="POST">
-                <input type="text" hidden name="azione" value="recensione" />
-                <input type="text" hidden name="conveyor" value="{$email}" />
+                <input type="text" hidden name="recensione" value="recensione" />
+                <input type="text" hidden name="destinatario" value="{$email}" />
                 <div class="border">
                     <div class="row">
 
@@ -356,9 +356,9 @@
                     <div class="col-md-12">
                         <h3>Lascia una recensione a: <b>{$nomenegozio}</b> </h3>
                     </div>
-                    <form action="/vinylwebmarekt/Recensione/Review" method="POST">
-                        <input type="text" hidden name="azione" value="recensione" />
-                        <input type="text" hidden name="conveyor" value="{$email}" />
+                    <form action="/vinylwebmarket/Recensione/Review" method="POST">
+                        <input type="text" hidden name="recensione" value="recensione" />
+                        <input type="text" hidden name="destinatario" value="{$email}" />
                         <div class="border">
                             <div class="row">
 
