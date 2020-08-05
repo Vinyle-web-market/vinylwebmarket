@@ -103,8 +103,53 @@
                     <!-- END MENU -->
                 </div>
             </div>
-
-
+            <form action="/vinylwebmarekt/Recensione/Review" method="POST">
+                <input type="text" hidden name="azione" value="recensione" />
+                <input type="text" hidden name="conveyor" value="{$email}" />
+                <div class="border">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Lascia una recensione a {$nome} {$cognome}</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control"  rows="3" placeholder="Commento..." name="commento" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- stelline -->
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right">
+                                <input type="submit" class="btn btn-primary"  value="Invia recensione"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            {if $media_rec != 0}
+                                <div class="ml-3">
+                                    <p> Valutazione media di {$nome} {$cognome} : {$media_rec}</p>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </form>
             {if $rec!=null}
             <div class="col-md-9">
                 <br>
@@ -263,7 +308,58 @@
                     </div>
                 </div>
 
-
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea class="form-control"  rows="3" placeholder="Commento..." name="commento" required></textarea>
+                </div>
+            </div>
+            <form action="/vinylwebmarekt/Recensione/Review" method="POST">
+                <input type="text" hidden name="azione" value="recensione" />
+                <input type="text" hidden name="conveyor" value="{$email}" />
+                <div class="border">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Lascia una recensione a: {$nomenegozio}</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control"  rows="3" placeholder="Commento..." name="commento" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- stelline -->
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right">
+                                <input type="submit" class="btn btn-primary"  value="Invia recensione"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            {if $media_rec != 0}
+                                <div class="ml-3">
+                                    <p> Valutazione di {$nomenegozio} : {$media_rec}</p>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </form>
                 {if $rec!=null}
                 <div class="col-md-9">
                     <br>

@@ -430,7 +430,7 @@ var_dump($out);
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------
 $f= new FUtente_loggato();
-$f->update('username', 'pasquale', 'email', 'claudio97@virgilio.it');
+$f->update('stato', 0, 'email', 'claudio@virgilio.it');
 //-----------------------------------------------------------------------
 */
 
