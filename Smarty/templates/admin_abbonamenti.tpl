@@ -1,5 +1,5 @@
 {assign var='immagine' value=$immagine|default:'ok'}
-{assign var='immagine_1' value=$immagine|default:'ok'}
+{assign var='immagine_1' value=$immagine_1|default:'ok'}
 {assign var='abbonamentiBannati' value=$abbonamentiBannati|default:'0'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,10 +40,7 @@
                 <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cerca parola" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
     </div>
 </nav>
 <main role="main" class="container">

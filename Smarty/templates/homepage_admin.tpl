@@ -43,7 +43,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/Admin/ricercaParolaUtente" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cerca parola" aria-label="Search" name="parola">
+            <input class="form-control mr-sm-2" type="search" placeholder="Cerca profilo" aria-label="Search" name="parola">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
@@ -128,7 +128,7 @@
                                 </p>
                             </div>
                             <div class="col-md-2">
-                                <form action="/vinylwebmarket/Admin/attivaUtente" method="POST">
+                                <form action="/vinylwebmarket/Admin/attivazioneUtente" method="POST">
                                     <input type="text" hidden name="email" value="{$utentiBan[$i]->getEmail()}">
                                     <button class="btn btn-success mt-3">Riattiva utente</button>
                                 </form>

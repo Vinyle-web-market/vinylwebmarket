@@ -39,7 +39,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/Admin/ricercaParolaRecensione" method="post">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cerca parola" aria-label="Search" name="parola">
+            <input class="form-control mr-sm-2" type="search" placeholder="Cerca testo" aria-label="Search" name="parola">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
@@ -90,9 +90,9 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente()} {$recensioni[$i]->getUsernameDestinatario()} </strong>
-                                {$recensioni[$i]->getVotostelle()}
-                                {$recensioni[$i]->getTesto()}
+                                <strong class="d-block text-gray-dark">{$recensioni->getUsernameMittente()} {$recensioni->getUsernameDestinatario()} </strong>
+                                {$recensioni->getVotostelle()}
+                                {$recensioni->getTesto()}
                             </p>
                         </div>
                         <div class="col-md-2">
