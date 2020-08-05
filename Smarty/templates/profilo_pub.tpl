@@ -193,8 +193,8 @@
                                                 <section class="col-md-12">
                                                     <div class="one-reivew">
                                                         <div class="row">
-                                                            <div class="col-md-6">
-                                                                <a href="#">{$rec[$i]->getUsernameMittente()}</a>
+                                                            <div class="col-md-12">
+                                                                <h5>Scritta da: <a href="#">{$rec[$i]->getUsernameMittente()}</a></h5>
                                                             </div>
 
                                                         </div>
@@ -251,7 +251,7 @@
                                                                             <section class="col-md-12">
                                                                                 <div class="one-reivew">
                                                                                     <div class="row">
-                                                                                        <div class="col-md-6">
+                                                                                        <div class="col-md-12">
                                                                                             <h5>Scritta da: <a href="#">{$rec->getUsernameMittente()}</a></h5>
                                                                                         </div>
                                                                                     </div>
@@ -364,8 +364,8 @@
                         <h3>Lascia una recensione a: <b>{$nomenegozio}</b> </h3>
                     </div>
                     <form action="/vinylwebmarket/Recensione/Review" method="POST">
-                        <input type="text" hidden name="azione" value="recensione" />
-                        <input type="text" hidden name="conveyor" value="{$email}" />
+                        <input type="text" hidden name="recensione" value="recensione" />
+                        <input type="text" hidden name="destinatario" value="{$email}" />
                         <div class="border">
                             <div class="row">
 
@@ -448,8 +448,8 @@
                                                                 <section class="col-md-12">
                                                                     <div class="one-reivew">
                                                                         <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <a href="#">{$rec[$i]->getUsernameMittente()}</a>
+                                                                            <div class="col-md-12">
+                                                                                <h5>Scritta da: <a href="#">{$rec[$i]->getUsernameMittente()}</a></h5>
                                                                             </div>
 
                                                                         </div>
@@ -481,7 +481,6 @@
                                                                                 <p>{$rec[$i]->getTesto()}</p>
                                                                             </div>
                                                                         </div>
-                                                                        <hr color=black>
                                                                     </div>
                                                                 </section>
                                                             </div>
@@ -506,7 +505,7 @@
                                                             <section class="col-md-12">
                                                                 <div class="one-reivew">
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-12">
                                                                             <h5>Scritta da: <a href="#">{$rec->getUsernameMittente()}</a></h5>
                                                                         </div>
                                                                     </div>
@@ -537,7 +536,6 @@
                                                                             <p>{$rec->getTesto()}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <hr color=black>
                                                                 </div>
                                                             </section>
                                                         </div>
