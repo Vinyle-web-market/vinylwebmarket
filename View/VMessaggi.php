@@ -23,7 +23,7 @@ class VMessaggi
      * @throws SmartyException
      */
 
-    public function showChats($mittenti, $img_ute)
+    public function showChats($utent, $img_ute)
     {
         list($typeA,$pic64att) = $this->SetImageUtente($img_ute);
         if ($typeA == null && $pic64att == null)
@@ -35,7 +35,7 @@ class VMessaggi
             {
                 $this->smarty->assign('typeA', $typeA);
                 $this->smarty->assign('pic64att', $pic64att);
-                $this->smarty->assign('immagine', count($img_ute) - 1);
+                $this->smarty->assign('n_mittente', count($img_ute) - 1);
             }
             else
                 {
@@ -47,7 +47,7 @@ class VMessaggi
             $this->smarty->assign('immagine', 0);
 
         $this->smarty->assign('userlogged',"loggato");
-        $this->smarty->assign('mittenti', $mittenti);
+        $this->smarty->assign('mittente', $utent);
         $this->smarty->display('chat.tpl');
     }
 
@@ -101,6 +101,20 @@ class VMessaggi
         $this->smarty->assign('messaggio', $result);
         $this->smarty->assign('utente', $utente);
         $this->smarty->display('messaggi.tpl');
+    }
+
+    /**
+     * Funzione richiamata quando un utente contatta un altro utente per la prima volta.
+     * Consente di visualizzare la pagina di messaggistica senza alcun messaggio e con il box per inserire il testo da inviare.
+     * @param $destinatario oggetto utente a cui saranno recapitati i messaggi
+     * @throws SmartyException
+     */
+
+    public function primoMessaggio($destinatario)
+    {
+        $this->smarty->assign('userlogged',"loggato");
+        $this->smarty->assign('destinatario', $destinatario);
+        $this->smarty->display('primo_messaggio.tpl');
     }
 
 }

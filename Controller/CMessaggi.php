@@ -16,6 +16,7 @@ class CMessaggi
      * 2) se il metodo di richiesta HTTP è GET e si è loggati, si viene indirizzati alla pagina contenente l'elenco di tutte le conversazioni
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento alla form di login
      */
+
     public function elencoChat()
     {
         $sessione = Session::getInstance();
@@ -54,12 +55,13 @@ class CMessaggi
                     $utentiOrdinati = null;
                     // prendo solo oggetti non replicati
                     $utent = (array_unique($utent));
+
                     foreach ($utent as $ute)
                     {
                         $utentiOrdinati[] = $ute;
                     }
                     $img_chats = static::caricamento_immagini_utenti($utentiOrdinati);
-                    $view->showChats($utentiOrdinati, $img_chats);    //da fare nella view
+                    $view->showChats($utentiOrdinati, $img_chats);
                 }
                 elseif ($messaggi == null)
                 {
@@ -111,10 +113,10 @@ class CMessaggi
 
     /**
      * Funzione di supporto per altre.
-     * Questa garantisce il corretto reindirizzameto verso la chat richiesta.
+     * Essa garantisce il corretto reindirizzameto verso la chat richiesta.
      */
 
-    static function set_chat()
+    static function redirect_chat()
     {
         $utente = unserialize($_SESSION['utente']);
         if (get_class($utente) != 'EUtente_loggato')
@@ -134,12 +136,13 @@ class CMessaggi
 
             if (isset ($_POST['text']))
             {
-                $messaggio = $_POST['text'];
-                $mess = new EMessaggio($messaggio, $utente->getEmail(), $email);   // da rivedere un attimo
+                $oggetto = $_POST['oggetto'];
+                $messaggio = $_POST['testo'];
+                $mess = new EMessaggio($utente->getMittente(), $utente->getDestinatario(), $messaggio, $oggetto);   // da rivedere un attimo
                 $pm->store($mess);
             }
 
-            $oggettoUtente = $pm->load("email", $email, "FUtenteloggato");
+            $destinatario = $pm->load("email", $email, "FUtente_loggato");
             $result = $pm->caricaChats($utente->getEmail(), $email);
 
             if (is_object($result))
@@ -163,12 +166,46 @@ class CMessaggi
             }
             else
                 {
-                $view->primoMessaggio($oggettoUtente);    //vediamo un attimo se servirà
+                $view->primoMessaggio($destinatario);    //vediamo un attimo se servirà. Mettere nella view la funzione primoMessaggio()
             }
             //  $view->showMessaggi($result, $utente);
         }
         else
             header('Location: /vinylwebmarket/Admin/homepage');
+    }
+
+    /**
+     * Funzione che si occupa di avviare (o riprendere) una chat.
+     * 1) se il metodo di richiesta HTTP è GET e non si è loggati, si viene reindirizzati alla form di login;
+     * 2) se il metodo di richiesta HTTP è POST e si è loggati, attraverso la funzione redirect_chat(), avviene l'invio vero e proprio del messaggio;
+     * 3) se il metodo di richiesta HTTP è GET e si è loggati, avviene il redirect alla pagina per visualizzare l'elenco delle proprie chat;
+     * 4) l'utilizzo del COOKIE viene sfruttato per il redirect alla casella di chat corretta, se si cerca di contattare un utente e non si è ancora loggati.
+     */
+
+    static function chat()
+    {
+        $sessione = Session::getInstance();
+
+        if ($sessione->isLoggedUtente())
+        {
+            if ($_SERVER['REQUEST_METHOD'] == "POST")
+            {
+                static::redirect_chat();
+            }
+            elseif (isset($_COOKIE['chat']))
+            {
+                static::redirect_chat();
+            }
+            else
+                {
+                header('Location: /vinylwebmarket/Messaggi/elencoChat');
+            }
+        }
+        else
+            {
+            setcookie("chat", $_POST['email_ritorno'], time()+900,"/");
+            header('Location: /vinylwebmarket/User/login');
+        }
     }
 
 }
