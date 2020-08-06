@@ -33,7 +33,7 @@ class CMessaggi
                 if (is_object($messaggi))
                 {
                     // c'è un solo oggetto messaggio -> quindi devo prendere solo l'utente sender/recipient che non sono io
-                    if ($messaggi->getUsernameMittente() != $utente->getEmail())
+                    if ($messaggi->getMittente() != $utente->getEmail())
                         $utent = $pm->load("email", $messaggi->getMittente(), "FUtente_loggato");
                     else
                         $utent = $pm->load("email", $messaggi->getDestinatario(), "FUtente_loggato");
@@ -54,7 +54,7 @@ class CMessaggi
                     }
                     $utentiOrdinati = null;
                     // prendo solo oggetti non replicati
-                    $utent = (array_unique($utent));
+                   //$utent = (array_unique($utent));
 
                     foreach ($utent as $ute)
                     {
