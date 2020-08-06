@@ -131,7 +131,6 @@ class VAdmin
             {
                 if (isset($item))
                 {
-                    //$pic64[] = base64_encode($item->getDataImage());
                     $pic64[] = $item->getDataImage();
                     $type[] = $item->getMimeType();
 
@@ -147,7 +146,6 @@ class VAdmin
         elseif (isset($imgrec))
         {
             $pic64 = $imgrec->getDataImage();
-           // $pic64 = base64_encode($imgrec->getDataImage());
             $type = $imgrec->getMimeType();
         }
         return array($type, $pic64);
