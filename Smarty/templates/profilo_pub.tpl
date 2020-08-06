@@ -13,6 +13,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
       <a class="navbar-brand" href="#">
@@ -21,16 +22,13 @@
       </a>
       </div>
     </nav>
-
       <nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
         <div class="container=50px">
-
         </div>
         <a class="navbar-brand" href="Homepage.html">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -39,7 +37,6 @@
             <li class="nav-item">
               <a class="nav-link" href="profilo_privato.html">Profilo</a>
             </li>
-
             <li class="nav-item dropdown">
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -48,7 +45,9 @@
           </form>
         </div>
       </nav>
+    <!--  FINE NAVBAR -->
 
+    <!-- UTENTE PRIVATO -->
     {if $tipoutente=='privato'}
     <div class="container">
         <div class="row profile">
@@ -104,109 +103,206 @@
                 </div>
             </div>
 
-
-            {if $rec!=null}
             <div class="col-md-9">
                 <br>
-                <h3 class="text-center">Recensione dell utente:</h3>
+                <div class="col-md-12">
+                    <h3>Lascia una recensione a: <b>{$nome} {$cognome}</b> </h3>
+                </div>
+            <form action="/vinylwebmarket/Recensione/Review" method="POST">
+                <input type="text" hidden name="azione" value="recensione" />
+                <input type="text" hidden name="conveyor" value="{$email}" />
+                <div class="border">
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control"  rows="3" placeholder="Commento..." name="commento" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- stelline -->
+                            <div class="rate">
+                                <h5>
+                                    Voto:
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> (5)</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"> (4) </i></label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> (3)</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text"><i class="fa fa-star"></i><i class="fa fa-star"> (2)</i></label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text"><i class="fa fa-star"> (1)</i> </label>
+                                </h5>
+
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="right">
+                                <input type="submit" class="btn btn-product"  value="Invia recensione"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <hr color=black>
+            <div class="row">
+                <div class="col-md-10">
+                    {if $media_rec != 0}
+                        <div class="ml-3">
+                            <h3> Valutazione media di <b>{$nome} {$cognome}</b> :
+                                    {if $media_rec==5}
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    {/if}
+                                    {if $media_rec==4}
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    {/if}
+                                    {if $media_rec==3}
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    {/if}
+                                    {if $media_rec==2}
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    {/if}
+                                    {if $media_rec==1}
+                                        <i class="fa fa-star"></i>
+                                    {/if}
+                                ({$media_rec})
+                                </h3>
+                        </div>
+                    {/if}
+                </div>
+            </div>
                 <hr color=black>
-                <section class="reviews py-5" id="reviews">
-                    <div class="container">
-                        <div class="row">
+                <br>
+                <h3 class="text-center">Recensione dell utente:</h3>
+                {if $rec!=null}
+                    {if is_array($rec)}
+                        {for $i=0 to $n_recensioni}
                             <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="one-reivew">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <a href="#">{$rec->getUsernameMittente()}</a>
+                    <hr color=black>
+                    <section class="reviews py-5" id="reviews">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <section class="col-md-12">
+                                                    <div class="one-reivew">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="#">{$rec[$i]->getUsernameMittente()}</a>
+                                                            </div>
+
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <small>May 04, 2018</small>
+                                                        <div class="row text-success">
+                                                            <div class="col-md-12">
+                                                                {if $rec[$i]->getVotostelle()==5}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec[$i]->getVotostelle()==4}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec[$i]->getVotostelle()==3}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec[$i]->getVotostelle()==2}
+                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                {/if}
+                                                                {if $rec[$i]->getVotostelle()==1}
+                                                                    <i class="fa fa-star"></i>
+                                                                {/if}
+                                                            </div>
                                                         </div>
 
+                                                        <div class="row pt-2">
+                                                            <div class="col-md-12">
+
+
+
+                                                                <p>{$rec[$i]->getTesto()}</p>
+                                                            </div>
+                                                        </div>
+                                                        <hr color=black>
                                                     </div>
-                                                    <div class="row text-success">
-                                                        <div class="col-md-12">
-                                                            {if $rec->getVotostelle()==5}
-                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                            {/if}
-                                                            {if $rec->getVotostelle()==4}
-                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                            {/if}
-                                                            {if $rec->getVotostelle()==3}
-                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                            {/if}
-                                                            {if $rec->getVotostelle()==2}
-                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                            {/if}
-                                                            {if $rec->getVotostelle()==1}
-                                                                <i class="fa fa-star"></i>
-                                                            {/if}
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row pt-2">
-                                                        <div class="col-md-12">
-                                                            <b>Worse web hosting company</b>
-
-
-                                                            <p>{$rec->getTesto()}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr color=black>
-                                                </div>
-                                                <div class="one-reivew">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <a href="#">Utente che scrive la recensione</a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <small>May 04, 2018</small>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row text-success">
-                                                        <div class="col-md-12">
-                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="row pt-2">
-                                                        <div class="col-md-12">
-                                                            <b>Worse web hosting company</b>
-                                                            <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                                </section>
                                             </div>
-
-
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                </div>
+                        {/for}
+                    {else}
+                        <div class="col-md-12">
+                                                <hr color=black>
+                                                <section class="reviews py-5" id="reviews">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <section class="col-md-12">
+                                                                                <div class="one-reivew">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <h5>Scritta da: <a href="#">{$rec->getUsernameMittente()}</a></h5>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row text-success">
+                                                                                        <div class="col-md-12">
+                                                                                            {if $rec->getVotostelle()==5}
+                                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                            {/if}
+                                                                                            {if $rec->getVotostelle()==4}
+                                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                            {/if}
+                                                                                            {if $rec->getVotostelle()==3}
+                                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                            {/if}
+                                                                                            {if $rec->getVotostelle()==2}
+                                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                            {/if}
+                                                                                            {if $rec->getVotostelle()==1}
+                                                                                                <i class="fa fa-star"></i>
+                                                                                            {/if}
+                                                                                        </div>
+                                                                                    </div>
 
-                    </div>
-                </section>
+                                                                                    <div class="row pt-2">
+                                                                                        <div class="col-md-12">
 
+
+                                                                                            <p>{$rec->getTesto()}</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <hr color=black>
+                                                                                </div>
+                                                                            </section>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                            </div>
+                    {/if}
+                    {else}
+                        <div class="col-md-9">
+                                                                            <br>
+                                                                            <h3 class="text-center">-Nessuna Recensione-</h3>
+                                                                        </div>
+                    {/if}
+                {/if}
             </div>
-            {/if}
 
-            {if $rec==null}
-            <div class="col-md-9">
-                <br>
-                <h3 class="text-center">-Nessuna Recensione-</h3>
-            </div>
-        </div>
-    {/if}
-        {/if}
 
         {if $tipoutente=='negozio'}
         <div class="container">
@@ -262,111 +358,206 @@
                         <!-- END MENU -->
                     </div>
                 </div>
-
-
-                {if $rec!=null}
                 <div class="col-md-9">
                     <br>
-                    <h3 class="text-center"><b>Valutazione media degli utenti : {$media_rec}/5</b></h3>
-                    <hr color=black>
-                    <section class="reviews py-5" id="reviews">
-                        <div class="container">
+                    <div class="col-md-12">
+                        <h3>Lascia una recensione a: <b>{$nomenegozio}</b> </h3>
+                    </div>
+                    <form action="/vinylwebmarket/Recensione/Review" method="POST">
+                        <input type="text" hidden name="azione" value="recensione" />
+                        <input type="text" hidden name="conveyor" value="{$email}" />
+                        <div class="border">
+                            <div class="row">
+
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="one-reivew">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <a href="#">{$rec->getUsernameMittente()}</a>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <small>May 04, 2018</small>
-                                                            </div>
+                                    <textarea class="form-control"  rows="3" placeholder="Commento..." name="commento" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- stelline -->
+                                    <div class="rate">
+                                        <h5>
+                                            Voto:
+                                            <input type="radio" id="star5" name="rate" value="5" />
+                                            <label for="star5" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> (5)</label>
+                                            <input type="radio" id="star4" name="rate" value="4" />
+                                            <label for="star4" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"> (4) </i></label>
+                                            <input type="radio" id="star3" name="rate" value="3" />
+                                            <label for="star3" title="text"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> (3)</label>
+                                            <input type="radio" id="star2" name="rate" value="2" />
+                                            <label for="star2" title="text"><i class="fa fa-star"></i><i class="fa fa-star"> (2)</i></label>
+                                            <input type="radio" id="star1" name="rate" value="1" />
+                                            <label for="star1" title="text"><i class="fa fa-star"> (1)</i> </label>
+                                        </h5>
 
-                                                        </div>
-                                                        <div class="row text-success">
-                                                            <div class="col-md-12">
-                                                                {if $rec->getVotostelle()==5}
-                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                                {/if}
-                                                                {if $rec->getVotostelle()==4}
-                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                                {/if}
-                                                                {if $rec->getVotostelle()==3}
-                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                                {/if}
-                                                                {if $rec->getVotostelle()==2}
-                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                                {/if}
-                                                                {if $rec->getVotostelle()==1}
-                                                                    <i class="fa fa-star"></i>
-                                                                {/if}
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row pt-2">
-                                                            <div class="col-md-12">
-                                                                <b>Worse web hosting company</b>
-
-
-                                                                <p>{$rec->getTesto()}</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr color=black>
-                                                    </div>
-                                                    <div class="one-reivew">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <a href="#">Utente che scrive la recensione</a>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <small>May 04, 2018</small>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row text-success">
-                                                            <div class="col-md-12">
-                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="row pt-2">
-                                                            <div class="col-md-12">
-                                                                <b>Worse web hosting company</b>
-                                                                <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="right">
+                                        <input type="submit" class="btn btn-product"  value="Invia recensione"/>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </section>
-
-                </div
-            </div>
-            {/if}
-
-            {if $rec==null}
-                <div class="col-md-9">
+                    </form>
+                    <hr color=black>
+                    <div class="row">
+                        <div class="col-md-10">
+                            {if $media_rec != 0}
+                                <div class="ml-3">
+                                    <h3> Valutazione media di <b>{$nomenegozio}</b> :
+                                        {if $media_rec==5}
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        {/if}
+                                        {if $media_rec==4}
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        {/if}
+                                        {if $media_rec==3}
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        {/if}
+                                        {if $media_rec==2}
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                        {/if}
+                                        {if $media_rec==1}
+                                            <i class="fa fa-star"></i>
+                                        {/if}
+                                        ({$media_rec})
+                                    </h3>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                    <hr color=black>
                     <br>
-                    <h3 class="text-center">-Nessuna Recensione-</h3>
+                    <h3 class="text-center">Recensione dell utente:</h3>
+                    {if $rec!=null}
+                        {if is_array($rec)}
+                            {for $i=0 to $n_recensioni}
+                                <div class="col-md-12">
+                                    <hr color=black>
+                                    <section class="reviews py-5" id="reviews">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <section class="col-md-12">
+                                                                    <div class="one-reivew">
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <a href="#">{$rec[$i]->getUsernameMittente()}</a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row text-success">
+                                                                            <div class="col-md-12">
+                                                                                {if $rec[$i]->getVotostelle()==5}
+                                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                {/if}
+                                                                                {if $rec[$i]->getVotostelle()==4}
+                                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                {/if}
+                                                                                {if $rec[$i]->getVotostelle()==3}
+                                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                {/if}
+                                                                                {if $rec[$i]->getVotostelle()==2}
+                                                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                                {/if}
+                                                                                {if $rec[$i]->getVotostelle()==1}
+                                                                                    <i class="fa fa-star"></i>
+                                                                                {/if}
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row pt-2">
+                                                                            <div class="col-md-12">
+
+
+
+                                                                                <p>{$rec[$i]->getTesto()}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr color=black>
+                                                                    </div>
+                                                                </section>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            {/for}
+                        {else}
+                            <div class="col-md-12">
+                                <hr color=black>
+                                <section class="reviews py-5" id="reviews">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <section class="col-md-12">
+                                                                <div class="one-reivew">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <h5>Scritta da: <a href="#">{$rec->getUsernameMittente()}</a></h5>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row text-success">
+                                                                        <div class="col-md-12">
+                                                                            {if $rec->getVotostelle()==5}
+                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                            {/if}
+                                                                            {if $rec->getVotostelle()==4}
+                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                            {/if}
+                                                                            {if $rec->getVotostelle()==3}
+                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                            {/if}
+                                                                            {if $rec->getVotostelle()==2}
+                                                                                <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                                            {/if}
+                                                                            {if $rec->getVotostelle()==1}
+                                                                                <i class="fa fa-star"></i>
+                                                                            {/if}
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row pt-2">
+                                                                        <div class="col-md-12">
+
+
+                                                                            <p>{$rec->getTesto()}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr color=black>
+                                                                </div>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        {/if}
+                    {else}
+                        <div class="col-md-9">
+                            <br>
+                            <h3 class="text-center">-Nessuna Recensione-</h3>
+                        </div>
+                    {/if}
+                    {/if}
                 </div>
-                </div>
-            {/if}
-        {/if}
+
 
 
 
