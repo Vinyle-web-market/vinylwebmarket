@@ -105,4 +105,37 @@ class FMessaggio
         }
         return $messaggio;
     }
+
+    /**
+     * Permette di ottenere tutti i messaggi in cui l'utente passato come parametro risulti mittente o destinatario
+     * @param $id valore da ricercare nel campo $field
+     * @param $field valore del campo della ricerca
+     * @return object $mess l'oggetto messaggio se presente
+     */
+    public static function loadChats($email, $email2)
+    {
+        $messaggio = null;
+        $db = FDatabase::getInstance();
+        list ($result, $rows_number)=$db->loadChats($email, $email2);
+
+        if(($result != null) && ($rows_number == 1))
+        {
+            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['oggetto'],$result['testo']);
+            $messaggio->setId($result['id']);
+        }
+        else
+            {
+            if(($result != null) && ($rows_number > 1))
+            {
+                $messaggio = array();
+                for($i = 0; $i < count($result); $i++)
+                {
+                    $messaggio[]=new EMessaggio($result[$i]['mittente'],$result[$i]['destinatario'],$result[$i]['oggetto'],$result[$i]['testo']);
+                    $messaggio[$i]->setId($result[$i]['id']);
+                }
+            }
+        }
+        return $messaggio;
+    }
+
 }

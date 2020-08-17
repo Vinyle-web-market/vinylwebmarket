@@ -85,7 +85,7 @@
   				<!-- SIDEBAR MENU -->
   				<div class="profile-usermenu">
             <li>
-              <a href="messaggi.html">
+              <a href="/vinylwebmarket/Messaggi/elencoChat">
               <i class="glyphicon glyphicon-user"></i>
               Messaggio </a>
             </li>

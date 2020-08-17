@@ -145,4 +145,16 @@ class FPersistentManager
         return $ris;
     }
 
+    /** Metodo che permette il caricamento dei messaggi per andare ad instaurare una conversazione
+     *  @param $email mittente
+     * @param $email2 destinatario
+     */
+
+    public static function caricaChats($email, $email2)
+    {
+        $ris = null;
+        $ris = FMessaggio::loadChats($email,$email2);
+        return $ris;
+    }
+
 }

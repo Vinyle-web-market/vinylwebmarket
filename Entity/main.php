@@ -122,10 +122,10 @@ print "Test toString: ".$recensione->toString()."<br>";
 /*
 //---------------------COSTRUTTORE EMESSAGGIO--------------------------------
 echo "<h3> prova EMessaggio</h3>";
-$email2="claudio0000@virgilio.it";
-$email1="ZioTony@virgeilio.it";
-$ogg="cia crist";
-$text="il tabaccaio di pescara";
+$email2="vanessa.cruciani@virgilio.itq";
+$email1="claudio@virgilio.it";
+$ogg="Sarei interessato ad uno dei suoi vinili";
+$text="Buongionro, vorrei maggiori maggiori informazioni sul vinile di Battisti.";
 $mex=new EMessaggio($email1, $email2, $ogg, $text);
 print "Test to String: ".$mex->toString()."<br>";
 //---------------------------------------------------------------------------
@@ -610,8 +610,10 @@ var_dump($r2);
 */
 
 
-$rec1 = new FUtente_loggato();
-$rec2 = $rec1->update('stato','0','email','nannus97@gmail.com');
+$rec1 = new FPersistentManager();
+$email2="vanessa.cruciani@virgilio.itq";
+$email1="claudio@virgilio.it";
+$rec2 = $rec1->caricaChats($email1,$email2);
 var_dump($rec2);
 
 
