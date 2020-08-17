@@ -3,6 +3,19 @@
 
 class CVinile
 {
+    /**
+     * Metodo per il caricamento della vetrina del negozio
+     * sfrutta la funzione di CFiltro ImageVynils per l associazione delle immagini per ogni vinile
+     */
+    static function Vetrina (){
+        $view = new VVinile();
+        $pm = new FPersistentManager();
+        //public static function load($field, $value,$Fclass) {
+            $result = $pm->load("visibilty",1,"FVinile");
+            //fare la funzione per le immagini vinili,simile imageReviews in Cuser
+            $img=CFiltro::ImageVinyls($result);
+            $view->Vetrina($result,$img);
+    }
 
 
 /*
