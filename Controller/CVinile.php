@@ -11,7 +11,7 @@ class CVinile
         $view = new VVinile();
         $pm = new FPersistentManager();
         //public static function load($field, $value,$Fclass) {
-            $result = $pm->load("visibilty",1,"FVinile");
+            $result = $pm->load("visibility",1,"FVinile");
             //fare la funzione per le immagini vinili,simile imageReviews in Cuser
             $img=CFiltro::ImageVinyls($result);
             $view->Vetrina($result,$img);

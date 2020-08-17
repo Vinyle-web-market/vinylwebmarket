@@ -289,11 +289,7 @@ img{ max-width:100%;}
   width: 88%;
 }
 
-.chisplay: inline-block;
-  padding: 0 0 0 10px;
-  vertical-align: top;
-  width: 92%;
- }
+
  .received_withd_msg p {
   background: #ebebeb none repeat scroll 0 0;
   border-radius: 3px;
@@ -372,8 +368,13 @@ height: 200px;
 margin-left:230px;
 }
 .centrato {
-     margin: 0 auto;
+     margin-left: 10%;
+    margin-right: 10%;
   }
+.centratodx {
+
+    margin-right:0px;
+}
 
   .fa-star-0{
     color: gray;
@@ -382,7 +383,7 @@ margin-left:230px;
 .fa-star{
   color: black;
 }
-
+.right{float:right;}
 
 
 

@@ -41,7 +41,7 @@ class VVinile
         $this->smarty->assign('vinili', $result);
         $this->smarty->assign('imgVinili', $img);
         //mostro la home con i risultati della query
-        $this->smarty->display('vetrinaVinili.tpl');
+        $this->smarty->display('vetrina_vinili.tpl');
     }
 
     /**
