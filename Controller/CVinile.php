@@ -98,7 +98,7 @@ class CVinile
     }
 
     /**
-     * Funzione di supporto che gestisce le varie combinazioni tra le due immagini selezioate nella pubblicazione dell'annuncio
+     * Funzione di supporto che gestisce le varie combinazioni tra le due immagini selezioate nella pubblicazione del vinile
      * @param $stato stato prima immagine
      * @param $nome nome prima immagine
      * @param $type MIME type prima immagine
@@ -218,6 +218,29 @@ class CVinile
         }
         else
             $view->dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,"si");
+    }
+
+    /**
+     * Funzione che permette la modifica di un vinile già pubblicato dall'utente.
+     * - metodo GET e si è loggati:si viene indirizzati alla form per scegliere le modofiche da apportare;
+     *                            se  non si è loggati, avviene il reindirizzamento verso la form di login.
+     * @param $id id del vinile che si vuol modificare
+     */
+    static function modificaVinile($id)
+    {
+        $pm = new FPersistentManager();
+        $view = new VVinile();
+        $img=null;
+        $errore=null;
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                $utente = $sessione->getUtente();
+                $vinile = $pm::load("id_vinile", $id, "FVinile");
+                $view->modificaFormVinile($vinile,$img,$errore);
+            } else
+                header('Location: /FillSpaceWEB/Utente/login');
+        }
     }
 
 

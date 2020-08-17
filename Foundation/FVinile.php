@@ -158,13 +158,17 @@ class FVinile
         echo "<br>".$rows_number;
         if (($result != null) && ($rows_number == 1)) {
             $utente_loggato = FUtente_loggato::load("email", $result["venditore"]);
-            $vinile[] = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],); //forse bisogna togliere le quadre
+            $vinile = new EVinile($utente_loggato, $result["titolo"], $result["artista"], $result["genere"], $result["ngiri"], $result["condizione"], $result["prezzo"], $result["descrizione"], $result["quantita"],); //forse bisogna togliere le quadre
+            $vinile->setId($result['id_vinile']);
+            $vinile->setVisibility($result['visibility']);
         } else {
             if (($result != null) && ($rows_number > 1)) {
                 $vinile[] = array();
                 for ($i = 0; $i < count($result); $i++) {
                     $utente_loggato[] = FUtente_loggato::load("email", $result[$i]["venditore"]);
                     $vinile[$i] = new EVinile($utente_loggato[$i], $result[$i]["titolo"], $result[$i]["artista"], $result[$i]["genere"], $result[$i]["ngiri"], $result[$i]["condizione"], $result[$i]["prezzo"], $result[$i]["descrizione"], $result[$i]["quantita"],);
+                    $vinile[$i]->setId($result[$i]['id_vinile']);
+                    $vinile[$i]->setVisibility($result[$i]['visibility']); //vedere se ci andrà messa
                 }
             }
         }

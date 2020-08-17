@@ -32,6 +32,10 @@ class EVinile
         $this->genere = $gen;
         $this->ngiri = $ng;
         $this->condizione = $cond;
+        if(strpos($pr,"$")!==false or strpos($pr,"€")!==false) {
+            $pr = str_replace("$", "", $pr);
+            $pr = str_replace("€", "", $pr);
+        }
         $this->prezzo = $pr;
         $this->descrizione = $des;
         $this->quantita = $quan;

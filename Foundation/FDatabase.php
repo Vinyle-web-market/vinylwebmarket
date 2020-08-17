@@ -318,13 +318,13 @@ class FDatabase
                             break;
                         case 4:
                             if ($query == null)
-                                $query = "SELECT * FROM " . $class::getTable() . " WHERE space ='" . $condizioni . "'";
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE condizione ='" . $condizioni . "'";
                             else
                                 $query = $query . " AND condizione ='" . $condizioni . "'";
                             break;
                         case 5:
                             if ($query == null)
-                                $query = "SELECT * FROM " . $class::getTable() . " WHERE prezzo ='" . $prezzo . "'";
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE prezzo <='" . $prezzo . "'";
                             else
                                 $query = $query . " AND prezzo ='" . $prezzo . "'";
                             break;
@@ -439,7 +439,7 @@ class FDatabase
         }
     }
 
-    //funzione che ci permette all'admin di effettuare la ricerca di parole. La utilizziamo per recensioni, utenti e vinili.
+    //funzione che ci permette di effettuare la ricerca di parole. La utilizziamo per recensioni, utenti e vinili.
     public function ricercaP($campo,$class,$input)
     {
         try

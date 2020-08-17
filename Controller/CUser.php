@@ -11,6 +11,7 @@ class CUser
 
     public function registrazionePrivato()
     {
+
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {

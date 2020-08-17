@@ -108,6 +108,45 @@ class VVinile
             $this->smarty->display('dettagliVinile.tpl');
         }
 
+    /**
+     * Funzione che si occupa di gestire la visualizzazione della form di modifica per il cliente
+     * @param $user informazioni sull'utente che desidera mdificare i suoi dati
+     * @param $img immagine dell'utente
+     * @param $error tipo di errore nel caso in cui le modifiche siano sbagliate
+     * @throws SmartyException
+     */
+    public function formModificaVinile($vinile, $image, $errore) {
+        switch ($errore) {
+            /* FARE TUTTI CONTROLLI PER DELLE MODIFICHE CORRETTE COME NEL CASO PROFILO UTENTE
+            case "errorEmail" :
+                $this->smarty->assign('errorEmail', "errore");
+                break;
+            case "ErrorEmailInput" :
+                $this->smarty->assign("errorEmailInput","errore");
+                break;
+            case "errorPassword":
+                $this->smarty->assign('errorPassword', "errore");
+                break;
+            case "errorSize" :
+                $this->smarty->assign('errorSize', "errore");
+                break;
+            case "errorType" :
+                $this->smarty->assign('errorType', "errore");
+                break;
+            */
+        }
+
+        if (isset($img)) {
+            $pic64 = base64_encode($img->getDataImage());
+        }
+        else {
+            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
+            $pic64 = base64_encode($data);
+        }
+        $this->smarty->assign('vinile',$vinile);
+        $this->smarty->display('formModificaVinile.tpl');
+    }
+
 
 
 

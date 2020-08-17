@@ -9,7 +9,7 @@
  * POST:
  * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['recensione'] viene salvata la recensione e
  *   e preparata la nuova pagina aggiornata
- *   Viene anche gestito l'inserimento o no delle stelle con $_POST['voto']
+ *   Viene anche gestito l'inserimento o no delle stelle con $_POST['rate']
  * - se non si è loggati, viene inviato un cookie per tenere traccia delle informazioni utili per il reindirizzamento,
  *   dopo il login, alla pagina in cui ci troviamo;
  * !!!La view relativa è in VUser in quanto ripresenta semplicemente la pagina aggiornata con l'ultima recensione
