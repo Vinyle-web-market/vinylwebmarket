@@ -23,15 +23,17 @@ class VFiltro
 
         if (isset($img)) {
             if (is_array($img)) {
-                $this->smarty->assign('type', $img->getMimeType());
-                $this->smarty->assign('pic64', $img->getDataImage());
+                $this->smarty->assign('img', $img);
+                // $this->smarty->assign('type', $img->getMimeType());
+                // $this->smarty->assign('pic64', $img->getDataImage());
                 $this->smarty->assign('n_vinili', count($img) - 1);
             }
             else {
-                $t[] = $img->getMimeType();
-                $im[] = $img->getDataImage();
-                $this->smarty->assign('type', $t);
-                $this->smarty->assign('pic64', $im);
+                // $t[] = $img->getMimeType();
+                // $im[] = $img->getDataImage();
+                //  $this->smarty->assign('type', $t);
+                // $this->smarty->assign('pic64', $im);
+                $this->smarty->assign('img', $img);
                 $this->smarty->assign('n_vinili', 1);
             }
         }
