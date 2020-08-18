@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>messagi</title>
+    <title>messaggi</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet"
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -44,19 +44,16 @@
         </div>
       </nav>
 
-<div class="container">
+<div class="col-md-auto centrato">
   <br>
-<h3 class=" text-center">Elenco Messaggi:</h3>
+<h3 class="text-center">Elenco Messaggi:</h3>
   <hr color="black">
-<div class="messaging">
-  <div class="inbox_chat">
 
-        <div class="col-md-12">
+        <div class="centrato">
           {if $utent}
             {if is_array($utent)}
-              {for $i=0 to $n_utent}
+              {for $i=0 to $n_utenti}
 
-                  <div class="chat_list">
                     <div class="chat_people">
                       <div class="chat_img">
                         {if $immagine == 'ok'}
@@ -65,15 +62,20 @@
                           <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
                         {/if}
                       </div>
-                      <div class="chat_ib">
+                      <div class="col-md-auto">
+                        <br>
                         <h5>{$utent[$i]->getEmail()}</h5>
-                        <p>Test, which is a new approach to have all solutions
-                          astrology under one roof.</p>
+                      </div>
+                      <div class="col-md-5 right">
+                        <form action="#" method="POST">
+                          <button class="btn btnSubmit right">Visualizza conversazione</button>
+                        </form>
+                      </div>
+                      <br>
+                      <br>
                         <hr>
                         <br>
                       </div>
-                    </div>
-                  </div>
 
               {/for}
             {else}
@@ -101,8 +103,7 @@
            <h1>Al momento non ci sono messaggi.</h1>
             </div>
           {/if}
-        </div>
-</div>
+
 </div>
   </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
