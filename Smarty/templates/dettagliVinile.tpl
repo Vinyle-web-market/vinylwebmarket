@@ -91,7 +91,7 @@
 
                              <div class="col-md-7">
                                  <div class="single-product-content">
-                                     <form method="post" id="AddToCartForm" accept-charset="UTF-8" class="shopify-product-form" enctype="multipart/form-data">
+                                     <form method="post" id="AddToCartForm" accept-charset="UTF-8" class="shopify-product-form" enctype="multipart/form-data" action="/vinylwebmarket/Messaggi/chat">
                                          <input type="hidden" name="form_type" value="product" /><input type="hidden" name="utf8" value="✓" />
                                          <div class="product-details">
                                            <hr color="black">
