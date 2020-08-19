@@ -105,6 +105,7 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
+                    echo "<hr>";
                     $img = null;
                     $img[] = $pm->loadImg2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {
@@ -133,48 +134,8 @@ class CFiltro
         }
         return $imgVynils;
     }
-  //come la precedente ma per prendere le foto posteriori
-    static function ImageVinylsP($vinili) {
-        $pm = new FPersistentManager();
-        $imgVynils = null;
-        $img=null;
-        //$recensioni = $pm->load("emailConveyor", $tra->getEmail(), "FRecensione");
-        //$recensioni = $pm->load("destinatario",$user->getEmail(),"FRecensione");
-        if (isset($vinili)) {
-            if (is_array($vinili)) {
-                $n_vinili = count($vinili);
-                //var_dump($n_vinili);
-                for ($i = 0; $i < $n_vinili; $i++) {
-                    $img = null;
-                    $img[] = $pm->loadImgP2("EImageVinile", "id_vinile", $vinili[$i]->getId());
-                    if ($img != null) {
-                        //echo "<hr>";
-                        // var_dump($img);
-                        $imgVynils[$i] = $img;
-                    } else {
-                        $data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
-                        $pic64 = base64_encode($data);
-                        $type = "image/png";
-                        $imgVynils[$i] = new EImageVinile("user.png", $data, $type, $vinili[$i]->getId());
-                    }
 
-                }
-            } elseif (isset($vinili)) {
-                $img = $pm->loadImg2("EImageVinile", "id_vinile", $vinili->getId());
-                if ($img != null) {
-                    $imgVynils = $img;
-                } else {
-                    $data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
-                    $pic64 = base64_encode($data);
-                    $type = "image/png";
-                    $imgVynils = new EImageVinile("user.png", $data, $type, $vinili->getId());
-                }
-            }
-        }
-        return $imgVynils;
-    }
-
-    /*static function ImageVinyls2($vinili) {
+    static function ImageVinyls2($vinili) {
         $pm = new FPersistentManager();
         $imgVynils = null;
         $img=null;
@@ -229,7 +190,7 @@ class CFiltro
         // echo "<hr>";echo "<hr>";
         var_dump($imgVynils);
         return $imgVynils;
-    }*/
+    }
 
     static function ricercaParola (){
         $pm = new FPersistentManager();
