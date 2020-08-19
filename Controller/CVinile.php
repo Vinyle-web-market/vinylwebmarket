@@ -13,8 +13,8 @@ class CVinile
         //public static function load($field, $value,$Fclass) {
             $result = $pm->load("visibility",1,"FVinile");
             //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-            $img=CFiltro::ImageVinyls($result);
-            $imgP=CFiltro::ImageVinyls2($result);
+            $img=CFiltro::ImageVinyls($result);     //img anteriori
+            $imgP=CFiltro::ImageVinyls2($result);  //img posteriori
             $view->Vetrina($result,$img,$imgP);
     }
 

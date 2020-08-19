@@ -142,6 +142,14 @@ class FPersistentManager
         return $ris;
     }
 
+     //ricercaParolaCampo($parola,$field)
+    public static function cercaViniliCampo($parola,$field)
+    {
+        $ris = null;
+        $ris = FVinile::ricercaParolaCampo($parola,$field);
+        return $ris;
+    }
+
     /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
      */

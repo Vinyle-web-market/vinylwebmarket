@@ -23,7 +23,7 @@ class VVinile
             $this->smarty->assign('userlogged',"loggato");
         //echo "<hr>";
        // echo "<hr>";
-        //var_dump($img);
+        var_dump($img);
 
         if (isset($img)) {
             if (is_array($img)) {
