@@ -60,7 +60,7 @@
                                 <div class="product-image4">
                                     <a href="#">
                                         <img class="pic-1" src="data:{$type[$i]};base64,{$pic64[$i]}"/>
-                                        <img class="pic-2" src="/vinylwebmarket/Utility/immagini/fotovinileassente.jpg" />
+                                        <img class="pic-2" src="data:{$typeP[$i]};base64,{$pic64P[$i]}" />
                                     </a>
                                 </div>
                             <div class="product-content">
@@ -81,7 +81,7 @@
                 <div class="product-image4">
                     <a href="#">
                         <img class="pic-1" src="data:{$type};base64,{$pic64}"/>
-                        <img class="pic-2" src="/vinylwebmarket/Utility/immagini/fotovinileassente.jpg" />
+                        <img class="pic-2" src="data:{$typeP};base64,{$pic64P}" />
                     </a>
                 </div>
                 <div class="product-content">

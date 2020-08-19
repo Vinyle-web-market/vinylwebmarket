@@ -235,7 +235,7 @@ figure img{width:300px;}
 
 
 /* Chat messaggi */
-.container{max-width:auto; margin:auto;}
+.container{margin:auto;}
 img{ max-width:100%;}
 .inbox_people {
     background: #f8f8f8 none repeat scroll 0 0;
@@ -255,7 +255,7 @@ img{ max-width:100%;}
 .srch_bar {
     display: inline-block;
     text-align: right;
-    width: 60%; padding:
+    width: 60%;
 }
 .headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
 
@@ -289,11 +289,6 @@ img{ max-width:100%;}
     width: 88%;
 }
 
-.chisplay: inline-block;
-padding: 0 0 0 10px;
-vertical-align: top;
-width: 92%;
-}
 .received_withd_msg p {
     background: #ebebeb none repeat scroll 0 0;
     border-radius: 3px;
@@ -340,7 +335,7 @@ width: 92%;
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
 .msg_send_btn {
-    background: #343a40; none repeat scroll 0 0;
+    background: #343a40; none: repeat scroll 0 0;
     border: medium none;
     border-radius: 50%;
     color: #fff;
@@ -409,7 +404,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 .product-grid4 .title a{color:#222}
 .product-grid4 .title a:hover{color:#16a085}
 .product-grid4 .price{color:#343a40;font-size:17px;font-weight:700;margin:0 2px 15px 0;display:block}
-.product-grid4 .add-to-cart{border:1px solid #e5e5e5;display:inline-block;padding:10px 20px;color:#888;font-weight:600;font-size:14px;border-radius:4px;transition:all .3s}
+.product-grid4 .add-to-cart{border:1px solid #e5e5e5;display:inline-block;padding:10px;color:#888;font-size:12px;border-radius:4px;transition:all .3s}
 .product-grid4:hover .add-to-cart{border:1px solid transparent;background:#343a40;color:#fff}
 .product-grid4 .add-to-cart:hover{background-color:black;box-shadow:0 0 10px rgba(0,0,0,.5)}
 @media only screen and (max-width:990px){.product-grid4{margin-bottom:30px}

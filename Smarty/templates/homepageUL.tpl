@@ -46,8 +46,8 @@
 
             <li class="nav-item dropdown">
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
+            <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
@@ -130,7 +130,7 @@
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[1]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta(tasto attivo)</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
                                                 </form>
                                                 <!--Read More Button-->
                                             </div>
