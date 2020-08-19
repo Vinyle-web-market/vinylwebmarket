@@ -51,37 +51,31 @@
 <div class="container">
     <h3 class="h3">Vinili in vendita:</h3>
     <hr color=black>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid4">
     {if $vinili}
         {if is_array($vinili)}
             {for $i=0 to $n_vinili}
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product-grid4">
                                 <div class="product-image4">
                                     <a href="#">
-                                        <img class="pic-1" src="data:{$img[$i]->getMimeType()};base64,{$img[$i]->getDataImage()}" />
+                                        <img class="pic-1" src="{$type[$i]};base64,{$pic64[$i]}" />
+                                        <img class="pic-2" src="/vinylwebmarket/Utility/immagini/fotovinileassente.jpg" />
                                     </a>
                                 </div>
-
                             <div class="product-content">
                                 <h3 class="title"><a href="#">{$vinili[$i]->getTitolo()}</a></h3>
                                 <h3 class="title">{$vinili[$i]->getArtista()}</h3>
                                 <hr color=black>
                                 <div class="price">
-                                    {$vinili[$i]->getPrezzo()}
+                                    {$vinili[$i]->getPrezzo()}€
                                 </div>
                                 <hr color=black>
                                 <a class="add-to-cart" href="">CONTATTA IL VENDITORE</a>
                             </div>
-                        </div>
-                    </div>
-                </div>
+
             {/for}
         {else}
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid4">
-
                             <div class="product-image4">
                                 <a href="#">
                                     <img class="pic-1" src="{$img->getMimeType()};base64,{$img->getDataImage()}">
@@ -98,10 +92,10 @@
                             <hr color=black>
                             <a class="add-to-cart" href="">CONTATTA IL VENDITORE</a>
                         </div>
-                    </div>
-                </div>
-            </div>
         {/if}
+            </div>
+        </div>
+    </div>
     {else}
         Non ci sono vinili in vendita
     {/if}
