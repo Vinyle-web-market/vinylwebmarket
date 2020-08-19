@@ -105,7 +105,7 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
-                    echo "<hr>";
+
                     $img = null;
                     $img[] = $pm->loadImg2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {

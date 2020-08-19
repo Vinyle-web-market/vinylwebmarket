@@ -21,10 +21,6 @@ class VVinile
         $sessione = Session::getInstance();
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
-        //echo "<hr>";
-       // echo "<hr>";
-        //var_dump($img);
-
         if (isset($img)) {
             if (is_array($img)) {
                     foreach ($img as $it) {
@@ -34,10 +30,6 @@ class VVinile
                             $type[] = $item->getMimeType();
                         }
                     }
-                echo "<hr>";
-                    var_dump($type);
-                echo "<hr>";
-                    var_dump($pic64);
                 $this->smarty->assign('n_vinili', count($img) - 1);
                 //$this->smarty->assign('img', $img);
                // $this->smarty->assign('type', $img->getMimeType());
