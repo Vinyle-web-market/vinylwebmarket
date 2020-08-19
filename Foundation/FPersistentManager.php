@@ -75,6 +75,14 @@ class FPersistentManager
         return $result;
     }
 
+    //come la precedente ma per caricare le immagini posterioriori
+    public static function loadImgP2(string $categoriaImage,$field,$id){
+        $result=null;
+        $fclass='FImage';
+        $result=$fclass::loadI2($categoriaImage,$field,$id);
+        return $result;
+    }
+
 
 
     /** Metodo che permette l'aggiornamento del valore di un campo passato per parametro */

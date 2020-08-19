@@ -618,8 +618,8 @@ var_dump($img);
 */
 
 $pm = new FPersistentManager();;
-$vinili = $pm->load("artista","Sfera Ebbasta","FVinile");
-$img=$pm->loadImg2("EImageVinile","id_vinile",$vinili->getId());
+$vinili = $pm->load("visibility",1,"FVinile");
+$img=$pm->loadImgP2("EImageVinile","id_vinile",$vinili[1]->getId());
 var_dump($img);
 
 

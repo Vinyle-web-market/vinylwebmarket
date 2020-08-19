@@ -17,7 +17,7 @@ class VVinile
      * @param $img un'immagine per vinile
      * @throws SmartyException
      */
-    public function Vetrina($result,$img){
+    public function Vetrina($result,$img,$imgP){
         $sessione = Session::getInstance();
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
@@ -34,27 +34,39 @@ class VVinile
                             $type[] = $item->getMimeType();
                         }
                     }
-                echo "<hr>";
-                    var_dump($type);
-                echo "<hr>";
-                    var_dump($pic64);
-                $this->smarty->assign('n_vinili', count($img) - 1);
-                //$this->smarty->assign('img', $img);
-               // $this->smarty->assign('type', $img->getMimeType());
-               // $this->smarty->assign('pic64', $img->getDataImage());
-                //$this->smarty->assign('n_vinili', count($img) - 1);
+                $this->smarty->assign('n_vinili', count($img)-1 );
             }
-            elseif (isset($imgrec)) {
-                $pic64 = $imgrec->getDataImage();
-                $type = $imgrec->getMimeType();
+            elseif (isset($img)) {
+                $pic64 = $img->getDataImage();
+                $type = $img->getMimeType();
                 $this->smarty->assign('n_vinili', 1);
             }
         }
         else
             $this->smarty->assign('n_vinili', 0);
+
+        if (isset($imgP)) {
+            if (is_array($imgP)) {
+                foreach ($imgP as $it) {
+                    foreach($it as $item)
+                        if (isset($item)) {
+                            $pic64P[] = $item->getDataImage();
+                            $typeP[] = $item->getMimeType();
+                        }
+                }
+            }
+            elseif (isset($imgP)) {
+                $pic64P = $imgP->getDataImage();
+                $typeP = $imgP->getMimeType();
+            }
+        }
+
+
         $this->smarty->assign('vinili', $result);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);
+        $this->smarty->assign('typeP', $typeP);
+        $this->smarty->assign('pic64P', $pic64P);
         $this->smarty->display('vetrina_vinili.tpl');
     }
 

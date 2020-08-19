@@ -194,6 +194,33 @@ class FImage
         }
 return $image1;
 }
+  //come la precedente ma per caricare le img posteriori del vinile
+    public static function loadI2(string $categoriaImage,$field,$id){
+        $image=null;
+        $image1 = null;
+        $Fclass=static::getClass();
+        $db=FDatabase::getInstance();
+        $result = $db->loadMedia('EImageVinile', $field, $id);
+        $num = $db->countLoadMedia($categoriaImage, $field, $id);
+        if(($result!=null) && ($num == 1)) {
+            // ($fname, $data, $type,$mail)
+            $data=base64_encode(stripslashes($result['dataimage']));
+            $image1=new EImageVinile($result['filename'],$data,$result['mimetype'],$result['id_vinile']);
+            $image1->setId($result['id']);
+        }
+        else {
+            if(($result!=null) && ($num > 1)){
+                $image = array();
+                for($i=0; $i<count($result); $i++){
+                    $data=base64_encode(stripslashes($result[$i]['dataimage']));
+                    $image[]=new EImageVinile($result[$i]['filename'],$data,$result[$i]['mimetype'],$result[$i]['id_vinile']);
+                    $image[$i]->setId($result[$i]['id']);
+                }
+                $image1=$image[1];
+            }
+        }
+        return $image1;
+    }
 
 
 
