@@ -21,28 +21,35 @@ class VVinile
         $sessione = Session::getInstance();
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
+        //echo "<hr>";
+       // echo "<hr>";
+        //var_dump($img);
 
         if (isset($img)) {
             if (is_array($img)) {
-                $this->smarty->assign('img', $img);
+                    foreach ($img as $item) {
+                        if (isset($item)) {
+                            $pic64[] = $item->getDataImage();
+                            $type[] = $item->getMimeType();
+                        }
+                    }
+                $this->smarty->assign('n_vinili', count($img) - 1);
+                //$this->smarty->assign('img', $img);
                // $this->smarty->assign('type', $img->getMimeType());
                // $this->smarty->assign('pic64', $img->getDataImage());
-                $this->smarty->assign('n_vinili', count($img) - 1);
+                //$this->smarty->assign('n_vinili', count($img) - 1);
             }
-            else {
-               // $t[] = $img->getMimeType();
-                // $im[] = $img->getDataImage();
-              //  $this->smarty->assign('type', $t);
-               // $this->smarty->assign('pic64', $im);
-                $this->smarty->assign('img', $img);
+            elseif (isset($imgrec)) {
+                $pic64 = $imgrec->getDataImage();
+                $type = $imgrec->getMimeType();
                 $this->smarty->assign('n_vinili', 1);
             }
         }
         else
             $this->smarty->assign('n_vinili', 0);
         $this->smarty->assign('vinili', $result);
-        $this->smarty->assign('imgVinili', $img);
-        //mostro la home con i risultati della query
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('pic64', $pic64);
         $this->smarty->display('vetrina_vinili.tpl');
     }
 

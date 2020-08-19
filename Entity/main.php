@@ -609,12 +609,40 @@ echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";echo"<hr>";
 var_dump($r2);
 */
 
+/*
+$pm = new FPersistentManager();;
+$vinili = $pm->load("artista","Sfera Ebbasta","FVinile");
+$img=null;
+$img=CFiltro::ImageVinyls($vinili);
+var_dump($img);
+*/
 
-$rec1 = new FPersistentManager();
-$email2="vanessa.cruciani@virgilio.itq";
-$email1="claudio@virgilio.it";
-$rec2 = $rec1->caricaChats($email1,$email2);
-var_dump($rec2);
+$pm = new FPersistentManager();;
+$vinili = $pm->load("artista","Sfera Ebbasta","FVinile");
+$img=$pm->loadImg2("EImageVinile","id_vinile",$vinili->getId());
+var_dump($img);
+
+
+
+
+
+
+
+
+
+
+/*
+$pm = new FPersistentManager();
+$miao=$pm->loadImg2("EImageVinile","id_vinile",42);
+var_dump($miao);
+$vinili = $pm->load("visibility",1,"FVinile");
+$img=CFiltro::ImageVinyls($vinili);
+//var_dump($img);
+*/
+
+
+
+
 
 
 
