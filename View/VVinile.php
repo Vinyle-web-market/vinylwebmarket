@@ -27,12 +27,17 @@ class VVinile
 
         if (isset($img)) {
             if (is_array($img)) {
-                    foreach ($img as $item) {
+                    foreach ($img as $it) {
+                        foreach($it as $item)
                         if (isset($item)) {
                             $pic64[] = $item->getDataImage();
                             $type[] = $item->getMimeType();
                         }
                     }
+                echo "<hr>";
+                    var_dump($type);
+                echo "<hr>";
+                    var_dump($pic64);
                 $this->smarty->assign('n_vinili', count($img) - 1);
                 //$this->smarty->assign('img', $img);
                // $this->smarty->assign('type', $img->getMimeType());
