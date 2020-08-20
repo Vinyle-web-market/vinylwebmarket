@@ -35,7 +35,7 @@ class VMessaggi
             {
                 $this->smarty->assign('typeA', $typeA);
                 $this->smarty->assign('pic64att', $pic64att);
-
+                $this->smarty->assign('n_immagini', count($img_ute) - 1);
             }
             else
                 {
@@ -45,10 +45,7 @@ class VMessaggi
         }
         else
             $this->smarty->assign('immagine', 0);
-        if (is_array($utent))
-        {
-            $this->smarty->assign('n_utent',count($utent)-1);
-        }
+
         $this->smarty->assign('userlogged',"loggato");
         $this->smarty->assign('utent', $utent);
         $this->smarty->display('chat.tpl');

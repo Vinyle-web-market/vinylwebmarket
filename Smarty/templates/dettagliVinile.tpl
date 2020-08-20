@@ -97,7 +97,7 @@
                                            <hr color="black">
                                              <h1 class="single-product-name">{$ris->getTitolo()}</h1>
                                              <hr>
-                                             <h1 class="single-product-name1">Lucio Battisti</h1>
+                                             <h1 class="single-product-name1">{$ris->getArtista()}</h1>
                                              <div class="single-product-price">
                                                <hr color=black>
                                                  <div class="product-discount"><span  class="price" id="ProductPrice"><span class=money>$20.66</span></span></div>
@@ -106,35 +106,35 @@
                                              <div>
                                                 <h1 class="single-product-name1">Messo in vendita da:<a href="messaggi.html">
                                                 <i class="glyphicon glyphicon-user"></i>
-                                                Venditore</a></h1>
+                                                        {$ris->getVenditore()->getUsername()}</a></h1>
                                                 <hr color=black>
                                              </div>
                                              <div>
                                                <h1 class="single-product-name2">Genere:
                                                <i class="glyphicon glyphicon-user"></i>
-                                               Genere</h1>
+                                                   {$ris->getGenere()}</h1>
                                                <hr color=black>
                                              </div>
                                              <div>
                                                <h1 class="single-product-name1">Condizioni:
                                                <i class="glyphicon glyphicon-user"></i>
-                                               Nuovo</h1>
+                                                   {$ris->getCondizione()}</h1>
                                                <hr color=black>
                                              </div>
                                              <div>
                                                <h1 class="single-product-name2">Tipologia:
                                                <i class="glyphicon glyphicon-user"></i>
-                                               45 giri</h1>
+                                                   {$ris->getNgiri()}</h1>
                                                <hr color=black>
                                              </div>
                                              <div>
                                                <h1 class="single-product-name1">Quantità:
                                                <i class="glyphicon glyphicon-user"></i>
-                                               8</h1>
+                                                   {$ris->getQuantita()}</h1>
                                                <hr color=black>
                                              </div>
                                              <h1 class="single-product-name2">Descirizione: </h1>
-                                             <div class="product-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                                             <div class="product-info">{$ris->getDescrizione()}</div>
                                           
                                              <div class="single-product-action">
                                                  <div class="product-variant-option">

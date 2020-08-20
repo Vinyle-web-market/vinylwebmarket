@@ -54,8 +54,8 @@
     <hr color=black>
     {if $vinili}
         {if is_array($vinili)}
-            <form  enctype="form-data" method="POST" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
-                <div class="container-fluid">
+            <form  enctype="multipart/form-data" action="/vinylwebmarket/Filtro/ricerca method="POST">
+                <div class="container-fluid bg-light">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-2 pt-3">
                             <div class="form-group ">

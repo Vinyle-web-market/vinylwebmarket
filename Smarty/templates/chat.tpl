@@ -52,12 +52,12 @@
         <div class="centrato">
           {if $utent}
             {if is_array($utent)}
-              {for $i=0 to $n_utenti}
+              {for $i=0 to $n_immagini}
 
                     <div class="chat_people">
                       <div class="chat_img">
                         {if $immagine == 'ok'}
-                          <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA};base64,{$pic64att}"  alt="profile picture" />
+                          <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA[$i]};base64,{$pic64att[$i]}"  alt="profile picture" />
                         {else}
                           <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
                         {/if}
