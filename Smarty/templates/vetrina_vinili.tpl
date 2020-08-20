@@ -54,13 +54,12 @@
     <hr color=black>
     {if $vinili}
         {if is_array($vinili)}
-            <form  enctype="multipart/form-data" method="POST" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
-                <div class="container-fluid bg-light ">
+            <form  enctype="form-data" method="POST" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
+                <div class="container-fluid">
                     <div class="row align-items-center justify-content-center">
-
                         <div class="col-md-2 pt-3">
                             <div class="form-group ">
-                                <select id="inputState " class="form-control">
+                                <select class="form-control" name="genere">
                                     <option selected>Genere:</option>
                                     <option>Blues</option>
                                     <option>Classica</option>
@@ -80,7 +79,7 @@
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="ngiri">
                                     <option selected>Numero giri:</option>
                                     <option>33 giri</option>
                                     <option>45 giri</option>
@@ -90,7 +89,7 @@
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="condizione">
                                     <option selected>Condizioni:</option>
                                     <option>Nuovo</option>
                                     <option>Usato</option>
@@ -99,7 +98,7 @@
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="prezzo">
                                     <option selected>Prezzo:</option>
                                     <option>Fino a 15€</option>
                                     <option>Fino a 25€</option>
