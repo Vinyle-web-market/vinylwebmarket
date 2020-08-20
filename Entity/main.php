@@ -617,28 +617,11 @@ $img=CFiltro::ImageVinyls($vinili);
 var_dump($img);
 */
 
-$pm = new FPersistentManager();;
-$vinili = $pm->load("visibility",1,"FVinile");
-$img=$pm->loadImgP2("EImageVinile","id_vinile",$vinili[1]->getId());
-var_dump($img);
-
-
-
-
-
-
-
-
-
-
-/*
-$pm = new FPersistentManager();
-$miao=$pm->loadImg2("EImageVinile","id_vinile",42);
-var_dump($miao);
-$vinili = $pm->load("visibility",1,"FVinile");
-$img=CFiltro::ImageVinyls($vinili);
-//var_dump($img);
-*/
+$r=array();
+var_dump($r);
+echo"<hr>";
+if($r==null)
+    echo "ciao";
 
 
 

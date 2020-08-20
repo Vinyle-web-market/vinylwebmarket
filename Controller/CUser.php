@@ -745,7 +745,7 @@ class CUser
                 $pm = new FPersistentManager();
                 $vinili = $pm->load("venditore", $email, "FVinile");
                 $img=CFiltro::ImageVinyls($vinili);
-                $view->TuoiVinini($vinili,$img);
+                $view->TuoiVinili($vinili,$img);
             }
         }
     }
