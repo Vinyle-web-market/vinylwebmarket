@@ -67,13 +67,30 @@
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Artista:" name="artista"/>
                                   </div>
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Genere:" name="genere"/>
+                                  <div class="col-xs-3">
+                                      <div class="form-group ">
+                                          <select id="inputState " class="form-control" name="genere">
+                                              <option selected>Genere:</option>
+                                              <option>Blues</option>
+                                              <option>Classica</option>
+                                              <option>Country</option>
+                                              <option>Dance</option>
+                                              <option>Hip-Hop</option>
+                                              <option>House</option>
+                                              <option>Jazz</option>
+                                              <option>Pop</option>
+                                              <option>Punk</option>
+                                              <option>Reggae</option>
+                                              <option>Rock</option>
+                                              <option>Techno</option>
+                                              <option>Altro</option>
+                                          </select>
+                                      </div>
                                   </div>
 
                                     <div class="col-xs-3">
                                       <select class="form-control" name="numerogiri">
-
+                                          <option selected>Numero giri:</option>
                                         <option value="33">33 giri</option>
                                         <option value="45">45 giri</option>
                                         <option value="78">78 giri</option>
@@ -82,7 +99,7 @@
                                     <br>
                                     <div class="col-xs-3">
                                       <select class="form-control" name="condizioni">
-
+                                          <option selected>Condizioni:</option>
                                         <option value="nuovo">Nuovo</option>
                                         <option value="usato">Usato</option>
 
@@ -90,7 +107,7 @@
                                     </div>
                                     <br>
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Descrizione: " name="descrizione"/>
+                                      <textarea class="form-control"  rows="3" placeholder="Descrizione:" name="descrizione" required></textarea>
                                   </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Prezzo: " name="prezzo"/>
@@ -98,9 +115,9 @@
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Quantità: " name="quantita"/>
                                   </div>
-
                               <br>
                               <div class="col-md-6">
+
                                   <div class="custom-file">
                                    <input type="file" class="custom-file-input" id="customFile" name="file">
                                    <label class="custom-file-label" for="customFile">Carica foto vinile posteriore </label>
@@ -111,6 +128,8 @@
                                    <input type="file" class="custom-file-input" id="customFile" name="file_1">
                                    <label class="custom-file-label" for="customFile">Carica foto vinile anteriore </label>
                                   </div>
+                                  <br>
+                                  <center>INSERIRE DUE FOTO!</center>
                               </div>
                               <br>
                               <div class="col-md-12">

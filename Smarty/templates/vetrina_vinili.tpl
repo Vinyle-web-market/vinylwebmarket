@@ -10,6 +10,9 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
@@ -46,7 +49,66 @@
           </form>
         </div>
       </nav>
+        <br>
+    <br>
+    <div class="container-fluid bg-light ">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-2 pt-3">
+                <div class="form-group ">
+                    <select id="inputState " class="form-control">
+                        <option selected>Genere:</option>
+                        <option>Blues</option>
+                        <option>Classica</option>
+                        <option>Country</option>
+                        <option>Dance</option>
+                        <option>Hip-Hop</option>
+                        <option>House</option>
+                        <option>Jazz</option>
+                        <option>Pop</option>
+                        <option>Punk</option>
+                        <option>Reggae</option>
+                        <option>Rock</option>
+                        <option>Techno</option>
+                        <option>Altro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Numero giri:</option>
+                        <option>33 giri</option>
+                        <option>45 giri</option>
+                        <option>78 giri</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Condizioni:</option>
+                        <option>Nuovo</option>
+                        <option>Usato</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control">
+                        <option selected>Prezzo:</option>
+                        <option>Fino a 15€</option>
+                        <option>Fino a 25€</option>
+                        <option>Fino a 40€</option>
+                        <option>Oltre</option>
+                    </select>
+                </div>
+            </div>
 
+            <div class="col-md-2">
+                <button type="button" class="btnSubmit">Applica filtri</button>
+            </div>
+        </div>
+    </div>
 
 <div class="container">
     <h3 class="h3">Vinili in vendita:</h3>
@@ -100,7 +162,7 @@
             </div>
 
     {else}
-        Non ci sono vinili in vendita
+    <h3>Non ci sono vinili in vendita con questa parola, riprova</h3>
     {/if}
 
 </div>
