@@ -49,77 +49,74 @@
           </form>
         </div>
       </nav>
-        <br>
-    <br>
-    <form  enctype="multipart/form-data" method="post" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
-    <div class="container-fluid bg-light ">
-        <div class="row align-items-center justify-content-center">
 
-            <div class="col-md-2 pt-3">
-                <div class="form-group ">
-                    <select id="inputState " class="form-control">
-                        <option selected>Genere:</option>
-                        <option>Blues</option>
-                        <option>Classica</option>
-                        <option>Country</option>
-                        <option>Dance</option>
-                        <option>Hip-Hop</option>
-                        <option>House</option>
-                        <option>Jazz</option>
-                        <option>Pop</option>
-                        <option>Punk</option>
-                        <option>Reggae</option>
-                        <option>Rock</option>
-                        <option>Techno</option>
-                        <option>Altro</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="form-group">
-                    <select id="inputState" class="form-control">
-                        <option selected>Numero giri:</option>
-                        <option>33 giri</option>
-                        <option>45 giri</option>
-                        <option>78 giri</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="form-group">
-                    <select id="inputState" class="form-control">
-                        <option selected>Condizioni:</option>
-                        <option>Nuovo</option>
-                        <option>Usato</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-2 pt-3">
-                <div class="form-group">
-                    <select id="inputState" class="form-control">
-                        <option selected>Prezzo:</option>
-                        <option>Fino a 15€</option>
-                        <option>Fino a 25€</option>
-                        <option>Fino a 40€</option>
-                        <option>Oltre</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <button type="submit" class="btnSubmit">Applica filtri</button>
-            </div>
-
-
-        </div>
-    </div>
-    </form>
-<div class="container">
     <h3 class="h3">Vinili in vendita:</h3>
     <hr color=black>
-    <div class="row">
     {if $vinili}
         {if is_array($vinili)}
+            <form  enctype="multipart/form-data" method="POST" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
+                <div class="container-fluid bg-light ">
+                    <div class="row align-items-center justify-content-center">
+
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group ">
+                                <select id="inputState " class="form-control">
+                                    <option selected>Genere:</option>
+                                    <option>Blues</option>
+                                    <option>Classica</option>
+                                    <option>Country</option>
+                                    <option>Dance</option>
+                                    <option>Hip-Hop</option>
+                                    <option>House</option>
+                                    <option>Jazz</option>
+                                    <option>Pop</option>
+                                    <option>Punk</option>
+                                    <option>Reggae</option>
+                                    <option>Rock</option>
+                                    <option>Techno</option>
+                                    <option>Altro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <select id="inputState" class="form-control">
+                                    <option selected>Numero giri:</option>
+                                    <option>33 giri</option>
+                                    <option>45 giri</option>
+                                    <option>78 giri</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <select id="inputState" class="form-control">
+                                    <option selected>Condizioni:</option>
+                                    <option>Nuovo</option>
+                                    <option>Usato</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <select id="inputState" class="form-control">
+                                    <option selected>Prezzo:</option>
+                                    <option>Fino a 15€</option>
+                                    <option>Fino a 25€</option>
+                                    <option>Fino a 40€</option>
+                                    <option>Oltre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btnSubmit">Applica filtri</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="container">
+            <div class="row">
             {for $i=0 to $n_vinili}
         <div class="col-md-3 col-sm-6">
             <div class="product-grid4">
@@ -142,6 +139,8 @@
             </div>
         </div>
             {/for}
+            </div>
+            </div>
         {else}<div class="col-md-3 col-sm-6">
             <div class="product-grid4">
                 <div class="product-image4">

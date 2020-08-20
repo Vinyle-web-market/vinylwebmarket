@@ -43,7 +43,7 @@ class CFiltro
     public function getNgiri(){
         $value = null;
         if (isset($_POST['ngiri']))
-            $value = $_POST['ngiri'];
+            $value = $_POST['ngiti'];
         return $value;
     }
 
@@ -94,52 +94,10 @@ class CFiltro
     }
     */
     static function ricerca ($vinili){
-        //$r, $image, $imageP
-        $r=array();
-        $image=array();
-        $imageP=array();
         $pm = new FPersistentManager();
         $VFiltro = new VFiltro();
         if(isset($vinili)) {
-            if(is_array($vinili)){
-                $n_vinili = count($vinili);
-            //var_dump($n_vinili);
-            for ($i = 0; $i < $n_vinili; $i++) {
-                $titolo = $vinili[$i]->getTitolo();
-                $artista = $vinili[$i]->getArtista();
-                $genere = static::getGenere();
-                $ngiri = static::getNgiri();
-                $condizione = static::getCondizione();
-                $prezzo = static::getPrezzo();
-                if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
-                    $result = $pm->searchVinyl($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
-                    //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-                    $img = static::ImageVinyls($result);
-                    $imgP = static::ImageVinyls2($result);
-                    $r=array_merge($r,$result);
-                    $image=array_merge($image,$img);
-                    $imageP=array_merge($imageP,$imgP);
-                }
-            }
-            }
-            else{
-                $titolo = $vinili->getTitolo();
-                $artista = $vinili->getArtista();
-                $genere = static::getGenere();
-                $ngiri = static::getNgiri();
-                $condizione = static::getCondizione();
-                $prezzo = static::getPrezzo();
-                if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
-                    $r = $pm->searchVinyl($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
-                    //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-                    $image = static::ImageVinyls($r);
-                    $imageP = static::ImageVinyls2($r);
-                }
-            }
-        }else{
-            $VFiltro->ViniliCercati(null, null, null);
-        }
-            /*$titolo = static::getTitolo();
+            $titolo = static::getTitolo();
             $artista = static::getArtista();
             $genere = static::getGenere();
             $ngiri = static::getNgiri();
@@ -150,14 +108,11 @@ class CFiltro
                 //fare la funzione per le immagini vinili,simile imageReviews in Cuser
                 $img = static::ImageVinyls($result);
                 $imgP = static::ImageVinyls2($result);
-                $VFiltro->ViniliCercati($result, $img, $imgP);
-
+                $VFiltro->showResult($result, $img, $imgP);
 
             } else
                 header('Location: /vinylwebmarket/');
         }
-            */
-        $VFiltro->ViniliCercati($r, $image, $imageP);
     }
 
     /**
