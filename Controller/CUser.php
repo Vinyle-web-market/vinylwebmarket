@@ -280,12 +280,11 @@ class CUser
                         setcookie("chat", null, time() - 900, "/");
                     else {
 
-                            header('Location: /vinylwebmarket/Homepage/impostaPaginaUL');
+                        header('Location: /vinylwebmarket/Homepage/impostaPaginaUL');
 
                     }
                 }
-            }
-            else header('Location: /vinylwebmarket/Admin/homepage');
+            } else header('Location: /vinylwebmarket/Admin/homepage');
 
             // }
         } else {
@@ -540,43 +539,43 @@ class CUser
             //$utente = unserialize($_SESSION['utente']);
             $utente = $sessione->getUtente();
             $controllo = static::updateCarta($utente);
-            if($controllo=="ok"){
-            $newutente = $pm->load("email_negozio",$utente->getEmail(), "FNegozio");
-            $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
-            $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
-            $sessione->setUtenteLoggato($newutente);
-            //$salvare = serialize($newutente);
-            //$_SESSION['utente'] = $salvare;
-            $view->profileNegozio($newutente, $vinili, $img1);
+            if ($controllo == "ok") {
+                $newutente = $pm->load("email_negozio", $utente->getEmail(), "FNegozio");
+                $img1 = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
+                $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                $sessione->setUtenteLoggato($newutente);
+                //$salvare = serialize($newutente);
+                //$_SESSION['utente'] = $salvare;
+                $view->profileNegozio($newutente, $vinili, $img1);
             }
         }
     }
 
-    static function updateCarta($utente){
+    static function updateCarta($utente)
+    {
         $pm = new FPersistentManager();
         $view = new Vuser;
-        $controllo="ok";
+        $controllo = "ok";
         //public static function exist($field, $value ,$Fclass) {
-        $exist=$pm->exist("numero",$_POST['numerocarta'],"Fcarta");
+        $exist = $pm->exist("numero", $_POST['numerocarta'], "Fcarta");
         if ($exist) {
             $view->formModificaCarta($utente, "errorNumberExist");
-            $controllo="errore";
+            $controllo = "errore";
         } else {
             //public static function update($field, $newValue, $keyField, $idValue ,$Fclass) {
-           // $pm->load("email_negozio",$utente->getEmail(),"FNegozio");
+            // $pm->load("email_negozio",$utente->getEmail(),"FNegozio");
             $input = EInputControl::getInstance();
-            if($input->testCardNumber($_POST['numerocarta']) and $input->testCvv($_POST['cvv']) and $input->testIntestatario($_POST['intestatario'])){
-              $pm->update("numero",$_POST['numerocarta'],"id",$utente->getCarta()->getId(),"FCarta");
-                $pm->update("cvv",$_POST['cvv'],"id",$utente->getCarta()->getId(),"FCarta");
-                $pm->update("intestatario",$_POST['intestatario'],"id",$utente->getCarta()->getId(),"FCarta");
+            if ($input->testCardNumber($_POST['numerocarta']) and $input->testCvv($_POST['cvv']) and $input->testIntestatario($_POST['intestatario'])) {
+                $pm->update("numero", $_POST['numerocarta'], "id", $utente->getCarta()->getId(), "FCarta");
+                $pm->update("cvv", $_POST['cvv'], "id", $utente->getCarta()->getId(), "FCarta");
+                $pm->update("intestatario", $_POST['intestatario'], "id", $utente->getCarta()->getId(), "FCarta");
                 $mese = $_POST["mese"];
                 $anno = $_POST["anno"];
                 $scadenza = $anno . "-" . $mese . "-01";
-                $pm->update("scadenza",$scadenza,"id",$utente->getCarta()->getId(),"FCarta");
-            }
-            else{
+                $pm->update("scadenza", $scadenza, "id", $utente->getCarta()->getId(), "FCarta");
+            } else {
                 $view->formModificaCarta($utente, "errorInput");
-                $controllo="errore";
+                $controllo = "errore";
             }
         }
         return $controllo;
@@ -591,23 +590,22 @@ class CUser
      *    all'utente che si stava visitando prima del login;
      * POST:
      * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['email'] allora viene richiamato
-     * 	  il metodo return_dettagliutente();
+     *      il metodo return_dettagliutente();
      * 2) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'], dopo aver verificato se l'utenete è loggato,
      *    si opera per poter inserire una recensione nel database sempre prelevando i valori passati con il metodo POST;
      * 3) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'] ma non si è loggati, viene inviato un cookie
      *    per tenere traccia delle informazioni utili per il reindirizzamento, dopo il login, alla pagina in cui ci troviamo;
      */
-    public function viewProfilePublic(){
+    public function viewProfilePublic()
+    {
         $sessione = Session::getInstance();
-        if($_SERVER['REQUEST_METHOD'] == "GET") {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
             if ($sessione->isLoggedUtente()) {
                 header('Location: /vinylwebmarket/User/profile');
                 //header('Location: /vinylwebmarket/');
-            }
-            else
+            } else
                 header('Location: /vinylwebmarket/User/login');
-        }
-        elseif($_SERVER['REQUEST_METHOD'] == "POST") {
+        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             $view = new VUser();
             $pm = new FPersistentManager();
             if (isset($_POST['email'])) {
@@ -633,58 +631,57 @@ class CUser
                     header('Location: /FillSpaceWEB/Utente/login');
                 }
             }*/
-        }
-        elseif(isset($_COOKIE['profilo_visitato'])) {
+        } elseif (isset($_COOKIE['profilo_visitato'])) {
             static::return_dettaglioutente($_COOKIE['profilo_visitato']);
         }
     }
+
     /**
      * Supporto per viewProfilePublic()
      * Questa funzione recupera i dati per la presentazione del profilo pubblico di un negozio o un privato
      * @param $visitato email del'utente di cui si vuol visitare il profilo
      */
-    static function return_dettaglioutente($visitato){
+    static function return_dettaglioutente($visitato)
+    {
         if (isset($_COOKIE['profilo_visitato'])) {
-            setcookie("profilo_visitato", null, time()-900);
+            setcookie("profilo_visitato", null, time() - 900);
         }
         $view = new VUser();
         $pm = new FPersistentManager();
         $privato = $pm->load("email_privato", $visitato, "FPrivato");
         $negozio = $pm->load("email_negozio", $visitato, "FNegozio");
         if (isset($negozio)) {
-            $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
+            $img = $pm->loadImg("EImageUtente", "email_utente", $visitato);
 
             $imgrecensioni = static::ImageReviews($negozio);
             //$rec = static::info_cliente_rec($negozio);
-            $rec=$pm->load("destinatario",$visitato,"FRecensione");
+            $rec = $pm->load("destinatario", $visitato, "FRecensione");
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
-                $utente=$sessione->getUtente();
+                $utente = $sessione->getUtente();
                 //$utente = unserialize($_SESSION['utente']);
-                if ( $visitato == $utente->getEmail())
+                if ($visitato == $utente->getEmail())
                     //se ha cercato lui stesso non si contatta da solo:)
-                    $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"no");
+                    $view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "no");
                 else
-                    $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
-            }
-            else
-                $view->profilopubblico($negozio, $negozio->getEmail(),$img,$imgrecensioni,$rec,"si");
+                    $view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "si");
+            } else
+                $view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "si");
         } else {
-            $img = $pm->loadImg("EImageUtente","email_utente" , $visitato);
+            $img = $pm->loadImg("EImageUtente", "email_utente", $visitato);
             $imgrecensioni = static::ImageReviews($privato);
             //$rec = static::info_cliente_rec($privato);
-            $rec=$pm->load("destinatario",$visitato,"FRecensione");
+            $rec = $pm->load("destinatario", $visitato, "FRecensione");
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
-                $utente=$sessione->getUtente();
-               // $utente = unserialize($_SESSION['utente']);
-                if ( $visitato == $utente->getEmail())
-                    $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"no");
+                $utente = $sessione->getUtente();
+                // $utente = unserialize($_SESSION['utente']);
+                if ($visitato == $utente->getEmail())
+                    $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "no");
                 else
-                    $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"si");
-            }
-            else
-                $view->profilopubblico($privato,$privato->getEmail(),$img,$imgrecensioni,$rec,"si");
+                    $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "si");
+            } else
+                $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "si");
         }
     }
 
@@ -693,19 +690,20 @@ class CUser
      * @param $user obj EUtente_loggato
      * @return mixed array|ERecensione
      */
-    static function ImageReviews($user) {
+    static function ImageReviews($user)
+    {
         $pm = new FPersistentManager();
         $recensioniImage = null;
         //$recensioni = $pm->load("emailConveyor", $tra->getEmail(), "FRecensione");
-        $recensioni = $pm->load("destinatario",$user->getEmail(),"FRecensione");
+        $recensioni = $pm->load("destinatario", $user->getEmail(), "FRecensione");
         if (isset($recensioni)) {
             if (is_array($recensioni)) {
                 foreach ($recensioni as $item) {
-                    $recensioniImage[] = $pm->loadImg("EImageUtente","email_utente",$item->getUsernameMittente());
+                    $recensioniImage[] = $pm->loadImg("EImageUtente", "email_utente", $item->getUsernameMittente());
                     //$recensioniImage = $pm->load("emailutente", $item->getEmailClient(), "FMediaUtente");
                 }
             } else {
-                $recensioniImage = $pm->loadImg("EImageUtente","email_utente",$recensioni->getUsernameMittente());
+                $recensioniImage = $pm->loadImg("EImageUtente", "email_utente", $recensioni->getUsernameMittente());
             }
         }
         return $recensioniImage;
@@ -730,10 +728,27 @@ class CUser
    }
 */
 
-
-
-
-
+    public function TuoiAnnunci($email)
+    {
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                header('Location: /vinylwebmarket/User/profile');
+                //header('Location: /vinylwebmarket/');
+            } else
+                header('Location: /vinylwebmarket/User/login');
+        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $view = new VUser();
+            $pm = new FPersistentManager();
+            if (isset($_POST['email'])) {
+                $view = new VUser();
+                $pm = new FPersistentManager();
+                $vinili = $pm->load("venditore", $email, "FVinile");
+                $img=CFiltro::ImageVinyls($vinili);
+                $view->TuoiVinini($vinili,$img);
+            }
+        }
+    }
 
 }
 

@@ -72,6 +72,7 @@ class CFiltro
     /**
      * Metodo per la ricerca di vinili attraverso il filtri
      */
+    /*
     static function ricerca (){
         $pm = new FPersistentManager();
         $VFiltro = new VFiltro();
@@ -91,6 +92,28 @@ class CFiltro
         } else
             header('Location: /vinylwebmarket/');
     }
+    */
+    static function ricerca ($vinili){
+        $pm = new FPersistentManager();
+        $VFiltro = new VFiltro();
+        if(isset($vinili)) {
+            $titolo = static::getTitolo();
+            $artista = static::getArtista();
+            $genere = static::getGenere();
+            $ngiri = static::getNgiri();
+            $condizione = static::getCondizione();
+            $prezzo = static::getPrezzo();
+            if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
+                $result = $pm->searchVinyl($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
+                //fare la funzione per le immagini vinili,simile imageReviews in Cuser
+                $img = static::ImageVinyls($result);
+                $imgP = static::ImageVinyls2($result);
+                $VFiltro->showResult($result, $img, $imgP);
+
+            } else
+                header('Location: /vinylwebmarket/');
+        }
+    }
 
     /**
      * Funzione di supporto per le funzioni di filtro necessaria a preparare le immagini dei vinili
@@ -106,9 +129,9 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
-                    //echo "<hr>";
+                    echo "<hr>";
                     $img = null;
-                    $img[] = $pm->loadImgP2("EImageVinile", "id_vinile", $vinili[$i]->getId());
+                    $img[] = $pm->loadImg2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {
                         //echo "<hr>";
                         // var_dump($img);
@@ -122,7 +145,7 @@ class CFiltro
 
                 }
             } elseif (isset($vinili)) {
-                $img = $pm->loadImgP2("EImageVinile", "id_vinile", $vinili->getId());
+                $img = $pm->loadImg2("EImageVinile", "id_vinile", $vinili->getId());
                 if ($img != null) {
                     $imgVynils = $img;
                 } else {
@@ -147,7 +170,7 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
-                   // echo "<hr>";
+                    echo "<hr>";
                     $img = null;
                     $img[] = $pm->loadImgP2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {
@@ -183,28 +206,17 @@ class CFiltro
         $VFiltro = new VFiltro();
         $value = null;
         $result1=array();
-        $result2=array();
         if (isset($_POST['parola']))
             $value = $_POST['parola'];
 
         if ($value != null) {
             $result1 = $pm->ricercaVinili ($value);
             $result2 = $pm->cercaViniliCampo($value,"artista");
-
-            if(!isset($result1))$result=$result2;
-            elseif(!isset($result2))$result=$result1;
-            else $result=array_merge($result1,$result2);
-
-           /* var_dump($result1);
-            echo "<hr>";
-            var_dump($result2);
-            echo "<hr>";
-            var_dump($result);
-            echo "<hr>";*/
+            $result=array_merge($result1,$result2);
             //fare la funzione per le immagini vinili,simile imageReviews in Cuser
             $img=static::ImageVinyls($result);
             $imgP=static::ImageVinyls2($result);
-            $VFiltro->ViniliCercati($result,$img,$imgP);
+            $VFiltro->showResult($result,$img,$imgP);
 
         } else
             header('Location: /vinylwebmarket/');
