@@ -108,7 +108,7 @@ class CFiltro
                 //fare la funzione per le immagini vinili,simile imageReviews in Cuser
                 $img = static::ImageVinyls($result);
                 $imgP = static::ImageVinyls2($result);
-                $VFiltro->showResult($result, $img, $imgP);
+                $VFiltro->ViniliCercati($result, $img, $imgP);
 
             } else
                 header('Location: /vinylwebmarket/');
@@ -129,7 +129,7 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
-                    echo "<hr>";
+                   // echo "<hr>";
                     $img = null;
                     $img[] = $pm->loadImg2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {
@@ -170,7 +170,7 @@ class CFiltro
                 $n_vinili = count($vinili);
                 //var_dump($n_vinili);
                 for ($i = 0; $i < $n_vinili; $i++) {
-                    echo "<hr>";
+                   // echo "<hr>";
                     $img = null;
                     $img[] = $pm->loadImgP2("EImageVinile", "id_vinile", $vinili[$i]->getId());
                     if ($img != null) {
