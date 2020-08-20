@@ -43,16 +43,18 @@
 
             <li class="nav-item dropdown">
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" method="post" action="/vinylwebmarket/Filtro/ricercaParola">
+            <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
         <br>
     <br>
+    <form  enctype="multipart/form-data" method="post" action="/vinylwebmarket/Filtro/ricerca/{$vinili}">
     <div class="container-fluid bg-light ">
         <div class="row align-items-center justify-content-center">
+
             <div class="col-md-2 pt-3">
                 <div class="form-group ">
                     <select id="inputState " class="form-control">
@@ -105,11 +107,13 @@
             </div>
 
             <div class="col-md-2">
-                <button type="button" class="btnSubmit">Applica filtri</button>
+                <button type="submit" class="btnSubmit">Applica filtri</button>
             </div>
+
+
         </div>
     </div>
-
+    </form>
 <div class="container">
     <h3 class="h3">Vinili in vendita:</h3>
     <hr color=black>
