@@ -617,11 +617,14 @@ $img=CFiltro::ImageVinyls($vinili);
 var_dump($img);
 */
 
-$r=array();
-var_dump($r);
-echo"<hr>";
-if($r==null)
-    echo "ciao";
+$pm = new FPersistentManager();;
+$vinili = $pm->load("visibility",1,"FVinile");
+
+$v=CFiltro::ricerca($vinili);
+
+//var_dump($v);
+
+
 
 
 

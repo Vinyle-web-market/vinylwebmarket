@@ -12,51 +12,65 @@ Invio dati tramite form, secondo il metodo GET oppure POST del protocollo HTTP:
 <br><br>
 
 
-<form method="post"
-      action="main.php"
-      enctype = "multipart/form-data"/>
+<form  enctype="form-data" method="POST" action="main.php">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-2 pt-3">
+                <div class="form-group ">
+                    <select class="form-control" name="genere">
+                        <option value="" selected>genere:</option>
+                        <option value="Blues">Blues</option>
+                        <option value="Classica">Classica</option>
+                        <option>Country</option>
+                        <option>Dance</option>
+                        <option>Hip-Hop</option>
+                        <option>House</option>
+                        <option>Jazz</option>
+                        <option>Pop</option>
+                        <option>Punk</option>
+                        <option>Reggae</option>
+                        <option>Rock</option>
+                        <option>Techno</option>
+                        <option>Altro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control" name="ngiri">
+                        <option value="" selected>Numero giri:</option>
+                        <option value="33">33 giri</option>
+                        <option value="45">45 giri</option>
+                        <option value="78">78 giri</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control" name="condizione">
+                        <option value="" selected>condizione:</option>
+                        <option value="nuovo">nuovo</option>
+                        <option value="usato">usato</option>
 
-<!--  ATTRIBUTI DA PROVARE PER IL TAG "form" :
-      - name
-      - enctype = "multipart/form-data"
--->
-
-<fieldset>
-    <legend>Form:</legend>
-
-    <fieldset>
-        <legend>Dati Personali:</legend>
-        <table cellpadding="5">
-
-
-            <tr>
-                <td align="right"> foto: </td>
-                <td> <input type="file" name="foto" /> </td>
-            </tr>
-
-            <tr>
-                <td align="right"> hidden: </td>
-                <td> <input type="hidden" name="id" value="xxyyzz" /> </td>
-            </tr>
-
-        </table>
-    </fieldset>
-
-
-    <fieldset>
-        <legend>Invio Dati:</legend>
-        <table cellpadding="5">
-
-            <tr>
-                <td> <input type="submit" value="invia dati" /> </td>
-                <td> <input type="reset" value = "reset" /> </td>
-            </tr>
-
-        </table>
-    </fieldset>
-
-</fieldset>
-
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 pt-3">
+                <div class="form-group">
+                    <select id="inputState" class="form-control" name="prezzo">
+                        <option value="" selected>Prezzo:</option>
+                        <option value="15">Fino a 15€</option>
+                        <option value="25">Fino a 25€</option>
+                        <option value="40">Fino a 40€</option>
+                        <option value="150000">Oltre</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btnSubmit">Applica filtri</button>
+            </div>
+        </div>
+    </div>
 </form>
 
 

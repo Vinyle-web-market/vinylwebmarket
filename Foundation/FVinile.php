@@ -154,7 +154,7 @@ class FVinile
         $vinile = null;
         $db = FDatabase::getInstance();
         list ($result, $rows_number) = $db->searchVinile($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
-        var_dump($result);
+        //var_dump($result);
         echo "<br>".$rows_number;
         if (($result != null) && ($rows_number == 1)) {
             $utente_loggato = FUtente_loggato::load("email", $result["venditore"]);

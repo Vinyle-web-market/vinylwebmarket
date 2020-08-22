@@ -24,10 +24,10 @@ class VVinile
         //echo "<hr>";
        // echo "<hr>";
         //var_dump($img);
-       /* $type=null;
+        $type=null;
         $typeP=null;
         $pic64=null;
-        $pic64P=null;*/
+        $pic64P=null;
         if (isset($img)) {
             if (is_array($img)) {
                     foreach ($img as $it) {
