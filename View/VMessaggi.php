@@ -48,7 +48,7 @@ class VMessaggi
 
         $this->smarty->assign('userlogged',"loggato");
         $this->smarty->assign('utent', $utent);
-        $this->smarty->display('chat.tpl');
+        $this->smarty->display('messaggi.tpl');
     }
 
     /**
@@ -115,6 +115,11 @@ class VMessaggi
         $this->smarty->assign('userlogged',"loggato");
         $this->smarty->assign('destinatario', $destinatario);
         $this->smarty->display('primo_messaggio.tpl');
+    }
+
+    public function testChat()
+    {
+        $this->smarty->display('chat.tpl');
     }
 
 }

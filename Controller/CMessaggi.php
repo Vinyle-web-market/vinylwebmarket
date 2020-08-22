@@ -208,4 +208,10 @@ class CMessaggi
         }
     }
 
+    static function provachat()
+    {
+        $view = new VMessaggi();
+        $view->testChat();
+    }
+
 }

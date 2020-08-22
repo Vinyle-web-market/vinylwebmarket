@@ -279,9 +279,12 @@ img{ max-width:100%;}
 .chat_ib p{ font-size:14px; color:#989898; margin:auto}
 .chat_img {
     float: left;
-    padding-left: 2%;
+    padding-left: 100px;
     padding-top: 2%;
     width: 10%;
+}
+bottone_chat {
+    float: left;
 }
 .chat_ib {
     float: left;
