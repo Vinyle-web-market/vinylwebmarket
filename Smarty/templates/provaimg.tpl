@@ -13,11 +13,10 @@
 <body>
 
 
-                    {for $i=0 to $n_vinili}
 
-                        <img class="pic-1" width="600" height="600" src="data:{$type[$i]};base64,{$pic64[$i]}"  alt="profile picture" />
+                        <img class="pic-1" width="600" height="600" src="data:{$type};base64,{$pic64}"  alt="profile picture" />
 
-                    {/for}
+
 
 
 

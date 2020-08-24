@@ -60,10 +60,11 @@
                             <br>
                             <div class="incoming_msg_img">
                     {if $immagine == 'ok'}
-                        <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                         {else}
-                            <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                            <img class="rounded-circle ml-3" width="40" height="40"  src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                         {/if}
+                            </div>
                         <div class="received_msg">
                                 <div class="received_withd_msg">
                                     <p>{$mes_in[$i]->getTesto()}</p>
@@ -85,9 +86,9 @@
                             <br>
                             <div class="incoming_msg_img">
                                 {if $immagine == 'ok'}
-                                    <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                    <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                 {/if}
                             </div>
                             <div class="received_msg">
@@ -109,9 +110,9 @@
                             <br>
                             <div class="incoming_msg_img">
                                 {if $immagine == 'ok'}
-                                     <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                     <img class="rounded-circle ml-3" width="40" height="40" class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                    <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                  {/if}
                             </div>
                             <div class="received_msg">
@@ -135,9 +136,9 @@
                             <br>
                             <div class="incoming_msg_img">
                                 {if $immagine == 'ok'}
-                                         <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                         <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                      <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                      <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                 {/if}
                             </div>
                             <div class="received_msg">
@@ -156,10 +157,11 @@
                         <div class="incoming_msg">
                             <br>
                             <div class="incoming_msg_img">{if $immagine == 'ok'}
-                                    <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                    <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                 {/if}
+                            </div>
                             <div class="received_msg">
                                 <div class="received_withd_msg">
                                     <p>{$mes_in->getTesto()}</p>
@@ -181,10 +183,11 @@
                             <br>
                             <div class="incoming_msg_img">
                                 {if $immagine == 'ok'}
-                                    <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                    <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                 {/if}
+                            </div>
                             <div class="received_msg">
                                 <div class="received_withd_msg">
                                     <p>{$mes_in->getTesto()}</p>
@@ -200,10 +203,11 @@
                                 <br>
                                 <div class="incoming_msg_img">
                                     {if $immagine == 'ok'}
-                                        <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                     {else}
-                                        <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                        <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                     {/if}
+                                </div>
                                 <div class="received_msg">
                                     <div class="received_withd_msg">
                                         <p>{$mes_in->getTesto()}</p>
@@ -225,10 +229,11 @@
                                 <br>
                                 <div class="incoming_msg_img">
                                     {if $immagine == 'ok'}
-                                        <img src="data:{$typeA};base64,{$pic64att}" width="40" height="40" alt="sunil">
+                                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                     {else}
-                                        <img src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                        <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                     {/if}
+                                </div>
                                 <div class="received_msg">
                                     <div class="received_withd_msg">
                                         <p>{$mes_in->getTesto()}</p>

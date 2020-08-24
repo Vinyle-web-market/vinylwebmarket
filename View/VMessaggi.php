@@ -98,7 +98,18 @@ class VMessaggi
 
     public function showMessaggi($result, $img)
     {
-        list($typeA,$pic64att) = $this->SetImageUtente($img);
+        list($type,$pic64) = $this->SetImageUtente($img);
+
+        if ($type == null && $pic64 == null)
+            $this->smarty->assign('immagine', "no");
+        if (isset($img))
+        {
+                $this->smarty->assign('type', $type);
+                $this->smarty->assign('pic64', $pic64);
+        }
+        else
+            $this->smarty->assign('immagine', 0);
+
         if(is_array($result[0])) $n_mesin=count($result[0])-1;
         else{$n_mesin=1;}
 
@@ -108,9 +119,6 @@ class VMessaggi
         $this->smarty->assign('mes',$result);
         $this->smarty->assign('mes_out',$result[0]);
         $this->smarty->assign('mes_in', $result[1]);
-        $this->smarty->assign('typeA', $typeA);
-        $this->smarty->assign('pic64att', $pic64att);
-        $this->smarty->assign('immagine', $img);
         $this->smarty->assign('n_mesin',$n_mesin);
         $this->smarty->assign('n_mesout',$n_mesout);
         $this->smarty->display('messaggi.tpl');
