@@ -149,6 +149,7 @@
                                                          <input class="cart-plus-minus-box" type="text" name="quantity" value="1">
                                                      </div>
                                                      <div class="add">
+                                                         <input type="hidden" value="{$ris->getVenditore()->getEmail()}" name="email2">
                                                          <button type="submit" class="add-to-cart ajax-spin-cart" id="AddToCart">
                                                              <i class="ion-bag"></i>
                                                              <span class="list-cart-title cart-title" id="AddToCartText">Contatta il venditore!</span>

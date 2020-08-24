@@ -92,12 +92,13 @@ class VMessaggi
     /**
      * Funzione che permette di visualizzare, nella pagina chat, i messaggi scambiati con un determinato utente
      * @param $result oggetto messaggio o array di messaggi scambiati con un utente
-     * @param $utente oggetto utente a cui saranno recapitati i messaggi
+     * @param $img2 immagine del destinatario della conversazione
      * @throws SmartyException
      */
 
-    public function showMessaggi($result)
+    public function showMessaggi($result, $img)
     {
+        list($typeA,$pic64att) = $this->SetImageUtente($img);
         if(is_array($result[0])) $n_mesin=count($result[0])-1;
         else{$n_mesin=1;}
 
@@ -107,28 +108,13 @@ class VMessaggi
         $this->smarty->assign('mes',$result);
         $this->smarty->assign('mes_out',$result[0]);
         $this->smarty->assign('mes_in', $result[1]);
+        $this->smarty->assign('typeA', $typeA);
+        $this->smarty->assign('pic64att', $pic64att);
+        $this->smarty->assign('immagine', $img);
         $this->smarty->assign('n_mesin',$n_mesin);
         $this->smarty->assign('n_mesout',$n_mesout);
         $this->smarty->display('messaggi.tpl');
     }
 
-    /**
-     * Funzione richiamata quando un utente contatta un altro utente per la prima volta.
-     * Consente di visualizzare la pagina di messaggistica senza alcun messaggio e con il box per inserire il testo da inviare.
-     * @param $destinatario oggetto utente a cui saranno recapitati i messaggi
-     * @throws SmartyException
-     */
-
-    public function primoMessaggio($destinatario)
-    {
-        $this->smarty->assign('userlogged',"loggato");
-        $this->smarty->assign('destinatario', $destinatario);
-        $this->smarty->display('primo_messaggio.tpl');
-    }
-
-    public function testChat()
-    {
-        $this->smarty->display('chat.tpl');
-    }
 
 }

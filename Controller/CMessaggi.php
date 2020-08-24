@@ -9,6 +9,7 @@
 
 class CMessaggi
 {
+
     /**
      * Funzione che si occupa della gestione dell'elenco delle chat attive per un utente e da anche la possibilità di riprendere
      * delle conversazioni precedenti.
@@ -44,7 +45,7 @@ class CMessaggi
                 elseif (is_array($messaggi))
                 {
                     $utent = array();
-                    // devo fare il merge tra tutte le mail sender/recipient e poi prendere i valori non duplicati
+
                     for ($i = 0; $i < count($messaggi); $i++)
                     {
                         // prendo solo le email che sono diverse dalla mia.
@@ -57,8 +58,7 @@ class CMessaggi
                     //$view->showChats($utent, $img_chats);
 
                     $utentiOrdinati = null;
-                    // prendo solo oggetti non replicati
-                   $utenti = (array_unique($utent, SORT_REGULAR));
+                    $utenti = (array_unique($utent, SORT_REGULAR));           // prendo solo oggetti non replicati
 
                     foreach ($utenti as $ute)
                     {
@@ -181,7 +181,9 @@ class CMessaggi
             $email = $_POST['email2'];
 
             $result = $pm->caricaChats($utente->getEmail(), $email);
-            $view->showMessaggi($result);
+            $img =  $pm->loadImg("EImageUtente", "email_utente", $email);
+
+            $view->showMessaggi($result, $img);
 
 
     }
@@ -215,7 +217,7 @@ class CMessaggi
         }
         else
             {
-            setcookie("chat", $_POST['email_ritorno'], time()+900,"/");
+            setcookie("chat", $_POST['email2'], time()+900,"/");     //all'interno di POST mettere 'email2'
             header('Location: /vinylwebmarket/User/login');
         }
     }
