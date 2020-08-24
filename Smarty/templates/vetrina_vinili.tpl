@@ -59,51 +59,51 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-2 pt-3">
                             <div class="form-group ">
-                                <select class="form-control" name="genere">
-                                    <option selected>Genere:</option>
-                                    <option>Blues</option>
-                                    <option>Classica</option>
-                                    <option>Country</option>
-                                    <option>Dance</option>
-                                    <option>Hip-Hop</option>
-                                    <option>House</option>
-                                    <option>Jazz</option>
-                                    <option>Pop</option>
-                                    <option>Punk</option>
-                                    <option>Reggae</option>
-                                    <option>Rock</option>
-                                    <option>Techno</option>
-                                    <option>Altro</option>
+                                <select class="form-control" name="genere" >
+                                    <option value="" selected>genere:</option>
+                                    <option value="Blues">Blues</option>
+                                    <option value="Classica">Classica</option>
+                                    <option value="Country">Country</option>
+                                    <option value="Dance">Dance</option>
+                                    <option value="Hip-Hop">Hip-Hop</option>
+                                    <option value="House">House</option>
+                                    <option value="Jazz">Jazz</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="Punk">Punk</option>
+                                    <option value="Reggae">Reggae</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Techno">Techno</option>
+                                    <option value="Altro">Altro</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
                                 <select id="inputState" class="form-control" name="ngiri">
-                                    <option selected>Numero giri:</option>
-                                    <option>33 giri</option>
-                                    <option>45 giri</option>
-                                    <option>78 giri</option>
+                                    <option value="" selected>Numero giri:</option>
+                                    <option value="33">33 giri</option>
+                                    <option value="45">45 giri</option>
+                                    <option value="78">78 giri</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
                                 <select id="inputState" class="form-control" name="condizione">
-                                    <option selected>Condizioni:</option>
-                                    <option>Nuovo</option>
-                                    <option>Usato</option>
+                                    <option value="" selected>condizione:</option>
+                                    <option value="nuovo">nuovo</option>
+                                    <option value="usato">usato</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
                                 <select id="inputState" class="form-control" name="prezzo">
-                                    <option selected>Prezzo:</option>
-                                    <option>Fino a 15€</option>
-                                    <option>Fino a 25€</option>
-                                    <option>Fino a 40€</option>
-                                    <option>Oltre</option>
+                                    <option value="" selected>Prezzo:</option>
+                                    <option value="15">Fino a 15€</option>
+                                    <option value="25">Fino a 25€</option>
+                                    <option value="40">Fino a 40€</option>
+                                    <option value="150000">Oltre</option>
                                 </select>
                             </div>
                         </div>
