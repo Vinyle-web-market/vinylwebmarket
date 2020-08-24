@@ -114,28 +114,52 @@ class FMessaggio
      */
     public static function loadChats($email, $email2)
     {
-        $messaggio = null;
+        $messaggio1 = null;
+        $messaggio2 = null;
         $db = FDatabase::getInstance();
-        list ($result, $rows_number)=$db->loadChats($email, $email2);
+        list ($result1, $result2, $rows_number1, $rows_number2)=$db->loadChats($email, $email2);
 
-        if(($result != null) && ($rows_number == 1))
+        if(($result1 != null) && ($rows_number1 == 1))
         {
-            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['oggetto'],$result['testo']);
-            $messaggio->setId($result['id']);
+            $messaggio1=new EMessaggio($result1['mittente'],$result1['destinatario'],$result1['oggetto'],$result1['testo']);
+            $messaggio1->setId($result1['id']);
         }
         else
             {
-            if(($result != null) && ($rows_number > 1))
+            if(($result1 != null) && ($rows_number1 > 1))
             {
-                $messaggio = array();
-                for($i = 0; $i < count($result); $i++)
+                $messaggio1 = array();
+                for($i = 0; $i < count($result1); $i++)
                 {
-                    $messaggio[]=new EMessaggio($result[$i]['mittente'],$result[$i]['destinatario'],$result[$i]['oggetto'],$result[$i]['testo']);
-                    $messaggio[$i]->setId($result[$i]['id']);
+                    $messaggio1[]=new EMessaggio($result1[$i]['mittente'],$result1[$i]['destinatario'],$result1[$i]['oggetto'],$result1[$i]['testo']);
+                    $messaggio1[$i]->setId($result1[$i]['id']);
                 }
             }
         }
-        return $messaggio;
+        if(($result2 != null) && ($rows_number2 == 1))
+        {
+            $messaggio2=new EMessaggio($result2['mittente'],$result2['destinatario'],$result2['oggetto'],$result2['testo']);
+            $messaggio2->setId($result2['id']);
+        }
+        else
+        {
+            if(($result2 != null) && ($rows_number2 > 1))
+            {
+                $messaggio2 = array();
+                for($i = 0; $i < count($result2); $i++)
+                {
+                    $messaggio2[]=new EMessaggio($result2[$i]['mittente'],$result2[$i]['destinatario'],$result2[$i]['oggetto'],$result2[$i]['testo']);
+                    $messaggio2[$i]->setId($result2[$i]['id']);
+                }
+            }
+        }
+        echo "primo array:";
+        var_dump($messaggio1);
+        echo "<hr>";
+        echo "secondo array:";
+        var_dump($messaggio2);
+        echo "<hr>";
+        return array($messaggio1, $messaggio2);
     }
 
 }

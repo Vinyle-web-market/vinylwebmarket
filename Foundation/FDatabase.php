@@ -355,6 +355,54 @@ class FDatabase
             return null;
         }
     }
+    public function searchMessaggio ($mittente, $destinatario)
+    {
+        try {
+            $query = null;
+            $class = "FMessaggio";
+            $param = array($mittente, $destinatario);
+            for ($i = 0; $i < count($param); $i++) {
+                if ($param[$i] != null) {
+                    switch ($i) {
+                        case 0:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE mittente ='" . $mittente . "'";
+                            else
+                                $query = $query . " AND mittente ='" . $mittente . "'";
+                            break;
+                        case 1:
+                            if ($query == null)
+                                $query = "SELECT * FROM " . $class::getTable() . " WHERE destinatario ='" . $destinatario . "'";
+                            else
+                                $query = $query . " AND destinatario ='" . $destinatario . "'";
+                            break;
+                    }
+                }
+            }
+            $query = $query . ";";
+
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $num = $stmt->rowCount();
+            if ($num == 0) {
+                $result = null;        //nessuna riga interessata. return null
+            } elseif ($num == 1) {                          //nel caso in cui una sola riga fosse interessata
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);   //ritorna una sola riga
+            } else {
+                $result = array();                         //nel caso in cui piu' righe fossero interessate
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);   //imposta la modalità di fetch come array associativo
+                while ($row = $stmt->fetch())
+                    $result[] = $row;                    //ritorna un array di righe.
+            }
+            //  $this->closeDbConnection();
+            return array($result);
+
+        } catch (PDOException $e) {
+            echo "Attenzione errore: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
 
     public function loginP ($email, $pass)
     {
@@ -483,35 +531,48 @@ class FDatabase
     {
         try
         {
-            $query = null;
-            if (!$email2)
-                $query = "SELECT * FROM messaggio WHERE mittente ='" . $email . "' OR destinatario ='" . $email . "';";
-            else
-                $query = "SELECT * FROM messaggio WHERE (mittente ='" . $email . "' OR destinatario ='" . $email . "') AND id IN 
-							(SELECT id FROM messaggio where (mittente ='" . $email2 . "' OR destinatario ='" . $email2 . "'));";
-            //print ($query);
-            $pdost = $this->db->prepare($query);
-            $pdost->execute();
-            $num = $pdost->rowCount();
+            $query1 = "SELECT * FROM messaggio WHERE mittente ='" . $email . "' AND destinatario ='" . $email2 . "';";
+            $query2 = "SELECT * FROM messaggio WHERE mittente ='" . $email2 . "' AND destinatario ='" . $email . "';";
 
-            if ($num == 0)
+            $pdost1 = $this->db->prepare($query1);
+            $pdost1->execute();
+            $num1 = $pdost1->rowCount();
+
+            if ($num1 == 0)
             {
-                $result = null;
+                $result1 = null;
             }
-            elseif ($num == 1)
+            elseif ($num1 == 1)
             {
-                $result = $pdost->fetch(PDO::FETCH_ASSOC);
+                $result1 = $pdost1->fetch(PDO::FETCH_ASSOC);
             }
             else
                 {
-                $result = array();
-                $pdost->setFetchMode(PDO::FETCH_ASSOC);
-                while ($row = $pdost->fetch())
-                    $result[] = $row;
+                $result1 = array();
+                $pdost1->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row1 = $pdost1->fetch())
+                    $result1[] = $row1;
             }
-            //print_r ($result);
-            //print($num);
-            return array($result, $num);
+            $pdost2 = $this->db->prepare($query2);
+            $pdost2->execute();
+            $num2 = $pdost2->rowCount();
+
+            if ($num2 == 0)
+            {
+                $result2 = null;
+            }
+            elseif ($num2 == 1)
+            {
+                $result2 = $pdost2->fetch(PDO::FETCH_ASSOC);
+            }
+            else
+            {
+                $result2 = array();
+                $pdost2->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row2 = $pdost2->fetch())
+                    $result2[] = $row2;
+            }
+            return array($result1, $result2, $num1, $num2);
         }
         catch (PDOException $e)
         {

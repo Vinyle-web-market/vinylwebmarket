@@ -618,9 +618,8 @@ var_dump($img);
 */
 
 $pm = new FPersistentManager();;
-$vinili = $pm->load("visibility",1,"FVinile");
+$pm->caricaChats('claudio@virgilio.it','nannus97@gmail.com');
 
-$v=CFiltro::ricerca($vinili);
 
 //var_dump($v);
 
