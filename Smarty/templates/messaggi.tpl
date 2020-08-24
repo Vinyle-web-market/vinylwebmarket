@@ -66,7 +66,8 @@
                         <h5>{$utent[$i]->getEmail()}</h5>
                       </div>
                       <div class="col-md-4 right">
-                        <form action="#" method="POST">
+                          <input value="{$utent[$i]->getEmail()}" name="email2">
+                        <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
                           <button class="btn btnSubmit">Visualizza conversazione</button>
                         </form>
                       </div>
