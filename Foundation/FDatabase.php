@@ -580,6 +580,45 @@ class FDatabase
         }
     }
 
+    public function elenco_Chats ($email, $email2)
+    {
+        try
+        {
+            $query = null;
+            if (!$email2)
+                $query = "SELECT * FROM messaggio WHERE mittente ='" . $email . "' OR destinatario ='" . $email . "';";
+            else
+                $query = "SELECT * FROM messaggio WHERE (mittente ='" . $email . "' OR destinatario ='" . $email . "') AND id IN 
+							(SELECT id FROM messaggio where (mittente ='" . $email2 . "' OR destinatario ='" . $email2 . "'));";
+            //print ($query);
+            $pdost = $this->db->prepare($query);
+            $pdost->execute();
+            $num = $pdost->rowCount();
+
+            if ($num == 0)
+            {
+                $result = null;
+            }
+            elseif ($num == 1)
+            {
+                $result = $pdost->fetch(PDO::FETCH_ASSOC);
+            }
+            else
+            {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($row = $pdost->fetch())
+                    $result[] = $row;
+            }
+
+            return array($result, $num);
+        }
+        catch (PDOException $e)
+        {
+            echo "Attenzione errore: " . $e->getMessage();
+        }
+    }
+
 }
 
 

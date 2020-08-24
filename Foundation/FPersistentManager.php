@@ -173,4 +173,11 @@ class FPersistentManager
         return $ris;
     }
 
+    public static function elenco_Chats($email, $email2)
+    {
+        $ris = null;
+        $ris = FMessaggio::elencoChats($email,$email2);
+        return $ris;
+    }
+
 }

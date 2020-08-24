@@ -162,4 +162,31 @@ class FMessaggio
         return array($messaggio1, $messaggio2);
     }
 
+    public static function elencoChats($email, $email2)
+    {
+        $messaggio = null;
+        $db = FDatabase::getInstance();
+        list ($result1, $rows_number)=$db->elenco_Chats($email, $email2);
+
+        if(($result != null) && ($rows_number == 1))
+        {
+            $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['oggetto'],$result['testo']);
+            $messaggio->setId($result['id']);
+        }
+        else
+        {
+            if(($result != null) && ($rows_number > 1))
+            {
+                $messaggio = array();
+                for($i = 0; $i < count($result); $i++)
+                {
+                    $messaggio[]=new EMessaggio($result[$i]['mittente'],$result[$i]['destinatario'],$result[$i]['oggetto'],$result[$i]['testo']);
+                    $messaggio[$i]->setId($result[$i]['id']);
+                }
+            }
+        }
+
+        return $messaggio;
+    }
+
 }
