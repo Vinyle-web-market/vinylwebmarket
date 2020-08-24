@@ -166,7 +166,7 @@ class FMessaggio
     {
         $messaggio = null;
         $db = FDatabase::getInstance();
-        list ($result1, $rows_number)=$db->elenco_Chats($email, $email2);
+        list ($result, $rows_number)=$db->elenco_Chats($email, $email2);
 
         if(($result != null) && ($rows_number == 1))
         {
