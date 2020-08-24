@@ -107,10 +107,9 @@ class FMessaggio
     }
 
     /**
-     * Permette di ottenere tutti i messaggi in cui l'utente passato come parametro risulti mittente o destinatario
-     * @param $id valore da ricercare nel campo $field
-     * @param $field valore del campo della ricerca
-     * @return object $mess l'oggetto messaggio se presente
+     * Permette di ottenere due vettori di messaggi, uno dall'utente che contatta, l'altro dall'utente che risponde
+     * @param $email valore da ricercare nel campo $field
+     * @param $email2 valore del campo della ricerca
      */
     public static function loadChats($email, $email2)
     {
@@ -161,6 +160,12 @@ class FMessaggio
         echo "<hr>";
         return array($messaggio1, $messaggio2);
     }
+
+    /**
+     * Permette di ottenere tutti i messaggi in cui l'utente passato come parametro risulti o il ricevente o il mittente
+     * @param $email valore da ricercare nel campo $field
+     * @param $email2 valore del campo della ricerca
+     */
 
     public static function elencoChats($email, $email2)
     {

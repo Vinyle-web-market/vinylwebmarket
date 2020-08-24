@@ -23,12 +23,13 @@ class CMessaggi
         if ($sessione->isLoggedUtente())
         {
             $utent = null;
-            $utente = unserialize($_SESSION['utente']);
+            $utente = $sessione->getUtente();
+
             if (get_class($utente) != 'EUtente_loggato')
             {
                 $view = new VMessaggi();
                 $pm = new FPersistentManager();
-                $messaggi = $pm->caricaChats($utente->getEmail(), null);
+                $messaggi = $pm->elenco_Chats($utente->getEmail(), null);
 
                 if (is_object($messaggi))
                 {
@@ -52,15 +53,19 @@ class CMessaggi
                         else
                             $utent[$i] = $pm->load("email", $messaggi[$i]->getDestinatario(), "FUtente_loggato");
                     }
+                    //$img_chats = static::caricamento_immagini_utenti($utent);
+                    //$view->showChats($utent, $img_chats);
+
                     $utentiOrdinati = null;
                     // prendo solo oggetti non replicati
-                   //$utent = (array_unique($utent));
+                   $utenti = (array_unique($utent, SORT_REGULAR));
 
-                    foreach ($utent as $ute)
+                    foreach ($utenti as $ute)
                     {
                         $utentiOrdinati[] = $ute;
                     }
                     $img_chats = static::caricamento_immagini_utenti($utentiOrdinati);
+
                     $view->showChats($utentiOrdinati, $img_chats);
                 }
                 elseif ($messaggi == null)
@@ -112,66 +117,114 @@ class CMessaggi
     }
 
     /**
+     * Restituisce l'email dell'utente che invia/riceve il messaggio
+     * Inviato con metodo post
+     * @return string contenente l'email dell'utente
+     */
+
+    function getEmail()
+    {
+        $email = null;
+        if (isset($_POST['email']))
+            $email = $_POST['email'];
+        return $email;
+    }
+
+    /**
+     * Restituisce il testo del messaggio
+     * Inviato con metodo post
+     * @return string contenente il testo del messaggio
+     */
+
+    function getTesto()
+    {
+        $testo = null;
+        if (isset($_POST['testo']))
+            $testo = $_POST['testo'];
+        return $testo;
+    }
+
+    /**
+     * Restituisce l'oggetto del messaggio
+     * Inviato con metodo post
+     * @return string contenente l'oggetto del messaggio
+     */
+
+    function getOggetto()
+    {
+        $oggetto = null;
+        if (isset($_POST['oggetto']))
+            $oggetto = $_POST['oggetto'];
+        return $oggetto;
+    }
+
+    /**
      * Funzione di supporto per altre.
      * Essa garantisce il corretto reindirizzameto verso la chat richiesta.
      */
 
     static function redirect_chat()
     {
-        $utente = unserialize($_SESSION['utente']);
+        $sessione = Session::getInstance();
+        $utente = $sessione->getUtente();
+
         if (get_class($utente) != 'EUtente_loggato')
         {
             $view = new VMessaggi();
             $pm = new FPersistentManager();
+            $email = null;
 
             if(isset($_COOKIE['chat']))
             {
                 $email = $_COOKIE['chat'];
                 setcookie("chat", null, time() - 900,"/");
             }
-            elseif (isset($_POST['email_ritorno']))
-                $email = $_POST['email_ritorno'];
-            else
-                $email = $_POST['email'];
 
-            if (isset ($_POST['text']))
+            elseif (isset($_POST['email2']))
+                $email = $_POST['email2'];
+
+            if (isset ($_POST['testo']))
             {
-                $oggetto = $_POST['oggetto'];
-                $messaggio = $_POST['testo'];
-                $mess = new EMessaggio($utente->getMittente(), $utente->getDestinatario(), $messaggio, $oggetto);   // da rivedere un attimo
-                $pm->store($mess);
+                $oggetto = static::getOggetto();    //in caso, modificare in formato dinamico
+                $testo = static::getTesto();
+                $messaggio = new EMessaggio($utente->getEmail(), $email, $testo, $oggetto);   // da rivedere un attimo
+                $pm->store($messaggio);
             }
 
-            $destinatario = $pm->load("email", $email, "FUtente_loggato");
+            //$destinatario = $pm->load("destinatario", $email, "FMessaggio");
             $result = $pm->caricaChats($utente->getEmail(), $email);
 
             if (is_object($result))
             {
-                $mittente = $pm->load("email", $result->getMittente(), "FUtente_loggato");
-                $destinatario = $pm->load("email", $result->getDestinatario(), "FUtente_loggato");
-                $result->setMittente($mittente);
-                $result->setDestinatario($destinatario);
-                $view->showMessaggi($result, $utente);
+                $mittente = $pm->load("email", $utente->getEmail(), "FUtente_loggato");
+                $destinatario = $pm->load("email", $email, "FUtente_loggato");
+                //$result->setMittente($mittente);
+                //$result->setDestinatario($destinatario);
+                //$view->showMessaggi($result, $utente);
+                var_dump($utente->getEmail());
+                echo '<hr>';
+                var_dump($email);
+                echo '<hr>';
+                var_dump($result);
+                echo '<hr>';
             }
             elseif (is_array($result))
             {
                 foreach ($result as $res)
                 {
-                    $mittente = $pm->load("email", $res->getMittente(), "FUtente_loggato");
-                    $destinatario = $pm->load("email", $res->getDestinatario(), "FUtente_loggato");
-                    $res->setMittente($mittente);
-                    $res->setDestinatario($destinatario);
+                    $mittente[] = $pm->load("email", $utente->getEmail(), "FUtente_loggato");
+                    $destinatario[] = $pm->load("email", $email, "FUtente_loggato");
+                    //$res->setMittente($mittente);
+                    //$res->setDestinatario($destinatario);
                 }
-                $view->showMessaggi($result, $utente);
+                var_dump($utente->getEmail());
+                echo '<hr>';
+                var_dump($email);
+                echo '<hr>';
+                var_dump($result);
+                //$view->showMessaggi($result, $utente);
             }
-            else
-                {
-                $view->primoMessaggio($destinatario);    //vediamo un attimo se servirà. Mettere nella view la funzione primoMessaggio()
-            }
-            //  $view->showMessaggi($result, $utente);
         }
-        else
-            header('Location: /vinylwebmarket/Admin/homepage');
     }
 
     /**
@@ -206,12 +259,6 @@ class CMessaggi
             setcookie("chat", $_POST['email_ritorno'], time()+900,"/");
             header('Location: /vinylwebmarket/User/login');
         }
-    }
-
-    static function provachat()
-    {
-        $view = new VMessaggi();
-        $view->testChat();
     }
 
 }

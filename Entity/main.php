@@ -214,8 +214,14 @@ var_dump($idrec);
 
 /*
 //----------STORE FMESSAGGIO---------------
+$mittente = 'vanessa.cruciani@virgilio.itq';
+$destinatario = 'claudio@virgilio.it';
+$oggetto = 'oeoeoeo';
+$testo = 'Ok, il vinile è tuo!';
+$messaggio = new EMessaggio($mittente, $destinatario, $oggetto, $testo);
+
 $idmex=new FMessaggio();
-$idmex=$idmex->store($mex);
+$idmex=$idmex->store($messaggio);
 var_dump($idmex);
 //-----------------------------------------
 */
@@ -617,12 +623,16 @@ $img=CFiltro::ImageVinyls($vinili);
 var_dump($img);
 */
 
+/*
 $pm = new FPersistentManager();;
-$pm->caricaChats('claudio@virgilio.it','nannus97@gmail.com');
-
+$pm->caricaChats('claudio@virgilio.it','vanessa.cruciani@virgilio.itq');
+*/
 
 //var_dump($v);
 
+
+$a = new CMessaggi();
+$a->redirect_chat();
 
 
 

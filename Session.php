@@ -182,46 +182,4 @@ class Session
         unset($_SESSION['path']);
     }
 
-    /**
-     * Restituisce l'email dell'utente che invia/riceve il messaggio
-     * Inviato con metodo post
-     * @return string contenente l'email dell'utente
-     */
-
-    function getEmail()
-    {
-        $email = null;
-        if (isset($_POST['email']))
-            $email = $_POST['email'];
-        return $email;
-    }
-
-    /**
-     * Restituisce il testo del messaggio
-     * Inviato con metodo post
-     * @return string contenente il testo del messaggio
-     */
-
-    function getTesto()
-    {
-        $testo = null;
-        if (isset($_POST['testo']))
-            $testo = $_POST['testo'];
-        return $testo;
-    }
-
-    /**
-     * Restituisce l'oggetto del messaggio
-     * Inviato con metodo post
-     * @return string contenente l'oggetto del messaggio
-     */
-
-    function getOggetto()
-    {
-        $oggetto = null;
-        if (isset($_POST['oggetto']))
-            $oggetto = $_POST['oggetto'];
-        return $oggetto;
-    }
-
 }
