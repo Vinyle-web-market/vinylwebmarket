@@ -54,7 +54,7 @@
         {if is_array($mes_in) and is_array($mes_out)}
             {for $i=0 to $n_mesin}
                 {for $j=0 to $n_mesout}
-                    {if $mes_in[$i]->getId() > $mes_out[$j]->getId()}
+                    {if $mes_in[$i]->getId() < $mes_out[$j]->getId()}
                         <div class="incoming_msg">
                             <br>
                             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" width="40" height="40" alt="sunil"> </div>
@@ -92,7 +92,7 @@
             {if is_array($mes_in) and is_object($mes_out)}
                 {for $i=0 to $n_mesin}
 
-                    {if $mes_in[$i]->getId() > $mes_out->getId()}
+                    {if $mes_in[$i]->getId() < $mes_out->getId()}
                         <div class="incoming_msg">
                             <br>
                             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" width="40" height="40" alt="sunil"> </div>
@@ -128,7 +128,7 @@
             {if is_array($mes_out) and is_object($mes_in)}
                 {for $j=0 to $n_mesout}
 
-                    {if $mes_in->getId() > $mes_out[$j]->getId()}
+                    {if $mes_in->getId() < $mes_out[$j]->getId()}
                         <div class="incoming_msg">
                             <br>
                             <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" width="40" height="40" alt="sunil"> </div>
@@ -162,7 +162,7 @@
                 {/for}
             {/if}
                         {if is_object($mes_out) and is_object($mes_in)}
-                        {if $mes_in->getId() > $mes_out->getId()}
+                        {if $mes_in->getId() < $mes_out->getId()}
                             <div class="incoming_msg">
                                 <br>
                                 <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" width="40" height="40" alt="sunil"> </div>

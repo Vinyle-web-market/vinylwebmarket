@@ -168,8 +168,6 @@ class CMessaggi
         $sessione = Session::getInstance();
         $utente = $sessione->getUtente();
 
-        if (get_class($utente) != 'EUtente_loggato')
-        {
             $view = new VMessaggi();
             $pm = new FPersistentManager();
             $email = null;
@@ -180,41 +178,12 @@ class CMessaggi
                 setcookie("chat", null, time() - 900,"/");
             }
 
-            elseif (isset($_POST['email2']))
-                $email = $_POST['email2'];
+            $email = $_POST['email2'];
 
-            if (isset ($_POST['testo']))
-            {
-                $oggetto = static::getOggetto();    //in caso, modificare in formato dinamico
-                $testo = static::getTesto();
-                $messaggio = new EMessaggio($utente->getEmail(), $email, $testo, $oggetto);   // da rivedere un attimo
-                $pm->store($messaggio);
-            }
-
-            //$destinatario = $pm->load("destinatario", $email, "FMessaggio");
             $result = $pm->caricaChats($utente->getEmail(), $email);
+            $view->showMessaggi($result);
 
-            if (is_object($result))
-            {
-                $mittente = $pm->load("email", $utente->getEmail(), "FUtente_loggato");
-                $destinatario = $pm->load("email", $email, "FUtente_loggato");
-                //$result->setMittente($mittente);
-                //$result->setDestinatario($destinatario);
-                $view->showMessaggi($result);
 
-            }
-            elseif (is_array($result))
-            {
-                foreach ($result as $res)
-                {
-                    $mittente[] = $pm->load("email", $utente->getEmail(), "FUtente_loggato");
-                    $destinatario[] = $pm->load("email", $email, "FUtente_loggato");
-                    //$res->setMittente($mittente);
-                    //$res->setDestinatario($destinatario);
-                }
-                $view->showMessaggi($result);
-            }
-        }
     }
 
     /**
