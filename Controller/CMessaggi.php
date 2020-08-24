@@ -200,13 +200,8 @@ class CMessaggi
                 $destinatario = $pm->load("email", $email, "FUtente_loggato");
                 //$result->setMittente($mittente);
                 //$result->setDestinatario($destinatario);
-                //$view->showMessaggi($result, $utente);
-                var_dump($utente->getEmail());
-                echo '<hr>';
-                var_dump($email);
-                echo '<hr>';
-                var_dump($result);
-                echo '<hr>';
+                $view->showMessaggi($result);
+
             }
             elseif (is_array($result))
             {
@@ -217,12 +212,7 @@ class CMessaggi
                     //$res->setMittente($mittente);
                     //$res->setDestinatario($destinatario);
                 }
-                var_dump($utente->getEmail());
-                echo '<hr>';
-                var_dump($email);
-                echo '<hr>';
-                var_dump($result);
-                //$view->showMessaggi($result, $utente);
+                $view->showMessaggi($result);
             }
         }
     }

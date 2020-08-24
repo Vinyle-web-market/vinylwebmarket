@@ -152,12 +152,7 @@ class FMessaggio
                 }
             }
         }
-        echo "primo array:";
-        var_dump($messaggio1);
-        echo "<hr>";
-        echo "secondo array:";
-        var_dump($messaggio2);
-        echo "<hr>";
+
         return array($messaggio1, $messaggio2);
     }
 
