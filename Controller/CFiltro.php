@@ -259,6 +259,7 @@ class CFiltro
     static function ricercaParola (){
         $pm = new FPersistentManager();
         $VFiltro = new VFiltro();
+        $VVinile=new VVinile();
         $value = null;
         $result1=array();
         if (isset($_POST['parola']))
@@ -274,7 +275,7 @@ class CFiltro
             //fare la funzione per le immagini vinili,simile imageReviews in Cuser
             $img=static::ImageVinyls($result);
             $imgP=static::ImageVinyls2($result);
-            $VFiltro->ViniliCercati($result,$img,$imgP);
+            $VVinile->Vetrina($result,$img,$imgP);
 
         } else
             header('Location: /vinylwebmarket/');

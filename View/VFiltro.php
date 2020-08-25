@@ -58,7 +58,7 @@ class VFiltro
         if (isset($imgP)) {
             if (is_array($imgP)) {
                 foreach ($imgP as $it) {
-                    foreach($it as $item){
+                    foreach($it as $ite){
                         foreach ($ite as $item) {
                         if (isset($item)) {
                             $pic64P[] = $item->getDataImage();
