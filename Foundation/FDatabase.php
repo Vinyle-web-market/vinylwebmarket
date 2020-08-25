@@ -326,7 +326,7 @@ class FDatabase
                             if ($query == null)
                                 $query = "SELECT * FROM " . $class::getTable() . " WHERE prezzo <='" . $prezzo . "'";
                             else
-                                $query = $query . " AND prezzo ='" . $prezzo . "'";
+                                $query = $query . " AND prezzo <='" . $prezzo . "'";
                             break;
                     }
                 }

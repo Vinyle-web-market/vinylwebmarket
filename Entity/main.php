@@ -214,14 +214,8 @@ var_dump($idrec);
 
 /*
 //----------STORE FMESSAGGIO---------------
-$mittente = 'vanessa.cruciani@virgilio.itq';
-$destinatario = 'claudio@virgilio.it';
-$oggetto = 'oeoeoeo';
-$testo = 'Ok, il vinile è tuo!';
-$messaggio = new EMessaggio($mittente, $destinatario, $oggetto, $testo);
-
 $idmex=new FMessaggio();
-$idmex=$idmex->store($messaggio);
+$idmex=$idmex->store($mex);
 var_dump($idmex);
 //-----------------------------------------
 */
@@ -623,16 +617,31 @@ $img=CFiltro::ImageVinyls($vinili);
 var_dump($img);
 */
 
-/*
+
 $pm = new FPersistentManager();;
-$pm->caricaChats('claudio@virgilio.it','vanessa.cruciani@virgilio.itq');
+$vinili = $pm->load("titolo","Rockstar","FVinile");
+$a=serialize(array('1','2'));
+$c=urlencode($a);
+var_dump($c);
+$a=URLDECODE($c);
+$a=unserialize($a);
+echo"<hr>";echo"<hr>";
+var_dump($a);
+
+/*
+$v=CFiltro::ricerca($vinili);
+echo"<hr>";echo"<hr>";
+var_dump($v);
+/*
+
+
+
+/*
+$pm = new FPersistentManager();
+$vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
+var_dump($vinili);
 */
 
-//var_dump($v);
-
-
-$a = new CMessaggi();
-$a->redirect_chat();
 
 
 

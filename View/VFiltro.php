@@ -21,14 +21,28 @@ class VFiltro
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
 
+        $type=null;
+        $typeP=null;
+        $pic64=null;
+        $pic64P=null;
+
+       // echo "<hr>";
+        //var_dump($img);
+       // echo "<hr>";
+       //var_dump($imgP);
+
+
         if (isset($img)) {
             if (is_array($img)) {
                 foreach ($img as $it) {
-                    foreach($it as $item)
+                    foreach ($it as $ite){
+                      foreach ($ite as $item) {
                         if (isset($item)) {
                             $pic64[] = $item->getDataImage();
                             $type[] = $item->getMimeType();
+                           }
                         }
+                    }
                 }
                 $this->smarty->assign('n_vinili', count($img)-1 );
             }
@@ -44,11 +58,14 @@ class VFiltro
         if (isset($imgP)) {
             if (is_array($imgP)) {
                 foreach ($imgP as $it) {
-                    foreach($it as $item)
+                    foreach($it as $item){
+                        foreach ($ite as $item) {
                         if (isset($item)) {
                             $pic64P[] = $item->getDataImage();
                             $typeP[] = $item->getMimeType();
+                           }
                         }
+                    }
                 }
             }
             elseif (isset($imgP)) {
@@ -57,7 +74,16 @@ class VFiltro
             }
         }
 
+        $b=serialize($result);
+        $s=urlencode($b);
+        // var_dump($s);
+        // echo "<hr>";
+        //$u=urldecode($s);
+        // $x=unserialize($u);
+        //var_dump($x);
 
+
+        $this->smarty->assign('S_vinili', $s);
         $this->smarty->assign('vinili', $result);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);

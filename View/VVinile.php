@@ -23,11 +23,16 @@ class VVinile
             $this->smarty->assign('userlogged',"loggato");
         //echo "<hr>";
        // echo "<hr>";
-        //var_dump($img);
+        //var_dump(serialize($result));
+        //$a=array('1','2');
+        //$b=serialize($a);
+        //$c=urlencode($b);
+        //var_dump($c);
         $type=null;
         $typeP=null;
         $pic64=null;
         $pic64P=null;
+
         if (isset($img)) {
             if (is_array($img)) {
                     foreach ($img as $it) {
@@ -64,7 +69,16 @@ class VVinile
             }
         }
 
+        $b=serialize($result);
+        $s=urlencode($b);
+       // var_dump($s);
+       // echo "<hr>";
+        //$u=urldecode($s);
+       // $x=unserialize($u);
+        //var_dump($x);
 
+
+        $this->smarty->assign('S_vinili', $s);
         $this->smarty->assign('vinili', $result);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);

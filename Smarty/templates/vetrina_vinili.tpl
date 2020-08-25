@@ -50,11 +50,12 @@
         </div>
       </nav>
 
+
     <h3 class="h3">Vinili in vendita:</h3>
     <hr color=black>
     {if $vinili}
         {if is_array($vinili)}
-            <form  enctype="multipart/form-data" action="/vinylwebmarket/Filtro/ricerca method="POST">
+            <form  enctype="multipart/form-data" action="/vinylwebmarket/Filtro/ricerca" method="POST">
                 <div class="container-fluid bg-light">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-2 pt-3">
@@ -77,6 +78,7 @@
                                 </select>
                             </div>
                         </div>
+                        <input type="hidden" name="vinili" value="{$S_vinili}" />
                         <div class="col-md-2 pt-3">
                             <div class="form-group">
                                 <select id="inputState" class="form-control" name="ngiri">
