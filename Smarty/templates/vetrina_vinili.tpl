@@ -109,6 +109,8 @@
                                 </select>
                             </div>
                         </div>
+                                 <a href="/vinylwebmarket/Vinile/Vetrina">
+                                     <img src="\vinylwebmarket\Utility\immagini\icona.png" width="20" height="20"> </a>
                         <div class="col-md-2">
                             <button type="submit" class="btnSubmit">Applica filtri</button>
                         </div>
