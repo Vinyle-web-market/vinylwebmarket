@@ -12,8 +12,6 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
@@ -59,10 +57,14 @@
         </div>
     </div>
     {if $messaggio=='modifica'}
-        Modifica effettuata correttamente
+        <div style="color: green">
+            <h4 align="center">Modifica effettuata correttamente!</h4>
+        </div>
     {/if}
     {if $messaggio=='eliminazione'}
-        Vinile eliminato correttamente
+        <div style="color: red">
+            <h4 align="center">Vinile eliminato correttamente!</h4>
+        </div>
     {/if}
         <div class=" text-muted pt-3 ">
             {if $vinili}
@@ -71,14 +73,14 @@
                         <div class="row border-bottom">
                             <div class="col-md-1 mt-2 mb-2">
                                     <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
-                                    <!--<img class=" ml-3" width="60" height="60" src="data:{$typeP[$i]};base64,{$pic64P[$i]}"/>-->
                             </div>
-                            <div class="col-md-9 ">
+                            <div class="col-md-7 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$vinili[$i]->getTitolo()} {$vinili[$i]->getArtista()} </strong>
+                                    <strong>Titolo: {$vinili[$i]->getTitolo()} | Artista: {$vinili[$i]->getArtista()} </strong>
+                                    <br>
                                     Q.ta:{$vinili[$i]->getQuantita()}
                                     <br>
-                                    prezzo:{$vinili[$i]->getPrezzo()}€
+                                    Prezzo:{$vinili[$i]->getPrezzo()}€
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -86,57 +88,51 @@
                                     <label for="quantity">Q.ta</label>
                                     <input type="number" id="quantity" name="quantità" min="1" max="100" step="1" PLACEHOLDER="{$vinili[$i]->getQuantita()}">
                                     <input type="hidden" name="id" value="{$vinili[$i]->getId()}" />
-                                    <button type="submit" value="Submit">aggiorna quantità</button>
+                                    <button class="btn btn-success" type="submit" value="Submit">Aggiorna quantità</button>
+                                    <br>
+                                    <br>
                                 </form>
-                                <!-- <div class="containerP">
-                                    <div class="row">
-                                        <div class="qty-changer">
-                                            <button class="qty-change">-</button>
-                                            <input class="qty-input form-group" type="number" value="1"/>
-                                            <button class="qty-change">+</button>
-                                        </div>
-                                    </div>
-                                </div>-->
+                            </div>
+                            <div class="col-md-2 mt-3">
                                 <a href="/vinylwebmarket/Vinile/EliminaVinile/{$vinili[$i]->getId()}">
-                                    <button class="btn btn-danger">Elimina</button>
+                                    <center><button class="btn btn-danger">Elimina</button></center>
                                 </a>
+                            </div>
 
                             </div>
                         </div>
                     {/for}
                 {else}
-                    <div class="row">
-                        <div class="col-md-1 mt-2 mb-2">
-                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
-                            <!--<img class=" ml-3" width="60" height="60" src="data:{$typeP};base64,{$pic64P}"/>-->
-                        </div>
-                        <div class="col-md-9 ">
-                            <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$vinili->getTitolo()} {$vinili->getArtista()} </strong>
-                                {$vinili->getQuantita()}
-                                {$vinili->getPrezzo()}
-                            </p>
-                        </div>
-                        <div class="col-md-2 mt-3">
-                            <form action="/" method="POST">
-                                <label for="quantity">Q.ta</label>
-                                <input type="number" id="quantity" name="quantità" min="1" max="100" step="1" PLACEHOLDER="{$vinili->getQuantita()}">
-                                <button type="submit" value="Submit">aggiorna quantità</button>
-                            </form>
-                            <!--<div class="containerP">
-                                <div class="row">
-                                    <div class="qty-changer">
-                                        <button class="qty-change">-</button>
-                                        <input class="qty-input form-group" type="number" value="1"/>
-                                        <button class="qty-change">+</button>
-                                    </div>
-                                </div>
-                            </div>-->
-                            <a href="/vinylwebmarket/Vinile/EliminaVinile/{$vinili->getId()}">
-                                <button class="btn btn-danger">Elimina</button>
-                            </a>
-                        </div>
+                <div class="row border-bottom">
+                    <div class="col-md-1 mt-2 mb-2">
+                        <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
                     </div>
+                    <div class="col-md-7 ">
+                        <p class="mt-1">
+                            <strong>Titolo: {$vinili->getTitolo()} | Artista: {$vinili->getArtista()} </strong>
+                            <br>
+                            Q.ta:{$vinili->getQuantita()}
+                            <br>
+                            Prezzo:{$vinili->getPrezzo()}€
+                        </p>
+                    </div>
+                    <div class="col-md-2 mt-3">
+                        <form action="/vinylwebmarket/Vinile/AggiornaVinile" method="POST">
+                            <label for="quantity">Q.ta</label>
+                            <input type="number" id="quantity" name="quantità" min="1" max="100" step="1" PLACEHOLDER="{$vinili->getQuantita()}">
+                            <input type="hidden" name="id" value="{$vinili->getId()}" />
+                            <button class="btn btn-success" type="submit" value="Submit">Aggiorna quantità</button>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+                    <div class="col-md-2 mt-3">
+                        <a href="/vinylwebmarket/Vinile/EliminaVinile/{$vinili->getId()}">
+                            <center><button class="btn btn-danger">Elimina</button></center>
+                        </a>
+                    </div>
+                </div>
+                </div>
                 {/if}
             {else}
                 Al momento non hai vinili in vendita

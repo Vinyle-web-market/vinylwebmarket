@@ -95,11 +95,11 @@
   							Impostazioni account </a>
   						</li>
 
-  						<li>
-  							<a href="#" target="_blank">
-  							<i class="glyphicon glyphicon-user"></i>
-  							Aiuto </a>
-  						</li>
+                    <li>
+                        <a href="/vinylwebmarket/Vinile/MieiVinili/{$email}">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Gestione vinili </a>
+                    </li>
                     <li>
                         <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
                             <i class="glyphicon glyphicon-user"></i>
