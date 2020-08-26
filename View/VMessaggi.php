@@ -96,7 +96,7 @@ class VMessaggi
      * @throws SmartyException
      */
 
-    public function showMessaggi($result, $img)
+    public function showMessaggi($result, $img, $email1, $email2)
     {
         list($type,$pic64) = $this->SetImageUtente($img);
 
@@ -109,18 +109,10 @@ class VMessaggi
         }
         else
             $this->smarty->assign('immagine', 0);
-
-        if(is_array($result[0])) $n_mesin=count($result[0])-1;
-        else{$n_mesin=1;}
-
-        if(is_array($result[1])) $n_mesout=count($result[1])-1;
-        else{$n_mesout=1;}
-
+        $this->smarty->assign('email1',$email1);
+        $this->smarty->assign('email2',$email2);
         $this->smarty->assign('mes',$result);
-        $this->smarty->assign('mes_out',$result[0]);
-        $this->smarty->assign('mes_in', $result[1]);
-        $this->smarty->assign('n_mesin',$n_mesin);
-        $this->smarty->assign('n_mesout',$n_mesout);
+        $this->smarty->assign('n_mes',count($result)-1);
         $this->smarty->display('messaggi.tpl');
     }
 

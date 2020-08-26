@@ -170,20 +170,20 @@ class CMessaggi
 
             $view = new VMessaggi();
             $pm = new FPersistentManager();
-            $email = null;
+            $email1 = null;
+            $email2=null;
 
             if(isset($_COOKIE['chat']))
             {
-                $email = $_COOKIE['chat'];
+                $email2 = $_COOKIE['chat'];
                 setcookie("chat", null, time() - 900,"/");
             }
+            $email1=$utente->getEmail();
+            $email2 = $_POST['email2'];
+            $result = $pm->elenco_Chats($email1, $email2);
+            $img =  $pm->loadImg("EImageUtente", "email_utente", $email2);
 
-            $email = $_POST['email2'];
-
-            $result = $pm->caricaChats($utente->getEmail(), $email);
-            $img =  $pm->loadImg("EImageUtente", "email_utente", $email);
-
-            $view->showMessaggi($result, $img);
+            $view->showMessaggi($result, $img, $email1, $email2);
 
 
     }

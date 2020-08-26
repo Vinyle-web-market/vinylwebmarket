@@ -642,10 +642,17 @@ $pm = new FPersistentManager();
 $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
-
+/*
 var_dump($_POST['email']);
 var_dump($_POST['quantità']);
-
+*/
+/*
+$pm=new FPersistentManager();
+$r=$pm->elenco_Chats('claudio@virgilio.it', 'vanessa.cruciani@virgilio.itq');
+var_dump($r);
+*/
+$a=new CMessaggi();
+$a->redirect_chat();
 
 
 

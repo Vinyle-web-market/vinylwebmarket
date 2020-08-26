@@ -52,205 +52,36 @@
                 <div class="col-md-12">
                     <div class="msg_history">
     {if $mes}
-        {if is_array($mes_in) and is_array($mes_out)}
-            {for $i=0 to $n_mesin}
-                {for $j=0 to $n_mesout}
-                    {if $mes_in[$i]->getId() < $mes_out[$j]->getId()}
-                        <div class="incoming_msg">
-                            <br>
-                            <div class="incoming_msg_img">
-                    {if $immagine == 'ok'}
-                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                        {else}
-                            <img class="rounded-circle ml-3" width="40" height="40"  src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                        {/if}
-                            </div>
-                        <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{$mes_in[$i]->getTesto()}</p>
-                                </div>
-                            </div>
-                        </div>
+            {for $i=0 to $n_mes}
+                    {if $mes[$i]->getMittente()==$email1}
                         <div class="outgoing_msg">
                             <div class="sent_msg">
-                                <p>{$mes_out[$j]->getTesto()}</p>
+                                <p>{$mes[$i]->getTesto()}</p>
                             </div>
                         </div>
                         {else}
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{$mes_out[$j]->getTesto()}</p>
-                            </div>
-                        </div>
                         <div class="incoming_msg">
                             <br>
                             <div class="incoming_msg_img">
                                 {if $immagine == 'ok'}
                                     <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
                                 {else}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                    <img class="rounded-circle ml-3" width="40" height="40"  src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
                                 {/if}
                             </div>
                             <div class="received_msg">
                                 <div class="received_withd_msg">
-                                    <p>{$mes_in[$i]->getTesto()}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {/if}
-
-                {/for}
-            {/for}
-            {else}
-            {if is_array($mes_in) and is_object($mes_out)}
-                {for $i=0 to $n_mesin}
-
-                    {if $mes_in[$i]->getId() < $mes_out->getId()}
-                        <div class="incoming_msg">
-                            <br>
-                            <div class="incoming_msg_img">
-                                {if $immagine == 'ok'}
-                                     <img class="rounded-circle ml-3" width="40" height="40" class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                {else}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                 {/if}
-                            </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{$mes_in[$i]->getTesto()}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{$mes_out->getTesto()}</p>
-                            </div>
-                        </div>
-                    {else}
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{$mes_out->getTesto()}</p>
-                            </div>
-                        </div>
-                        <div class="incoming_msg">
-                            <br>
-                            <div class="incoming_msg_img">
-                                {if $immagine == 'ok'}
-                                         <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                {else}
-                                      <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                {/if}
-                            </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{$mes_in[$i]->getTesto()}</p>
+                                    <p>{$mes[$i]->getTesto()}</p>
                                 </div>
                             </div>
                         </div>
                     {/if}
                 {/for}
-            {/if}
-            {if is_array($mes_out) and is_object($mes_in)}
-                {for $j=0 to $n_mesout}
-
-                    {if $mes_in->getId() < $mes_out[$j]->getId()}
-                        <div class="incoming_msg">
-                            <br>
-                            <div class="incoming_msg_img">{if $immagine == 'ok'}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                {else}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                {/if}
-                            </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{$mes_in->getTesto()}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{$mes_out[$j]->getTesto()}</p>
-                            </div>
-                        </div>
-                    {else}
-                        <div class="outgoing_msg">
-                            <div class="sent_msg">
-                                <p>{$mes_out[$j]->getTesto()}</p>
-                            </div>
-                        </div>
-                        <div class="incoming_msg">
-                            <br>
-                            <div class="incoming_msg_img">
-                                {if $immagine == 'ok'}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                {else}
-                                    <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                {/if}
-                            </div>
-                            <div class="received_msg">
-                                <div class="received_withd_msg">
-                                    <p>{$mes_in->getTesto()}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {/if}
-                {/for}
-            {/if}
-                        {if is_object($mes_out) and is_object($mes_in)}
-                        {if $mes_in->getId() < $mes_out->getId()}
-                            <div class="incoming_msg">
-                                <br>
-                                <div class="incoming_msg_img">
-                                    {if $immagine == 'ok'}
-                                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                    {else}
-                                        <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                    {/if}
-                                </div>
-                                <div class="received_msg">
-                                    <div class="received_withd_msg">
-                                        <p>{$mes_in->getTesto()}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="outgoing_msg">
-                                <div class="sent_msg">
-                                    <p>{$mes_out->getTesto()}</p>
-                                </div>
-                            </div>
                         {else}
-                            <div class="outgoing_msg">
-                                <div class="sent_msg">
-                                    <p>{$mes_out->getTesto()}</p>
-                                </div>
-                            </div>
-                            <div class="incoming_msg">
-                                <br>
-                                <div class="incoming_msg_img">
-                                    {if $immagine == 'ok'}
-                                        <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
-                                    {else}
-                                        <img class="rounded-circle ml-3" width="40" height="40" src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
-                                    {/if}
-                                </div>
-                                <div class="received_msg">
-                                    <div class="received_withd_msg">
-                                        <p>{$mes_in->getTesto()}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        {/if}
-                        {/if}
-
-            {/if}
-
-        {else}
         <div class="text-center"
         <h1>Al momento non ci sono messaggi. Inizia la conversazione.</h1>
         </div>
     {/if}
-
                     <div class="type_msg">
                         <div class="input_msg_write">
                             <input type="text" class="write_msg" placeholder="Type a message" />
