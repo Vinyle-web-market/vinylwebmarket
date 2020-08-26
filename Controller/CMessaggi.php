@@ -188,6 +188,31 @@ class CMessaggi
 
     }
 
+    static function invio_mes()
+    {
+        $sessione = Session::getInstance();
+        $utente = $sessione->getUtente();
+
+        $c = new CMessaggi();
+        $pm = new FPersistentManager();
+        $email1 = null;
+        $email2=null;
+        /*
+        if(isset($_COOKIE['chat']))
+        {
+            $email2 = $_COOKIE['chat'];
+            setcookie("chat", null, time() - 900,"/");
+        }
+        */
+
+        $email1=$utente->getEmail();
+        $email2 = $_POST['email2'];
+        $testo= $_POST['testo'];
+        $m=new EMessaggio($email1, $email2, 'null', $testo);
+        $pm->store($m);
+        $c->redirect_chat();
+    }
+
     /**
      * Funzione che si occupa di avviare (o riprendere) una chat.
      * 1) se il metodo di richiesta HTTP è GET e non si è loggati, si viene reindirizzati alla form di login;

@@ -43,70 +43,65 @@
           </form>
         </div>
       </nav>
-
-<div class="col-md-auto centrato">
-  <br>
-<h3 class="text-center">Elenco Messaggi:</h3>
-  <hr color="black">
-
-        <div class="centrato">
-          {if $utent}
-            {if is_array($utent)}
-              {for $i=0 to $n_immagini}
-
-                    <div class="chat_people">
-                      <div class="chat_img">
-                        {if $immagine == 'ok'}
-                          <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA[$i]};base64,{$pic64att[$i]}"  alt="profile picture" />
-                        {else}
-                          <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
-                        {/if}
-                      </div>
-                      <div class="col-md-auto">
-                        <br>
-                        <h5>{$utent[$i]->getEmail()}</h5>
-                      </div>
-                      <div class="col-md-5 right">
-                        <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
-                          <input type="hidden" value="{$utent[$i]->getEmail()}" name="email2">
-                          <button class="btn btnSubmit">Visualizza conversazione</button>
-                        </form>
-                      </div>
-                      <br>
-                      <br>
-                        <hr>
-                        <br>
-                      </div>
-
-              {/for}
-            {else}
-                <div class="inbox_chat">
-                  <div class="chat_list active_chat">
-                    <div class="chat_people">
-                      <div class="chat_img">
-                        {if $immagine == 'ok'}
-                        <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA};base64,{$pic64att}"  alt="profile picture" />
-                        {else}
-                        <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
-                        {/if}
-                      </div>
-                      <div class="chat_ib">
-                        <h5>{$utent->getEmail()}</h5>
-                        <p>Test, which is a new approach to have all solutions
-                          astrology under one roof.</p>
-                      </div>
-                    </div>
-                  </div>
+    <main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <center><h4 class="border-bottom border-gray pb-2 mb-0">Elenco messaggi:</h4></center>
+      <div class=" text-muted pt-3 border-bottom ">
+        {if $utent}
+          {if is_array($utent)}
+            {for $i=0 to $n_utent}
+              <br>
+              <div class="row border-bottom">
+                <div class="col-md-1 mt-2 mb-2">
+                  {if $immagine == 'ok'}
+                    <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA[$i]};base64,{$pic64att[$i]}"  alt="profile picture" />
+                  {else}
+                    <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
+                  {/if}
                 </div>
-            {/if}
+                <div class="col-md-8">
+                  <p class="mt-1">
+                    <strong class="d-block text-gray-dark">{$utent[$i]->getEmail()} </strong>
+                  </p>
+                </div>
+                <div class="col-md-3">
+                  <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
+                    <input type="hidden" value="{$utent[$i]->getEmail()}" name="email2">
+                    <button class="btn btnSubmit">Visualizza conversazione</button>
+                  </form>
+                  <br>
+                </div>
+              </div>
+            {/for}
           {else}
-            <div class="text-center"
-           <h1>Al momento non ci sono messaggi.</h1>
+            <div class="row border-bottom">
+              <div class="col-md-1 mt-2 mb-2">
+                {if $immagine == 'ok'}
+                  <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typeA};base64,{$pic64att}"  alt="profile picture" />
+                {else}
+                  <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
+                {/if}
+              </div>
+              <div class="col-md-9 ">
+                <p class="mt-1">
+                  <strong class="d-block text-gray-dark">{$utent->getEmail()} </strong>
+                </p>
+              </div>
+              <div class="col-md-2 mt-3">
+                <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
+                  <input type="hidden" value="{$utent->getEmail()}" name="email2">
+                  <button class="btn btnSubmit">Visualizza conversazione</button>
+                </form>
+                <br>
+              </div>
             </div>
           {/if}
-
-</div>
-  </div>
+        {else}
+          Al momento non ci sono messaggi
+        {/if}
+      </div>
+    </div>
+    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>
     </body>
