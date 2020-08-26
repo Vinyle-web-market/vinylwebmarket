@@ -105,7 +105,7 @@
                                     <option value="15">Fino a 15€</option>
                                     <option value="25">Fino a 25€</option>
                                     <option value="40">Fino a 40€</option>
-                                    <option value="150000">Oltre</option>
+                                    <option value="80">Oltre</option>
                                 </select>
                             </div>
                         </div>

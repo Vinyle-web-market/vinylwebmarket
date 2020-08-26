@@ -617,7 +617,7 @@ $img=CFiltro::ImageVinyls($vinili);
 var_dump($img);
 */
 
-
+/*
 $pm = new FPersistentManager();;
 $vinili = $pm->load("titolo","Rockstar","FVinile");
 $a=serialize(array('1','2'));
@@ -627,6 +627,7 @@ $a=URLDECODE($c);
 $a=unserialize($a);
 echo"<hr>";echo"<hr>";
 var_dump($a);
+*/
 
 /*
 $v=CFiltro::ricerca($vinili);
@@ -641,6 +642,9 @@ $pm = new FPersistentManager();
 $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
+
+var_dump($_POST['email']);
+var_dump($_POST['quantità']);
 
 
 

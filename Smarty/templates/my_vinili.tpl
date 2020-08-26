@@ -1,3 +1,4 @@
+{assign var='messaggio' value=$messaggio|default:'ok'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -57,6 +58,12 @@
             <h6 class="mb-0 text-white lh-100">I miei vinili in vendita:</h6>
         </div>
     </div>
+    {if $messaggio=='modifica'}
+        Modifica effettuata correttamente
+    {/if}
+    {if $messaggio=='eliminazione'}
+        Vinile eliminato correttamente
+    {/if}
         <div class=" text-muted pt-3 ">
             {if $vinili}
                 {if is_array($vinili)}
@@ -64,17 +71,24 @@
                         <div class="row border-bottom">
                             <div class="col-md-1 mt-2 mb-2">
                                     <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
-                                    <img class=" ml-3" width="60" height="60" src="data:{$typeP[$i]};base64,{$pic64P[$i]}"/>
+                                    <!--<img class=" ml-3" width="60" height="60" src="data:{$typeP[$i]};base64,{$pic64P[$i]}"/>-->
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
                                     <strong class="d-block text-gray-dark">{$vinili[$i]->getTitolo()} {$vinili[$i]->getArtista()} </strong>
-                                    {$vinili[$i]->getQuantita()}
-                                    {$vinili[$i]->getPrezzo()}
+                                    Q.ta:{$vinili[$i]->getQuantita()}
+                                    <br>
+                                    prezzo:{$vinili[$i]->getPrezzo()}€
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
-                                <div class="containerP">
+                                <form action="/vinylwebmarket/Vinile/AggiornaVinile" method="POST">
+                                    <label for="quantity">Q.ta</label>
+                                    <input type="number" id="quantity" name="quantità" min="1" max="100" step="1" PLACEHOLDER="{$vinili[$i]->getQuantita()}">
+                                    <input type="hidden" name="id" value="{$vinili[$i]->getId()}" />
+                                    <button type="submit" value="Submit">aggiorna quantità</button>
+                                </form>
+                                <!-- <div class="containerP">
                                     <div class="row">
                                         <div class="qty-changer">
                                             <button class="qty-change">-</button>
@@ -82,10 +96,11 @@
                                             <button class="qty-change">+</button>
                                         </div>
                                     </div>
-                                </div>
-                                <form action="#" method="POST">
+                                </div>-->
+                                <a href="/vinylwebmarket/Vinile/EliminaVinile/{$vinili[$i]->getId()}">
                                     <button class="btn btn-danger">Elimina</button>
-                                </form>
+                                </a>
+
                             </div>
                         </div>
                     {/for}
@@ -93,7 +108,7 @@
                     <div class="row">
                         <div class="col-md-1 mt-2 mb-2">
                             <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
-                            <img class=" ml-3" width="60" height="60" src="data:{$typeP};base64,{$pic64P}"/>
+                            <!--<img class=" ml-3" width="60" height="60" src="data:{$typeP};base64,{$pic64P}"/>-->
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
@@ -103,7 +118,12 @@
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">
-                            <div class="containerP">
+                            <form action="/" method="POST">
+                                <label for="quantity">Q.ta</label>
+                                <input type="number" id="quantity" name="quantità" min="1" max="100" step="1" PLACEHOLDER="{$vinili->getQuantita()}">
+                                <button type="submit" value="Submit">aggiorna quantità</button>
+                            </form>
+                            <!--<div class="containerP">
                                 <div class="row">
                                     <div class="qty-changer">
                                         <button class="qty-change">-</button>
@@ -111,10 +131,10 @@
                                         <button class="qty-change">+</button>
                                     </div>
                                 </div>
-                            </div>
-                            <form action="#" method="POST">
+                            </div>-->
+                            <a href="/vinylwebmarket/Vinile/EliminaVinile/{$vinili->getId()}">
                                 <button class="btn btn-danger">Elimina</button>
-                            </form>
+                            </a>
                         </div>
                     </div>
                 {/if}

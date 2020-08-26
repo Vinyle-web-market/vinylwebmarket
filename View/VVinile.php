@@ -191,36 +191,45 @@ class VVinile
      * @param $error tipo di errore nel caso in cui le modifiche siano sbagliate
      * @throws SmartyException
      */
-    public function formModificaVinile($vinile, $image, $errore) {
-        switch ($errore) {
-            /* FARE TUTTI CONTROLLI PER DELLE MODIFICHE CORRETTE COME NEL CASO PROFILO UTENTE
-            case "errorEmail" :
-                $this->smarty->assign('errorEmail', "errore");
-                break;
-            case "ErrorEmailInput" :
-                $this->smarty->assign("errorEmailInput","errore");
-                break;
-            case "errorPassword":
-                $this->smarty->assign('errorPassword', "errore");
-                break;
-            case "errorSize" :
-                $this->smarty->assign('errorSize', "errore");
-                break;
-            case "errorType" :
-                $this->smarty->assign('errorType', "errore");
-                break;
-            */
-        }
+    public function ModificaVinile($vinili,$image,$mess) {
 
-        if (isset($img)) {
-            $pic64 = base64_encode($img->getDataImage());
+        $type=null;
+        $typeP=null;
+        $pic64=null;
+        $pic64P=null;
+
+        if($mess=="modifica"){
+            $this->smarty->assign('messaggio',$mess);
+              }
+        elseif($mess=="eliminazione"){
+            $this->smarty->assign('messaggio',$mess);
+        };
+
+        if (isset($image)) {
+            if (is_array($image)) {
+                foreach ($image as $it) {
+                    foreach($it as $item)
+                        if (isset($item)) {
+                            $pic64[] = $item->getDataImage();
+                            $type[] = $item->getMimeType();
+                        }
+                }
+                $this->smarty->assign('n_vinili', count($image)-1 );
+            }
+            elseif (isset($image)) {
+                $pic64 = $image->getDataImage();
+                $type = $image->getMimeType();
+                $this->smarty->assign('n_vinili', 1);
+            }
         }
-        else {
-            $data = file_get_contents( $_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
-            $pic64 = base64_encode($data);
-        }
-        $this->smarty->assign('vinile',$vinile);
-        $this->smarty->display('formModificaVinile.tpl');
+        else
+            $this->smarty->assign('n_vinili', 0);
+
+
+        $this->smarty->assign('vinili',$vinili);
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('pic64', $pic64);
+        $this->smarty->display('my_vinili.tpl');
     }
 
 

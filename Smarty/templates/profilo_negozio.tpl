@@ -98,9 +98,9 @@
                     </li>
 
 						<li>
-							<a href="#" target="_blank">
+							<a href="/vinylwebmarket/Vinile/MieiVinili/{$email}">
 							<i class="glyphicon glyphicon-user"></i>
-							Aiuto </a>
+							Gestione vinili </a>
 
                     <li>
                         <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">

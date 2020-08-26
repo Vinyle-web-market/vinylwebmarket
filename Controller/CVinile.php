@@ -233,13 +233,13 @@ class CVinile
         else
             $view->dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,"si");
     }
-
     /**
      * Funzione che permette la modifica di un vinile già pubblicato dall'utente.
      * - metodo GET e si è loggati:si viene indirizzati alla form per scegliere le modofiche da apportare;
      *                            se  non si è loggati, avviene il reindirizzamento verso la form di login.
      * @param $id id del vinile che si vuol modificare
      */
+    /*
     static function modificaVinile($id)
     {
         $pm = new FPersistentManager();
@@ -255,6 +255,94 @@ class CVinile
             } else
                 header('Location: /FillSpaceWEB/Utente/login');
         }
+    }
+    */
+
+    /**
+     * Funzione che apre una pagina per la gestione dei vinili pubblicati da un utente
+     * - metodo GET e si è loggati:si viene indirizzati alla pagina di gestione;
+     *                            se  non si è loggati, avviene il reindirizzamento verso la form di login.
+     * @param $venditore email del venditore in questione
+     */
+    static function MieiVinili($venditore)
+    {
+        $pm = new FPersistentManager();
+        $view = new VVinile();
+        $img=null;
+        $errore=null;
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            if ($sessione->isLoggedUtente()) {
+                $utente = $sessione->getUtente();
+                $vinili = $pm->load("venditore", $venditore, "FVinile");
+                $img=CFiltro::ImageVinyls($vinili);
+                $view->ModificaVinile($vinili,$img,null);
+            } else
+                header('Location: /FillSpaceWEB/Utente/login');
+        }
+    }
+
+    /**
+     * Funzione che viene invocata nel momento in cui si modificano i valori dell'annuncio
+     * 1) se il metodo di richiesta HTTP è POST e si è loggati come trasportatore, si applicano le modifiche all'annuncio;
+     * 2) se il metodo di richiesta HTTP è GET e non si è loggati come trasportatori, avviene il reindirizzamento alla pagina del prorpio profilo;
+     * 3) se non si è loggati, si viene reindirizzati alla form di login.
+     */
+    static function AggiornaVinile()
+    {
+        $view = new VVinile();
+        $sessione = Session::getInstance();
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            if ($sessione->isLoggedUtente()) {
+                $utente = $sessione->getUtente();
+                $pm = new FPersistentManager();
+                /*
+                if (CUtente::isLogged()) {
+                    $view = new VGestioneAnnunci();
+                    $pm = new FPersistentManager();
+                    $vistaProfilo = new VUtente();
+                    $peso = $view->getPeso();
+                    $spazio = $view->getSpazio();
+                */
+                $id=$_POST['id'];
+                $q = $_POST['quantità'];
+                $pm->update("quantita", $q, "id_vinile", $id, "FVinile");
+                $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                $img=CFiltro::ImageVinyls($vinili);
+                //serve èer segnalare la corretta modifica delle quantita "modifica"
+                $view->ModificaVinile($vinili,$img,"modifica");
+            } else
+                header('Location: /vinylwebmarket/User/login');
+        } else
+            header('Location: /vinylwebmarket/User/profile');
+    }
+
+    /**
+     * funzione per eliminare Vinili nella sezione per la gestione dei vinili
+     * @param $id id dell'annuncio da eliminare
+     */
+    static function EliminaVinile($id) {
+        $view = new VVinile();
+        $sessione = Session::getInstance();
+            if ($sessione->isLoggedUtente()) {
+            $pm = new FPersistentManager();
+            $pm->delete("id_vinile", $id, "FVinile");
+                $utente = $sessione->getUtente();
+                $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                $img=CFiltro::ImageVinyls($vinili);
+                //serve a segnalare la corretta eliminazione del vinile
+                $view->ModificaVinile($vinili,$img,"eliminazione");
+
+                /*
+            if (get_class($utente) == "ECliente") {
+                header('Location: /FillSpaceWEB/Utente/profile');
+            } else {
+                header('Location: /FillSpaceWEB/Utente/profile');
+            }
+                */
+        }
+        else
+            header('Location: /vinylwebmarket/User/login');
     }
 
 
