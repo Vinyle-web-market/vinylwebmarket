@@ -173,6 +173,33 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
+    public function profile($user, $vinili, $image, $tipo)
+    {
+        if (isset($image)) {
+            $pic64 = $image->getDataImage();
+            $type = $image->getMimeType();
+        } else {
+            $data = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/vinylwebmarket/Smarty/immagini/user.png');
+            $pic64 = base64_encode($data);
+            $type = "image/png";
+        }
+        if ($tipo=='ENegozio'){
+            $this->smarty->assign('nomeNegozio', $user->getNameShop());
+        }
+        else {
+            $this->smarty->assign('nome', $user->getNome());
+            $this->smarty->assign('cognome', $user->getCognome());
+            }
+
+        $this->smarty->assign('type', $type);
+        $this->smarty->assign('pic64', $pic64);
+        $this->smarty->assign('userlogged', "loggato");
+        $this->smarty->assign('email', $user->getEmail());
+        $this->smarty->assign('array', $vinili);
+        $this->smarty->assign('tipo', $tipo);
+        $this->smarty->display('profilo_personale.tpl');
+    }
+
     public function profilePrivato($user, $vinili, $image)
     {
         if (isset($image)) {
