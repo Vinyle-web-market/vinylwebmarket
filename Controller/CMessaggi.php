@@ -188,6 +188,10 @@ class CMessaggi
 
     }
 
+    /**
+     * Essa garantisce l'invio del messaggio nella chat.
+     */
+
     static function invio_mes()
     {
         $sessione = Session::getInstance();

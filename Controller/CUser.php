@@ -272,7 +272,7 @@ class CUser
                 $_SESSION['utente'] = $salva_sessione;*/
             if ($_POST['email'] != 'admin@admin.com') {
                 if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']) {
-                    header('Location: /FillSpaceWEB/Messaggi/chat');
+                    header('Location: /vinylwebmarket/Messaggi/elencoChat');
                 } elseif (isset($_COOKIE['profilo_visitato'])) {
                     header('Location: /vinylwebmarket/User/viewProfilePublic');
                 } else {
