@@ -305,17 +305,10 @@ class CUser
             if ($sessione->isLoggedUtente()) {
                 $utente = $sessione->getUtente();
                 // $utente = unserialize($_SESSION['utente']);
-                if (get_class($utente) == "EPrivato") {
+                    $tipo=get_class($utente);
                     $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
-                    //RECENSIONI
-                    $view->profilePrivato($utente, $vinili, $img);
-                } elseif (get_class($utente) == "ENegozio") {
-                    $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
-                    $annunci = $pm->load("venditore", $utente->getEmail(), "FVinile");
-                    //RECENSIONI
-                    $view->profileNegozio($utente, $annunci, $img);
-                }
+                    $view->profile($utente, $vinili, $img, $tipo);
             } else
                 header('Location: /vinylwebmarket/User/login');
         }
