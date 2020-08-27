@@ -1,3 +1,8 @@
+{assign var='errorSize' value=$errorSize|default:'ok'}
+{assign var='errorType' value=$errorType|default:'ok'}
+{assign var='successo' value=$successo|default:'ok'}
+{assign var='erroreP' value=$erroreP|default:'ok'}
+{assign var='erroreQ' value=$erroreQ|default:'ok'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -57,7 +62,31 @@
                       <div class="note">
                           <p>Inserisci il tuo vinile in vendita: </p>
                       </div>
-
+                      {if $errorSize!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! File troppo grande!  </p>
+                          </div>
+                      {/if}
+                      {if $errorType!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+                          </div>
+                      {/if}
+                      {if $successo=='si'}
+                          <div style="color: green;">
+                              <p align="center">Vinile pubblicato con successo!  </p>
+                          </div>
+                      {/if}
+                      {if $erroreP!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato prezzo non supportato!  </p>
+                          </div>
+                      {/if}
+                      {if $erroreQ!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Formato quantità non supportato!  </p>
+                          </div>
+                      {/if}
                       <div class="form-content">
                           <div class="row">
                               <div class="col-md-12">
@@ -135,6 +164,7 @@
                               <div class="col-md-12">
                               <button type="submit" class="btnSubmit">Inserisci vinile in vendita</button>
                           </div>
+
                           </div>
 
                   </div>

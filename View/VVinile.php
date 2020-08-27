@@ -109,9 +109,9 @@ class VVinile
                     $this->smarty->assign('successo', "si");
                     break;
                 case "prezzo":
-                    $this->smarty->assign('errore', "prezzo");
+                    $this->smarty->assign('erroreP', "prezzo");
                 case "quantità":
-                    $this->smarty->assign('errore', "quantità");
+                    $this->smarty->assign('erroreQ', "quantità");
 
             }
             $this->smarty->assign('username', $user->getUsername());

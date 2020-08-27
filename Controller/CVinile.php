@@ -181,7 +181,7 @@ class CVinile
             //function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
             $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita']);
             $err = $input->validVinile($new_vinile);
-            var_dump($err);
+           // var_dump($err);
             if ($err) {
                 $view->formVinile($utente,$err);
             }
