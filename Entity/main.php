@@ -144,11 +144,11 @@ echo "<hr>";
 //-----------------------------------------------------------
 */
 
-/*
+
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
-$out=$out->load('email', 'nannus97@gmail.com');
+$out=$out->load('email', 'claudio@virgilio.it');
 //---------------------------------------------------------------------
 echo "<h3> Prova Vinile </h3>";
 $titolo = "Immagina";
@@ -156,7 +156,7 @@ $artist = "Gordo Ciccione";
 $gen = "blues";
 $ng = "78";
 $cond = "Usato";
-$pr = "€4.99";
+$pr = "10mm12";
 $des = "Anno 2020. Album molto scadente.";
 $quant = "2";
 $visibility = false;
@@ -164,7 +164,7 @@ $vinile = new EVinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quan
 $vinile->setVisibility($visibility);
 var_dump($vinile);
 //------------------------------------------------------------------------------------------
-*/
+
 
 /*
 //-----------------STORE FCARTA-------
@@ -347,7 +347,7 @@ echo $rec_r;
 //---------------LOAD FVINILE----------------------------FUNZIONANTE 100%
 echo "<hr>";
 $vin=new FPersistentManager();
-$vin_r=$vin->load("venditore", "nannus97@gmail.com",'FVinile');
+$vin_r=$vin->load("venditore", "claudio@virgilio.it",'FVinile');
 //var_dump($vin_r);
 //echo "<br>"."<br>";
 var_dump($vin_r);
@@ -642,17 +642,16 @@ $pm = new FPersistentManager();
 $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
-/*
-var_dump($_POST['email']);
-var_dump($_POST['quantità']);
-*/
-/*
-$pm=new FPersistentManager();
-$r=$pm->elenco_Chats('claudio@virgilio.it', 'vanessa.cruciani@virgilio.itq');
-var_dump($r);
-*/
-$a=new CMessaggi();
-$a->redirect_chat();
+
+$input=EInputControl::getInstance();
+$t=$input->validVinile($vinile);
+echo"<hr>";
+var_dump($t);
+echo"<hr>";
+$test=$input->testPrezzo($pr);
+var_dump($test);
+
+
 
 
 

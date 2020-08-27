@@ -173,12 +173,19 @@ class CVinile
                 header('Location: /vinylwebmarket/User/login');
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pm = new FPersistentManager();
+            $input = EInputControl::getInstance();
             // $utente = unserialize($_SESSION['utente']);
             $utente=$sessione->getUtente();
             //new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
             $utente_log=new EUtente_loggato($utente->getUsername(),$utente->getEmail(), $utente->getPassword(), $utente->getPhone());
             //function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
-            $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita'],);
+            $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita']);
+            $err = $input->validVinile($new_vinile);
+            var_dump($err);
+            if ($err) {
+                $view->formVinile($utente,$err);
+            }
+            else{
             list ($stato, $nome, $type,$data) =static::uploadImg('file');
             list ($stato_1, $nome_1, $type_1,$data_1) =static::uploadImg('file_1');
             list($fun, $idAn) = static::test_img($stato, $nome, $type,$data, $stato_1, $nome_1, $type_1,$data_1, $new_vinile);
@@ -188,6 +195,7 @@ class CVinile
                 $view->formVinile($utente, "size");
             elseif ($fun == "ok") {
                 $view->formVinile($utente, "no");
+            }
             }
         }
     }

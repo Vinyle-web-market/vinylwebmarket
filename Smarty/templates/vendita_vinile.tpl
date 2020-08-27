@@ -119,13 +119,13 @@
                               <div class="col-md-6">
 
                                   <div class="custom-file">
-                                   <input type="file" class="custom-file-input" id="customFile" name="file">
+                                   <input type="file" class="custom-file-input" id="customFile" name="file" required>
                                    <label class="custom-file-label" for="customFile">Carica foto vinile posteriore </label>
                                   </div>
                                   <br>
                                   <br>
                                   <div class="custom-file">
-                                   <input type="file" class="custom-file-input" id="customFile" name="file_1">
+                                   <input type="file" class="custom-file-input" id="customFile" name="file_1" required>
                                    <label class="custom-file-label" for="customFile">Carica foto vinile anteriore </label>
                                   </div>
                                   <br>

@@ -108,6 +108,11 @@ class VVinile
                 case "no" :
                     $this->smarty->assign('successo', "si");
                     break;
+                case "prezzo":
+                    $this->smarty->assign('errore', "prezzo");
+                case "quantità":
+                    $this->smarty->assign('errore', "quantità");
+
             }
             $this->smarty->assign('username', $user->getUsername());
             $this->smarty->assign('email', $user->getEmail());

@@ -87,13 +87,39 @@ class EInputControl
 
     public function testPhone(string $phone):bool{
         $x=str_replace(" ","",$phone);
-        $accettato = preg_match('/[0-9]$/', $x);
+        $accettato = preg_match('/^[0-9]{2,10}$/', $x);
         if($accettato and strlen($x)>8){
             return true;
         }
         else
             return false;
        }
+
+    public function testQuantita(string $q):bool
+    {
+        $x = str_replace(" ", "", $q);
+        $accettato = preg_match('/^[0-9]{1,10}$/', $x);
+        return $accettato;
+    }
+
+    public function testPrezzo(string $prezzo):bool{
+        $accettato = preg_match('/^\d+(\,\d{1,2})?$/', $prezzo);
+        return $accettato;
+    }
+
+    public function validVinile(EVinile $vinile){
+        $err=array();
+        $test=static::testPrezzo($vinile->getPrezzo());
+        if (!$test)
+            array_push($err,"prezzo");
+
+        $test=static::testQuantita($vinile->getQuantita());
+        if(!$test)
+            array_push($err,"quantità");
+
+        return $err;
+
+    }
 
        public function validPrivato(EPrivato $privato){
          $err=array();

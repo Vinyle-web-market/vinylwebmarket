@@ -721,6 +721,7 @@ class CUser
    }
 */
 
+/*
     public function TuoiAnnunci($email)
     {
         $sessione = Session::getInstance();
@@ -742,6 +743,7 @@ class CUser
             }
         }
     }
+*/
 
 }
 
