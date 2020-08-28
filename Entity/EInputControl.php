@@ -189,6 +189,27 @@ class EInputControl
 
     }
 
+    public function validCard(ECarta $carta){
+        $err=array();
+
+        $test=static::testCardNumber($carta->getNum());
+        if(!$test)
+            array_push($err,"numerocarta");
+
+        $test=static::testCvv($carta->getCodcvv());
+        if(!$test)
+            array_push($err,"cvv");
+
+        $test=static::testIntestatario($carta->getIntestat());
+        if(!$test)
+            array_push($err,"intestatario");
+
+        return $err;
+
+    }
+
+
+
     public function testIntestatario(string $intestatario){
         $test = preg_match('/[A-Za-z]$/', $intestatario);
         return $test;

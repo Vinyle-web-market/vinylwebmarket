@@ -39,7 +39,7 @@ include ("../View/VUser.php");
 //-------  2.5 UPDATE
 
 
-/*
+
 //---------COSTRUTTORE EABBONAMENTO--------------------------
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
@@ -50,14 +50,14 @@ print "prova toString ".$abb->toString()."<br>";
 
 
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
-$intestatarioCarta="claudio cruciani";
-$numeroCarta="0000356612345671";
-$scadenzaCarta="27/09/2026";
-$codiceCVV="728";
+$intestatarioCarta="";
+$numeroCarta="";
+$scadenzaCarta="";
+$codiceCVV="";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
-*/
+
 
 /*
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
@@ -83,7 +83,7 @@ $cogn="fonzi";
     //-------------------------------------------------------------------------------------
 */
 
-/*
+
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
@@ -98,7 +98,7 @@ $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$a
 print " PROVA toString <br> ".$utente2->toString()."<br>";
 echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
-*/
+
 
 /*
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
@@ -144,7 +144,7 @@ echo "<hr>";
 //-----------------------------------------------------------
 */
 
-
+/*
 //---------COSTRUTTORE EVINILE-------------------------------------------------------------
 //----------load per un utente-----------------------------------------
 $out= new FUtente_loggato();
@@ -164,7 +164,7 @@ $vinile = new EVinile($out, $titolo, $artist, $gen, $ng, $cond, $pr, $des, $quan
 $vinile->setVisibility($visibility);
 var_dump($vinile);
 //------------------------------------------------------------------------------------------
-
+*/
 
 /*
 //-----------------STORE FCARTA-------
@@ -196,13 +196,13 @@ echo $id;
 */
 
 
-/*
+
 //-------STORE FNEGOZIO------------
 $pm=new FPersistentManager();
 $idneg=$pm->store($utente2);
 //var_dump($idneg);
 //---------------------------------
-*/
+
 
 /*
 //--------------STORE FRECENSIONE-----------
@@ -643,13 +643,9 @@ $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
 
-$input=EInputControl::getInstance();
-$t=$input->validVinile($vinile);
-echo"<hr>";
-var_dump($t);
-echo"<hr>";
-$test=$input->testPrezzo($pr);
-var_dump($test);
+$sessione = Session::getInstance();
+$utente=$sessione->getUtente()->getCarta();
+var_dump($utente);
 
 
 
