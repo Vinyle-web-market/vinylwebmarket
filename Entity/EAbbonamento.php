@@ -91,8 +91,7 @@ class EAbbonamento
      */
     public function AggiornaAbbonamento($n_mesiPagati){
         $data =date("j-m-Y",mktime(0,0,0,date('m')+$n_mesiPagati,date('j'),date('Y')));
-        $this->date=$data;
-        $this->stato = true;
+        return $data;
     }
 
 }

@@ -39,16 +39,16 @@ include ("../View/VUser.php");
 //-------  2.5 UPDATE
 
 
-
+/*
 //---------COSTRUTTORE EABBONAMENTO--------------------------
 echo "<hr>";
 echo "<h3>prove EAbbonamento</h3>";
 $abb=new EAbbonamento();
 print "prova toString ".$abb->toString()."<br>";
 //----------------------------------------------------------
+*/
 
-
-
+/*
 //---------COSTRUTTORE ECARTA-------------------------------------------------------
 $intestatarioCarta="";
 $numeroCarta="";
@@ -57,7 +57,7 @@ $codiceCVV="";
 $carta=new ECarta($intestatarioCarta, $numeroCarta, $scadenzaCarta, $codiceCVV);
 print "prova toString ".$carta->toString()."<br>";
 //----------------------------------------------------------------------------------
-
+*/
 
 /*
 //---------COSTRUTTORE EPRIVATO------------------------------------------------------
@@ -83,7 +83,7 @@ $cogn="fonzi";
     //-------------------------------------------------------------------------------------
 */
 
-
+/*
 //------------------COSTRUTTORE ENEGOZIO-----------------------------------------------------------------------------------------------
 echo "<h3>prove ENegozio</h3>";
 // public function __construct($name, $mail, $pw, $tel, $stato, $datareg,$nomeNegozio,$iva,$indirizzo,ECarta $cart,EAbbonamento $abb)
@@ -98,7 +98,7 @@ $utente2=new ENegozio($nom,$emai,$passw,$tele,$nomeNeg,$iva,$indirizzo,$carta,$a
 print " PROVA toString <br> ".$utente2->toString()."<br>";
 echo "<hr>";
 //----------------------------------------------------------------------------------------------------------------------------------------
-
+*/
 
 /*
 //-----------COSTRUTTORE ERECENSIONE--------------------------------------
@@ -196,13 +196,13 @@ echo $id;
 */
 
 
-
+/*
 //-------STORE FNEGOZIO------------
 $pm=new FPersistentManager();
 $idneg=$pm->store($utente2);
 //var_dump($idneg);
 //---------------------------------
-
+*/
 
 /*
 //--------------STORE FRECENSIONE-----------
@@ -643,9 +643,8 @@ $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
 
-$sessione = Session::getInstance();
-$utente=$sessione->getUtente()->getCarta();
-var_dump($utente);
+$v=new VAbbonamento();
+$v->pagamento();
 
 
 
