@@ -100,11 +100,11 @@
                                              <h1 class="single-product-name1">{$ris->getArtista()}</h1>
                                              <div class="single-product-price">
                                                <hr color=black>
-                                                 <div class="product-discount"><span  class="price" id="ProductPrice"><span class=money>$20.66</span></span></div>
+                                                 <div class="product-discount"><span  class="price" id="ProductPrice"><span class=money>{$ris->getprezzo()}€</span></span></div>
                                                  <hr color=black>
                                              </div>
                                              <div>
-                                                <h1 class="single-product-name1">Messo in vendita da:<a href="messaggi.html">
+                                                <h1 class="single-product-name1">Messo in vendita da:
                                                 <i class="glyphicon glyphicon-user"></i>
                                                         {$ris->getVenditore()->getUsername()}</a></h1>
                                                 <hr color=black>
@@ -139,7 +139,7 @@
                                              <div class="single-product-action">
                                                  <div class="product-variant-option">
                                                      <select name="id" id="productSelect" class="product-single__variants" style="display:none;">
-                                                         <option  selected="selected"  data-sku="YQT71020193" value="19506517377094">Default Title - <span class=money>$20.66 USD</span></option>
+                                                         <option  selected="selected"  data-sku="YQT71020193" value="19506517377094">Default Title - <span class=money>{$ris->getPrezzo()}€</span></option>
                                                      </select>
                                                  </div>
 
