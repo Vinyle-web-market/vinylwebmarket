@@ -3,6 +3,7 @@
 {assign var='successo' value=$successo|default:'ok'}
 {assign var='erroreP' value=$erroreP|default:'ok'}
 {assign var='erroreQ' value=$erroreQ|default:'ok'}
+{assign var='erroreL' value=$erroreL|default:'ok'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -65,6 +66,11 @@
                       <div class="note">
                           <p>Inserisci il tuo vinile in vendita: </p>
                       </div>
+                      {if $errorL!='ok'}
+                          <div style="color: red;">
+                              <p align="center">Attenzione! Superato il limite di annunci gratuiti inseribili!  </p>
+                          </div>
+                      {/if}
                       {if $errorSize!='ok'}
                           <div style="color: red;">
                               <p align="center">Attenzione! File troppo grande!  </p>

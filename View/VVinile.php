@@ -112,7 +112,10 @@ class VVinile
                     $this->smarty->assign('erroreP', "prezzo");
                 case "quantità":
                     $this->smarty->assign('erroreQ', "quantità");
-
+                    break;
+                case "limite":
+                    $this->smarty->assign('erroreL', "limite");
+                    break;
             }
             $this->smarty->assign('username', $user->getUsername());
             $this->smarty->assign('email', $user->getEmail());
