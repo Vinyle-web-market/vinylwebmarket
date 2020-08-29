@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Enità Abbonamento, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
+ * @author Gruppo Cruciani - Nanni - Scarselli
+ * @package Entity
+ */
 
 class EAbbonamento
 {
@@ -12,6 +16,7 @@ class EAbbonamento
      * EAbbonamento constructor.
      * @param
      */
+
     function __construct()
     {
         $this->date ="0000-00-00";
@@ -22,13 +27,16 @@ class EAbbonamento
     /** Questo metodo setta la data di rinnovo dell'abbonamento.
      * @param
      */
-    function setData($data) {
+
+    function setData($data)
+    {
         $this->date=$data;
     }
 
     /** Questo metodo setta lo stato dell'abbonamento
      * @param bool $status
      */
+
     function setStato($status)
     {
         $this->stato = $status;
@@ -37,6 +45,7 @@ class EAbbonamento
     /** Questo metodo setta l' ID dell'abonamento
      * @param mixed $IDabbonamento
      */
+
     public function setId($IDabbonamento)
     {
         $this->id = $IDabbonamento;
@@ -47,13 +56,16 @@ class EAbbonamento
     /** Questo metodo ritorna la data di scadenza dell'abbonamento
      * @return string
      */
-    function getData() {
+
+    function getData()
+    {
         return $this->date;
     }
 
     /** Questo metodo ritorna lo stato dell'abbonamento
      * @return bool
      */
+
     public function isStato()
     {
         return $this->stato;
@@ -62,6 +74,7 @@ class EAbbonamento
     /** Questo metodo ritorna l'ID dell'abbonamento
      * @return mixed
      */
+
     function getId()
     {
         return $this->id;
@@ -71,6 +84,7 @@ class EAbbonamento
     /**metodo che restituisce una stringa con i dati relativi all'abbonamento
      * @return string
      */
+
     function toString()
     {
         return "Data rinnovo: ".$this->date."\n".
@@ -81,6 +95,7 @@ class EAbbonamento
      * @param int $n_mesi
      * @return int
      */
+
     public function CalcolaPrezzo($n_mesi){
         $x=($n_mesi*15);
         return $x;
@@ -89,22 +104,23 @@ class EAbbonamento
     /** Metodo per aggiornare la data di scadenza dell'abbonamento
      * @param int $n_mesiPagati
      */
-    public function AggiornaAbbonamento($n_mesi){
-        if($this->isStato()=="0"){
+
+    public function AggiornaAbbonamento($n_mesi)
+    {
+        if($this->isStato()=="0")
+        {
 
         $data=date("Y-m-d");
         $d=date_create($data);
         date_add($d,date_interval_create_from_date_string($n_mesi."months"));
         $d = date('Y-m-d', $d->getTimestamp());
 
-      }else{
+      } else {
             $d=date_create($this->date);
             date_add($d,date_interval_create_from_date_string($n_mesi."months"));
             $d = date('Y-m-d', $d->getTimestamp());
         }
         return $d;
     }
-
-
 
 }

@@ -1,6 +1,12 @@
 <?php
 
 
+/**
+ * Enità Carta, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
+ * @author Gruppo Cruciani - Nanni - Scarselli
+ * @package Entity
+ */
+
 class ECarta
 {
     private $intestat;
@@ -17,6 +23,7 @@ class ECarta
      * @param int $cvv
      * @param string $scadenza
      */
+
     function __construct($intestatario , $numeroCarta , $scadenza , $cvv)
     {
         $this->intestat=$intestatario;
@@ -30,6 +37,7 @@ class ECarta
     /** Questo metodo setta il nome dell'intestatario della carta.
      * @param mixed $intestat
      */
+
     function setIntestat($intestat)
     {
         $this->intestat = $intestat;
@@ -38,6 +46,7 @@ class ECarta
     /** Questo metodo setta il nome dell'intestatario della carta
      * @param mixed $num
      */
+
     function setNum($num)
     {
         $this->num = $num;
@@ -46,6 +55,7 @@ class ECarta
     /** Questo metodo setta la scadenza della carta
      * @param mixed $scad
      */
+
     function setScad($scad)
     {
         $this->scad = $scad;
@@ -54,6 +64,7 @@ class ECarta
     /** Questo metodo setta il cvv della carta
      * @param mixed $codcvv
      */
+
     function setCodcvv($codcvv)
     {
         $this->codcvv = $codcvv;
@@ -62,6 +73,7 @@ class ECarta
     /** Questo metodo setta l'ID della carta
      * @param mixed $id
      */
+
     public function setId($id)
     {
         $this->id = $id;
@@ -72,6 +84,7 @@ class ECarta
     /** Questo metodo ritorna il nome dell'intestatario della carta
      * @return mixed
      */
+
     function getIntestat()
     {
         return $this->intestat;
@@ -80,6 +93,7 @@ class ECarta
     /** Questo metodo ritorna il numero della carta
      * @return mixed
      */
+
     function getNum()
     {
         return $this->num;
@@ -88,6 +102,7 @@ class ECarta
     /** Questo metodo ritorna la scadenza della carta
      * @return mixed
      */
+
     function getScad()
     {
         return $this->scad;
@@ -96,6 +111,7 @@ class ECarta
     /** Questo metodo ritorna il cvv della carta
      * @return mixed
      */
+
     function getCodcvv()
     {
         return $this->codcvv;
@@ -104,6 +120,7 @@ class ECarta
     /** Questo metodo ritorna l'ID della carta
      * @return mixed
      */
+
     function getId()
     {
         return $this->id;
@@ -113,6 +130,7 @@ class ECarta
     /**metodo che restituisce una stringa con i dati relativi alla carta
      * @return string
      */
+
     function toString()
     {
         return "Codice carta: ".$this->num."\n".
