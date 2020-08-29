@@ -218,13 +218,7 @@ class CUser
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
-                $pm = new FPersistentManager();
-                //CARICAMENTO PROFILO
-                /*
-                $view = new VUtente();
-                $result = $pm->loadTrasporti();
-                $view->loginOk($result);
-                */
+                header('location: /vinylwebmarket/User/profile');
             } else {
                 $view = new VUser();
                 $view->formLogin();
@@ -263,6 +257,14 @@ class CUser
             $valoreMail = $_POST['email'];
         }
         $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
+        if(get_class($utente)=='ENegozio'){
+            $today = strtotime(date("Y-m-d"));
+            $data= strtotime($utente->getAbbonamento()->getData());
+            if ($data < $today){
+                $pm->update('stato', 0, 'id',$utente->getAbbonamento()->getId(), 'FAbbonamento' );
+            }
+
+        }
         if ($utente != null && $utente->isState() != false) {
             $sessione = Session::getInstance();
             $sessione->setUtenteLoggato($utente);
@@ -308,7 +310,11 @@ class CUser
                     $tipo=get_class($utente);
                     $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
-                    $view->profile($utente, $vinili, $img, $tipo);
+                    if ($tipo=='ENegozio'){
+                        $stato=$utente->getAbbonamento()->isStato();
+                        $view->profile($utente, $vinili, $img, $tipo, $stato);
+                    }
+                    else $view->profile($utente, $vinili, $img, $tipo, null);
             } else
                 header('Location: /vinylwebmarket/User/login');
         }

@@ -173,7 +173,7 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
-    public function profile($user, $vinili, $image, $tipo)
+    public function profile($user, $vinili, $image, $tipo, $stato)
     {
         if (isset($image)) {
             $pic64 = $image->getDataImage();
@@ -190,6 +190,12 @@ class VUser
             $this->smarty->assign('nome', $user->getNome());
             $this->smarty->assign('cognome', $user->getCognome());
             }
+
+        if ($stato==0)
+            {
+            $this->smarty->assign('stato', 0);
+            }
+        else $this->smarty->assign('stato', 1);
 
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);

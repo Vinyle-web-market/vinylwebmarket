@@ -160,44 +160,58 @@ class CVinile
 
     public function pubblica()
     {
-        //$sessione = Session::getInstance();
-        //if ($sessione->isLoggedUtente()) {
         $view = new VVinile();
         $sessione = Session::getInstance();
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             if ($sessione->isLoggedUtente()) {
                 $utente=$sessione->getUtente();
-                //$utente = unserialize($_SESSION['utente']);
                 $view->formVinile($utente,null);
             }else
                 header('Location: /vinylwebmarket/User/login');
         } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
             $pm = new FPersistentManager();
             $input = EInputControl::getInstance();
-            // $utente = unserialize($_SESSION['utente']);
             $utente=$sessione->getUtente();
-            //new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
-            $utente_log=new EUtente_loggato($utente->getUsername(),$utente->getEmail(), $utente->getPassword(), $utente->getPhone());
-            //function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
-            $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita']);
-            $err = $input->validVinile($new_vinile);
-           // var_dump($err);
-            if ($err) {
-                $view->formVinile($utente,$err);
+            $tipo=get_class($utente);
+            if($tipo='EPrivato' && self::contaVinili($utente)==1){
+                $view->formVinile($utente,'limite');
             }
-            else{
-            list ($stato, $nome, $type,$data) =static::uploadImg('file');
-            list ($stato_1, $nome_1, $type_1,$data_1) =static::uploadImg('file_1');
-            list($fun, $idAn) = static::test_img($stato, $nome, $type,$data, $stato_1, $nome_1, $type_1,$data_1, $new_vinile);
-            if ($fun == "type")
-                $view->formVinile($utente, "type");
-            elseif ($fun == "size")
-                $view->formVinile($utente, "size");
-            elseif ($fun == "ok") {
-                $view->formVinile($utente, "no");
-            }
+            elseif ($tipo='ENegozio' && self::contaVinili($utente)==1 && $utente->getAbbonamento()->isState()==0){
+                 $view->formVinile($utente,'limite');
+                }
+            else {
+                $utente_log = new EUtente_loggato($utente->getUsername(), $utente->getEmail(), $utente->getPassword(), $utente->getPhone());
+                $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'], $_POST['descrizione'], $_POST['quantita']);
+                $err = $input->validVinile($new_vinile);
+                if ($err) {
+                    $view->formVinile($utente, $err);
+                } else {
+                    list ($stato, $nome, $type, $data) = static::uploadImg('file');
+                    list ($stato_1, $nome_1, $type_1, $data_1) = static::uploadImg('file_1');
+                    list($fun, $idAn) = static::test_img($stato, $nome, $type, $data, $stato_1, $nome_1, $type_1, $data_1, $new_vinile);
+                    if ($fun == "type")
+                        $view->formVinile($utente, "type");
+                    elseif ($fun == "size")
+                        $view->formVinile($utente, "size");
+                    elseif ($fun == "ok") {
+                        $view->formVinile($utente, "no");
+                    }
+                }
             }
         }
+    }
+
+    /**
+     * Funzione di supporto a pubblica per contare il numero di vinili in vendita
+     * @param $id id dell'annuncio selezionato
+     */
+    static function contaVinili($utente){
+        $pm=new FPersistentManager();
+        $vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
+            if (is_array($vinili) && count($vinili)>3){
+                return 1;
+            }
+            else return 0;
     }
 
     /**
