@@ -75,22 +75,23 @@
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
                                                 <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
-                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[0]};base64,{$pic64[0]}"></figure>
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[0]};base64,{$pic64[0]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
                                                     <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[0]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[0]->getTitolo()}</h5>
+                                                        <h5>{$vinili[0]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>{$vinili[0]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[0]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[0]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del vinillle</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[0]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[0]->getVenditore()->getEmail()}" />
@@ -108,26 +109,28 @@
                                                 <!--Date-->
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
-                                                <figure><img alt="immagine vinile vuota" width="60" height="60" src="data:{$type[1]};base64,{$pic64[1]}"> <figure>
+                                                <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[1]};base64,{$pic64[1]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[1]->getId()}}" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[1]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[1]->getTitolo()}</h5>
+                                                        <h5>{$vinili[1]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i> {$vinili[1]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[1]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[1]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del prodotto e maggiori informazioni</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[1]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[1]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
                                                 <!--Read More Button-->
                                             </div>
@@ -142,27 +145,30 @@
                                                 <!--Date-->
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
-                                                <figure> <img alt="" src="data:{$type[2]};base64,{$pic64[2]}"> </figure>
+                                                <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[2]};base64,{$pic64[2]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[2]->getId()}}" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[2]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[2]->getTitolo()}</h5>
+                                                        <h5>{$vinili[2]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>{$vinili[2]->getVenditore()->getUsername()} <i class="fa fa-comments-o"></i> {$vinili[2]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[2]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del prodotto e maggiori informazioni</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[2]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[2]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
+                                                <!--Read More Button-->
                                             </div>
                                         </div>
                                     </div>
@@ -173,34 +179,36 @@
                             <div class="carousel-item ">
                                 <div class="row">
 
-
                                     <div class="col-md-4" >
                                         <div class="item-box-blog">
                                             <div class="item-box-blog-image">
                                                 <!--Date-->
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
-                                                <figure> <img alt="" src="data:{$type[3]};base64,{$pic64[3]}"> </figure>
+                                                <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[3]};base64,{$pic64[3]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[3]->getId()}}" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[3]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[3]->getTitolo()}</h5>
+                                                        <h5>{$vinili[3]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>{$vinili[3]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[3]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[3]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del prodotto e maggiori informazioni</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[3]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[3]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
+                                                <!--Read More Button-->
                                             </div>
                                         </div>
                                     </div>
@@ -212,27 +220,30 @@
                                                 <!--Date-->
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
-                                                <figure> <img alt="" src="data:{$type[4]};base64,{$pic64[4]}"> </figure>
+                                                <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[4]};base64,{$pic64[4]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
-                                                    <a href=/vinylwebmarket/Vinile/dettagliVinile/{$vinili[4]->getId()}}" tabindex="0">
+                                                    <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[4]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[4]->getTitolo()}</h5>
+                                                        <h5>{$vinili[4]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>{$vinili[4]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i>{$vinili[4]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[4]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del prodotto e maggiori informazioni</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[4]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[4]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
+                                                <!--Read More Button-->
                                             </div>
                                         </div>
                                     </div>
@@ -244,27 +255,30 @@
                                                 <!--Date-->
                                                 <div class="item-box-blog-date white"> <span class="mon">Novità</span> </div>
                                                 <!--Image-->
-                                                <figure> <img alt="" src="data:{$type[5]};base64,{$pic64[5]}"> </figure>
+                                                <!--  <figure> <img alt="" src="/vinylwebmarket/Utility/immagini/vinile0.jpg"> </figure>-->
+                                                <figure><img alt="immagine vinile vuota"  src="data:{$type[5]};base64,{$pic64[5]}" width="250" height="250"></figure>
                                             </div>
                                             <div class="item-box-blog-body">
                                                 <!--Heading-->
                                                 <div class="item-box-blog-heading">
                                                     <a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[5]->getId()}}" tabindex="0">
                                                         <h5>{$vinili[5]->getTitolo()}</h5>
+                                                        <h5>{$vinili[5]->getArtista()}</h5>
                                                     </a>
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>{$vinili[5]->getVenditore()->getUsername()}, <i class="fa fa-comments-o"></i> {$vinili[5]->getPrezzo()}</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[5]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
-                                                    <p>descrizione del prodotto e maggiori informazioni</p>
+                                                    <p><h5>Descrizione: </h5>{$vinili[5]->getDescrizione()}</p>
                                                 </div>
                                                 <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
                                                     <input type="text" hidden name="email" value="{$vinili[5]->getVenditore()->getEmail()}" />
-                                                    <figure><button type="submit" class="btn white read">Contatta venditore</button></figure>
+                                                    <figure><button type="submit" class="btn white read">Contatta Venditore</button></figure>
                                                 </form>
+                                                <!--Read More Button-->
                                             </div>
                                         </div>
                                     </div>

@@ -62,11 +62,11 @@
                              <div class="col-md-5">
                                  <div class="product-details-large" id="ProductPhoto">
                                      <a href="data:{$typeVin[0]};base64,{$pic64Vin[0]}">
-                                         <img id="ProductPhotoImg" class="product-zoom"  src="data:{$typeVin[0]};base64,{$pic64Vin[0]}"></a>
+                                         <img id="ProductPhotoImg" class="product-zoom" width="450" height="450" src="data:{$typeVin[0]};base64,{$pic64Vin[0]}"></a>
                                  </div>
                                  <div id="ProductThumbs" class="product-thumbnail owl-carousel">
                                      <a href="data:{$typeVin[1]};base64,{$pic64Vin[1]}">
-                                         <img src="data:{$typeVin[1]};base64,{$pic64Vin[1]}"></a>
+                                         <img src="data:{$typeVin[1]};base64,{$pic64Vin[1]}" width="250" height="250"></a>
                                  </div>
                              </div>
                              {/if}

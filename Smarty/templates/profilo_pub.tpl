@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>profilo privato pubblico</title>
+    <title>profilo pubblico</title>
       <link rel="stylesheet" href="\vinylwebmarket\Smarty\js\bootstrap.js">
       <link rel="stylesheet" href="\vinylwebmarket\Smarty\css\style.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -90,9 +90,10 @@
                             </a>
                         </li>
                         <hr color=black>
-                        <a>
-                            <i class="glyphicon glyphicon-user"></i>
-                            <button type="button" class="btn-product">Invia un messaggio</button> </a>
+                        <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
+                            <input type="hidden" value="{$email}" name="email2">
+                            <button class="btn-product">Invia un messaggio</button>
+                        </form>
                         <hr color=black>
                         <a href="vinilivendita.html">
                             <i class="glyphicon glyphicon-user"></i>
@@ -346,9 +347,10 @@
                                 </a>
                             </li>
                             <hr color=black>
-                            <a>
-                                <i class="glyphicon glyphicon-user"></i>
-                                <button type="button" class="btn-product">Invia un messaggio</button> </a>
+                            <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
+                                <input type="hidden" value="{$email}" name="email2">
+                                <button class="btn-product">Invia un messaggio</button>
+                            </form>
                             <hr color=black>
                             <a href="vinilivendita.html">
                                 <i class="glyphicon glyphicon-user"></i>
