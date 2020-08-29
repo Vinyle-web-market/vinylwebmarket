@@ -294,6 +294,20 @@ class CUser
         }
     }
 
+    /** Funzione di supporto a checklogin che disattiva i vinili oltre i 3 se l'abbonamento è disattivato
+     *
+     *    -se non loggati-> reindirizzati nella form di login
+     */
+    static function disattivaVinili($utente){
+        $pm=new FPersistentManager();
+        $vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
+        if ($utente->getAbbonamento()->isState()==0){
+            for ($i=2; $i<count($vinili)-1; $i++){
+                $pm->update('visibility', '0', 'id', $vinili[$i]->getId(), 'FVinile');
+            }
+        }
+    }
+
     /** Profilo dell'utente dopo aver effettuato il login
      * - metodo GET ed il Log ha avuto successo->ingresso nel proprio profilo.
      *    -se non loggati-> reindirizzati nella form di login
