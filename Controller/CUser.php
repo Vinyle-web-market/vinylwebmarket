@@ -592,19 +592,20 @@ class CUser
     public function viewProfilePublic()
     {
         $sessione = Session::getInstance();
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
-            if ($sessione->isLoggedUtente()) {
-                header('Location: /vinylwebmarket/User/profile');
-                //header('Location: /vinylwebmarket/');
-            } else
-                header('Location: /vinylwebmarket/User/login');
-        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $view = new VUser();
-            $pm = new FPersistentManager();
-            if (isset($_POST['email'])) {
-                static::return_dettaglioutente($_POST['email']);
-                //presente in CRecensione
-            }/*  elseif (isset($_POST['azione'])) {
+        if ($sessione->isLoggedUtente()) {
+            if ($_SERVER['REQUEST_METHOD'] == "GET") {
+                if ($sessione->isLoggedUtente()) {
+                    header('Location: /vinylwebmarket/User/profile');
+                    //header('Location: /vinylwebmarket/');
+                } else
+                    header('Location: /vinylwebmarket/User/login');
+            } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $view = new VUser();
+                $pm = new FPersistentManager();
+                if (isset($_POST['email'])) {
+                    static::return_dettaglioutente($_POST['email']);
+                    //presente in CRecensione
+                }/*  elseif (isset($_POST['azione'])) {
                 if ($sessione->isLoggedUtente()) {
                     $ute = unserialize($_SESSION['utente']);
                     if (isset($_POST['rate']))
@@ -624,9 +625,12 @@ class CUser
                     header('Location: /FillSpaceWEB/Utente/login');
                 }
             }*/
-        } elseif (isset($_COOKIE['profilo_visitato'])) {
-            static::return_dettaglioutente($_COOKIE['profilo_visitato']);
+            } elseif (isset($_COOKIE['profilo_visitato'])) {
+                static::return_dettaglioutente($_COOKIE['profilo_visitato']);
+            }
         }
+                else
+            header('Location: /vinylwebmarket/User/login');
     }
 
     /**
