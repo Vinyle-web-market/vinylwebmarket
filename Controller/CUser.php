@@ -257,6 +257,7 @@ class CUser
             $valoreMail = $_POST['email'];
         }
         $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
+        if ($utente != null && $utente->isState() != false) {
         if(get_class($utente)=='ENegozio'){
             $today = strtotime(date("Y-m-d"));
             $data= strtotime($utente->getAbbonamento()->getData());
@@ -265,7 +266,7 @@ class CUser
             }
 
         }
-        if ($utente != null && $utente->isState() != false) {
+       // if ($utente != null && $utente->isState() != false) {
             $sessione = Session::getInstance();
             $sessione->setUtenteLoggato($utente);
             /*if (session_status() == PHP_SESSION_NONE) {

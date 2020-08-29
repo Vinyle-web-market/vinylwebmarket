@@ -108,7 +108,7 @@
                 <div class="col-md-8">
                     <form class="form-content" action="/vinylwebmarket/Abbonamento/transazione" method="POST">
                     <input type="hidden" value="6" name="numeromesi">
-                <button type="submit" class="btn btnSubmit">Abbonati</button>
+                   <button type="submit" class="btn btnSubmit">Abbonati</button>
                     </form>
                 </div>
             </div>

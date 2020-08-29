@@ -124,7 +124,7 @@
             </div>
 
             <!--AGGIUNTE 2 RIGHE QUI-->
-            <input type="checkbox" id="vehicle1" name="ricorda" value="si">
+            <input type="checkbox" id="vehicle1" name="ricorda" value="si" checked>
             <label for="vehicle1"><legend> Ricorda questa carta</legend></label><br>
 
             <div class="form-group">

@@ -75,6 +75,7 @@
         </div>
     {/if}
     {if $successo=='si'}
+        <br>
         <div style="color: green;">
             <p align="center">Vinile pubblicato con successo!  </p>
         </div>

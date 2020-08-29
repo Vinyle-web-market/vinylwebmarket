@@ -108,15 +108,28 @@ class VVinile
                 case "no" :
                     $this->smarty->assign('successo', "si");
                     break;
+                case "limite":
+                    $this->smarty->assign('erroreL', "limite");
+                    break;
+            }
+            if(is_array($error)){
+                foreach ($error as $err)
+            switch ($err){
                 case "prezzo":
                     $this->smarty->assign('erroreP', "prezzo");
                 case "quantità":
                     $this->smarty->assign('erroreQ', "quantità");
                     break;
-                case "limite":
-                    $this->smarty->assign('erroreL', "limite");
-                    break;
             }
+       }else{    switch ($error){
+                case "prezzo":
+                    $this->smarty->assign('erroreP', "prezzo");
+                case "quantità":
+                    $this->smarty->assign('erroreQ', "quantità");
+                    break;
+                }
+            }
+
             $this->smarty->assign('username', $user->getUsername());
             $this->smarty->assign('email', $user->getEmail());
             $this->smarty->assign('userlogged', "loggato");;
