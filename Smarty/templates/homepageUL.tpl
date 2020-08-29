@@ -35,9 +35,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/vinylwebmarket/Chisiamo/info">Chi siamo?</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
             <li class="nav-item">

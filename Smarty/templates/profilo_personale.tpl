@@ -38,9 +38,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/vinylwebmarket/Chisiamo/info">Chi siamo?</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/vinylwebmarket/User/Logout">Log Out</a>
             </li>
             <li class="nav-item">
@@ -49,8 +46,8 @@
 
             <li class="nav-item dropdown">
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="/vinylwebmarket/User/viewProfilePublic" method="post">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="email">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
+            <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>

@@ -24,7 +24,7 @@
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
-      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">
+      <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">
         <img src="/vinylwebmarket/Utility/immagini/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
@@ -35,7 +35,7 @@
         <div class="container=50px">
 
         </div>
-        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaULprivato">Home</a>
+        <a class="navbar-brand" href="/vinylwebmarket/Homepage/impostaPaginaUL">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,10 +51,10 @@
 
             <li class="nav-item dropdown">
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+            <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
+                <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
       </nav>
       <div class="container register-form">
@@ -92,12 +92,6 @@
                                   </div>
                               </div>
                               <br>
-                              <!-- <div class="col-md-6">
-                                   <div class="custom-file">
-                                       <input type="file" class="custom-file-input" id="customFile" name="file">
-                                    <label class="custom-file-label" for="customFile">Inserisci nuova foto profilo</label>
-                                   </div>
-                              </div>-->
                           </div>
                           <div class="form-group">
                               <button type="submit" class="btnSubmit">Aggiorna</button>
