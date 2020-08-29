@@ -33,9 +33,10 @@ class EMessaggio
 
     /** Questo metodo è il costruttore della classe EMessaggio.
      * EMessaggio constructor.
-     * @param $fname
-     * @param $data
-     * @param $type
+     * @param $mittente
+     * @param $destinatario
+     * @param $oggetto
+     * @param $testo
      */
 
     function __construct($mitt, $dest, $ogg, $test)
@@ -46,7 +47,7 @@ class EMessaggio
         $this->testo = $test;
     }
 
-    /**Metodo getId che ci permette di prendere il valore di Id
+    /** Metodo getId che ci permette di prendere il valore di Id
      * @return mixed
      */
 
@@ -138,7 +139,6 @@ class EMessaggio
 
     /**
      * Metodo che restituisce una stringa con i dati relativi all'immagine.
-     * @return $st String
      */
 
     function toString()

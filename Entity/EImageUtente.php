@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Enità Immagine Utente (immagine degli utenti iscritti nel sito), dove sono presenti
+ * le caratteristiche di specifica e i suoi metodi peculiari, ereditando anche dalla classe padre.
+ * Essa, infatti, rappresenta una classe figlio dell'interfaccia.
+ * @author Gruppo Cruciani - Nanni - Scarselli
+ * @package Entity
+ */
 
 class EImageUtente extends EImage
 {
@@ -8,8 +15,11 @@ class EImageUtente extends EImage
     /**
      * EImageUtente constructor.
      * @param $fname
-     * @param $email
+     * @param $data
+     * @param $type
+     * @param $emailUtente
      */
+
     public function __construct($fname, $data, $type,$mail)
     {
         parent::__construct($fname, $data, $type);
@@ -17,20 +27,29 @@ class EImageUtente extends EImage
     }
 
     /**
+     * Metodo che ci permette di prendere l'email dell'utente.
      * @return mixed
      */
+
     public function getEmailUtente()
     {
         return $this->emailUtente;
     }
 
     /**
+     * Metodo che ci permette di cambiare l'email dell'utente.
      * @param mixed $emailUtente
      */
+
     public function setEmailUtente ($emailUtente): void
     {
         $this->emailUtente = $emailUtente;
     }
+
+    /**
+     * Metodo che ci permette di stampare a video tutti i dati dell'immagine.
+     * @return string
+     */
 
     public function __toString()
     {

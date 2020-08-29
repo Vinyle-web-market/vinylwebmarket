@@ -1,9 +1,20 @@
 <?php
 
+/**
+ * Enità Negozio (tipologia di utente iscritto nel sito), dove sono presenti
+ * le caratteristiche di specifica e i suoi metodi peculiari, ereditando anche dalla classe padre.
+ * Essa, infatti, rappresenta una classe figlio dell'interfaccia.
+ * @author Gruppo Cruciani - Nanni - Scarselli
+ * @package Entity
+ */
 
-class ENegozio extends EUtente_loggato{
-     /** email è identificativo e fa riferimento a email della classe padre*/
+class ENegozio extends EUtente_loggato
+{
+     /**
+      * email è identificativo e fa riferimento a email della classe padre
+      */
      private $email_negozio;
+
      private $nameShop;
      private $p_iva;
      private $address;

@@ -3,7 +3,7 @@
 
 /**
  * Enità Image (immagine), dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari a livello generico.
- * Infatti rappresenta una interfaccia (una classe padre da cui i figli ereditano attributi e metodi).
+ * Essa, infatti, rappresenta una interfaccia (una classe padre da cui i figli ereditano attributi e metodi).
  * @author Gruppo Cruciani - Nanni - Scarselli
  * @package Entity
  */
@@ -131,7 +131,7 @@ class EImage
 
     /**
      * Metodo che restituisce una stringa con i dati relativi all'immagine.
-     * @return $st String
+     * @return String $st
      */
 
     public function __toString()
