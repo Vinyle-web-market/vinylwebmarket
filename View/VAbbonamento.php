@@ -19,10 +19,12 @@ class VAbbonamento
              $this->smarty->assign('numero', $carta->getNum());
              $this->smarty->assign('cvv', $carta->getCodCVV());
              $this->smarty->assign('scadenza', $carta->getScad());
+             $this->smarty->assign('id', $carta->getId());
              $this->smarty->assign('carta', 1);
          }
          else  $this->smarty->assign('carta', 0);
 
+         $this->smarty->assign('classe', "abb");
          $this->smarty->display('modificaCarta.tpl');
      }
 

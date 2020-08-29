@@ -45,7 +45,7 @@ class EAbbonamento
     //METODI GET
 
     /** Questo metodo ritorna la data di scadenza dell'abbonamento
-     * @return DateTime
+     * @return string
      */
     function getData() {
         return $this->date;
@@ -89,9 +89,22 @@ class EAbbonamento
     /** Metodo per aggiornare la data di scadenza dell'abbonamento
      * @param int $n_mesiPagati
      */
-    public function AggiornaAbbonamento($n_mesiPagati){
-        $data =date("j-m-Y",mktime(0,0,0,date('m')+$n_mesiPagati,date('j'),date('Y')));
-        return $data;
+    public function AggiornaAbbonamento($n_mesi){
+        if($this->isStato()=="0"){
+
+        $data=date("Y-m-d");
+        $d=date_create($data);
+        date_add($d,date_interval_create_from_date_string($n_mesi."months"));
+        $d = date('Y-m-d', $d->getTimestamp());
+
+      }else{
+            $d=date_create($this->date);
+            date_add($d,date_interval_create_from_date_string($n_mesi."months"));
+            $d = date('Y-m-d', $d->getTimestamp());
+        }
+        return $d;
     }
+
+
 
 }

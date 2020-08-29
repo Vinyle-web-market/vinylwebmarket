@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {assign var='errorNumberExist' value=$errorNumberExist|default:'ok'}
 {assign var='errorInput' value=$errorInput|default:'ok'}
+{assign var='classe' value=$classe|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -59,10 +60,91 @@
         </div>
       </nav>
 
+    {if $classe=='abb'}
+      <div class="container">
+        <form class="form-horizontal" role="form" action="/vinylwebmarket/Abbonamento/check_carta" method="post">
+          <fieldset>
+            <legend>Reinserisci Scadenza e Cvv della tua carta registrata o prosegui con un'altra carta valida </legend>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="card-holder-name">Nome intestatario</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="intestatario" id="card-holder-name" placeholder="{$nome}" value="{$nome}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="card-number">Numero carta</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="numerocarta" id="card-number" maxlength="16" placeholder="{$numero}" value="{$numero}">
+                <input type="hidden" value="{$id}" name="id">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="mese">Data scadenza:</label>
+              <div class="col-sm-9">
+                <div class="row">
+                  <p style="visibility: hidden;">m</p>
+                  <div class="col-xs-3">
+                    <select class="form-control" name="mese">
+
+                      <option value="01">Jan (01)</option>
+                      <option value="02">Feb (02)</option>
+                      <option value="03">Mar (03)</option>
+                      <option value="04">Apr (04)</option>
+                      <option value="05">May (05)</option>
+                      <option value="06">June (06)</option>
+                      <option value="07">July (07)</option>
+                      <option value="08">Aug (08)</option>
+                      <option value="09">Sep (09)</option>
+                      <option value="10">Oct (10)</option>
+                      <option value="11">Nov (11)</option>
+                      <option value="12">Dec (12)</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-3">
+                    <select class="form-control" name="anno">
+
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="cvv">Codice CVV</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" name="cvv" maxlength="3" id="cvv" placeholder="Codice di sicurezza CVV">
+              </div>
+            </div>
+
+            <!--AGGIUNTE 2 RIGHE QUI-->
+            <input type="checkbox" id="vehicle1" name="ricorda" value="si">
+            <label for="vehicle1"><legend> Ricorda questa carta</legend></label><br>
+
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btnSubmit">Avanti</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+
+    {else}
       <div class="container">
         <form class="form-horizontal" role="form" action="/vinylwebmarket/User/modificaCarta" method="post">
           <fieldset>
-            <legend>Utilizza un'altra carta</legend>
+            <legend>Registra un'altra carta</legend>
             <div class="form-group">
               <label class="col-sm-3 control-label" for="card-holder-name">Nome intestatario</label>
               <div class="col-sm-9">
@@ -140,6 +222,8 @@
           </fieldset>
         </form>
       </div>
+    {/if}
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="\vinylwebmarket\Smarty\js\bootstrap.js"></script>

@@ -76,6 +76,7 @@ class Session
         $_SESSION['utente'] = $u;
     }
 
+
     public function setNum($num)
     {
         if(session_status()==PHP_SESSION_NONE){

@@ -109,6 +109,12 @@
                                         Pubblica e vendi i tuoi vinili </a>
                                 </li>
 
+                                <li>
+                                    <a href="/vinylwebmarket/Abbonamento/form_carta" target="_blank">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Prolunga o rinnova il tuo Abbonamento </a>
+                                </li>
+
                             </div>
                             <!-- END MENU -->
                         </div>

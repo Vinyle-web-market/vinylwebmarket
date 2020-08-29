@@ -419,13 +419,13 @@ echo $o[1]->toString();
 //------------------------------------------------------------------------
 */
 
-/*
+
 //----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
-$out=$n->load('email_negozio', 'alberto@virgilio.it');
+$out=$n->load('email_negozio', 'mirkoNegozio@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-*/
+
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------
@@ -643,8 +643,24 @@ $vinili=$pm->searchVinyl ("nevermind", "nirvana", null, null, null, 30);
 var_dump($vinili);
 */
 
-$v=new VAbbonamento();
-$v->pagamento();
+/*
+$n_mesi=3;
+$abb=$out->getAbbonamento();
+$d=$abb->getData();
+$data=$abb->PrimoAbbonamento($n_mesi);
+echo"<hr>";
+$abb->setData($data);
+var_dump($abb->getData());
+echo"<hr>";
+$dat=$abb->RinnovaAbbonamento($n_mesi);
+var_dump($dat);
+ */
+
+var_dump($_POST["ricorda"]);
+
+
+
+
 
 
 
