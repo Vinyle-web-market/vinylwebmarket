@@ -21,7 +21,7 @@
   <body>
     <nav class="navbar navbar sticky-top navbar-dark bg-dark">
       <div class="container=50px">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/vinylwebmarket/">
         <img src="\vinylwebmarket\Utility\immagini\logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
         Vinyl Web Market
       </a>
@@ -55,8 +55,8 @@
               </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
+            <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
