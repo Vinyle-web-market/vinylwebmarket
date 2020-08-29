@@ -59,43 +59,42 @@
             </form>
         </div>
       </nav>
-
+    {if $erroreL!='ok'}
+        <div style="color: red;">
+            <h4 align="center">Attenzione! Superato il limite di annunci gratuiti inseribili!  </h4>
+        </div>
+    {/if}
+    {if $errorSize!='ok'}
+        <div style="color: red;">
+            <p align="center">Attenzione! File troppo grande!  </p>
+        </div>
+    {/if}
+    {if $errorType!='ok'}
+        <div style="color: red;">
+            <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
+        </div>
+    {/if}
+    {if $successo=='si'}
+        <div style="color: green;">
+            <p align="center">Vinile pubblicato con successo!  </p>
+        </div>
+    {/if}
+    {if $erroreP!='ok'}
+        <div style="color: red;">
+            <p align="center">Attenzione! Formato prezzo non supportato!  </p>
+        </div>
+    {/if}
+    {if $erroreQ!='ok'}
+        <div style="color: red;">
+            <p align="center">Attenzione! Formato quantità non supportato!  </p>
+        </div>
+    {/if}
     <form  enctype="multipart/form-data" class="form-content" action="/vinylwebmarket/Vinile/pubblica" method="POST">
       <div class="container register-form">
                   <div class="form">
                       <div class="note">
                           <p>Inserisci il tuo vinile in vendita: </p>
                       </div>
-                      {if $errorL!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione! Superato il limite di annunci gratuiti inseribili!  </p>
-                          </div>
-                      {/if}
-                      {if $errorSize!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione! File troppo grande!  </p>
-                          </div>
-                      {/if}
-                      {if $errorType!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione! Formato immagine non supportato (provare con .png o .jpg)!  </p>
-                          </div>
-                      {/if}
-                      {if $successo=='si'}
-                          <div style="color: green;">
-                              <p align="center">Vinile pubblicato con successo!  </p>
-                          </div>
-                      {/if}
-                      {if $erroreP!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione! Formato prezzo non supportato!  </p>
-                          </div>
-                      {/if}
-                      {if $erroreQ!='ok'}
-                          <div style="color: red;">
-                              <p align="center">Attenzione! Formato quantità non supportato!  </p>
-                          </div>
-                      {/if}
                       <div class="form-content">
                           <div class="row">
                               <div class="col-md-12">
