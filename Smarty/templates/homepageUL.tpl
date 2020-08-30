@@ -122,7 +122,7 @@
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[1]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[1]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[1]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
@@ -158,7 +158,7 @@
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[2]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[2]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[2]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
@@ -198,7 +198,7 @@
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[3]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[3]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[3]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
@@ -233,7 +233,7 @@
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[4]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[4]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[4]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
@@ -268,7 +268,7 @@
                                                 </div>
                                                 <!--Data-->
                                                 <div class="item-box-blog-data" style="padding: px 15px;">
-                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[5]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[0]->getPrezzo()} €</p>
+                                                    <p><i class="fa fa-user-o"></i>Venduto da: {$vinili[5]->getVenditore()->getUsername()}<i class="fa fa-comments-o"></i><br>Prezzo: {$vinili[5]->getPrezzo()} €</p>
                                                 </div>
                                                 <!--Text-->
                                                 <div class="item-box-blog-text">
