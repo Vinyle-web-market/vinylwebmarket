@@ -2,6 +2,9 @@
 {assign var='errorNumberExist' value=$errorNumberExist|default:'ok'}
 {assign var='errorInput' value=$errorInput|default:'ok'}
 {assign var='classe' value=$classe|default:'ok'}
+{assign var='errorIntestatario' value=$errorIntestatario|default:'ok'}
+{assign var='errorNumerocarta' value=$errorNumerocarta|default:'ok'}
+{assign var='errorCvv' value=$errorCvv|default:'ok'}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -127,6 +130,21 @@
             <!--AGGIUNTE 2 RIGHE QUI-->
             <input type="checkbox" id="vehicle1" name="ricorda" value="si" checked>
             <label for="vehicle1"><legend> Ricorda questa carta</legend></label><br>
+            {if $errorIntestatario!='ok'}
+              <div style="color: red;">
+                <p align="center">Formato Intestatario non valido!!</p>
+              </div>
+            {/if}
+            {if $errorCvv!='ok'}
+              <div style="color: red;">
+                <p align="center">Cvv non valido</p>
+              </div>
+            {/if}
+            {if $errorNumerocarta!='ok'}
+              <div style="color: red;">
+                <p align="center">Numero carta non valido</p>
+              </div>
+            {/if}
             <hr color="black">
             <div class="form-group">
               <div class="col-md-6 centrato">
@@ -136,6 +154,7 @@
           </fieldset>
         </form>
       </div>
+
 
 
     {else}
