@@ -166,6 +166,7 @@ class CMessaggi
     static function redirect_chat()
     {
         $sessione = Session::getInstance();
+        if($sessione->isLoggedUtente()){
         $utente = $sessione->getUtente();
 
             $view = new VMessaggi();
@@ -173,17 +174,23 @@ class CMessaggi
             $email1 = null;
             $email2=null;
 
-            if(isset($_COOKIE['chat']))
+           /* if(isset($_COOKIE['chat']))
             {
                 $email2 = $_COOKIE['chat'];
                 setcookie("chat", null, time() - 900,"/");
             }
+           */
             $email1=$utente->getEmail();
             $email2 = $_POST['email2'];
             $result = $pm->elenco_Chats($email1, $email2);
             $img =  $pm->loadImg("EImageUtente", "email_utente", $email2);
 
             $view->showMessaggi($result, $img, $email1, $email2);
+
+        }else{
+            setcookie("conversazione","si", time() + 900, "/");
+            header('Location: /vinylwebmarket/User/login');
+        }
 
 
     }
@@ -195,26 +202,31 @@ class CMessaggi
     static function invio_mes()
     {
         $sessione = Session::getInstance();
-        $utente = $sessione->getUtente();
+        if($sessione->isLoggedUtente()) {
+            $utente = $sessione->getUtente();
 
-        $c = new CMessaggi();
-        $pm = new FPersistentManager();
-        $email1 = null;
-        $email2=null;
-        /*
-        if(isset($_COOKIE['chat']))
-        {
-            $email2 = $_COOKIE['chat'];
-            setcookie("chat", null, time() - 900,"/");
+            $c = new CMessaggi();
+            $pm = new FPersistentManager();
+            $email1 = null;
+            $email2 = null;
+            /*
+            if(isset($_COOKIE['chat']))
+            {
+                $email2 = $_COOKIE['chat'];
+                setcookie("chat", null, time() - 900,"/");
+            }
+            */
+
+            $email1 = $utente->getEmail();
+            $email2 = $_POST['email2'];
+            $testo = $_POST['testo'];
+            $m = new EMessaggio($email1, $email2, 'null', $testo);
+            $pm->store($m);
+            $c->redirect_chat();
+        }else {
+            setcookie("profilo_contattato", $_POST['email2'], time() + 900, "/");
+            header('Location: /vinylwebmarket/User/login');
         }
-        */
-
-        $email1=$utente->getEmail();
-        $email2 = $_POST['email2'];
-        $testo= $_POST['testo'];
-        $m=new EMessaggio($email1, $email2, 'null', $testo);
-        $pm->store($m);
-        $c->redirect_chat();
     }
 
     /**
@@ -235,10 +247,10 @@ class CMessaggi
             {
                 static::redirect_chat();
             }
-            elseif (isset($_COOKIE['chat']))
+            /*elseif (isset($_COOKIE['chat']))
             {
                 static::redirect_chat();
-            }
+            }*/
             else
                 {
                 header('Location: /vinylwebmarket/Messaggi/elencoChat');
@@ -246,7 +258,7 @@ class CMessaggi
         }
         else
             {
-            setcookie("chat", $_POST['email2'], time()+900,"/");     //all'interno di POST mettere 'email2'
+            setcookie("elenco_chat","si", time()+900,"/");     //all'interno di POST mettere 'email2'
             header('Location: /vinylwebmarket/User/login');
         }
     }

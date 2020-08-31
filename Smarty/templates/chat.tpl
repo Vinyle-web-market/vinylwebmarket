@@ -65,7 +65,7 @@
                   </p>
                 </div>
                 <div class="col-md-3">
-                  <form action="/vinylwebmarket/Messaggi/redirect_chat" method="POST">
+                  <form action="/vinylwebmarket/Messaggi/chat" method="POST">
                     <input type="hidden" value="{$utent[$i]->getEmail()}" name="email2">
                     <button class="btn btnSubmit">Visualizza conversazione</button>
                   </form>

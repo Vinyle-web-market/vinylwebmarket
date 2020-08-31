@@ -278,7 +278,23 @@ class CUser
                     header('Location: /vinylwebmarket/Messaggi/elencoChat');
                 } elseif (isset($_COOKIE['profilo_visitato'])) {
                     header('Location: /vinylwebmarket/User/viewProfilePublic');
-                } else {
+                }
+                elseif (isset($_COOKIE['profilo_contattato'])) {
+                    $emailRedirect=$_COOKIE['profilo_contattato'];
+                    setcookie("profilo_contattato", null, time() - 900, "/");
+                    header('Location: /vinylwebmarket/User/return_dettaglioutente/'.$emailRedirect);
+                }
+                elseif (isset($_COOKIE['elenco_chat'])) {
+                    $emailRedirect=$_COOKIE['elenco_chat'];
+                    setcookie("elenco_chat", null, time() - 900, "/");
+                    header('Location: /vinylwebmarket/Messaggi/elencoChat');
+                }
+                elseif (isset($_COOKIE['conversazione'])) {
+                    $emailRedirect=$_COOKIE['conversazione'];
+                    setcookie("conversazione", null, time() - 900, "/");
+                    header('Location: /vinylwebmarket/Messaggi/elencoChat');
+                }
+                   else {
                     if (isset($_COOKIE['chat']))
                         setcookie("chat", null, time() - 900, "/");
                     else {
