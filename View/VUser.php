@@ -173,7 +173,7 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
-    public function profile($user, $vinili, $image, $tipo, $stato)
+    public function profile($user, $vinili, $image, $tipo, $stato,$imagev)
     {
         if (isset($image)) {
             $pic64 = $image->getDataImage();
@@ -197,14 +197,35 @@ class VUser
             $this->smarty->assign('cognome', $user->getCognome());
             }
 
+        if (isset($imagev)) {
+            if (is_array($imagev)) {
+                foreach ($imagev as $it) {
+                    foreach($it as $item)
+                        if (isset($item)) {
+                            $pic64v[] = $item->getDataImage();
+                            $typev[] = $item->getMimeType();
+                        }
+                }
+                $this->smarty->assign('n_vinili', count($imagev)-1 );
+            }
+            elseif (isset($imagev)) {
+                $pic64v = $imagev->getDataImage();
+                $typev = $imagev->getMimeType();
+                $this->smarty->assign('n_vinili', 1);
+            }
+        }
+        else
+            $this->smarty->assign('n_vinili', 0);
 
 
+        $this->smarty->assign('typev', $typev);
+        $this->smarty->assign('pic64v', $pic64v);
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);
         $this->smarty->assign('userlogged', "loggato");
         $this->smarty->assign('email', $user->getEmail());
         $this->smarty->assign('vinili', $vinili);
-        $this->smarty->assign('n_vinili', count($vinili)-1);
+        //$this->smarty->assign('n_vinili', count($vinili)-1);
         $this->smarty->assign('tipo', $tipo);
         $this->smarty->display('profilo_personale.tpl');
     }

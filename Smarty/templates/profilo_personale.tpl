@@ -144,7 +144,7 @@
                                     {for $i=0 to $n_vinili}
                                     <div class="row border-bottom">
                                         <div class="col-md-1 mt-2 mb-2">
-                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
+                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev[$i]};base64,{$pic64v[$i]}" />
                                         </div>
                                         <div class="col-md-7 ">
                                             <p class="mt-1">
@@ -168,7 +168,7 @@
                                 {else}
                                 <div class="row border-bottom">
                                     <div class="col-md-1 mt-2 mb-2">
-                                        <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
+                                        <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev};base64,{$pic64v}" />
                                     </div>
                                     <div class="col-md-7 ">
                                         <p class="mt-1">
@@ -275,7 +275,7 @@
                                         {for $i=0 to $n_vinili}
                                         <div class="row border-bottom">
                                             <div class="col-md-1 mt-2 mb-2">
-                                                <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
+                                                <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev[$i]};base64,{$pic64v[$i]}" />
                                             </div>
                                             <div class="col-md-7 ">
                                                 <p class="mt-1">
@@ -299,7 +299,7 @@
                                     {else}
                                     <div class="row border-bottom">
                                         <div class="col-md-1 mt-2 mb-2">
-                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
+                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev};base64,{$pic64v}" />
                                         </div>
                                         <div class="col-md-7 ">
                                             <p class="mt-1">

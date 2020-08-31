@@ -324,11 +324,12 @@ class CUser
                     $tipo=get_class($utente);
                     $img = $pm->loadImg("EImageUtente", "email_utente", $utente->getEmail());
                     $vinili = $pm->load("venditore", $utente->getEmail(), "FVinile");
+                    $img_v=CFiltro::ImageVinyls($vinili);
                     if ($tipo=='ENegozio'){
                         $stato=$utente->getAbbonamento()->isStato();
-                        $view->profile($utente, $vinili, $img, $tipo, $stato);
+                        $view->profile($utente, $vinili, $img, $tipo, $stato,$img_v);
                     }
-                    else $view->profile($utente, $vinili, $img, $tipo, null);
+                    else $view->profile($utente, $vinili, $img, $tipo, null,$img_v);
             } else
                 header('Location: /vinylwebmarket/User/login');
         }
