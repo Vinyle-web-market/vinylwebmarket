@@ -48,7 +48,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -155,7 +154,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -198,7 +196,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -249,7 +246,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -290,7 +286,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -332,7 +327,6 @@ class CAdmin
                 }
                 else
                 {
-                    $end = $sessione->logout();
                     header('Location: /vinylwebmarket/User/login');
                 }
         }
@@ -392,7 +386,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -434,7 +427,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -476,7 +468,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -545,7 +536,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -588,7 +578,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -631,7 +620,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -690,7 +678,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -755,7 +742,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
@@ -820,7 +806,6 @@ class CAdmin
             }
             else
             {
-                $end = $sessione->logout();
                 header('Location: /vinylwebmarket/User/login');
             }
         }
