@@ -300,7 +300,7 @@ class CVinile
                 $img=CFiltro::ImageVinyls($vinili);
                 $view->ModificaVinile($vinili,$img,null);
             } else
-                header('Location: /FillSpaceWEB/Utente/login');
+                header('Location: /vinylwebmarket/Utente/login');
         }
     }
 

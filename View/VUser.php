@@ -185,23 +185,26 @@ class VUser
         }
         if ($tipo=='ENegozio'){
             $this->smarty->assign('nomeNegozio', $user->getNameShop());
+            if ($stato!=null)
+            {
+                $this->smarty->assign('stato', 'ok');
+            }
+            else $this->smarty->assign('stato', 'no');
         }
+
         else {
             $this->smarty->assign('nome', $user->getNome());
             $this->smarty->assign('cognome', $user->getCognome());
             }
 
-        if ($stato==0)
-            {
-            $this->smarty->assign('stato', 0);
-            }
-        else $this->smarty->assign('stato', 1);
+
 
         $this->smarty->assign('type', $type);
         $this->smarty->assign('pic64', $pic64);
         $this->smarty->assign('userlogged', "loggato");
         $this->smarty->assign('email', $user->getEmail());
-        $this->smarty->assign('array', $vinili);
+        $this->smarty->assign('vinili', $vinili);
+        $this->smarty->assign('n_vinili', count($vinili)-1);
         $this->smarty->assign('tipo', $tipo);
         $this->smarty->display('profilo_personale.tpl');
     }

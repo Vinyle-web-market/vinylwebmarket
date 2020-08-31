@@ -1,4 +1,5 @@
-{assign var='stato' value=$stato|default:'1'}
+{assign var='stato' value=$stato|default:'ok'}
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -120,7 +121,7 @@
                     </div>
                     <div class="col-md-9">
                         <div class="profile-content">
-                            {if $tipo!=1}
+                            {if $stato!='ok'}
                                 <br>
                             <div style="color: red;">
                                 <center><h3>Il tuo abbonamento è scaduto! Non potrai pubblicare più di 3 vinili in vendita!</h3></center>
@@ -130,7 +131,73 @@
                                 <h5>Per aggiornare il tuo abbonamento clicca su: "Prolunga o rinnova il tuo Abbonamento"  </h5>
                                 </center>
                             {/if}
+                            <main role="main" class="container">
 
+                                <div class="lh-100">
+                                    <h3 class="mb-0 lh-100">I miei vinili in vendita:</h3>
+                                    <hr>
+                                </div>
+
+                                <div class=" text-muted pt-3 ">
+                                    {if $vinili}
+                                    {if is_array($vinili)}
+                                    {for $i=0 to $n_vinili}
+                                    <div class="row border-bottom">
+                                        <div class="col-md-1 mt-2 mb-2">
+                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
+                                        </div>
+                                        <div class="col-md-7 ">
+                                            <p class="mt-1">
+                                                <strong>Titolo: {$vinili[$i]->getTitolo()} | Artista: {$vinili[$i]->getArtista()} </strong>
+                                                <br>
+                                                Q.ta:{$vinili[$i]->getQuantita()}
+                                                <br>
+                                                Prezzo:{$vinili[$i]->getPrezzo()}€
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2 mt-3">
+                                            <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}" method="POST">
+                                                <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
+                                                <br>
+                                                <br>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/for}
+                                {else}
+                                <div class="row border-bottom">
+                                    <div class="col-md-1 mt-2 mb-2">
+                                        <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
+                                    </div>
+                                    <div class="col-md-7 ">
+                                        <p class="mt-1">
+                                            <strong>Titolo: {$vinili->getTitolo()} | Artista: {$vinili->getArtista()} </strong>
+                                            <br>
+                                            Q.ta:{$vinili->getQuantita()}
+                                            <br>
+                                            Prezzo:{$vinili->getPrezzo()}€
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2 mt-3">
+                                        <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili->getId()}" method="POST">
+                                            <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
+                                            <br>
+                                            <br>
+                                        </form>
+                                    </div>
+                                </div>
+                        </div>
+                        {/if}
+                        {else}
+                        Al momento non hai vinili in vendita
+                        {/if}
+                    </div>
+                    </div>
+
+
+
+                    </main>
 
                         </div>
                     </div>
@@ -195,7 +262,73 @@
                         </div>
                         <div class="col-md-9">
                             <div class="profile-content">
-                                Ciò che si deve inserire nel profilo
+                                <main role="main" class="container">
+
+                                        <div class="lh-100">
+                                            <h3 class="mb-0 lh-100">I miei vinili in vendita:</h3>
+                                            <hr>
+                                        </div>
+
+                                    <div class=" text-muted pt-3 ">
+                                        {if $vinili}
+                                        {if is_array($vinili)}
+                                        {for $i=0 to $n_vinili}
+                                        <div class="row border-bottom">
+                                            <div class="col-md-1 mt-2 mb-2">
+                                                <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type[$i]};base64,{$pic64[$i]}" />
+                                            </div>
+                                            <div class="col-md-7 ">
+                                                <p class="mt-1">
+                                                    <strong>Titolo: {$vinili[$i]->getTitolo()} | Artista: {$vinili[$i]->getArtista()} </strong>
+                                                    <br>
+                                                    Q.ta:{$vinili[$i]->getQuantita()}
+                                                    <br>
+                                                    Prezzo:{$vinili[$i]->getPrezzo()}€
+                                                </p>
+                                            </div>
+                                            <div class="col-md-2 mt-3">
+                                                <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}" method="POST">
+                                                    <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
+                                                    <br>
+                                                    <br>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/for}
+                                    {else}
+                                    <div class="row border-bottom">
+                                        <div class="col-md-1 mt-2 mb-2">
+                                            <img class="rounded-circle ml-3" width="60" height="60" src="data:{$type};base64,{$pic64}" />
+                                        </div>
+                                        <div class="col-md-7 ">
+                                            <p class="mt-1">
+                                                <strong>Titolo: {$vinili->getTitolo()} | Artista: {$vinili->getArtista()} </strong>
+                                                <br>
+                                                Q.ta:{$vinili->getQuantita()}
+                                                <br>
+                                                Prezzo:{$vinili->getPrezzo()}€
+                                            </p>
+                                        </div>
+                                        <div class="col-md-2 mt-3">
+                                            <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili->getId()}" method="POST">
+                                                <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
+                                                <br>
+                                                <br>
+                                            </form>
+                                        </div>
+                                    </div>
+                            </div>
+                            {/if}
+                            {else}
+                            Al momento non hai vinili in vendita
+                            {/if}
+                        </div>
+                    </div>
+
+
+
+                    </main>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+{assign var='contatta' value=$contatta|default:'ok'}
 <html>
 <head>
 <meta charset="utf-8">
@@ -148,6 +149,7 @@
                                                      <div class="cart-plus-minus">
                                                          <input class="cart-plus-minus-box" type="text" name="quantity" value="1">
                                                      </div>
+                                                     {if $contatta=='ok'}
                                                      <div class="add">
                                                          <input type="hidden" value="{$ris->getVenditore()->getEmail()}" name="email2">
                                                          <button type="submit" class="add-to-cart ajax-spin-cart" id="AddToCart">
@@ -156,6 +158,7 @@
                                                          </button>
 
                                                      </div>
+                                                     {/if}
                                                  </div>
 
                                              </div>
