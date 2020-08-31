@@ -257,15 +257,16 @@ class CUser
             $valoreMail = $_POST['email'];
         }
         $utente = $pm->loginUtente($_POST['email'], $_POST['password']);
+        if ($utente != null && $utente->isState() != false) {
         if(get_class($utente)=='ENegozio'){
             $today = strtotime(date("Y-m-d"));
             $data= strtotime($utente->getAbbonamento()->getData());
             if ($data < $today){
                 $pm->update('stato', 0, 'id',$utente->getAbbonamento()->getId(), 'FAbbonamento' );
+                self::disattivaVinili($utente);
             }
 
         }
-        if ($utente != null && $utente->isState() != false) {
             $sessione = Session::getInstance();
             $sessione->setUtenteLoggato($utente);
             /*if (session_status() == PHP_SESSION_NONE) {
@@ -281,14 +282,11 @@ class CUser
                     if (isset($_COOKIE['chat']))
                         setcookie("chat", null, time() - 900, "/");
                     else {
-
                         header('Location: /vinylwebmarket/Homepage/impostaPaginaUL');
 
                     }
                 }
             } else header('Location: /vinylwebmarket/Admin/homepage');
-
-            // }
         } else {
             $view->loginError($email, $valoreMail);
         }
@@ -301,9 +299,11 @@ class CUser
     static function disattivaVinili($utente){
         $pm=new FPersistentManager();
         $vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
-        if ($utente->getAbbonamento()->isState()==0){
-            for ($i=2; $i<count($vinili)-1; $i++){
-                $pm->update('visibility', '0', 'id', $vinili[$i]->getId(), 'FVinile');
+        if ($utente->getAbbonamento()->isStato()==0){
+            var_dump($vinili);
+            var_dump(count($vinili));
+            for ($i=3; $i<count($vinili); $i++){
+                $pm->update('visibility', '0', 'id_vinile', $vinili[$i]->getId(), 'FVinile');
             }
         }
     }
@@ -679,7 +679,8 @@ class CUser
                 //$utente = unserialize($_SESSION['utente']);
                 if ($visitato == $utente->getEmail())
                     //se ha cercato lui stesso non si contatta da solo:)
-                    $view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "no");
+                    //$view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "no");
+                    header('Location: /vinylwebmarket/User/profile');
                 else
                     $view->profilopubblico($negozio, $negozio->getEmail(), $img, $imgrecensioni, $rec, "si");
             } else
@@ -694,7 +695,8 @@ class CUser
                 $utente = $sessione->getUtente();
                 // $utente = unserialize($_SESSION['utente']);
                 if ($visitato == $utente->getEmail())
-                    $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "no");
+                    header('Location: /vinylwebmarket/User/profile');
+                   // $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "no");
                 else
                     $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "si");
             } else

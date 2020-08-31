@@ -22,12 +22,14 @@ class CAbbonamento
     public function check_carta()
     {
         $view = new VAbbonamento();
+        $r=null;
         $numeroCarta = $_POST["numerocarta"];
         $cvv = $_POST["cvv"];
         $intestatario = $_POST["intestatario"];
         $mese = $_POST["mese"];
         $anno = $_POST["anno"];
         $id = $_POST["id"];
+        $r=$_POST["ricorda"];
         $scadenza = $anno . "-" . $mese . "-01";
         $pm = new FPersistentManager();
         $err = array();
@@ -38,7 +40,7 @@ class CAbbonamento
         if ($err) {
             $view->form_carta($carta, $err);
         } else {
-            if ($_POST["ricorda"] == "si") {
+            if ($r == "si") {
                 $pm->update("numero", $numeroCarta, "id", $carta->getId(), "FCarta");
                 $pm->update("cvv", $cvv, "id", $carta->getId(), "FCarta");
                 $pm->update("intestatario", $intestatario, "id", $carta->getId(), "FCarta");
@@ -63,6 +65,9 @@ class CAbbonamento
                 $data = $abb->AggiornaAbbonamento($n_mesi);
                 $pm->update("scadenza", $data, "id", $id, "FAbbonamento");
                 $pm->update("stato", 1, "id", $id, "FAbbonamento");
+                $pm->update("visibility", 1, "venditore",$sessione->getUtente()->getEmail(), "FVinile");
+                $u=$pm->load("id_abbonamento",$id,"FNegozio");
+                $sessione->setUtenteLoggato($u);   //AGGIORNO LA SESSIONE
                 header('Location: /vinylwebmarket/User/profile');
         }
         else header('Location: /vinylwebmarket/User/login');

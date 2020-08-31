@@ -11,8 +11,25 @@ class VAbbonamento
         $this->smarty = smartyConfiguration::configuration();
     }
 
-     public function form_carta($carta, $err)
+     public function form_carta($carta, $errori)
      {
+         if(isset($errori)){
+         foreach ($errori as $err) {
+             switch ($err) {
+                 case "intestatario":
+                     $this->smarty->assign('errorIntestatario', "errore");
+                     break;
+
+                 case "cvv":
+                     $this->smarty->assign('errorCvv', "errore");
+                     break;
+
+                 case "numerocarta":
+                     $this->smarty->assign('errorNumerocarta', "errore");
+                     break;
+             }
+             }
+         }
          if ($carta)
          {
              $this->smarty->assign('nome', $carta->getIntestat());

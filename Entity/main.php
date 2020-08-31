@@ -419,13 +419,13 @@ echo $o[1]->toString();
 //------------------------------------------------------------------------
 */
 
-
+/*
 //----------LOAD FNEGOZIO-------------------------------------------------
 $n=new FNegozio();
 $out=$n->load('email_negozio', 'mirkoNegozio@virgilio.it');
 var_dump($out);
 //------------------------------------------------------------------------
-
+*/
 
 /*
 //------------UPDATE FUTENTE_LOGGATO-------------------------------------
@@ -656,7 +656,9 @@ $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
 
-var_dump($_POST["ricorda"]);
+
+if(0==NULL)
+    echo "ciao";
 
 
 
