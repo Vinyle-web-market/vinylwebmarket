@@ -1,3 +1,4 @@
+{assign var='stato' value=$stato|default:'1'}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -57,6 +58,7 @@
                 <div class="container">
                     <div class="row profile">
                         <div class="col-md-3">
+                            <div class="profile-sidebar">
                             <div class="profile-userpic">
                                 <a href="/vinylwebmarket/User/modificaProfiloImage">
                                     <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive" alt="img non disponibile">
@@ -118,9 +120,16 @@
                     </div>
                     <div class="col-md-9">
                         <div class="profile-content">
-                            <br>
-
-
+                            {if $tipo!=1}
+                                <br>
+                            <div style="color: red;">
+                                <center><h3>Il tuo abbonamento è scaduto! Non potrai pubblicare più di 3 vinili in vendita!</h3></center>
+                            </div>
+                                <br>
+                                <center>
+                                <h5>Per aggiornare il tuo abbonamento clicca su: "Prolunga o rinnova il tuo Abbonamento"  </h5>
+                                </center>
+                            {/if}
 
 
                         </div>
