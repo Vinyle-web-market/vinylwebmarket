@@ -52,6 +52,7 @@
                 <div class="col-md-12">
                     <div class="msg_history">
     {if $mes}
+                        {if is_array($mes)}
             {for $i=0 to $n_mes}
                     {if $mes[$i]->getMittente()==$email1}
                         <div class="outgoing_msg">
@@ -77,6 +78,31 @@
                         </div>
                     {/if}
                 {/for}
+               {else}
+                            {if $mes->getMittente()==$email1}
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>{$mes->getTesto()}</p>
+                                    </div>
+                                </div>
+                            {else}
+                                <div class="incoming_msg">
+                                    <br>
+                                    <div class="incoming_msg_img">
+                                        {if $immagine == 'ok'}
+                                            <img class="rounded-circle ml-3" width="40" height="40" src="data:{$type};base64,{$pic64}" width="40" height="40" alt="sunil">
+                                        {else}
+                                            <img class="rounded-circle ml-3" width="40" height="40"  src="/vinylwebmarket/Smarty/immagini/user.png" width="40" height="40" alt="sunil">
+                                        {/if}
+                                    </div>
+                                    <div class="received_msg">
+                                        <div class="received_withd_msg">
+                                            <p>{$mes->getTesto()}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {/if}
+                        {/if}
                         {else}
         <div class="text-center"
         <h1>Al momento non ci sono messaggi. Inizia la conversazione.</h1>
