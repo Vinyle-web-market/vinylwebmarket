@@ -463,7 +463,7 @@ class FDatabase
     public function prendiVinile ()
     {
         try {
-            $query = "SELECT * FROM vinile;";
+            $query = "SELECT * FROM vinile WHERE visibility = 1;";
             $pdost = $this->db->prepare($query);
             $pdost->execute();
             $rowsNumber = $pdost->rowCount();

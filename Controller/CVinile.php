@@ -173,15 +173,11 @@ class CVinile
             $input = EInputControl::getInstance();
             $utente=$sessione->getUtente();
             $tipo=get_class($utente);
-            //Dio santo qua ci sta un problema...
             var_dump($tipo);
-            echo"<hr>";
-            var_dump(self::contaVinili($utente)==1);
-            if($tipo='EPrivato' && self::contaVinili($utente)==1){
-                var_dump("ciao");
+            if($tipo=='EPrivato' && self::contaVinili($utente)==1){
                 $view->formVinile($utente,'limite');
             }
-            elseif ($tipo='ENegozio' && self::contaVinili($utente)==1 && $utente->getAbbonamento()->isStato()==0){
+            elseif ($tipo=='ENegozio' && self::contaVinili($utente)==1 && $utente->getAbbonamento()->isStato()==0){
                  $view->formVinile($utente,'limite');
                 }
             else {
@@ -306,7 +302,7 @@ class CVinile
                 $img=CFiltro::ImageVinyls($vinili);
                 $view->ModificaVinile($vinili,$img,null);
             } else
-                header('Location: /FillSpaceWEB/Utente/login');
+                header('Location: /vinylwebmarket/User/login');
         }
     }
 

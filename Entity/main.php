@@ -656,20 +656,8 @@ $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
 
-$pm=new FPersistentManager();
-$utente=$pm->load("email_negozio","mirkoNegozio@virgilio.it","FNegozio");
-$vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
-/*
-if ($utente->getAbbonamento()->isState()==0){
-    for ($i=2; $i<count($vinili)-1; $i++){
-        $pm->update('visibility', '0', 'id', $vinili[$i]->getId(), 'FVinile');
-    }
-}
-var_dump($utente);
-echo"<hr>";
-var_dump(count($vinili));
-*/
-if(1==true)
+
+if(0==NULL)
     echo "ciao";
 
 

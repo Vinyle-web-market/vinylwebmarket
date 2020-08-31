@@ -65,6 +65,7 @@ class CAbbonamento
                 $data = $abb->AggiornaAbbonamento($n_mesi);
                 $pm->update("scadenza", $data, "id", $id, "FAbbonamento");
                 $pm->update("stato", 1, "id", $id, "FAbbonamento");
+                $pm->update("visibility", 1, "venditore",$sessione->getUtente()->getEmail(), "FVinile");
                 $u=$pm->load("id_abbonamento",$id,"FNegozio");
                 $sessione->setUtenteLoggato($u);   //AGGIORNO LA SESSIONE
                 header('Location: /vinylwebmarket/User/profile');
