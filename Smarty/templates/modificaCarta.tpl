@@ -62,6 +62,7 @@
         <form class="form-horizontal" role="form" action="/vinylwebmarket/Abbonamento/check_carta" method="post">
           <fieldset>
             <legend>Reinserisci Scadenza e Cvv della tua carta registrata o prosegui con un'altra carta valida </legend>
+            <hr color="black">
             <div class="form-group">
               <label class="col-sm-3 control-label" for="card-holder-name">Nome intestatario</label>
               <div class="col-sm-9">
@@ -126,9 +127,9 @@
             <!--AGGIUNTE 2 RIGHE QUI-->
             <input type="checkbox" id="vehicle1" name="ricorda" value="si">
             <label for="vehicle1"><legend> Ricorda questa carta</legend></label><br>
-
+            <hr color="black">
             <div class="form-group">
-              <div class="col-sm-offset-3 col-sm-9">
+              <div class="col-md-6 centrato">
                 <button type="submit" class="btnSubmit">Avanti</button>
               </div>
             </div>
@@ -142,6 +143,7 @@
         <form class="form-horizontal" role="form" action="/vinylwebmarket/User/modificaCarta" method="post">
           <fieldset>
             <legend>Registra un'altra carta</legend>
+            <hr color="black">
             <div class="form-group">
               <label class="col-sm-3 control-label" for="card-holder-name">Nome intestatario</label>
               <div class="col-sm-9">
@@ -201,6 +203,7 @@
                 <input type="text" class="form-control" name="cvv" maxlength="3" id="cvv" placeholder="Codice di sicurezza CVV">
               </div>
             </div>
+            <hr color="black">
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-9">
                 <button type="submit" class="btnSubmit">Aggiorna</button>

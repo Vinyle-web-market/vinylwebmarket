@@ -179,6 +179,7 @@
                 <hr color=black>
                 <br>
                 <h3 class="text-center">Recensione dell utente:</h3>
+                <div class="border" style="max-height: 500px; overflow-y: scroll; overflow-x: hidden;">
                 {if $rec!=null}
                     {if is_array($rec)}
                         {for $i=0 to $n_recensioni}
@@ -302,6 +303,7 @@
                                                                         </div>
                     {/if}
                 {/if}
+                </div>
             </div>
 
 
@@ -435,6 +437,7 @@
                     <hr color=black>
                     <br>
                     <h3 class="text-center">Recensione dell utente:</h3>
+                    <div class="border" style="max-height: 500px; overflow-y: scroll; overflow-x: hidden;">
                     {if $rec!=null}
                         {if is_array($rec)}
                             {for $i=0 to $n_recensioni}
@@ -556,7 +559,11 @@
                         </div>
                     {/if}
                     {/if}
+                    </div>
                 </div>
+                </div>
+            </div>
+
 
 
 
