@@ -150,37 +150,46 @@ class Session
         $_SESSION['amministratore'] = true;
     }
 
-    /**
-     * Metodo che salva nei dati di sessione il path che l'utente stava visitando prima di effettuare il login (redirect)
-     * @param $path
-     */
-    public function setPath($path){
+    public function setVinile($vinile){
         if(session_status()==PHP_SESSION_NONE){
             session_start();
+            //$_SESSION['vinili']=array();
         }
-        $_SESSION['path'] = $path;
+        if(isset($_SESSION['vinili'])){
+            $v=array();
+        $v = serialize($vinile);
+        array_push($_SESSION['vinili'],$v);
+        }
+        else{
+            $_SESSION['vinili']=array();
+            $v = serialize($vinile);
+            $_SESSION['vinili'][]=$v;
+        }
     }
 
-    /**
-     * Metodo che restituisce il path salvato nei dati di sessione
-     * @return mixed
-     */
-    public function getPath(){
+    public function getVinile(){
         if(session_status()==PHP_SESSION_NONE){
             session_start();
         }
-        $path = $_SESSION['path']; //stringa
-        return $path;
+        $v=array();
+        if(isset($_SESSION['vinili'])){
+        if(is_array($_SESSION['vinili'])) {
+            foreach ($_SESSION['vinili'] as $item) {
+                $vs = unserialize($item);
+                array_push($v, $vs);
+            }
+           // $u = $_SESSION['vinili']; //stringa
+        } else{
+            $vs = $_SESSION['vinili']; //stringa
+            $v = unserialize($vs);
+        }
+    } else{
+            $v=null;
+        }
+        return $v;
     }
 
-    /**
-     * Metodo che rimuove il path dai dati di sessione (appena l'utente effettua il login)
-     */
-    public function removePath() {
-        if(session_status()==PHP_SESSION_NONE){
-            session_start();
-        }
-        unset($_SESSION['path']);
-    }
+
+
 
 }

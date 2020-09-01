@@ -188,7 +188,8 @@ class CMessaggi
             $view->showMessaggi($result, $img, $email1, $email2);
 
         }else{
-            setcookie("conversazione","si", time() + 900, "/");
+            setcookie("elenco_chat","si", time()+900,"/");
+            //setcookie("conversazione","si", time() + 900, "/");
             header('Location: /vinylwebmarket/User/login');
         }
 
@@ -224,7 +225,8 @@ class CMessaggi
             $pm->store($m);
             $c->redirect_chat();
         }else {
-            setcookie("profilo_contattato", $_POST['email2'], time() + 900, "/");
+            setcookie("elenco_chat","si", time()+900,"/");
+            //setcookie("profilo_contattato", $_POST['email2'], time() + 900, "/");
             header('Location: /vinylwebmarket/User/login');
         }
     }

@@ -255,6 +255,11 @@
                                             <i class="glyphicon glyphicon-user"></i>
                                             Pubblica e vendi i tuoi vinili </a>
                                     </li>
+                                    <li>
+                                    <a href="/vinylwebmarket/Vinile/UltimiViniliCercati" target="_blank">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Ultimi Vinili Cercati</a>
+                                    </li>
 
                                 </div>
                                 <!-- END MENU -->

@@ -276,24 +276,24 @@ class CUser
             if ($_POST['email'] != 'admin@admin.com') {
                 if (isset($_COOKIE['chat']) && $_COOKIE['chat'] != $_POST['email']) {
                     header('Location: /vinylwebmarket/Messaggi/elencoChat');
-                } elseif (isset($_COOKIE['profilo_visitato'])) {
-                    header('Location: /vinylwebmarket/User/viewProfilePublic');
-                }
-                elseif (isset($_COOKIE['profilo_contattato'])) {
-                    $emailRedirect=$_COOKIE['profilo_contattato'];
-                    setcookie("profilo_contattato", null, time() - 900, "/");
+                } //elseif (isset($_COOKIE['profilo_visitato'])) {
+                   // header('Location: /vinylwebmarket/User/viewProfilePublic');
+               // }
+                elseif (isset($_COOKIE['profilo_visitato'])) {
+                    $emailRedirect=$_COOKIE['profilo_visitato'];
+                    setcookie("profilo_visitato", null, time() - 900, "/");
                     header('Location: /vinylwebmarket/User/return_dettaglioutente/'.$emailRedirect);
                 }
                 elseif (isset($_COOKIE['elenco_chat'])) {
                     $emailRedirect=$_COOKIE['elenco_chat'];
                     setcookie("elenco_chat", null, time() - 900, "/");
                     header('Location: /vinylwebmarket/Messaggi/elencoChat');
-                }
+                }/*
                 elseif (isset($_COOKIE['conversazione'])) {
                     $emailRedirect=$_COOKIE['conversazione'];
                     setcookie("conversazione", null, time() - 900, "/");
                     header('Location: /vinylwebmarket/Messaggi/elencoChat');
-                }
+                }*/
                    else {
                     if (isset($_COOKIE['chat']))
                         setcookie("chat", null, time() - 900, "/");
@@ -629,16 +629,18 @@ class CUser
     public function viewProfilePublic()
     {
         $sessione = Session::getInstance();
-        if ($sessione->isLoggedUtente()) {
             if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 if ($sessione->isLoggedUtente()) {
                     header('Location: /vinylwebmarket/User/profile');
                     //header('Location: /vinylwebmarket/');
-                } else
+                } else{
                     header('Location: /vinylwebmarket/User/login');
+                }
+
             } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $view = new VUser();
                 $pm = new FPersistentManager();
+                if ($sessione->isLoggedUtente()) {
                 if (isset($_POST['email'])) {
                     static::return_dettaglioutente($_POST['email']);
                     //presente in CRecensione
@@ -662,12 +664,11 @@ class CUser
                     header('Location: /FillSpaceWEB/Utente/login');
                 }
             }*/
-            } elseif (isset($_COOKIE['profilo_visitato'])) {
-                static::return_dettaglioutente($_COOKIE['profilo_visitato']);
+            } else {
+                    setcookie("profilo_visitato", $_POST['email'], time()+900);
+                    header('Location: /vinylwebmarket/User/login');
             }
         }
-                else
-            header('Location: /vinylwebmarket/User/login');
     }
 
     /**

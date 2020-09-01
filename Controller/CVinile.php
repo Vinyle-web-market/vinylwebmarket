@@ -228,6 +228,9 @@ class CVinile
         $pm = new FPersistentManager();
         //ublic static function load($field, $value,$Fclass) {
         $result = $pm->load("id_vinile", $id, "FVinile");
+        $sessione=Session::getInstance();
+        $sessione->setVinile($result);
+        var_dump($_SESSION["vinili"]);
         if(get_class($result->getVenditore())=="EPrivato") {
             $nome = $result->getVenditore()->getNome();
             $cognome = $result->getVenditore()->getCognome();
@@ -300,7 +303,7 @@ class CVinile
                 $img=CFiltro::ImageVinyls($vinili);
                 $view->ModificaVinile($vinili,$img,null);
             } else
-                header('Location: /FillSpaceWEB/Utente/login');
+                header('Location: /vinylwebmarket/User/login');
         }
     }
 
@@ -339,6 +342,7 @@ class CVinile
             header('Location: /vinylwebmarket/User/profile');
     }
 
+
     /**
      * funzione per eliminare Vinili nella sezione per la gestione dei vinili
      * @param $id id dell'annuncio da eliminare
@@ -366,6 +370,46 @@ class CVinile
         else
             header('Location: /vinylwebmarket/User/login');
     }
+
+    static function UltimiViniliCercati (){
+        $view = new VVinile();
+        $pm = new FPersistentManager();
+        $sessione = Session::getInstance();
+        if($sessione->isLoggedUtente()) {
+            $result = $sessione->getVinile();
+            $img = CFiltro::ImageVinyls($result);     //img anteriori
+            $imgP = CFiltro::ImageVinyls2($result);//img posteriori
+            $view->Vetrina($result, $img, $imgP);
+        }
+        else
+            header('Location: /vinylwebmarket/User/login');
+    }
+
+    static function VetrinaUtenteVisitato (){
+        $view = new VVinile();
+        $pm = new FPersistentManager();
+        $sessione = Session::getInstance();
+        if($sessione->isLoggedUtente()) {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $email=$_POST["email_venditore"];
+                $result = $pm->load("venditore",$email,"FVinile");
+                $img = CFiltro::ImageVinyls($result);     //img anteriori
+                $imgP = CFiltro::ImageVinyls2($result);//img posteriori
+                $view->Vetrina($result, $img, $imgP);
+            }
+            else
+                header('Location: /vinylwebmarket/User/profile');
+        }
+        else
+            header('Location: /vinylwebmarket/User/login');
+    }
+
+
+
+
+
+
+
 
 
 

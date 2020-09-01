@@ -269,8 +269,8 @@ class CFiltro
             $result1 = $pm->ricercaVinili ($value);
             $result2 = $pm->cercaViniliCampo($value,"artista");
             if(!isset($result1))$result=$result2;
-            elseif(!isset($result2))$result=$result1;
-            else $result=array_merge($result1,$result2);
+               elseif(!isset($result2))$result=$result1;
+                  else $result=array_merge($result1,$result2);
 
             //fare la funzione per le immagini vinili,simile imageReviews in Cuser
             $img=static::ImageVinyls($result);

@@ -75,14 +75,17 @@ class CRecensione
                             $view->profilopubblico($privato, $privato->getEmail(), $img, $imgrecensioni, $rec, "si");
                     }
                 }else {
+                    if(isset($_COOKIE["profilo_visitato"])){
+                        setcookie("profilo_visitato", null, time() - 900, "/");
+                    }
                     setcookie("profilo_visitato", $_POST['destinatario'], time()+900);
                     header('Location: /vinylwebmarket/User/login');
                 }
             }
         }
-        elseif(isset($_COOKIE['profilo_visitato'])) {
-            static::return_dettaglioutente($_COOKIE['profilo_visitato']);
-        }
+       // elseif(isset($_COOKIE['profilo_visitato'])) {
+        //    static::return_dettaglioutente($_COOKIE['profilo_visitato']);
+        //}
     }
     /*presenti in CUser
     static function ImageReviews($user) {

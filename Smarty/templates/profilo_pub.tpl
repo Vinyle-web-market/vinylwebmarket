@@ -95,9 +95,10 @@
                             <button class="btn-product">Invia un messaggio</button>
                         </form>
                         <hr color=black>
-                        <a href="vinilivendita.html">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
+                        <form action="/vinylwebmarket/Vinile/VetrinaUtenteVisitato " method="POST">
+                            <input type="hidden" value="{$email}" name="email_venditore">
+                            <button type="sumbit" class="btn-product">Visualizza vinili in vendita</button>
+                        </form>
                     </div>
                     <hr color=black>
                     <!-- END MENU -->
@@ -354,9 +355,10 @@
                                 <button class="btn-product">Invia un messaggio</button>
                             </form>
                             <hr color=black>
-                            <a href="vinilivendita.html">
-                                <i class="glyphicon glyphicon-user"></i>
-                                <button type="button" class="btn-product">Visualizza vinili in vendita</button> </a>
+                            <form action="/vinylwebmarket/Vinile/VetrinaUtenteVisitato " method="POST">
+                                <input type="hidden" value="{$email}" name="email_venditore">
+                                <button type="submit" class="btn-product">Visualizza vinili in vendita</button>
+                            </form>
                         </div>
                         <hr color=black>
                         <!-- END MENU -->
