@@ -112,7 +112,18 @@ class VMessaggi
         $this->smarty->assign('email1',$email1);
         $this->smarty->assign('email2',$email2);
         $this->smarty->assign('mes',$result);
-        $this->smarty->assign('n_mes',count($result)-1);
+
+        if (isset($mes)) {
+            if (is_array($mes)) {
+                $this->smarty->assign('n_mes', count($mes)-1 );
+            }
+            elseif (is_object($mes)) {
+                $this->smarty->assign('n_mes', 1);
+            }
+        }
+        else
+            $this->smarty->assign('n_mes', 0);
+
         $this->smarty->display('messaggi.tpl');
     }
 

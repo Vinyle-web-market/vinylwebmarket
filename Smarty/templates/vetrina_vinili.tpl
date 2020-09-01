@@ -130,14 +130,17 @@
                                     </a>
                                 </div>
                             <div class="product-content">
-                                <h3 class="title"><a href="#">{$vinili[$i]->getTitolo()}</a></h3>
+                                <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}}">{$vinili[$i]->getTitolo()}</a></h3>
                                 <h3 class="title">{$vinili[$i]->getArtista()}</h3>
                                 <hr color=black>
                                 <div class="price">
                                     {$vinili[$i]->getPrezzo()}€
                                 </div>
                                 <hr color=black>
-                                <a class="add-to-cart" href="">CONTATTA IL VENDITORE</a>
+                                <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                                    <input type="text" hidden name="email" value="{$vinili[$i]->getVenditore()->getEmail()}" />
+                                    <figure><button type="submit" class="add-to-cart">CONTATTA IL VENDITORE</button></figure>
+                                </form>
                             </div>
             </div>
         </div>
@@ -153,14 +156,17 @@
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">{$vinili->getTitolo()}</a></h3>
+                    <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili->getId()}}">{$vinili->getTitolo()}</a></h3>
                     <h3 class="title">{$vinili->getArtista()}</h3>
                     <hr color=black>
                     <div class="price">
                         {$vinili->getPrezzo()}€
                     </div>
                     <hr color=black>
-                    <a class="add-to-cart" href="">CONTATTA IL VENDITORE</a>
+                    <form method="POST" action="/vinylwebmarket/User/viewProfilePublic">
+                        <input type="text" hidden name="email" value="{$vinili->getVenditore()->getEmail()}" />
+                        <figure><button type="submit" class="add-to-cart">CONTATTA IL VENDITORE</button></figure>
+                    </form>
                 </div>
             </div>
             </div>

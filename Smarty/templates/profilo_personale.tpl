@@ -138,7 +138,7 @@
                                     <hr>
                                 </div>
 
-                                <div class=" text-muted pt-3 ">
+
                                     <div class="border" style="max-height: 500px; overflow-y: scroll; overflow-x: hidden;">
                                     {if $vinili}
                                     {if is_array($vinili)}
@@ -164,8 +164,9 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
                                 {/for}
+                                    </div>
+
                                 {else}
                                 <div class="row border-bottom">
                                     <div class="col-md-1 mt-2 mb-2">
@@ -276,33 +277,33 @@
                                             <hr>
                                         </div>
 
-                                    <div class=" text-muted pt-3 ">
+                                    <div class="border" style="max-height: 500px; overflow-y: scroll; overflow-x: hidden;">
                                         {if $vinili}
                                         {if is_array($vinili)}
                                         {for $i=0 to $n_vinili}
-                                        <div class="row border-bottom">
-                                            <div class="col-md-1 mt-2 mb-2">
-                                                <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev[$i]};base64,{$pic64v[$i]}" />
+                                            <div class="row border-bottom">
+                                                <div class="col-md-1 mt-2 mb-2">
+                                                    <img class="rounded-circle ml-3" width="60" height="60" src="data:{$typev[$i]};base64,{$pic64v[$i]}" />
+                                                </div>
+                                                <div class="col-md-7 ">
+                                                    <p class="mt-1">
+                                                        <strong>Titolo: {$vinili[$i]->getTitolo()} | Artista: {$vinili[$i]->getArtista()} </strong>
+                                                        <br>
+                                                        Q.ta:{$vinili[$i]->getQuantita()}
+                                                        <br>
+                                                        Prezzo:{$vinili[$i]->getPrezzo()}€
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-2 mt-3">
+                                                    <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}" method="POST">
+                                                        <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
+                                                        <br>
+                                                        <br>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            <div class="col-md-7 ">
-                                                <p class="mt-1">
-                                                    <strong>Titolo: {$vinili[$i]->getTitolo()} | Artista: {$vinili[$i]->getArtista()} </strong>
-                                                    <br>
-                                                    Q.ta:{$vinili[$i]->getQuantita()}
-                                                    <br>
-                                                    Prezzo:{$vinili[$i]->getPrezzo()}€
-                                                </p>
-                                            </div>
-                                            <div class="col-md-2 mt-3">
-                                                <form action="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}" method="POST">
-                                                    <button class="btn white read" type="submit" value="Submit">Visualizza anteprima</button>
-                                                    <br>
-                                                    <br>
-                                                </form>
-                                            </div>
-                                        </div>
+                                        {/for}
                                     </div>
-                                    {/for}
                                     {else}
                                     <div class="row border-bottom">
                                         <div class="col-md-1 mt-2 mb-2">
