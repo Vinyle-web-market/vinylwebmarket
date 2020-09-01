@@ -54,6 +54,11 @@
                 <a class="dropdown-item" href="/vinylwebmarket/User/FormRegNegozio">Iscriviti come negozio</a>
               </div>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/vinylwebmarket/Vinile/Vetrina">Visualizza vinili in vendita</a>
+            </li>
+
           </ul>
           <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
             <input name="parola" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -41,7 +41,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/vinylwebmarket/User/profile">Profilo</a>
             </li>
-
+              <li class="nav-item">
+                  <a class="nav-link" href="/vinylwebmarket/Vinile/Vetrina">Visualizza vinili in vendita</a>
+              </li>
             <li class="nav-item dropdown">
           </ul>
             <form class="form-inline my-2 my-lg-0" method="POST" action="/vinylwebmarket/Filtro/ricercaParola">
