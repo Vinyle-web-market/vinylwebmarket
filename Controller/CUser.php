@@ -139,7 +139,7 @@ class CUser
                             $view2->ErrorInputRegistrazioneNegozio($err, "typeimg");
                             break;
                         case "ok":
-                            header('Location:/vinylwebmarket/Homepage/impostaPaginaULnegozio');
+                            header('Location:/vinylwebmarket/Homepage/impostaPaginaUL');
                             break;
                     }
                 }

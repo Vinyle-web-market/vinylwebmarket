@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>profilo negozio</title>
+    <title>profilo personale</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -81,7 +81,7 @@
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
                                 <li>
-                                    <a href="messaggi.html">
+                                    <a href="/vinylwebmarket/Messaggi/elencoChat">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Messaggio </a>
                                 </li>

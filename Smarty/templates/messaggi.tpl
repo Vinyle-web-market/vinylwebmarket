@@ -113,7 +113,7 @@
                     <div class="type_msg">
                         <div class="input_msg_write">
                             <form action="/vinylwebmarket/Messaggi/invio_mes" method="POST">
-                            <input type="text" class="write_msg" placeholder="Type a message" name="testo"/>
+                            <input type="text" class="write_msg" placeholder="Type a message" name="testo" required/>
                                 <input type="hidden" value="{$email2}" name="email2">
                             <button class="msg_send_btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                             </form>

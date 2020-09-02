@@ -232,7 +232,7 @@ class CMessaggi
     }
 
     /**
-     * Funzione che si occupa di avviare (o riprendere) una chat.
+     * Funzione che si occupa di riprendere una chat.
      * 1) se il metodo di richiesta HTTP è GET e non si è loggati, si viene reindirizzati alla form di login;
      * 2) se il metodo di richiesta HTTP è POST e si è loggati, attraverso la funzione redirect_chat(), avviene l'invio vero e proprio del messaggio;
      * 3) se il metodo di richiesta HTTP è GET e si è loggati, avviene il redirect alla pagina per visualizzare l'elenco delle proprie chat;

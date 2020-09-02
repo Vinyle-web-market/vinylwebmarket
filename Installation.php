@@ -62,7 +62,7 @@ class Installation{
             $db = new PDO("mysql:host=127.0.0.1;", $_POST['nomeutente'], $_POST['password']);
             $db->beginTransaction();
             $query = 'DROP DATABASE IF EXISTS ' .$_POST['nomedb']. '; CREATE DATABASE ' . $_POST['nomedb'] . ' ; USE ' . $_POST['nomedb'] . ';' . 'SET GLOBAL max_allowed_packet=16777216;';
-            $query = $query . file_get_contents('fillspace.sql');
+            $query = $query . file_get_contents('vinylwebmarket.sql');
             $db->exec($query);
             $db->commit();
             $file = fopen('config.inc.php', 'c+');
