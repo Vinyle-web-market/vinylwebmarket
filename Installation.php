@@ -63,10 +63,7 @@ class Installation
 
                 // si procede con l'installazione e il popolamento del database
                 if(static::Installazione())
-                {
-                    if($_POST['populate'] == "yes")
-                        static::Popolazione(); //se è stata selezionata la voce populate si popola il database.
-                }
+
                 header ('Location: /vinylwebmarket');
             }
 
@@ -100,29 +97,6 @@ class Installation
             $db->rollBack();
             die;
             //return false;                      //si puo' mettere, ma non è necessaria
-        }
-    }
-
-    /**
-     *Funzione che provvede alla creazione del file config.inc.php per l'accesso al database e della creazione del database.
-     */
-
-    static function Popolazione()
-    {
-        try
-        {
-            $db = new PDO("mysql:host=localhost; dbname=".$_POST['nomedb'], $_POST['nomeutente'], $_POST['password']);
-            $db->beginTransaction();
-            $db->exec(file_get_contents('insert.sql'));
-            $db->commit();
-            $db = null;
-        }
-        catch (PDOException $e)
-        {
-            echo "Errore : " . $e->getMessage();
-            $db->rollBack();
-            die;
-            //return false;            //si puo' mettere, ma non è necessaria
         }
     }
 
