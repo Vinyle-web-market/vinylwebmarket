@@ -210,7 +210,7 @@ CREATE TABLE `negozio` (
 
 INSERT INTO `negozio` (`email_negozio`, `nome`, `partitaiva`, `indirizzo`, `id_carta`, `id_abbonamento`) VALUES
 ('alberto@virgilio.it', 'AlbertoShop', '12345678945', 'via Fabbri 67', 87, 86),
-('mirkoNegozio@virgilio.it', 'Mirko\'S shop', '12312345612', 'vivia Paolo Poli', 89, 88),
+('mirkoNegozio@virgilio.it', 'Mirko shop', '12312345612', 'vivia Paolo Poli', 89, 88),
 ('negozio@negozio.it', 'negozioStars', '12345678945', 'via Fabbri 67', 88, 87);
 
 -- --------------------------------------------------------
@@ -253,7 +253,7 @@ CREATE TABLE `recensione` (
 --
 
 INSERT INTO `recensione` (`id`, `mittente`, `destinatario`, `testo_recensione`, `voto`, `ban`) VALUES
-(7, 'vanessa.cruciani@virgilio.itq', 'negozio@negozio.it', 'Il negozio è molto fornito,gli usati sono tenuti in ottime condizioni.L\'accordo è stato raggiunto immediatamente,comprerò sicuramente di nuovo in questo negozio.', 4, 1),
+(7, 'vanessa.cruciani@virgilio.itq', 'negozio@negozio.it', 'Il negozio è molto fornito gli usati sono tenuti in ottime condizioni accordo è stato raggiunto immediatamente comprerò sicuramente di nuovo in questo negozio.', 4, 1),
 (8, 'claudio@virgilio.it', 'alberto@virgilio.it', 'miao miao', 4, 0),
 (9, 'claudio@virgilio.it', 'alberto@virgilio.it', 'bravissimo', 2, 0),
 (10, 'claudio@virgilio.it', 'negozio@negozio.it', 'ottimo servizio', 0, 0),
@@ -320,7 +320,7 @@ INSERT INTO `vinile` (`id_vinile`, `venditore`, `titolo`, `artista`, `genere`, `
 (37, 'vanessa.cruciani@virgilio.itq', 'nevermind', 'nirvana', 'rock', 33, 'nuovo', '28', 'bellissimo', 2, 1),
 (38, 'vanessa.cruciani@virgilio.itq', 'italiano medio', 'articolo31', 'Hip-Hop', 33, 'nuovo', '50', 'bellissimo', 8, 1),
 (39, 'claudio@virgilio.it', 'domani smetto', 'articolo31', 'rap pop', 33, 'usato', '20', 'beloo', 0, 1),
-(40, 'negozio@negozio.it', 'Master of Puppets', 'Metallica', 'rock', 33, 'nuovo', '27', 'Top 3 anni 90\'', 3, 1),
+(40, 'negozio@negozio.it', 'Master of Puppets', 'Metallica', 'rock', 33, 'nuovo', '27', 'Top 3 anni 90', 3, 1),
 (41, 'negozio@negozio.it', 'emozioni', 'battisti', 'italiano', 33, 'nuovo', '13', 'bellissimo', 2, 1),
 (42, 'negozio@negozio.it', 'Back to Black', 'Winehouse Amy', 'Soul', 33, 'nuovo', '61', 'L’apice della breve carriera di Amy Winehouse', 2, 1),
 (43, 'mirkoNegozio@virgilio.it', 'toxicity', 'system of a down', 'metal', 45, 'nuovo', '50', 'terzo disco per il gruppo metal', 2, 1),

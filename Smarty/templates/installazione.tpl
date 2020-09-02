@@ -22,7 +22,7 @@
     <header class="masthead mb-auto">
         <div class="inner">
             <div class="row">
-                <h1 class="cover-heading mt-5 mr-4">Installazione FillSpace</h1>
+                <h1 class="cover-heading mt-5 mr-4">Installazione VinylWebMarket</h1>
                 <img src="/vinylwebmarket/Utility/immagini/logo.svg"  width="190" height="160">
             </div>
         </div>

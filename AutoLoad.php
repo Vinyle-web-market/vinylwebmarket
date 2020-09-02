@@ -26,7 +26,7 @@ include_once 'Session.php';
 
 //include_once 'Smarty/Smarty.class.php';
 
-//include_once 'Installation.php';
+include_once 'Installation.php';
 
 include_once 'smartyConfiguration.php';
 
