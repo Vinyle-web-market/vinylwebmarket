@@ -84,7 +84,7 @@ class Installation
             $query = $query . file_get_contents('vinylwebmarket.sql');
             $db->exec($query);
             $db->commit();
-            $file = fopen('config.inc.php', 'w');      //azionato in modalità scrittura
+            $file = fopen('config.inc.php', 'c+');      //azionato in modalità scrittura
             $script = '<?php $host= \'localhost\'; $GLOBALS[\'database\']= \'' . $_POST['nomedb'] . '\'; $GLOBALS[\'username\']= \'' . $_POST['nomeutente'] . '\'; $GLOBALS[\'password\']= \'' . $_POST['password'] . '\';?>';
             fwrite($file, $script);
             fclose($file);
