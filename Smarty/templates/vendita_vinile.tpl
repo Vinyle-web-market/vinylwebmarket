@@ -149,7 +149,7 @@
                                       <textarea class="form-control"  rows="3" placeholder="Descrizione:" name="descrizione" required></textarea>
                                   </div>
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Prezzo: " name="prezzo"/>
+                                      <input type="text" class="form-control" placeholder="Prezzo: €X,Y " name="prezzo"/>
                                   </div>
                                   <div class="form-group">
                                       <input type="text" class="form-control" placeholder="Quantità: " name="quantita"/>

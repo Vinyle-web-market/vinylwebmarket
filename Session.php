@@ -177,6 +177,7 @@ class Session
             foreach ($_SESSION['vinili'] as $item) {
                 $vs = unserialize($item);
                 array_push($v, $vs);
+                $v = (array_unique($v, SORT_REGULAR));
             }
            // $u = $_SESSION['vinili']; //stringa
         } else{

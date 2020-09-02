@@ -230,7 +230,6 @@ class CVinile
         $result = $pm->load("id_vinile", $id, "FVinile");
         $sessione=Session::getInstance();
         $sessione->setVinile($result);
-        var_dump($_SESSION["vinili"]);
         if(get_class($result->getVenditore())=="EPrivato") {
             $nome = $result->getVenditore()->getNome();
             $cognome = $result->getVenditore()->getCognome();

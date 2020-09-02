@@ -22,7 +22,7 @@ class CHomepage
         list($result,$img) = $pm->vinylHome();
         $view->HomeUL($result,$img);
     }
-
+/*
     public function impostaPaginaULnegozio()
     {
         $result=null;
@@ -41,5 +41,5 @@ class CHomepage
         list($result,$img) = $pm->vinylHome();
         $view->HomeULprivato($result,$img);
     }
-
+*/
 }

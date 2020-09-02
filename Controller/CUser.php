@@ -61,7 +61,7 @@ class CUser
                             $view2->ErrorInputRegistrazionePrivato($err, "typeimg");
                             break;
                         case "ok":
-                            header('Location:/vinylwebmarket/Homepage/impostaPaginaULprivato');
+                            header('Location:/vinylwebmarket/Homepage/impostaPaginaUL');
                             break;
                     }
                 }

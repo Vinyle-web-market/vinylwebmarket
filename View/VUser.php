@@ -173,8 +173,12 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
+
     public function profile($user, $vinili, $image, $tipo, $stato,$imagev)
     {
+        $typev=null;
+        $pic64v=null;
+
         if (isset($image)) {
             $pic64 = $image->getDataImage();
             $type = $image->getMimeType();

@@ -39,7 +39,7 @@ class VHomepageUL
              $this->smarty->assign('vinili', $vinili);
              $this->smarty->assign('img', $img);
 
-        $this->smarty->display("homepage_privato.tpl");
+        $this->smarty->display("homepageUL.tpl");
     }
 
     public function HomeULnegozio($vinili,$img) {
@@ -73,7 +73,7 @@ class VHomepageUL
         $this->smarty->assign('vinili', $vinili);
         $this->smarty->assign('img', $img);
 
-        $this->smarty->display('homepage_negozio.tpl');
+        $this->smarty->display('homepageUL.tpl');
     }
 
 }

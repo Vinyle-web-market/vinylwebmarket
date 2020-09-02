@@ -117,6 +117,7 @@ class VVinile
             switch ($err){
                 case "prezzo":
                     $this->smarty->assign('erroreP', "prezzo");
+                    break;
                 case "quantità":
                     $this->smarty->assign('erroreQ', "quantità");
                     break;
@@ -124,6 +125,7 @@ class VVinile
        }else{    switch ($error){
                 case "prezzo":
                     $this->smarty->assign('erroreP', "prezzo");
+                    break;
                 case "quantità":
                     $this->smarty->assign('erroreQ', "quantità");
                     break;
