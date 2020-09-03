@@ -269,6 +269,34 @@ class FVinile
         return $vinile;
     }
 
+    public static function loadVinAtt($email)
+    {
+        $utenteloggato= null;
+        $vinile = null;
+        $db = FDatabase::getInstance();
+        $resultLoadDB = $db->loadViniliAtt($email);
+        $rows_number = $db->countLoadP(static::getClass(),"venditore", $email);
+        if (($resultLoadDB != null) && ($rows_number == 1)) {
+            $utenteloggato = FUtente_loggato::load("email", $resultLoadDB["venditore"]);
+            //function __construct(EUtente_Loggato $vend, $tit,$art, $gen, $ng, $cond, $pr, $des, $quan)
+            $vinile = new EVinile($utenteloggato, $resultLoadDB["titolo"], $resultLoadDB["artista"], $resultLoadDB["genere"], $resultLoadDB["ngiri"], $resultLoadDB["condizione"], $resultLoadDB["prezzo"], $resultLoadDB["descrizione"], $resultLoadDB["quantita"],);
+            $vinile->setId($resultLoadDB['id_vinile']);
+            $vinile->setVisibility($resultLoadDB['visibility']);  //vedere se ci andrà messa
+        } else {
+            if (($resultLoadDB != null) && ($rows_number > 1)) {
+                $vinile = array();
+                $utenteloggato = array();
+                for ($i = 0; $i < count($resultLoadDB); $i++) {
+                    $utenteloggato[] = FUtente_loggato::load("email", $resultLoadDB[$i]["venditore"]);
+                    $vinile[$i] = new EVinile($utenteloggato[$i], $resultLoadDB[$i]["titolo"], $resultLoadDB[$i]["artista"], $resultLoadDB[$i]["genere"], $resultLoadDB[$i]["ngiri"], $resultLoadDB[$i]["condizione"], $resultLoadDB[$i]["prezzo"], $resultLoadDB[$i]["descrizione"], $resultLoadDB[$i]["quantita"],);
+                    $vinile[$i]->setId($resultLoadDB[$i]['id_vinile']);
+                    $vinile[$i]->setVisibility($resultLoadDB[$i]['visibility']); //vedere se ci andrà messa
+                }
+            }
+        }
+        return $vinile;
+    }
+
 
 }
 

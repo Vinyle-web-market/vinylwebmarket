@@ -59,6 +59,13 @@ class FPersistentManager
         return $result;
     }
 
+    public static function loadViniliAttivi($email) {
+        $result = null;
+        $Fclass="FVinile";
+        $result = $Fclass::loadVinAtt($email);
+        return $result;
+    }
+
     public static function loadImg(string $categoriaImage,$field,$id){
         $result=null;
         $fclass='FImage';

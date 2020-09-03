@@ -391,7 +391,8 @@ class CVinile
         if($sessione->isLoggedUtente()) {
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $email=$_POST["email_venditore"];
-                $result = $pm->load("venditore",$email,"FVinile");
+                //$result = $pm->load("venditore",$email,"FVinile");
+                $result = $pm->loadViniliAttivi($email);
                 $img = CFiltro::ImageVinyls($result);     //img anteriori
                 $imgP = CFiltro::ImageVinyls2($result);//img posteriori
                 $view->Vetrina($result, $img, $imgP);

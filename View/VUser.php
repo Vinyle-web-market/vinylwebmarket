@@ -187,13 +187,14 @@ class VUser
             $pic64 = base64_encode($data);
             $type = "image/png";
         }
+
         if ($tipo=='ENegozio'){
             $this->smarty->assign('nomeNegozio', $user->getNameShop());
-            if ($stato!=null)
+            if ($stato==0)
             {
-                $this->smarty->assign('stato', 'ok');
+                $this->smarty->assign('stato', 'no');
             }
-            else $this->smarty->assign('stato', 'no');
+            else $this->smarty->assign('stato', 'ok');
         }
 
         else {

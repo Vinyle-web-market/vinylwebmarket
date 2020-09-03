@@ -105,13 +105,13 @@
                                 </li>
 
                                 <li>
-                                    <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
+                                    <a href="/vinylwebmarket/Vinile/pubblica" >
                                         <i class="glyphicon glyphicon-user"></i>
                                         Pubblica e vendi i tuoi vinili </a>
                                 </li>
 
                                 <li>
-                                    <a href="/vinylwebmarket/Abbonamento/form_carta" target="_blank">
+                                    <a href="/vinylwebmarket/Abbonamento/form_carta">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Prolunga o rinnova il tuo Abbonamento </a>
                                 </li>
@@ -255,12 +255,12 @@
                                             Gestione vinili </a>
                                     </li>
                                     <li>
-                                        <a href="/vinylwebmarket/Vinile/pubblica" target="_blank">
+                                        <a href="/vinylwebmarket/Vinile/pubblica">
                                             <i class="glyphicon glyphicon-user"></i>
                                             Pubblica e vendi i tuoi vinili </a>
                                     </li>
                                     <li>
-                                    <a href="/vinylwebmarket/Vinile/UltimiViniliCercati" target="_blank">
+                                    <a href="/vinylwebmarket/Vinile/UltimiViniliCercati">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Ultimi Vinili Cercati</a>
                                     </li>

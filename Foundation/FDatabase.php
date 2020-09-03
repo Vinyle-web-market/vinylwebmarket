@@ -618,6 +618,32 @@ class FDatabase
             echo "Attenzione errore: " . $e->getMessage();
         }
     }
+//per caricare vinili attivi
+    public function loadViniliAtt($email){
+        try{
+            //$sql="SELECT * FROM messaggio WHERE mittente ='" . $email . "' AND destinatario ='" . $email2 . "';";
+            $sql="SELECT * FROM vinile WHERE venditore='" .$email. "' AND visibility=1;";
+            $pdost = $this->db->prepare($sql);
+            $pdost->execute();
+            $nload=$pdost->rowCount();
+            if($nload==0)
+                $result=NULL;
+            else if($nload==1)
+                $result=$pdost->fetch(PDO::FETCH_ASSOC);
+            else {
+                $result = array();
+                $pdost->setFetchMode(PDO::FETCH_ASSOC);
+                while ($e = $pdost->fetch())
+                    $result[] = $e;
+            }
+            return $result;
+
+        }
+        catch (PDOException $err) {
+            echo "ATTENZIONE ERRORE: " . $err->getMessage();
+            return null;
+        }
+    }
 
 }
 

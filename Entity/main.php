@@ -656,7 +656,9 @@ $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
 
-var_dump($_POST);
+$pm = new FPersistentManager();
+$vinili=$pm->loadViniliAttivi("mirko_negozio@virgilio.it");
+var_dump($vinili);
 
 
 
