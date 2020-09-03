@@ -173,10 +173,10 @@ class CVinile
             $input = EInputControl::getInstance();
             $utente=$sessione->getUtente();
             $tipo=get_class($utente);
-            if($tipo='EPrivato' && self::contaVinili($utente)==1){
+            if($tipo=='EPrivato' && self::contaVinili($utente)==1){
                 $view->formVinile($utente,'limite');
             }
-            elseif ($tipo='ENegozio' && self::contaVinili($utente)==1 && $utente->getAbbonamento()->isState()==0){
+            elseif ($tipo=='ENegozio' && self::contaVinili($utente)==1 && $utente->getAbbonamento()->isStato()==0){
                  $view->formVinile($utente,'limite');
                 }
             else {
@@ -208,7 +208,7 @@ class CVinile
     static function contaVinili($utente){
         $pm=new FPersistentManager();
         $vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
-            if (is_array($vinili) && count($vinili)>3){
+            if (is_array($vinili) && count($vinili)>2){
                 return 1;
             }
             else return 0;
