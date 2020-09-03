@@ -59,12 +59,13 @@
                     <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
                   {/if}
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                   <p class="mt-1">
-                    <strong class="d-block text-gray-dark">{$utent[$i]->getEmail()} </strong>
+                    <strong class="d-block text-gray-dark">Conversazione con:
+                      <br>{$utent[$i]->getEmail()} </strong>
                   </p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-5">
                   <form action="/vinylwebmarket/Messaggi/chat" method="POST">
                     <input type="hidden" value="{$utent[$i]->getEmail()}" name="email2">
                     <button class="btn btnSubmit">Visualizza conversazione</button>
@@ -82,12 +83,13 @@
                   <img class=" ml-3" width="60" height="60" src="/vinylwebmarket/Smarty/immagini/user.png"  alt="profile picture" />
                 {/if}
               </div>
-              <div class="col-md-9 ">
+              <div class="col-md-6 ">
                 <p class="mt-1">
-                  <strong class="d-block text-gray-dark">{$utent->getEmail()} </strong>
+                  <strong class="d-block text-gray-dark">Conversazione con:
+                    <br>{$utent->getEmail()} </strong>
                 </p>
               </div>
-              <div class="col-md-2 mt-3">
+              <div class="col-md-5">
                 <form action="/vinylwebmarket/Messaggi/chat" method="POST">
                   <input type="hidden" value="{$utent->getEmail()}" name="email2">
                   <button class="btn btnSubmit">Visualizza conversazione</button>
