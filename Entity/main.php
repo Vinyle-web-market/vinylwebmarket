@@ -655,12 +655,14 @@ echo"<hr>";
 $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
-
+/*
 var_dump($_POST);
-
-
-
-
+*/
+/*
+$db=new FPersistentManager();
+$a=$db->searchVinyl(null, null, null, null, null, null);
+var_dump($a);
+*/
 
 
 

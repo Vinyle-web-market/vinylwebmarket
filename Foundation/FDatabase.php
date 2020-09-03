@@ -286,8 +286,8 @@ class FDatabase
     public function searchVinile ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
     {
         try {
-            $query = null;
             $class = "FVinile";
+            $query = "SELECT * FROM " . $class::getTable() . " WHERE visibility =1";
             $param = array($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
             for ($i = 0; $i < count($param); $i++) {
                 if ($param[$i] != null) {
