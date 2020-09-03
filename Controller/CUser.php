@@ -578,7 +578,7 @@ class CUser
                 $sessione->setUtenteLoggato($newutente);
                 //$salvare = serialize($newutente);
                 //$_SESSION['utente'] = $salvare;
-                $view->profileNegozio($newutente, $vinili, $img1);
+                header('Location: /vinylwebmarket/User/profile');
             }
         }
     }
