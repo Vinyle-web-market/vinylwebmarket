@@ -299,16 +299,15 @@
                                                 </section>
                                             </div>
                     {/if}
-                    {else}
+                {else}
                         <div class="col-md-9">
                                                                             <br>
                                                                             <h3 class="text-center">-Nessuna Recensione-</h3>
                                                                         </div>
-                    {/if}
                 {/if}
                 </div>
             </div>
-
+        {/if}
 
         {if $tipoutente=='negozio'}
         <div class="container">
@@ -562,12 +561,12 @@
                             <h3 class="text-center">-Nessuna Recensione-</h3>
                         </div>
                     {/if}
-                    {/if}
+
                     </div>
                 </div>
                 </div>
             </div>
-
+        {/if}
 
 
 
