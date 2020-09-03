@@ -656,10 +656,7 @@ $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
 
-
-if(0==NULL)
-    echo "ciao";
-
+var_dump($_POST);
 
 
 

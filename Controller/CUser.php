@@ -397,7 +397,8 @@ class CUser
                                 $sessione->setUtenteLoggato($newutente);
                                 //$salvare = serialize($newutente);
                                 //$_SESSION['utente'] = $salvare;
-                                $view->profilePrivato($newutente, $vinili, $img1);
+                                //$view->profilePrivato($newutente, $vinili, $img1);
+                                header('Location: /vinylwebmarket/User/profile');
                             } else {
                                 $view->formModificaProfiloPrivato($utente, $img, "errorEmailInput");
                             }
@@ -431,7 +432,8 @@ class CUser
                                 $sessione->setUtenteLoggato($newutente);
                                 //$salvare = serialize($newutente);
                                 //$_SESSION['utente'] = $salvare;
-                                $view->profileNegozio($newutente, $vinili, $img1);
+                                //$view->profileNegozio($newutente, $vinili, $img1);
+                                header('Location: /vinylwebmarket/User/profile');
                             } else {
                                 $view->formModificaProfiloNegozio($utente, $img, "errorEmailInput");
                             }
