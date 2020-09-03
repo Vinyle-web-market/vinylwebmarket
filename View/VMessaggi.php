@@ -113,11 +113,11 @@ class VMessaggi
         $this->smarty->assign('email2',$email2);
         $this->smarty->assign('mes',$result);
 
-        if (isset($mes)) {
-            if (is_array($mes)) {
-                $this->smarty->assign('n_mes', count($mes)-1 );
+        if (isset($result)) {
+            if (is_array($result)) {
+                $this->smarty->assign('n_mes', count($result)-1 );
             }
-            elseif (is_object($mes)) {
+            elseif (is_object($result)) {
                 $this->smarty->assign('n_mes', 1);
             }
         }
