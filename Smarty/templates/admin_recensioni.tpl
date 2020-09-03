@@ -67,9 +67,12 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$recensioni[$i]->getUsernameMittente()} {$recensioni[$i]->getUsernameDestinatario()} </strong>
-                                    {$recensioni[$i]->getVotostelle()}
-                                    {$recensioni[$i]->getTesto()}
+                                    <strong class="d-block text-gray-dark">Recensione scritta da: {$recensioni[$i]->getUsernameMittente()}
+                                        <br>
+                                        A: {$recensioni[$i]->getUsernameDestinatario()} </strong>
+                                    Voto: {$recensioni[$i]->getVotostelle()}
+                                    <br>
+                                    Testo: {$recensioni[$i]->getTesto()}
                                 </p>
                             </div>
                             <div class="col-md-2">
@@ -90,9 +93,12 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$recensioni->getUsernameMittente()} {$recensioni->getUsernameDestinatario()} </strong>
-                                {$recensioni->getVotostelle()}
-                                {$recensioni->getTesto()}
+                                <strong class="d-block text-gray-dark">Recensione scritta da: {$recensioni->getUsernameMittente()}
+                                    <br>
+                                    A: {$recensioni->getUsernameDestinatario()} </strong>
+                                Voto: {$recensioni->getVotostelle()}
+                                <br>
+                                Testo: {$recensioni->getTesto()}
                             </p>
                         </div>
                         <div class="col-md-2">

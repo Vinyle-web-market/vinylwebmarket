@@ -63,8 +63,8 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$negoziAttivi[$i]->getEmail()} </strong>
-                                    {$abbonamentiAttivi[$i]->getData()}
+                                    <strong class="d-block text-gray-dark">Email: {$negoziAttivi[$i]->getEmail()} </strong>
+                                   Scadenza: {$abbonamentiAttivi[$i]->getData()}
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -85,8 +85,8 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$negoziAttivi->getEmail()} </strong>
-                                {$abbonamentiAttivi->getData()}
+                                <strong class="d-block text-gray-dark">Email: {$negoziAttivi->getEmail()} </strong>
+                               Scadenza: {$abbonamentiAttivi->getData()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">
@@ -120,8 +120,8 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$negoziBannati[$i]->getEmail()} </strong>
-                                    {$abbonamentiBannati[$i]->getData()}
+                                    <strong class="d-block text-gray-dark">Email: {$negoziBannati[$i]->getEmail()} </strong>
+                                    Scadenza: {$abbonamentiBannati[$i]->getData()}
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -142,8 +142,8 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$negoziBannati->getEmail()} </strong>
-                                {$abbonamentiBannati->getData()}
+                                <strong class="d-block text-gray-dark">Email: {$negoziBannati->getEmail()} </strong>
+                                Scadenza: {$abbonamentiBannati->getData()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">

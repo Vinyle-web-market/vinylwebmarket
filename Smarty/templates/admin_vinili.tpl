@@ -69,8 +69,10 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$viniliAttivi[$i]->getVenditore()->getEmail()} </strong>
-                                    {$viniliAttivi[$i]->getTitolo()} {$viniliAttivi[$i]->getArtista()}
+                                    <strong class="d-block text-gray-dark">Vinile venduto da: {$viniliAttivi[$i]->getVenditore()->getEmail()} </strong>
+                                   Titolo: {$viniliAttivi[$i]->getTitolo()}
+                                    <br>
+                                    Artista: {$viniliAttivi[$i]->getArtista()}
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -91,8 +93,10 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliAttivi->getVenditore()->getEmail()} </strong>
-                                {$viniliAttivi->getTitolo()} {$viniliAttivi->getArtista()}
+                                <strong class="d-block text-gray-dark">Vinile venduto da: {$viniliAttivi->getVenditore()->getEmail()} </strong>
+                                Titolo: {$viniliAttivi->getTitolo()}
+                                <br>
+                                Artista: {$viniliAttivi->getArtista()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">
@@ -126,8 +130,10 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark">{$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
-                                    {$viniliBannati[$i]->getTitolo()} {$viniliBannati[$i]->getArtista()}
+                                    <strong class="d-block text-gray-dark">Venile venduto da: {$viniliBannati[$i]->getVenditore()->getEmail()} </strong>
+                                   Titolo: {$viniliBannati[$i]->getTitolo()}
+                                    <br>
+                                    Artista: {$viniliBannati[$i]->getArtista()}
                                 </p>
                             </div>
                             <div class="col-md-2 mt-3">
@@ -148,8 +154,10 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark">{$viniliBannati->getVenditore()->getEmail()} </strong>
-                                {$viniliBannati->getTitolo()} {$viniliBannati->getArtista()}
+                                <strong class="d-block text-gray-dark">Venile venduto da: {$viniliBannati->getVenditore()->getEmail()} </strong>
+                                Titolo: {$viniliBannati->getTitolo()}
+                                <br>
+                                Artista: {$viniliBannati->getArtista()}
                             </p>
                         </div>
                         <div class="col-md-2 mt-3">

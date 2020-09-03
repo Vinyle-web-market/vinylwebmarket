@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark mt-4">{$utenti[$i]->getEmail()} </strong>
+                                    <strong class="d-block text-gray-dark mt-4">Utente: {$utenti[$i]->getEmail()} </strong>
                                 </p>
                             </div>
                             <div class="col-md-2">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark mt-4">{$utenti->getEmail()}</strong>
+                                <strong class="d-block text-gray-dark mt-4">Utente: {$utenti->getEmail()}</strong>
                             </p>
                         </div>
                         <div class="col-md-2">
@@ -123,7 +123,7 @@
                             </div>
                             <div class="col-md-9 ">
                                 <p class="mt-1">
-                                    <strong class="d-block text-gray-dark mt-4">{$utentiBan[$i]->getEmail()}  </strong>
+                                    <strong class="d-block text-gray-dark mt-4">Utente: {$utentiBan[$i]->getEmail()}  </strong>
 
                                 </p>
                             </div>
@@ -146,7 +146,7 @@
                         </div>
                         <div class="col-md-9 ">
                             <p class="mt-1">
-                                <strong class="d-block text-gray-dark mt-4">{$utentiBan->getEmail()}</strong>
+                                <strong class="d-block text-gray-dark mt-4">Utente: {$utentiBan->getEmail()}</strong>
 
                             </p>
                         </div>
