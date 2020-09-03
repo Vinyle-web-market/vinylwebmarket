@@ -155,6 +155,10 @@
                                                 Q.ta:{$vinili[$i]->getQuantita()}
                                                 <br>
                                                 Prezzo:{$vinili[$i]->getPrezzo()}€
+                                                <br>
+                                                {if $vinili[$i]->isVisibility()==0}
+                                                    <div style="color: red">Questo vinile non è visibile agli altri utenti! </div>
+                                                {/if}
                                             </p>
                                         </div>
                                         <div class="col-md-2 mt-3">
