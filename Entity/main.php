@@ -655,14 +655,14 @@ echo"<hr>";
 $dat=$abb->RinnovaAbbonamento($n_mesi);
 var_dump($dat);
  */
-
-$pm = new FPersistentManager();
-$vinili=$pm->loadViniliAttivi("mirko_negozio@virgilio.it");
-var_dump($vinili);
-
-
-
-
+/*
+var_dump($_POST);
+*/
+/*
+$db=new FPersistentManager();
+$a=$db->searchVinyl(null, null, null, null, null, null);
+var_dump($a);
+*/
 
 
 
