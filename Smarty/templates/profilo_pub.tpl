@@ -173,7 +173,7 @@
                                     {if $media_rec==1}
                                         <i class="fa fa-star"></i>
                                     {/if}
-                                ({$media_rec})
+                                ({$media_rec|string_format:"%.2f"})
                                 </h3>
                         </div>
                     {/if}
@@ -457,7 +457,7 @@
                                                                     <div class="one-reivew">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <h5>Scritta da: <a href="#">{$rec[$i]->getUsernameMittente()}</a></h5>
+                                                                                <h5>Scritta da: {$rec[$i]->getUsernameMittente()}</h5>
                                                                             </div>
 
                                                                         </div>

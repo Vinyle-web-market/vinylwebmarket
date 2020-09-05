@@ -98,56 +98,52 @@
                                          <input type="hidden" name="form_type" value="product" /><input type="hidden" name="utf8" value="✓" />
                                          <div class="product-details">
                                            <hr color="black">
-                                             <h1 class="single-product-name">{$ris->getTitolo()}</h1>
-                                             <hr>
-                                             <h1 class="single-product-name1">{$ris->getArtista()}</h1>
+                                             <h1 class="single-product-name">Titolo: {$ris->getTitolo()}</h1>
+                                             <h1 class="single-product-name1">Artista: {$ris->getArtista()}</h1>
                                              <div class="single-product-price">
-                                               <hr color=black>
-                                                 <div class="product-discount"><span  class="price" id="ProductPrice"><span class=money>{$ris->getprezzo()}€</span></span></div>
-                                                 <hr color=black>
+                                                 <div class="product-discount"><span  class="price" id="ProductPrice"><span class=money>Prezzo:{$ris->getprezzo()}€</span></span></div>
                                              </div>
                                              <div>
-                                                <h1 class="single-product-name1">Messo in vendita da:
+                                                <h1 class="single-product-name2">Messo in vendita da:
                                                 <i class="glyphicon glyphicon-user"></i>
                                                         {$ris->getVenditore()->getUsername()}</a></h1>
-                                                <hr color=black>
+
                                              </div>
                                              <div>
                                                <h1 class="single-product-name2">Genere:
                                                <i class="glyphicon glyphicon-user"></i>
                                                    {$ris->getGenere()}</h1>
-                                               <hr color=black>
+
                                              </div>
                                              <div>
-                                               <h1 class="single-product-name1">Condizioni:
+                                               <h1 class="single-product-name2">Condizioni:
                                                <i class="glyphicon glyphicon-user"></i>
                                                    {$ris->getCondizione()}</h1>
-                                               <hr color=black>
+
                                              </div>
                                              <div>
                                                <h1 class="single-product-name2">Tipologia:
                                                <i class="glyphicon glyphicon-user"></i>
                                                    {$ris->getNgiri()}</h1>
-                                               <hr color=black>
+
                                              </div>
                                              <div>
                                                <h1 class="single-product-name1">Quantità:
                                                <i class="glyphicon glyphicon-user"></i>
                                                    {$ris->getQuantita()}</h1>
-                                               <hr color=black>
+
                                              </div>
-                                             <h1 class="single-product-name2">Descirizione: </h1>
+                                             <hr color="black">
+                                             <h1 class="single-product-name2">Descrizione: </h1>
                                              <div class="product-info">{$ris->getDescrizione()}</div>
-                                          
-                                             <div class="single-product-action">
                                                  <div class="product-variant-option">
                                                      <select name="id" id="productSelect" class="product-single__variants" style="display:none;">
                                                          <option  selected="selected"  data-sku="YQT71020193" value="19506517377094">Default Title - <span class=money>{$ris->getPrezzo()}€</span></option>
                                                      </select>
                                                  </div>
-
+                                                    <hr color="black">
                                                  <div class="product-add-to-cart">
-                                                     <span class="control-label">Quantità</span>
+                                                     <span class="control-label">Quantità:</span>
                                                      <div class="cart-plus-minus">
                                                          <input class="cart-plus-minus-box" type="text" name="quantity" value="1">
                                                      </div>
