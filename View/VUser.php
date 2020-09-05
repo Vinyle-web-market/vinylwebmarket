@@ -491,10 +491,14 @@ class VUser
     static function media($rec){
         $s=null;
         if (is_array($rec)) {
+            $n=count($rec);
             foreach ($rec as $item) {
+                if($item->getVotostelle()==0){
+                    $n=$n-1;
+                }
                 $s=$s+$item->getVotostelle();
             }
-            $m=$s/count($rec);
+            $m=$s/$n;
             return $m;
         }
         elseif($rec!=null){
