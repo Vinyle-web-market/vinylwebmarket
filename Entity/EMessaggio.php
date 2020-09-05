@@ -1,42 +1,43 @@
 <?php
 
 /**
- * Enità Messaggio, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * Entità Messaggio, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Entity
  */
 
 class EMessaggio
 {
     /**
-     * identificativo univoco del messaggio
-     * attributeType Integer
+     * Identificativo univoco del messaggio.
+     * Attribute Type Integer.
      * autoincrement
      */
     private $id;
 
     /**
-     * mittente del messaggio
-     * References Utente_loggato
+     * Mittente del messaggio.
+     * References EUtente_loggato
      */
     private $mittente;
 
     /**
-     * destinatario del messaggio
-     * References Utente_loggato
+     * Destinatario del messaggio.
+     * References EUtente_loggato
      */
     private $destinatario;
 
     private $oggetto;
-
     private $testo;
 
-    /** Questo metodo è il costruttore della classe EMessaggio.
+    //-------------------------COSTRUTTORE-------------------------
+    /**
+     * Questo metodo è il costruttore della classe EMessaggio.
      * EMessaggio constructor.
-     * @param $mittente
-     * @param $destinatario
-     * @param $oggetto
-     * @param $testo
+     * @param $mitt
+     * @param $dest
+     * @param $ogg
+     * @param $test
      */
 
     function __construct($mitt, $dest, $ogg, $test)
@@ -47,7 +48,8 @@ class EMessaggio
         $this->testo = $test;
     }
 
-    /** Metodo getId che ci permette di prendere il valore di Id
+    /**
+     * Metodo getId che ci permette di prendere il valore di Id.
      * @return mixed
      */
 
@@ -56,7 +58,8 @@ class EMessaggio
         return $this->id;
     }
 
-    /**Metodo che ci permette di cambiare l'id di vinile
+    /**
+     * Metodo che ci permette di cambiare l'id di vinile.
      * @param mixed $id
      */
 
@@ -65,7 +68,8 @@ class EMessaggio
         $this->id = $id;
     }
 
-    /**Metodo getMittente che ci permettere di prendere il mittente
+    /**
+     * Metodo getMittente che ci permettere di prendere il mittente.
      * @return mixed
      */
 
@@ -74,7 +78,8 @@ class EMessaggio
         return $this->mittente;
     }
 
-    /**Metodo che ci permette di cambiare il mittente
+    /**
+     * Metodo che ci permette di cambiare il mittente.
      * @param mixed $mittente
      */
 
@@ -83,7 +88,8 @@ class EMessaggio
         $this->mittente = $mittente;
     }
 
-    /**Metodo che ci permette di prendere il valore di destinatario
+    /**
+     * Metodo che ci permette di prendere il valore di destinatario.
      * @return mixed
      */
 
@@ -92,7 +98,8 @@ class EMessaggio
         return $this->destinatario;
     }
 
-    /**Metodo che ci permette di cambiare il destinatario
+    /**
+     * Metodo che ci permette di cambiare il destinatario.
      * @param mixed $destinatario
      */
 
@@ -101,7 +108,8 @@ class EMessaggio
         $this->destinatario = $destinatario;
     }
 
-    /** Metodo che ci permette di prendere il valore dell'oggetto
+    /**
+     * Metodo che ci permette di prendere il valore dell'oggetto.
      * @return mixed
      */
 
@@ -110,7 +118,8 @@ class EMessaggio
         return $this->oggetto;
     }
 
-    /**Metodo che ci permette di cambiare il valore dell'oggetto
+    /**
+     * Metodo che ci permette di cambiare il valore dell'oggetto.
      * @param mixed $oggetto
      */
 
@@ -119,7 +128,8 @@ class EMessaggio
         $this->oggetto = $oggetto;
     }
 
-    /**Metodo che ci permette di prendere il testo del messaggio
+    /**
+     * Metodo che ci permette di prendere il testo del messaggio.
      * @return mixed
      */
 
@@ -128,7 +138,8 @@ class EMessaggio
         return $this->testo;
     }
 
-    /**Metodo che permette di cambiare il testo del messaggio
+    /**
+     * Metodo che permette di cambiare il testo del messaggio.
      * @param mixed $testo
      */
 

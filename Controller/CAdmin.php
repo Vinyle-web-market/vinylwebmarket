@@ -12,10 +12,13 @@ class CAdmin
 {
 
     /**
-     * Funzione utilizzata per visualizzare la homepage dell'amministratore, dove sono presenti tutti gli utenti della piattaforma.
+     * Funzione utilizzata per visualizzare la homepage dell'amministratore, dove sono presenti tutto l'elenco degli
+     * utenti della piattaforma.
      * Gli utenti sono divisi in due liste: utenti attivi e bannati.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata la homepage con l'elenco di tutti gli utenti;
-     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una pagina di errore 401 (Authorization Required);
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore
+     *    viene visualizzata la homepage con l'elenco di tutti gli utenti;
+     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene
+     *    visualizzata una pagina di errore 401 (Authorization Required);
      * 3) altrimenti, reindirizza alla pagina di login.
      */
 
@@ -57,7 +60,7 @@ class CAdmin
      * Funzione di supporto per le altre.
      * Questo ha il compito di restituire:
      * 1) array di oggetti EUtente_loggato, se il paramtero in ingressto è un array di EUtente_loggato;
-     * 2) un oggetto EUtente_loggato, se il parametro in ingresso è un EUtente_loggato;
+     * 2) un oggetto EUtente_loggato, se il parametro in ingresso è un oggetto EUtente_loggato;
      * 3) null, se la variabile in ingresso non è definita.
      * @param $utenti
      * @return array|null|object
@@ -89,7 +92,7 @@ class CAdmin
      * Funzione di supporto per le altre.
      * Questo ha il compito di restituire:
      * 1) array di oggetti EVinile, se il paramtero in ingresso è un array di EVinile;
-     * 2) un oggetto EVinile, se il parametro in ingresso è un EVinile;
+     * 2) un oggetto EVinile, se il parametro in ingresso è un oggetto EVinile;
      * 3) null, se la variabile in ingresso non è definita.
      * @param $vinili
      * @return array|null|object
@@ -118,10 +121,13 @@ class CAdmin
 
     /**
      * Funzione utile per cambiare lo stato di attività di un utente (nel caso specifico porta il ban a true).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di bannaggio utente
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore,
+     *    avviene il reindirizzamento alla homepage dell'amministratore;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di bannaggio utente
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore)
+     *    compare una pagina di errore 401 (Authorization Required).
      */
 
     static function bannaggioUtente()
@@ -160,11 +166,15 @@ class CAdmin
     }
 
     /**
-     * Funzione utile per cambiare lo stato di visibilità di un utente ( visibilità a true).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivazione dell'utente
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * Funzione utile per cambiare lo stato di visibilità di un utente (visibilità a true).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il
+     *    reindirizzamento alla homepage dell'amministratore;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene
+     *    l'azione vera e propria di riattivazione dell'utente
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il
+     *    reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente
+     *    (non amministratore) compare una pagina di errore 401 (Authorization Required).
      */
 
     static function attivazioneUtente()
@@ -203,8 +213,10 @@ class CAdmin
 
     /**
      * Funzione che permette la visualizzazione dell'elenco delle recensioni pubblicate.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, viene visualizzata la pagina con tutte le recensioni;
-     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una pagina di errore 401 (Authorization Required);
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, viene
+     *    visualizzata la pagina con tutte le recensioni;
+     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene
+     *    visualizzata una pagina di errore 401 (Authorization Required);
      * 3) altrimenti, reindirizza alla pagina di login.
      */
 
@@ -252,10 +264,13 @@ class CAdmin
     }
     /**
      * Funzione utile per bannare una recensione.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente tutte le recensioni;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione del bannaggio della recensione;
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene
+     *    il reindirizzamento alla pagina contenente tutte le recensioni;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione del bannaggio della recensione;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare
+     *    una pagina di errore 401 (Authorization Required).
      * @param $id
      * @throws SmartyException
      */
@@ -293,10 +308,14 @@ class CAdmin
 
     /**
      * Funzione utile per eliminare una recensione.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente tutte le recensioni;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di eliminare una recensione;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene
+     *    il reindirizzamento alla pagina contenente tutte le recensioni;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di eliminare una recensione;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene
+     *    il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina
+     *    di errore 401 (Authorization Required).
      * @param $id
      * @throws SmartyException
      */
@@ -335,8 +354,10 @@ class CAdmin
     /**
      * Funzione utilizzata per visualizzare l'elenco dei vinili in mostra.
      * Gli anunci sono divisi in due liste: bannati e attivi (rispettivamente, per utenti attivi ed utenti bannati).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata la pagina con l'elenco di tutti i vinili;
-     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una pagina di errore 401 (Authorization Required);
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata
+     *    la pagina con l'elenco di tutti i vinili;
+     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una
+     *    pagina di errore 401 (Authorization Required);
      * 3) altrimenti, reindirizza alla pagina di login.
      */
 
@@ -393,10 +414,14 @@ class CAdmin
 
     /**
      * Funzione utile per cambiare lo stato di visibilità di un vinile (nel caso specifico porta la visibilità a false, poiche' è stata inizializzata a true).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di bannare il vinile selezionato cambiando il suo stato di visibilità a false;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene
+     *    il reindirizzamento alla pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di bannare il vinile selezionato cambiando il suo stato di visibilità a false;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene
+     *    il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare
+     *    una pagina di errore 401 (Authorization Required).
      * @param $id del vinile da bannare
      * @throws SmartyException
      */
@@ -434,10 +459,14 @@ class CAdmin
 
     /**
      * Funzione utile per cambiare lo stato di visibilità di un vinile (nel caso specifico porta la visibilità a true).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il
+     *    reindirizzamento alla pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene
+     *    il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare
+     *    una pagina di errore 401 (Authorization Required).
      * @param $id dei vinili da bannare da bannare
      * @throws SmartyException
      */
@@ -476,8 +505,10 @@ class CAdmin
     /**
      * Funzione utilizzata per visualizzare l'elenco degli abbonamenti in mostra.
      * Gli abbonamenti sono divisi in due liste: bannati e attivi (rispettivamente, per utenti attivi ed utenti bannati).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata la pagina con l'elenco di tutti gli abbonamenti;
-     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene visualizzata una pagina di errore 401 (Authorization Required);
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati con le credenziali dell'amministratore viene visualizzata
+     *    la pagina con l'elenco di tutti gli abbonamenti;
+     * 2) se il metodo di richiesta HTTP è GET e si è loggati ma non come amministratore, viene
+     *    visualizzata una pagina di errore 401 (Authorization Required);
      * 3) altrimenti, reindirizza alla pagina di login.
      */
 
@@ -543,10 +574,13 @@ class CAdmin
 
     /**
      * Funzione utile per cambiare lo stato di visibilità di un abbonamento (nel caso specifico porta la visibilità a false).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco degli abbonamenti;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria del ban dell'abbonamento;
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla
+     *    pagina contenente l'elenco degli abbonamenti;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria del ban dell'abbonamento;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore)
+     *    compare una pagina di errore 401 (Authorization Required).
      * @param $id del vinile da bannare
      * @throws SmartyException
      */
@@ -557,7 +591,7 @@ class CAdmin
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $pm = new FPersistentManager();
-            $pm->update('stato',0, 'id_abbonamento', $id,'FNegozio' );   //vedere bene perche' potrebbe andarci email_negozio al posto di id_abbonamento
+            $pm->update('stato',0, 'id_abbonamento', $id,'FNegozio' );
             $pm->update('stato', 0, "id", $id, "FAbbonamento");
             header('Location: /vinylwebmarket/Admin/elencoAbbonamenti');
         }
@@ -585,10 +619,13 @@ class CAdmin
 
     /**
      * Funzione utile per cambiare lo stato di visibilità di un abbonamento (nel caso specifico porta la visibilità a true).
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento allapagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla
+     *    pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di riattivare il/i vinile/i selezionato cambiando il suo stato di visibilità a true;
      * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401ho (Authorization Required).
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore)
+     *    compare una pagina di errore 401ho (Authorization Required).
      * @param $id dei vinili da bannare da bannare
      * @throws SmartyException
      */
@@ -627,10 +664,14 @@ class CAdmin
 
     /**
      * Funzione utile per eseguire delle ricerche mirate sulle parole contenute nelle recensioni.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco delle recensioni;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola nel testo della recensione;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla
+     *    pagina contenente l'elenco delle recensioni;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di ricerca della parola nel testo della recensione;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati,
+     *    avviene il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore)
+     *    compare una pagina di errore 401 (Authorization Required).
      */
 
     static function ricercaParolaRecensione()
@@ -650,14 +691,12 @@ class CAdmin
                 {
                     $utente[] = $pm->load("email", $rec->getUsernameMittente(), "FUtente_loggato");
                     $img[] = $pm->loadImg("EImageUtente", 'email_utente', $rec->getUsernameMittente());
-                    //$rec->setEmailClient($utente);
                 }
             }
             elseif ($recensione != null)
             {
                 $utente = $pm->load("email", $recensione->getUsernameMittente(), "FUtente_loggato");
                 $img = $pm->loadImg("EImageUtente", 'email_utente', $recensione->getUsernameMittente());
-                //$recensione->setEmailClient($ute);
             }
             $view->ShowPaginaRecensioni($recensione,$img);
         }
@@ -685,10 +724,14 @@ class CAdmin
 
     /**
      * Funzione utile per eseguire delle ricerche di una parola all'interno dell'email degli utenti.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola tra i nomi/cognomi degli utenti;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il
+     *    reindirizzamento alla homepage dell'amministratore;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di ricerca della parola tra i nomi/cognomi degli utenti;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene
+     *    il reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare
+     *    una pagina di errore 401 (Authorization Required).
      */
 
     static function ricercaParolaUtente()
@@ -720,7 +763,6 @@ class CAdmin
                         $utentiBan[] = $item;
                 }
             }
-
             $img_attivi = static::caricamento_immagini_utenti($utentiAttivi);
             $img_bann = static::caricamento_immagini_utenti($utentiBan);
             $view->HomeAdmin($utentiAttivi, $utentiBan,$img_attivi,$img_bann);
@@ -749,10 +791,14 @@ class CAdmin
 
     /**
      * Funzione utile per eseguire delle ricerche mirate sulle parole contenute nel titolo dei vinili.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla pagina contenente l'elenco dei vinili;
-     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore), avviene l'azione vera e propria di ricerca della parola nel titolo del vinile;
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento verso la pagina di login;
-     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore) compare una pagina di errore 401 (Authorization Required).
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento
+     *    alla pagina contenente l'elenco dei vinili;
+     * 2) se il metodo di richiesta HTTP è POST (ovviamente per fare ciò bisogna già essere loggati come amminstratore),
+     *    avviene l'azione vera e propria di ricerca della parola nel titolo del vinile;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il
+     *    reindirizzamento verso la pagina di login;
+     * 4) se il metodo di richiesta HTTP è GET e si è loggati come utente (non amministratore)
+     *    compare una pagina di errore 401 (Authorization Required).
      */
 
     static function ricercaParolaVinile()
@@ -784,7 +830,6 @@ class CAdmin
                         $viniliBan[] = $item;
                 }
             }
-
             $img_attivi = static::caricamento_immagini_vinili($viniliAttivi);
             $img_bann = static::caricamento_immagini_vinili($viniliBan);
             $view->showPaginaVinili($viniliAttivi,$viniliBan,$img_attivi,$img_bann);

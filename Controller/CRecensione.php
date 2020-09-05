@@ -2,17 +2,16 @@
 /**
  * Function per recensire il servizio scambiato con un altro utente
  * Get:
- * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo;
+ * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo(Si può lascaire una recensione solo tramite POST)
  * - se il metodo è GET e non si è loggati, si viene reindirizzati alla form di login.
  * - se il metodo della richiesta HTTP è GET, ma esiste il cookie allora questo ci permette di caricare la pagina relativa
  *    all'utente che si stava visitando prima del login;
  * POST:
- * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['recensione'] viene salvata la recensione e
- *   e preparata la nuova pagina aggiornata
  *   Viene anche gestito l'inserimento o no delle stelle con $_POST['rate']
  * - se non si è loggati, viene inviato un cookie per tenere traccia delle informazioni utili per il reindirizzamento,
  *   dopo il login, alla pagina in cui ci troviamo;
- * !!!La view relativa è in VUser in quanto ripresenta semplicemente la pagina aggiornata con l'ultima recensione
+ *
+ * ATTENZIONE!!!La view relativa è in VUser in quanto ripresenta semplicemente la pagina aggiornata con l'ultima recensione!!!ATTENZIONE
  */
 
 
@@ -43,7 +42,6 @@ class CRecensione
                     $privato = $pm->load("email_privato", $_POST['destinatario'], "FPrivato");
                     if (isset($negozio)) {
                         $img = $pm->loadImg("EImageUtente", "email_utente", $negozio->getEmail());
-
                         $imgrecensioni = CUser::ImageReviews($negozio);
                        // $rec = CUser::info_cliente_rec($negozio);
                         $rec=$pm->load("destinatario",$_POST['destinatario'],"FRecensione");

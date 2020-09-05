@@ -2,9 +2,10 @@
 
 
 /**
- * Enità Image (immagine), dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari a livello generico.
+ * Entità Image (immagine), dove sono presenti le caratteristiche di specifica
+ * e i suoi metodi peculiari a livello generico.
  * Essa, infatti, rappresenta una interfaccia (una classe padre da cui i figli ereditano attributi e metodi).
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Entity
  */
 
