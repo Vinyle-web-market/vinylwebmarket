@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * Class VUser per la presentazione delle possibili operazioni scelte dall'utente e le relative conseguenze
+ */
 class VUser
 {
     private $smarty;
@@ -12,7 +15,9 @@ class VUser
     }
 
 
-    //form di registrazione del privato
+    /**
+     *  visualizzazione della form di login dell'utente privato
+     */
     public function formRegistrazionePrivato()
     {
         $this->smarty->display('reg_privato.tpl');
@@ -36,7 +41,10 @@ class VUser
     }
     */
 
-    //Errore durante la registrazione
+    /**
+     * Visualizzazione di errori in caso di formati non validi di campi o foto
+     * evitabile aggiungendo le varuabili errore alla precedente
+     */
     public function ErrorInputRegistrazionePrivato($errori, $errore)
     {
         switch ($errore) {
@@ -72,31 +80,21 @@ class VUser
                     break;
             }
         }
-        /*
-        foreach ($errori as $err){
-            if($err=="username")
-            $this->smarty->assign('errorUsername',"errore");
-            if($err=="email")
-            $this->smarty->assign('errorEmail',"errore");
-            if($err=="cognome")
-            $this->smarty->assign('errorCognome',"errore");
-            if($err=="nome")
-            $this->smarty->assign('errorNome',"errore");
-            if($err=="telefono")
-            $this->smarty->assign('errorTelefono',"errore");
-            if($err=="password")
-            $this->smarty->assign('errorPassword',"errore");
-        }
-        */
         $this->smarty->display('reg_privato.tpl');
     }
 
-    //form di registrazione del Negozio
+    /**
+     *  visualizzazione della form di login dell'utente Negozio
+     */
     public function formRegistrazioneNegozio()
     {
         $this->smarty->display('reg_negozio.tpl');
     }
 
+    /**
+     * Visualizzazione di errori in caso di formati non validi di campi o foto
+     * evitabile aggiungendo le varuabili errore alla precedente funzione
+     */
     public function ErrorInputRegistrazioneNegozio($errori, $errore)
     {
         switch ($errore) {
@@ -162,6 +160,7 @@ class VUser
      * Display login in caso di login non effettuato
      * @throws SmartyException
      * passo la variabile exist con true se l'email è salvato nel db
+     * evitabile aggiungendo le varuabili errore alla precedente funzione
      */
     public function loginError($exist, $valoreMail)
     {
@@ -173,7 +172,15 @@ class VUser
         $this->smarty->display('login.tpl');
     }
 
-
+    /**
+     * Display del profilo dell'utente(negozio o privato)
+     * $user utente in sessione preso come object
+     * $vinili gestiti dall'utente
+     * $image immagine dell'utente in sessione
+     * $stato idell'abbonamento se negozio
+     * $imagev immagini dei vinili
+     * @throws SmartyException
+     */
     public function profile($user, $vinili, $image, $tipo, $stato,$imagev)
     {
         $typev=null;
@@ -234,6 +241,7 @@ class VUser
         $this->smarty->assign('tipo', $tipo);
         $this->smarty->display('profilo_personale.tpl');
     }
+
 
     public function profilePrivato($user, $vinili, $image)
     {

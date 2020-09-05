@@ -157,7 +157,7 @@
                                                 Prezzo:{$vinili[$i]->getPrezzo()}€
                                                 <br>
                                                 {if $vinili[$i]->isVisibility()==0}
-                                                    <div style="color: red">Questo vinile non è visibile agli altri utenti! </div>
+                                            <font color="#dc143c">Questo vinile non è visibile agli altri utenti! </font>
                                                 {/if}
                                             </p>
                                         </div>

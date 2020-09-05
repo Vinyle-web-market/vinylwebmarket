@@ -3,6 +3,10 @@
 
 class CHomepage
 {
+    /**
+     * Funzione che si occupa di gestire il recupero dedli ULTIMI 6 VINILI  PERla visualizzazione dell'Homepage del nostro sito
+     * Precisamnete prepara attraverso una funzioni di Foundation 6 vinili e le rispettive immagini per il carosselo
+     */
     public function impostaPagina()
     {
         $result=null;
@@ -13,6 +17,10 @@ class CHomepage
         $view->Home($result,$img);
     }
 
+    /**
+     * Funzione che si occupa di gestire il recupero dedli ULTIMI 6 VINILI PER la visualizzazione dell'Homepage del untente registrato che si presenta simile alla home generale
+     * Precisamnete prepara attraverso una funzioni di Foundation 6 vinili e le rispettive immagini per il carosselo
+     */
     public function impostaPaginaUL()
     {
         $result=null;

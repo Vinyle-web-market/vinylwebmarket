@@ -9,7 +9,10 @@ class VHomepage
     {
         $this->smarty = smartyConfiguration::configuration();
     }
-    //public function Home($utente){
+
+    /**
+     * Funzione che si occupa di gestire la visualizzazione della home
+     */
          public function Home($vinili,$img){
         //var_dump($img);
              if (is_array($img)) {

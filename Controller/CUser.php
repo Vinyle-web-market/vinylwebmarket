@@ -3,12 +3,23 @@
 
 class CUser
 {
+
+    /**
+     * Metodo GET per l'indirixxamento alla form di registrazione del privato7
+     * evitabile e implementato anche registrazione privato
+     */
     public function FormRegPrivato()
     {
         $view = new VRegistrazione();
         $view->formRegistrazionePrivato();
     }
 
+    /**
+     * Funzione che mostra la form per l'iscrizione al sito di un utente tipo Privato
+     * 1------- metodo è GET e si è loggati, avviene il reindirizzamento al profilo utente privato;
+     * -------- metodo è GET e non si è loggati-->reindirizzamento alla form di registrazione;
+     * 2--- se il metodo è POST viene chiamata la funzione controlRegistrazionePrivato() per la gestione dei dati inseriti dall'utente
+     */
     public function registrazionePrivato()
     {
 
@@ -25,6 +36,12 @@ class CUser
         }
     }
 
+    /**
+     * Funzione per il controllo della validità dei dati inseriti nella form di registrazione da parte dell'utente privato.
+     *  Controllo sull'email che deve essere univoca-->segnalazione nel caso contrario ;
+     * Controllo su ogni tipo di campo che deve rispettare formati specifici attraverso L'EInputControl
+     * Controllo sull'immagine effettuato su questa classe
+     */
     public function controlRegistrazionePrivato()
     {
         $nome = $_POST["nome"];
@@ -42,7 +59,6 @@ class CUser
         if ($veremail) {
             $error_stringa = "email";
             $view2->ErrorInputRegistrazionePrivato($err, $error_stringa);
-
         } else {
             $privato = new EPrivato($username, $email, $password, $telefono, $nome, $cognome);
             $input = EInputControl::getInstance();
@@ -69,12 +85,22 @@ class CUser
         }
     }
 
+    /**
+     * Metodo GET per l'indirixxamento alla form di registrazione del negozio
+     * evitabile e implementato anche registrazione privato
+     */
     public function FormRegNegozio()
     {
         $view = new VRegistrazione();
         $view->formRegistrazioneNegozio();
     }
 
+    /**
+     * Funzione che mostra la form per l'iscrizione al sito di un utente tipo Negozio
+     * 1------- metodo è GET e si è loggati, avviene il reindirizzamento al profilo utente negozio;
+     * -------- metodo è GET e non si è loggati-->reindirizzamento alla form di registrazione;
+     * 2--- se il metodo è POST viene chiamata la funzione controlRegistrazioneNegozio() per la gestione dei dati inseriti dall'utente
+     */
     public function registrazioneNegozio()
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
@@ -90,6 +116,12 @@ class CUser
         }
     }
 
+    /**
+     * Funzione per il controllo della validità dei dati inseriti nella form di registrazione da parte dell'utente negozio.
+     *  Controllo sull'email che deve essere univoca-->segnalazione nel caso contrario ;
+     * Controllo su ogni tipo di campo che deve rispettare formati specifici attraverso L'EInputControl
+     * Controllo sull'immagine effettuato su questa classe
+     */
     public function controlRegistrazioneNegozio()
     {
         $ris = "ok";
@@ -113,7 +145,6 @@ class CUser
         $view2 = new VUser();
         $err = array();
         $error_stringa = "";
-        //POTENZIALE ERRORE QUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         if ($veremail) {
             $error_email = "email";
             $view2->ErrorInputRegistrazioneNegozio($err, $error_email);
@@ -124,7 +155,6 @@ class CUser
             $negozio = new ENegozio($username, $email, $password, $telefono, $nomeNegozio, $iva, $indirizzo, $carta, $abb);
             $input = EInputControl::getInstance();
             $err = $input->validNegozio($negozio);
-            //Rivederer da qui
             if ($err) {
                 $view2->ErrorInputRegistrazioneNegozio($err, $error_stringa);
             } else if ($negozio != null) {
@@ -148,7 +178,14 @@ class CUser
 
     }
 
-
+    /**
+     * Funzione di di controllo della validità dell'immagine inserita nella form di registrazione.
+     * Segnalazione e store rifiutata in caso di errore
+     * @param $utente obj utente
+     * @param $funz tipo di funzione da svolgere
+     * @param $nome_file passato nella form pe l'immagine
+     * @return string stato verifa immagine
+     */
     static function uploadImage($utente, $funz, $nome_file)
     {
         $pm = new FPersistentManager();
@@ -209,9 +246,9 @@ class CUser
     /**
      * login di un utente registrato:
      * 1) se il metodo della richiesta HTTP è GET:
-     *   - se l'utente è già loggato viene reindirizzato alla homepage;
+     *   - se l'utente è già loggato viene reindirizzato sul suo profilo;
      *     - se l'utente non è loggato si viene indirizzati alla form di login;
-     * 2) se il metodo della richiesta HTTP è POST viene richiamata la funzione verifica().
+     * 2) se il metodo della richiesta HTTP è POST viene richiamata la funzione checkLogin().
      */
     static function login()
     {
@@ -227,6 +264,11 @@ class CUser
             static::checkLogin();
     }
 
+
+    /**
+     * Si appoggia alla classe Session con metodi per la gestione di ogni sessione
+     * Metodo che provvede ad eliminare i dati di sessione (quando l'utente fa logout)
+     */
     public function Logout()
     {
         $sessione = Session::getInstance();
@@ -239,10 +281,13 @@ class CUser
 
     /**
      * Controllo esistenza username e password nel db
-     * 1)risultato negativo->viene ricaricata la pagina con l'aggunta dell'errore nel login.
-     * 2) se l'utente esiste ed è attivo, avviene il reindirizzamaneto alla homepage degli annunci;
-     * 3) se le credenziali inserite rispettano i vincoli per l'amministratore, avviene il reindirizamento alla homepage dell'amministratore;
-     * 4) se si verifica la presenza di particolari cookie avviene il reindirizzamento alla pagina specifica.
+     * 1)risultato negativo->viene ricaricata la pagina con l'aggunta dell'errore nel login(PW o email errata/e)
+     * 2) se l'utente esiste e non è bannato, avviene il reindirizzamaneto alla homepage privata dell'utente;
+     * per il negozio viene effettuato il controllo dell'abbonamento,se scaduto di vedrà bannare i suoi vinili a meno di 3
+     * 3)se Pw e email sono quelle dell'amministratore si viene reindirizzati alla sezione ADMIN;
+     * 4) se si verifica la presenza di particolari cookie(e sessione scaduta) avviene il reindirizzamento alla pagina specificata:
+     * -durante una chat si viene reindirizzati all'elenco chat pronti per riprendere la conversazione
+     * -se stiamo visitando un profilo vieniamo poi reindirizzati li'
      * @throws SmartyException
      */
     static function checkLogin()
@@ -308,25 +353,28 @@ class CUser
         }
     }
 
-    /** Funzione di supporto a checklogin che disattiva i vinili oltre i 3 se l'abbonamento è disattivato
-     *
-     *    -se non loggati-> reindirizzati nella form di login
+    /**
+     * Funzione di supporto a checklogin che disattiva i vinili oltre i 3 se l'abbonamento è disattivato
      */
     static function disattivaVinili($utente){
         $pm=new FPersistentManager();
         $vinili=$pm->load('venditore', $utente->getEmail(), 'FVinile');
         if ($utente->getAbbonamento()->isStato()==0){
-            var_dump($vinili);
-            var_dump(count($vinili));
             for ($i=3; $i<count($vinili); $i++){
                 $pm->update('visibility', '0', 'id_vinile', $vinili[$i]->getId(), 'FVinile');
             }
         }
     }
 
-    /** Profilo dell'utente dopo aver effettuato il login
-     * - metodo GET ed il Log ha avuto successo->ingresso nel proprio profilo.
-     *    -se non loggati-> reindirizzati nella form di login
+    /**
+     * Profilo dell'utente dopo aver effettuato il login
+     * - metodo GET ed il Log ha avuto successo->ingresso nel proprio profilo privato o negozio che sia.
+     * -se non loggati-> reindirizzati nella form di login
+     * -si recupera tutti i dati necessari alla preparazione del profilo:
+     *    vinili e loro img
+     *    img utente e info utente
+     *    informazioni sull'abbonamento in caso di negozio
+     * CFiltro::ImageVinyls è una funzione di supporto che poteva sfruttarsi da un CUtility
      */
     static function profile()
     {
@@ -351,6 +399,15 @@ class CUser
         }
     }
 
+
+    /**
+     * funzione per la modifica dei dati profilo.
+     * 1) se il metodo è GET e si è loggati->form per l'invio delle modifiche.
+     * 2) se il metodo è GET ma non si è loggati, allora avviene il reindirizzamento verso la form di login;
+     * 3) se il metodo della richiesta HTTP è POST,controllo e gestione dei dati inseriti dall'utente
+     *     per effettuare le modifiche bisogna inserire la vecchia password e deve corrispondere
+     * 	  CONTROLLO deel'univocità dell'email, e validazione di tutti gli altri campi che devono rispettare un formato prestabilito
+     */
     public function modificaProfilo()
     {
         $pm = new FPersistentManager();
@@ -450,6 +507,7 @@ class CUser
     /**
      * Funzione che si occupa di fare tutti i controlli necessari per aggiornare i coli campi che un utente desidera modificare
      * nella sua form di modifica profilo
+     * il nuovo object utente deve passare i test dell'EInputControl per poter effetture effettivamente le modifiche
      * @param $utente obj rappresentante l'utente
      */
     static function updateCampi($utente)

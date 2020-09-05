@@ -225,9 +225,6 @@
             </div>
             <hr color="black">
             <div class="form-group">
-              <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btnSubmit">Aggiorna</button>
-              </div>
               {if $errorNumberExist!='ok'}
                 <div style="color: red;">
                   <p align="center">Carta già iscritta!!</p>
@@ -238,6 +235,9 @@
                   <p align="center">Carta non Valida!</p>
                 </div>
               {/if}
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btnSubmit">Aggiorna</button>
+              </div>
             </div>
           </fieldset>
         </form>
