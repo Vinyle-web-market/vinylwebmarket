@@ -13,6 +13,8 @@ class VVinile
 
     /**
      * Vetrina Negozio.
+     * se $result proviene da un filtro allora devo renderlo compatibile ad essere passato con un metodo POST,in un in input
+     * di tipo hidden->serialize e urlencode!!!!!!!!!!!
      * @param $result contiene i vinili
      * @param $img un'immagine per vinile
      * @throws SmartyException
@@ -21,13 +23,7 @@ class VVinile
         $sessione = Session::getInstance();
         if ($sessione->isLoggedUtente())
             $this->smarty->assign('userlogged',"loggato");
-        //echo "<hr>";
-       // echo "<hr>";
-        //var_dump(serialize($result));
-        //$a=array('1','2');
-        //$b=serialize($a);
-        //$c=urlencode($b);
-        //var_dump($c);
+
         $type=null;
         $typeP=null;
         $pic64=null;
@@ -68,15 +64,9 @@ class VVinile
                 $typeP = $imgP->getMimeType();
             }
         }
-
+       //per passare il nuovo risultato tramite post input type hidden
         $b=serialize($result);
         $s=urlencode($b);
-       // var_dump($s);
-       // echo "<hr>";
-        //$u=urldecode($s);
-       // $x=unserialize($u);
-        //var_dump($x);
-
 
         $this->smarty->assign('S_vinili', $s);
         $this->smarty->assign('vinili', $result);
@@ -94,6 +84,7 @@ class VVinile
      * @param $utente oggetto utente che effettua l'inserimento dei dati nei campi dell'annuncio
      * @param $error codice di errore con svariati significati. In base al suo valore verrà eventualmente visualizzato un messaggio
      * di errore nella pagina di creazione dell'annuncio
+     * Messaggio di errore se non sono validi:tipo o dimensione foto,limite di vinili pubblicati raggiunyo o formati non validi per prezzo e quantita
      * @throws SmartyException
      */
     public function formVinile($user,$error)
@@ -140,12 +131,9 @@ class VVinile
     }
 
     /**
-     * showDetails claudia,$result è il vinile
-     * Mostra la pagina contenente i dettagli dell'annuncio selezionato
-     * @param array contiene l'id dell'array da visualizzare
-     * @param $tipo definisce il tipo di annuncio da visualizzare (carichi/trasporti)
+     * $result è il vinile
+     * Mostra i dettagli del vinile a cui si è intereassati
      * @throws SmartyException
-     *
      */
     public function dettagliVinile($result, $nome, $cognome,$nomenegozio,$indirizzo,$partitaiva,$username,$email,$telefono,$img_utente,$med_annuncio,$cont) {
 
@@ -208,11 +196,8 @@ class VVinile
         }
 
     /**
-     * Funzione che si occupa di gestire la visualizzazione della form di modifica per il cliente
-     * @param $user informazioni sull'utente che desidera mdificare i suoi dati
-     * @param $img immagine dell'utente
-     * @param $error tipo di errore nel caso in cui le modifiche siano sbagliate
-     * @throws SmartyException
+     * Funzione che si occupa di gestire la visualizzazione della form di modifica delle quantità di vinili disponibili
+     * $mess per dare segnalzioni di modifiche/Delete corrette o errate.
      */
     public function ModificaVinile($vinili,$image,$mess) {
 

@@ -1,82 +1,22 @@
 <?php
 
+/**
+ * Classe Per la gestione dell'elemento chiave del nostro sito,IL VINILE:
+ * FUNZIONI:
+ *        -attività utente:  pagina di gestione,pubblicazione,modifica quantità,eliminazione dei vinili;
+ *        -supporto utente:  memorizzazione della storia dei vinili visitati;
+ *        -presentazione vetrine: vetrina sito,vetrina di un dato utente
+ *
+ */
+
 
 class CVinile
 {
-    /**
-     * Metodo per il caricamento della vetrina del negozio
-     * sfrutta la funzione di CFiltro ImageVynils per l associazione delle immagini per ogni vinile
-     */
-    static function Vetrina (){
-        $view = new VVinile();
-        $pm = new FPersistentManager();
-        //public static function load($field, $value,$Fclass) {
-            $result = $pm->load("visibility",1,"FVinile");
-            //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-            $img=CFiltro::ImageVinyls($result);     //img anteriori
-            $imgP=CFiltro::ImageVinyls2($result);//img posteriori
-            $view->Vetrina($result,$img,$imgP);
-    }
-
-
-/*
-    static function pubblica()
-    {
-        //$sessione = Session::getInstance();
-        //if ($sessione->isLoggedUtente()) {
-            $view = new VVinile();
-        $sessione = Session::getInstance();
-            if ($_SERVER['REQUEST_METHOD'] == "GET") {
-                if ($sessione->isLoggedUtente()) {
-                $utente=$sessione->getUtente();
-                //$utente = unserialize($_SESSION['utente']);
-                    $view->showFormCreation($utente,null);
-                }else
-                    header('Location: /vinylwebmarket/User/login');
-            } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
-                $pm = new FPersistentManager();
-               // $utente = unserialize($_SESSION['utente']);
-                $utente=$sessione->getUtente();
-                //new EUtente_loggato($vend->getUsername(), $vend->getEmail(), $vend->getPassword(), $vend->getPhone());
-                $utente_log=new EUtente_loggato($utente->getUsername(), $utente>getEmail(), $utente->getPassword(), $utente->getPhone());
-                                $new_vinile = new EVinile($utente_log, $_POST['titolo'], $_POST['artista'], $_POST['genere'],$_POST['artista'], $_POST['numerogiri'], $_POST['condizioni'], $_POST['prezzo'],$_POST['descrizione'],$_POST['quantita']);
-                                list ($stato, $nome, $type) =  uploadImg('file');
-                                list ($stato_1, $nome_1, $type_1) =uploadImg('file_1');
-                                list($fun, $idAn) = static::test_img($stato, $nome, $type, $stato_1, $nome_1, $type_1, $new_vinile);
-                                if ($fun == "type")
-                                    $view->showFormCreation($utente, "type");
-                                elseif ($fun == "size")
-                                    $view->showFormCreation($utente, "size");
-                                elseif ($fun == "ok") {
-                                    $view->showFormCreation($utente, "no");
-                                }
-                            }
-                        }
-
-                        */
-                     /*else {
-                        if ($ver_luogo_part == true && $ver_luogo_arr == true) {
-                            $new_annuncio = new EAnnuncio($_POST['data_p'], $_POST['data_arr'], $_POST['dim'], $ver_luogo_part, $ver_luogo_arr, $_POST['peso'], $_POST['desc'], $utente);
-                            $new_annuncio->setVis();
-                            list ($stato, $nome, $type) = static::upload('file');
-                            list ($stato_1, $nome_1, $type_1) = static::upload('file_1');
-                            list($fun, $idAn) = static::test_img($stato, $nome, $type, $stato_1, $nome_1, $type_1, $new_annuncio);
-                            if ($fun == "type")
-                                $view->showFormCreation($utente, "type");
-                            elseif ($fun == "size")
-                                $view->showFormCreation($utente, "size");
-                            elseif ($fun == "ok") {
-                                $view->showFormCreation($utente, "no");
-                            }
-                        } else {
-                            $view->showFormCreation($utente, "no_part_arrivo");
-                        }
-                    }
-}*/
 
     /**
-     * Funzione che si preoccupa di verificare lo stato dell'immagine inserita
-     */
+ * Funzione che si preoccupa di verificare lo stato dell'immagine inserita
+     * supporto a pubblica()
+ */
     static function uploadImg($nome_file)
     {
         $ris = "no_img";
@@ -113,13 +53,14 @@ class CVinile
 
     /**
      * Funzione di supporto che gestisce le varie combinazioni tra le due immagini selezioate nella pubblicazione del vinile
+     * supporto a pubblica()
      * @param $stato stato prima immagine
      * @param $nome nome prima immagine
      * @param $type MIME type prima immagine
      * @param $stato_1 stato seconda immagine
      * @param $nome_1 nome immagine
      * @param $type_1 MIME type seconda immagine
-     * @param $new_annuncio annuncio da salvare nel databse
+     * @param $new_annuncio annuncio da salvare nel database
      * @return array $ris risultato dell'operazione, $idAd id annuncio aggiunto
      */
     static function test_img ($stato,$nome,$type,$data,$stato_1,$nome_1,$type_1,$data_1,$new_vinile) {
@@ -158,6 +99,19 @@ class CVinile
         return array ($ris,$idAn);
     }
 
+
+    /**
+     * Pubblicazione dell'annuncio da parte dell'utente:
+     * GET:
+     *   -se non si è loggati si rimanda al login
+     *   -se l'utente è loggato si viene reindirizzati alla form per la pubblicazione del vinile
+     * POST:
+     *    1)l'utente PRIVATO non può pubblicare piu di 3 vinili->segnalazione se ha già 3 Annunci vinile
+     *    2)l'utente NEGOZIO può pubblicare quanti vinili vuole a patto che il suo abbonamneto sia attivo
+     *      altrimenti ha le stesse limitazioni del privato
+     *      INPUTCONTROL:viene effettuato sempre un controllo sulla validità dei formati prezzo,quantità ecc.....
+     *     il test per le IMG è fatto con funzioni di supporto,prima uploadImg() e testImg() poi...
+     */
     public function pubblica()
     {
         $view = new VVinile();
@@ -212,6 +166,25 @@ class CVinile
                 return 1;
             }
             else return 0;
+    }
+
+
+
+
+    /**
+     * Metodo per il caricamento della vetrina del negozio
+     * carica tutti i vinili con visibilità ad 1
+     * sfrutta la funzione di CFiltro ImageVynils per l associazione delle immagini per ogni vinile
+     */
+    static function Vetrina (){
+        $view = new VVinile();
+        $pm = new FPersistentManager();
+        //public static function load($field, $value,$Fclass) {
+        $result = $pm->load("visibility",1,"FVinile");
+        //fare la funzione per le immagini vinili,simile imageReviews in Cuser
+        $img=CFiltro::ImageVinyls($result);     //img anteriori
+        $imgP=CFiltro::ImageVinyls2($result);//img posteriori
+        $view->Vetrina($result,$img,$imgP);
     }
 
     /**
@@ -307,10 +280,10 @@ class CVinile
     }
 
     /**
-     * Funzione che viene invocata nel momento in cui si modificano i valori dell'annuncio
-     * 1) se il metodo di richiesta HTTP è POST e si è loggati come trasportatore, si applicano le modifiche all'annuncio;
-     * 2) se il metodo di richiesta HTTP è GET e non si è loggati come trasportatori, avviene il reindirizzamento alla pagina del prorpio profilo;
-     * 3) se non si è loggati, si viene reindirizzati alla form di login.
+     * funzione per confermare la modifica della quantità in seguito ad accordi raggiunti o nuovi arrivi
+     *  se il metodoPOST :
+     *       -se non si è loggati, si viene reindirizzati alla form di login.
+     *       -se loggati effetua l'aggiornamento della quantità
      */
     static function AggiornaVinile()
     {
@@ -320,14 +293,6 @@ class CVinile
             if ($sessione->isLoggedUtente()) {
                 $utente = $sessione->getUtente();
                 $pm = new FPersistentManager();
-                /*
-                if (CUtente::isLogged()) {
-                    $view = new VGestioneAnnunci();
-                    $pm = new FPersistentManager();
-                    $vistaProfilo = new VUtente();
-                    $peso = $view->getPeso();
-                    $spazio = $view->getSpazio();
-                */
                 $id=$_POST['id'];
                 $q = $_POST['quantità'];
                 $pm->update("quantita", $q, "id_vinile", $id, "FVinile");
@@ -343,7 +308,8 @@ class CVinile
 
 
     /**
-     * funzione per eliminare Vinili nella sezione per la gestione dei vinili
+     * Tramite Post e loggati:
+     * funzione per eliminare Vinili nella sezione di gestione dei vinili
      * @param $id id dell'annuncio da eliminare
      */
     static function EliminaVinile($id) {
@@ -357,19 +323,16 @@ class CVinile
                 $img=CFiltro::ImageVinyls($vinili);
                 //serve a segnalare la corretta eliminazione del vinile
                 $view->ModificaVinile($vinili,$img,"eliminazione");
-
-                /*
-            if (get_class($utente) == "ECliente") {
-                header('Location: /FillSpaceWEB/Utente/profile');
-            } else {
-                header('Location: /FillSpaceWEB/Utente/profile');
-            }
-                */
         }
         else
             header('Location: /vinylwebmarket/User/login');
     }
 
+    /**
+     * funzione di supporto alla memoria dell'utente:
+     * viene tenuta traccia dei vinili a cui l'utente ha mostrato attenzione nella sessione
+     * La funzione CFiltro ca messa in una CUtility e usarla da là
+     */
     static function UltimiViniliCercati (){
         $view = new VVinile();
         $pm = new FPersistentManager();
@@ -384,6 +347,10 @@ class CVinile
             header('Location: /vinylwebmarket/User/login');
     }
 
+    /**
+     * se loggati:
+     * funzione che mostra in vetrina i vinili di un utente visitato
+     */
     static function VetrinaUtenteVisitato (){
         $view = new VVinile();
         $pm = new FPersistentManager();
