@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Enità Utente Loggato (utenti iscritti nel sito), dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari a livello generico.
+ * Entità Utente Loggato (utenti iscritti nel sito), dove sono presenti le caratteristiche di
+ * specifica e i suoi metodi peculiari a livello generico.
  * Essa, infatti, rappresenta una interfaccia (una classe padre da cui i figli ereditano attributi e metodi).
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Entity
  */
 
@@ -15,7 +16,8 @@ class EUtente_loggato
     private $state;
     private $_recensioni;
 
-    //COSTRUTTORE
+
+    //-------------------------COSTRUTTORE-------------------------
     /** Questo metodo è il costruttore della classe EUtente_loggato.
      * EMessaggio constructor.
      * @param $username
@@ -32,15 +34,12 @@ class EUtente_loggato
         $this->email = $mail;
         $this->password = $pw;
         $this->phone = $tel;
-        $this->state =true;
-        $this->_recensioni=array();
+        $this->state = true;
+        $this->_recensioni = array();
     }
 
-    //METODI GET
-
-
     /**
-     * Metodo getId che ci permette di prendere il valore della password
+     * Metodo getId che ci permette di prendere il valore della password.
      * @return mixed
      */
 
@@ -50,7 +49,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo getId che ci permette di prendere il valore dell'Email
+     * Metodo getId che ci permette di prendere il valore dell'Email.
      * @return mixed
      */
 
@@ -60,7 +59,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo getId che ci permette di prendere il valore del numero di telefono
+     * Metodo getId che ci permette di prendere il valore del numero di telefono.
      * @return mixed
      */
 
@@ -81,7 +80,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo getId che ci permette di prendere il valore dell'username
+     * Metodo getId che ci permette di prendere il valore dell'username.
      * @return mixed
      */
 
@@ -91,11 +90,8 @@ class EUtente_loggato
     }
 
 
-    //METODI SET
-
-
     /**
-     * Metodo che ci permette di cambiare l'email
+     * Metodo che ci permette di cambiare l'email.
      * @param mixed $email
      */
 
@@ -105,7 +101,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo che ci permette di cambiare la password
+     * Metodo che ci permette di cambiare la password.
      * @param mixed $password
      */
 
@@ -115,7 +111,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo che ci permette di cambiare il numero di telefono
+     * Metodo che ci permette di cambiare il numero di telefono.
      * @param mixed $phone
      */
 
@@ -126,7 +122,7 @@ class EUtente_loggato
 
 
     /**
-     * Metodo che ci permette di cambiare lo stato
+     * Metodo che ci permette di cambiare lo stato.
      * @param mixed $state
      */
 
@@ -146,7 +142,7 @@ class EUtente_loggato
     }
 
     /**
-     * Metodo che ci permette di cambiare l'username
+     * Metodo che ci permette di cambiare l'username.
      * @param mixed $username
      */
 

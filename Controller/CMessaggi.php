@@ -2,8 +2,8 @@
 
 
 /**
- * La classe VMessaggi si occupa dell'input/output riguardante chat/messaggi solo per gli utenti loggati
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * La classe VMessaggi si occupa dell'input/output riguardante chat/messaggi solo per gli utenti loggati.
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Controller
  */
 
@@ -11,11 +11,13 @@ class CMessaggi
 {
 
     /**
-     * Funzione che si occupa della gestione dell'elenco delle chat attive per un utente e da anche la possibilità di riprendere
-     * delle conversazioni precedenti.
-     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene il reindirizzamento alla homepage dell'amministratore;
-     * 2) se il metodo di richiesta HTTP è GET e si è loggati, si viene indirizzati alla pagina contenente l'elenco di tutte le conversazioni
-     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento alla form di login
+     * Funzione che si occupa della gestione dell'elenco delle chat attive per un utente e
+     * da anche la possibilità di riprendere delle conversazioni precedenti.
+     * 1) se il metodo di richiesta HTTP è GET e si è loggati come amministratore, avviene
+     *    il reindirizzamento alla homepage dell'amministratore;
+     * 2) se il metodo di richiesta HTTP è GET e si è loggati, si viene indirizzati
+     *    alla pagina contenente l'elenco di tutte le conversazioni;
+     * 3) se il metodo di richiesta HTTP è GET e non si è loggati, avviene il reindirizzamento alla form di login.
      */
 
     public function elencoChat()
@@ -34,13 +36,12 @@ class CMessaggi
 
                 if (is_object($messaggi))
                 {
-                    // c'è un solo oggetto messaggio -> quindi devo prendere solo l'utente sender/recipient che non sono io
                     if ($messaggi->getMittente() != $utente->getEmail())
                         $utent = $pm->load("email", $messaggi->getMittente(), "FUtente_loggato");
                     else
                         $utent = $pm->load("email", $messaggi->getDestinatario(), "FUtente_loggato");
                     $img_chats = static::caricamento_immagini_utenti($utent);
-                    $view->showChats($utent, $img_chats);    //da fare nella view
+                    $view->showChats($utent, $img_chats);
                 }
                 elseif (is_array($messaggi))
                 {
@@ -48,30 +49,25 @@ class CMessaggi
 
                     for ($i = 0; $i < count($messaggi); $i++)
                     {
-                        // prendo solo le email che sono diverse dalla mia.
                         if ($messaggi[$i]->getMittente() != $utente->getEmail())
                             $utent[$i] = $pm->load("email", $messaggi[$i]->getMittente(), "FUtente_loggato");
                         else
                             $utent[$i] = $pm->load("email", $messaggi[$i]->getDestinatario(), "FUtente_loggato");
                     }
-                    //$img_chats = static::caricamento_immagini_utenti($utent);
-                    //$view->showChats($utent, $img_chats);
 
                     $utentiOrdinati = null;
-                    $utenti = (array_unique($utent, SORT_REGULAR));           // prendo solo oggetti non replicati
-
+                    $utenti = (array_unique($utent, SORT_REGULAR));
                     foreach ($utenti as $ute)
                     {
                         $utentiOrdinati[] = $ute;
                     }
                     $img_chats = static::caricamento_immagini_utenti($utentiOrdinati);
-
                     $view->showChats($utentiOrdinati, $img_chats);
                 }
                 elseif ($messaggi == null)
                 {
                     $img_chats = static::caricamento_immagini_utenti($utent);
-                    $view->showChats($utent, $img_chats);    //da fare nella view. Forse al posto di img_chats mettere null
+                    $view->showChats($utent, $img_chats);
                 }
             }
             else
@@ -79,7 +75,6 @@ class CMessaggi
         }
         else
         {
-            $end = $sessione->logout();
             header('Location: /vinylwebmarket/User/login');
         }
     }
@@ -117,9 +112,9 @@ class CMessaggi
     }
 
     /**
-     * Restituisce l'email dell'utente che invia/riceve il messaggio
-     * Inviato con metodo post
-     * @return string contenente l'email dell'utente
+     * Restituisce l'email dell'utente che invia/riceve il messaggio.
+     * Inviato con metodo post.
+     * @return string contenente l'email dell'utente.
      */
 
     function getEmail()
@@ -128,34 +123,6 @@ class CMessaggi
         if (isset($_POST['email']))
             $email = $_POST['email'];
         return $email;
-    }
-
-    /**
-     * Restituisce il testo del messaggio
-     * Inviato con metodo post
-     * @return string contenente il testo del messaggio
-     */
-
-    function getTesto()
-    {
-        $testo = null;
-        if (isset($_POST['testo']))
-            $testo = $_POST['testo'];
-        return $testo;
-    }
-
-    /**
-     * Restituisce l'oggetto del messaggio
-     * Inviato con metodo post
-     * @return string contenente l'oggetto del messaggio
-     */
-
-    function getOggetto()
-    {
-        $oggetto = null;
-        if (isset($_POST['oggetto']))
-            $oggetto = $_POST['oggetto'];
-        return $oggetto;
     }
 
     /**
@@ -187,23 +154,24 @@ class CMessaggi
 
             $view->showMessaggi($result, $img, $email1, $email2);
 
-        }else{
+        }
+        else
+            {
             setcookie("elenco_chat","si", time()+900,"/");
             //setcookie("conversazione","si", time() + 900, "/");
             header('Location: /vinylwebmarket/User/login');
-        }
-
-
+            }
     }
 
     /**
-     * Essa garantisce l'invio del messaggio nella chat.
+     * tale funzione garantisce l'invio del messaggio nella chat.
      */
 
     static function invio_mes()
     {
         $sessione = Session::getInstance();
-        if($sessione->isLoggedUtente()) {
+        if($sessione->isLoggedUtente())
+        {
             $utente = $sessione->getUtente();
 
             $c = new CMessaggi();
@@ -224,19 +192,24 @@ class CMessaggi
             $m = new EMessaggio($email1, $email2, 'null', $testo);
             $pm->store($m);
             $c->redirect_chat();
-        }else {
+        }
+        else
+            {
             setcookie("elenco_chat","si", time()+900,"/");
             //setcookie("profilo_contattato", $_POST['email2'], time() + 900, "/");
             header('Location: /vinylwebmarket/User/login');
-        }
+            }
     }
 
     /**
      * Funzione che si occupa di riprendere una chat.
      * 1) se il metodo di richiesta HTTP è GET e non si è loggati, si viene reindirizzati alla form di login;
-     * 2) se il metodo di richiesta HTTP è POST e si è loggati, attraverso la funzione redirect_chat(), avviene l'invio vero e proprio del messaggio;
-     * 3) se il metodo di richiesta HTTP è GET e si è loggati, avviene il redirect alla pagina per visualizzare l'elenco delle proprie chat;
-     * 4) l'utilizzo del COOKIE viene sfruttato per il redirect alla casella di chat corretta, se si cerca di contattare un utente e non si è ancora loggati.
+     * 2) se il metodo di richiesta HTTP è POST e si è loggati, attraverso la funzione redirect_chat(), avviene
+     *    l'invio vero e proprio del messaggio;
+     * 3) se il metodo di richiesta HTTP è GET e si è loggati, avviene il redirect alla pagina per
+     *    visualizzare l'elenco delle proprie chat;
+     * 4) l'utilizzo del COOKIE viene sfruttato per il redirect alla casella di chat corretta, se si
+     *    cerca di contattare un utente e non si è ancora loggati.
      */
 
     static function chat()
@@ -260,9 +233,9 @@ class CMessaggi
         }
         else
             {
-            setcookie("elenco_chat","si", time()+900,"/");     //all'interno di POST mettere 'email2'
+            setcookie("elenco_chat","si", time()+900,"/");
             header('Location: /vinylwebmarket/User/login');
-        }
+            }
     }
 
 }

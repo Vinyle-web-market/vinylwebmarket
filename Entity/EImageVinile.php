@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Enità Immagine Vinile (immagine dei vinili pubblicati nel sito), dove sono presenti
+ * Entità Immagine Vinile (immagine dei vinili pubblicati nel sito), dove sono presenti
  * le caratteristiche di specifica e i suoi metodi peculiari, ereditando anche dalla classe padre.
  * Essa, infatti, rappresenta una classe figlio dell'interfaccia.
  * @author Gruppo Cruciani - Nanni - Scarselli
@@ -11,6 +11,8 @@
 class EImageVinile extends EImage
 {
   private $idVin;
+
+    //-------------------------COSTRUTTORE-------------------------
 
     /**
      * EImageVinile constructor.
@@ -59,5 +61,4 @@ class EImageVinile extends EImage
         return $str;
     }
 
-
-}
+  }

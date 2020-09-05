@@ -1,28 +1,30 @@
 <?php
 
 /**
- * Enità Recensione, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * Entità Recensione, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Entity
  */
 
 class ERecensione
 {
     /**
-     * identificativo univoco recensione
+     * Identificativo univoco recensione.
      */
     private $id;
 
     private $votostelle;
     private $testo;
+
     /**
-     * mittente recensione references utente loggato
+     * Mittente recensione references EUtente_loggato
      */
     private $username_mittente;
 
     private $username_destinatario;
     private $ban;
 
+    //-------------------------COSTRUTTORE-------------------------
     /** Questo metodo è il costruttore della classe ERecensione.
      * ERecensione constructor.
      * @param integer $vt
@@ -41,7 +43,7 @@ class ERecensione
     }
 
     /**
-     * Metodo che ci permette di prendere l'Id del messaggio
+     * Metodo che ci permette di prendere l'Id del messaggio.
      * @return mixed
      */
 
@@ -180,12 +182,15 @@ class ERecensione
     protected function arrayToString($rec)
     {
         $stringa=null;
+
         if(is_array($rec))
             foreach ($rec as $valore)
             {
                 $stringa=$stringa."-".$valore;
             }
-        else $stringa=$rec;
+        else
+            $stringa=$rec;
+
         return $stringa;
     }
 

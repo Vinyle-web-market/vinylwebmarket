@@ -1,6 +1,6 @@
 <?php
 /**
- * Enità Vinile, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
+ * Entità Vinile, dove sono presenti le caratteristiche di specifica e i suoi metodi peculiari.
  * @author Gruppo Cruciani - Nanni - Scarselli
  * @package Entity
  */
@@ -8,15 +8,16 @@
 class EVinile
 {
     /**
-     * identificativo univoco annuncio
-     * attributeType Integer
-     * autoincrement
+     * Identificativo univoco del vinile in annuncio.
+     * AttributeType Integer.
+     * Autoincrement.
      */
     private $id;
+
     /**
-     * informazione sul venditore
-     * attributeType Integer
-     * autoincrement
+     * Informazione sul venditore.
+     * AttributeType Integer.
+     * Autoincrement.
      */
     private $venditore;
 
@@ -30,17 +31,18 @@ class EVinile
     private $quantita;
     private $visibility;
 
+    //-------------------------COSTRUTTORE-------------------------
     /** Questo metodo è il costruttore della classe EVinile.
      * EVinile constructor.
      * @param EUtente_loggato $vend
      * @param String $tit
-     * @param String $ogg
+     * @param String $art
      * @param String $gen
      * @param integer $ng
      * @param String $cond
      * @param String $pr
      * @param String $des
-     * @param integer $quant
+     * @param integer $quan
      */
 
     function __construct(EUtente_loggato $vend, $tit, $art, $gen, $ng, $cond, $pr, $des, $quan)
@@ -62,7 +64,8 @@ class EVinile
         $this->visibility = true;
     }
 
-    /**Metodo che ci permette di prendere l'Id
+    /**
+     * Metodo che ci permette di prendere l'Id.
      * @return mixed
      */
 
@@ -71,7 +74,8 @@ class EVinile
         return $this->id;
     }
 
-    /** Metodo che ci permette di cambiare l'id del vinile.
+    /**
+     * Metodo che ci permette di cambiare l'id del vinile.
      * @param mixed $id
      */
 
@@ -90,7 +94,7 @@ class EVinile
     }
 
     /**
-     * Metodo che ci permette di cambiare il nome utente del venditore
+     * Metodo che ci permette di cambiare il nome utente del venditore.
      */
 
     function setUserVenditore(EUtente_loggato $vend)

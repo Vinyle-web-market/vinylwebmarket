@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Enità Privato (tipologia di utente iscritto nel sito), dove sono presenti
+ * Entità Privato (tipologia di utente iscritto nel sito), dove sono presenti
  * le caratteristiche di specifica e i suoi metodi peculiari, ereditando anche dalla classe padre.
  * Essa, infatti, rappresenta una classe figlio dell'interfaccia.
- * @author Gruppo Cruciani - Nanni - Scarselli
+ * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Entity
  */
 
@@ -15,16 +15,16 @@ class EPrivato extends EUtente_loggato
     private $cognome;
     private $email_privato;
 
+    //-------------------------COSTRUTTORE-------------------------
     /**
      * Costruttore della classe EPrivato.
      * Essa rappresenta una classe ereidtaria della classe padre EUtente_loggato.
-     * @param $username
-     * @param $email
-     * @param $password
-     * @param $phone
-     * @param $state
-     * @param $nome
-     * @param $cognome
+     * @param $name
+     * @param $mail
+     * @param $pw
+     * @param $tel
+     * @param $nom
+     * @param $cog
      */
 
     public function __construct($name, $mail, $pw, $tel,$nom,$cog)
@@ -34,10 +34,8 @@ class EPrivato extends EUtente_loggato
         $this->cognome=$cog;
     }
 
-    //METODI GET
-
     /**
-     * Metodo che ci permette di prendere il nome del privato
+     * Metodo che ci permette di prendere il nome del privato.
      * @return mixed
      */
 
@@ -47,7 +45,7 @@ class EPrivato extends EUtente_loggato
     }
 
     /**
-     * Metodo che ci permette di prendere il cognome del privato
+     * Metodo che ci permette di prendere il cognome del privato.
      * @return mixed
      */
 
@@ -56,10 +54,8 @@ class EPrivato extends EUtente_loggato
         return $this->cognome;
     }
 
-    //METODI SET
-
     /**
-     * Metodo che ci permette di cambiare il nome del privato
+     * Metodo che ci permette di cambiare il nome del privato.
      * @param mixed $nome
      */
 
@@ -69,7 +65,7 @@ class EPrivato extends EUtente_loggato
     }
 
     /**
-     * Metodo che ci permette di cambiare il cognome del privato
+     * Metodo che ci permette di cambiare il cognome del privato.
      * @param mixed $cognome
      */
 

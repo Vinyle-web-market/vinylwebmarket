@@ -9,9 +9,9 @@ class VAdmin
     }
 
     /**
-     * Restituisce l'email dell'utente da bannare/riattivare
+     * Restituisce l'email dell'utente da bannare/riattivare.
      * Inviato con metodo post
-     * @return string contenente l'email dell'utente
+     * @return string : contenente l'email dell'utente.
      */
 
     function getEmail()
@@ -23,9 +23,9 @@ class VAdmin
     }
 
     /**
-     * Restituisce l'id della recensione da eliminare
+     * Restituisce l'id della recensione da eliminare.
      * Inviato con metodo post
-     * @return string contenente l'id della recensione
+     * @return string : contenente l'id della recensione.
      */
 
     function getId()
@@ -36,8 +36,10 @@ class VAdmin
         return $value;
     }
 
-    /** Funzione che ci permette di mostrare la tipologia di errore che possono avvenire all'interno del sito (principalmente error 401 e 404)
-     * @param $caso mostra il tipo di errore da mostrare
+    /**
+     * Funzione che ci permette di mostrare la tipologia di errore che
+     * possono avvenire all'interno del sito (principalmente error 401 e 404).
+     * @param $caso mostra il tipo di errore da mostrare.
      * @throws SmartyException
      */
 
@@ -47,21 +49,22 @@ class VAdmin
         switch ($caso)
         {
             case 1 :
-                $this->smarty->assign('testo', 'Autorizzazione necessaria.');    //altrimenti sostituire con una stringa che ne indica il caso
+                $this->smarty->assign('testo', 'Autorizzazione necessaria.');
                 break;
             case 4 :
-                $this->smarty->assign('testo', 'La URL richiesta non esiste/non è stata trovata su questo server.');    //altrimenti sostituire con una stringa che ne indica il caso
+                $this->smarty->assign('testo', 'La URL richiesta non esiste/non è stata trovata su questo server.');
                 break;
         }
         $this->smarty->display('error404.tpl');
     }
 
     /**
-     * Funzione che permette di visualizzare la pagina home dell'admin (contenente tutti gli utenti della piattaforma), divisi in: utenti attivi e bannati.
-     * @param $utentiAttivi array di utenti attivi presenti nel sito
-     * @param $utentiBannati array di utenti bannati nel sito
-     * @param $img_attivi array di immagini degli utenti attivi
-     * @param $img_ban array di immagini degli utenti bannati
+     * Funzione che permette di visualizzare la pagina home dell'admin
+     * (contenente tutti gli utenti della piattaforma), divisi in: utenti attivi e bannati.
+     * @param $utentiAttivi array di utenti attivi presenti nel sito.
+     * @param $utentiBannati array di utenti bannati nel sito.
+     * @param $img_attivi array di immagini degli utenti attivi.
+     * @param $img_ban array di immagini degli utenti bannati.
      * @throws SmartyException
      */
 
@@ -90,8 +93,8 @@ class VAdmin
 
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
         if ($typeB == null && $pic64ban == null)
-
             $this->smarty->assign('immagine_1', "no");
+
         if (isset($img_bann))
         {
             if (is_array($img_bann))
@@ -115,9 +118,9 @@ class VAdmin
     }
 
     /**
-     * Funzione di supporto che si occupa gestire le immgini degli utenti presenti nell'elenco delle recensioni
-     * @param $imgrec rappresenta l'immagine presente nella recensione
-     * @return array $type array dei MIME type delle immagini, $pic64 array dei dati delle immagini
+     * Funzione di supporto che si occupa gestire le immgini degli utenti presenti nell'elenco delle recensioni.
+     * @param $imgrec rappresenta l'immagine presente nella recensione.
+     * @return array $type array dei MIME type delle immagini, $pic64 array dei dati delle immagini.
      */
 
     public function SetImageRecensione ($imgrec)
@@ -152,9 +155,9 @@ class VAdmin
     }
 
     /**
-     * Funzione che permette di visualizzare la lista delle recensioni presenti nel database
-     * @param $rec array di recensioni
-     * @param $img array di immagini
+     * Funzione che permette di visualizzare la lista delle recensioni presenti nel database.
+     * @param $rec array di recensioni.
+     * @param $img array di immagini.
      * @throws SmartyException
      */
 
@@ -163,6 +166,7 @@ class VAdmin
         list($typeA,$pic64att) = $this->SetImageRecensione($img);
         if ($typeA == null && $pic64att == null)
             $this->smarty->assign('immagine_attiva', "no");
+
         if (isset($img))
         {
             if (is_array($img))
@@ -177,16 +181,17 @@ class VAdmin
                 $this->smarty->assign('pic64att', $pic64att);
             }
         }
+
         $this->smarty->assign('recensioni',$rec);
         $this->smarty->display('admin_recensioni.tpl');
     }
 
     /**
-     * Funzione che si occupa di presentare l'elenco dei vinili presenti nel database
-     * @param $viniliAttivi array di vinili attivi
-     * @param $viniliBan array di vinili bannati
-     * @param $img_attivi array di immagini relative ai vinili attivi (riferiti a gli utenti attivi)
-     * @param $img_bann array di immagini relative ai vinili bannati (riferiti a gli utenti bannati)
+     * Funzione che si occupa di presentare l'elenco dei vinili presenti nel database.
+     * @param $viniliAttivi array di vinili attivi.
+     * @param $viniliBan array di vinili bannati.
+     * @param $img_attivi array di immagini relative ai vinili attivi (riferiti a gli utenti attivi).
+     * @param $img_bann array di immagini relative ai vinili bannati (riferiti a gli utenti bannati).
      * @throws SmartyException
      */
 
@@ -195,6 +200,7 @@ class VAdmin
         list($typeA,$pic64att) = $this->SetImageRecensione($img_attivi);
         if ($typeA == null && $pic64att == null)
             $this->smarty->assign('immagine_attiva', "no");
+
         if (isset($img_attivi))
         {
             if (is_array($img_attivi))
@@ -215,6 +221,7 @@ class VAdmin
         list($typeB,$pic64ban) = $this->SetImageRecensione($img_bann);
         if ($typeB == null && $pic64ban == null)
             $this->smarty->assign('immagine_bannata', "no");
+
         if (isset($img_bann))
         {
             if (is_array($img_bann))
@@ -238,13 +245,13 @@ class VAdmin
     }
 
     /**
-     * Funzione che si occupa di presentare l'elenco degli abbonamenti presenti nel database
-     * @param $abbonamentiAttivi array di abbonamenti attivi
-     * @param $abbonamentiBan array di abbonamenti bannati
-     * @param $negoziAttivi array di negozi attivi
-     * @param $negoziBan array di negozi bannati
-     * @param $img_attivi array di immagini di negozi attivi
-     * @param $img_bann array di immagini di negozi bannati
+     * Funzione che si occupa di presentare l'elenco degli abbonamenti presenti nel database.
+     * @param $abbonamentiAttivi array di abbonamenti attivi.
+     * @param $abbonamentiBan array di abbonamenti bannati.
+     * @param $negoziAttivi array di negozi attivi.
+     * @param $negoziBan array di negozi bannati.
+     * @param $img_attivi array di immagini di negozi attivi.
+     * @param $img_bann array di immagini di negozi bannati.
      * @throws SmartyException
      */
 
