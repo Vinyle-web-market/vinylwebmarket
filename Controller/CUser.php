@@ -287,7 +287,7 @@ class CUser
      * 3)se Pw e email sono quelle dell'amministratore si viene reindirizzati alla sezione ADMIN;
      * 4) se si verifica la presenza di particolari cookie(e sessione scaduta) avviene il reindirizzamento alla pagina specificata:
      * -durante una chat si viene reindirizzati all'elenco chat pronti per riprendere la conversazione
-     * -se stiamo visitando un profilo vieniamo poi reindirizzati li'
+     * -se stiamo visitando un profilo di un altro utente vieniamo poi reindirizzati li' per riprendere eventuali recensioni o chat
      * @throws SmartyException
      */
     static function checkLogin()
@@ -613,6 +613,14 @@ class CUser
     }
     */
 
+    /**
+     * funzione per la modifica della carta
+     * 1) se il metodo è GET e si è loggati->form per l'invio delle modifiche.
+     * 2) se il metodo è GET ma non si è loggati, allora avviene il reindirizzamento verso la form di login;
+     * 3) se il metodo della richiesta HTTP è POST,controllo e gestione dei dati inseriti dall'utente
+     *     per effettuare le modifiche(devono essere formati validi)
+     * 	  CONTROLLO dei formati dei campi della carta con EInputControl
+     */
     public function modificaCarta()
     {
         $pm = new FPersistentManager();
@@ -641,6 +649,11 @@ class CUser
         }
     }
 
+    /**
+     * Funzione che si occupa di fare tutti i controlli necessari per aggiornare la carta che un utente desidera modificare
+     * il nuovo object csrta deve passare i test dell'EInputControl per poter effetture effettivamente le modifiche
+     *  $utente obj rappresentante l'utente
+     */
     static function updateCarta($utente)
     {
         $pm = new FPersistentManager();
@@ -674,17 +687,16 @@ class CUser
     /**
      * Function per la presentazione del profilo pubblico di un negozio o cliente
      * Get:
-     * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo;
+     * - se il metodo è GET e si è loggati, avviene il reindirizzamento alla homepage del profilo->si accede a un profilo solo dopo aver mostrato interesse per un vinile
+     *   e quindi si è fatta una richietsa di visita ad un profilo pubblico tramite POST
      * - se il metodo è GET e non si è loggati, si viene reindirizzati alla form di login.
      * - se il metodo della richiesta HTTP è GET, ma esiste il cookie allora questo ci permette di caricare la pagina relativa
      *    all'utente che si stava visitando prima del login;
      * POST:
      * - se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['email'] allora viene richiamato
-     *      il metodo return_dettagliutente();
-     * 2) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'], dopo aver verificato se l'utenete è loggato,
-     *    si opera per poter inserire una recensione nel database sempre prelevando i valori passati con il metodo POST;
-     * 3) se il metodo della richiesta HTTP è POST ed esiste il valore passato in $_POST['azione'] ma non si è loggati, viene inviato un cookie
-     *    per tenere traccia delle informazioni utili per il reindirizzamento, dopo il login, alla pagina in cui ci troviamo;
+     *      il metodo return_dettaglioutente();
+     * - se il metodo della richiesta HTTP è POST  ma non si è loggati, viene inviato un cookie
+     *    per tenere traccia delle informazioni utili per il reindirizzamento, dopo il login, alla pagina profilo pubblico dell'utente desiderata;
      */
     public function viewProfilePublic()
     {
@@ -704,26 +716,7 @@ class CUser
                 if (isset($_POST['email'])) {
                     static::return_dettaglioutente($_POST['email']);
                     //presente in CRecensione
-                }/*  elseif (isset($_POST['azione'])) {
-                if ($sessione->isLoggedUtente()) {
-                    $ute = unserialize($_SESSION['utente']);
-                    if (isset($_POST['rate']))
-                        $rec = new ERecensione($_POST['commento'], $_POST['rate'], $ute->getEmail(), $_POST['conveyor']);
-                    else
-                        $rec = new ERecensione($_POST['commento'], 0, $ute->getEmail(), $_POST['conveyor']);
-                    $pm->store($rec);
-                    $tra = $pm->load("emailUtente", $_POST['conveyor'], "FTrasportatore");
-                    if (isset($tra)) {
-                        $img = $pm->load("emailutente",$_POST['conveyor'], "FMediaUtente");
-                        list ($imgMezzo,$imgrecensioni) = static::set_profilo_tra($tra);
-                        $lista_rec = static::info_cliente_rec($tra);
-                        $view->profilopubblico_tra($tra, $tra->getEmail(),$img,$imgMezzo,$imgrecensioni,$lista_rec,"si");
-                    }
-                } else {
-                    setcookie("nome_visitato", $_POST['conveyor'], time()+900);
-                    header('Location: /FillSpaceWEB/Utente/login');
                 }
-            }*/
             } else {
                     setcookie("profilo_visitato", $_POST['email'], time()+900);
                     header('Location: /vinylwebmarket/User/login');
@@ -749,7 +742,6 @@ class CUser
             $img = $pm->loadImg("EImageUtente", "email_utente", $visitato);
 
             $imgrecensioni = static::ImageReviews($negozio);
-            //$rec = static::info_cliente_rec($negozio);
             $rec = $pm->load("destinatario", $visitato, "FRecensione");
             $sessione = Session::getInstance();
             if ($sessione->isLoggedUtente()) {
@@ -791,7 +783,6 @@ class CUser
     {
         $pm = new FPersistentManager();
         $recensioniImage = null;
-        //$recensioni = $pm->load("emailConveyor", $tra->getEmail(), "FRecensione");
         $recensioni = $pm->load("destinatario", $user->getEmail(), "FRecensione");
         if (isset($recensioni)) {
             if (is_array($recensioni)) {
@@ -806,26 +797,8 @@ class CUser
         return $recensioniImage;
     }
 
+
     /*
-   static function info_cliente_rec ($user) {
-       $pm = new FPersistentManager();
-       /*$rec = $user->getRecensioni(); // SEMPRE UN ARRAY
-       if(count($rec) > 1) {
-           foreach ($rec as $r) {
-               $ute = $pm->load("email", $r->getUsernameMittente(), "FUtente_loggato");
-               $r->setUsernameMittente($ute);
-           }
-       }
-       elseif (count($rec) == 1) {
-           $ute = $pm->load("email", $rec[0]->getUsernameMittente(), "FUtente_loggato");
-           $rec[0]->setUsernameMittente($ute);
-       }
-       return $rec;
-
-   }
-*/
-
-/*
     public function TuoiAnnunci($email)
     {
         $sessione = Session::getInstance();

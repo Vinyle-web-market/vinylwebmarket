@@ -360,35 +360,7 @@ class VUser
         $this->smarty->assign('indirizzo',$utente->getAddress());
         $this->smarty->display('modificaProfiloNegozio.tpl');
     }
-/*
-    public function ErrorInputModificaNegozio($errori)
-    {
-        foreach ($errori as $err) {
-            switch ($err) {
-                case "username":
-                    $this->smarty->assign('errorUsername', "errore");
-                    break;
 
-                case "nome":
-                    $this->smarty->assign('errorNome', "errore");
-                    break;
-
-                case "partitaiva":
-                    $this->smarty->assign('errorPartitaiva', "errore");
-                    break;
-
-                case "password":
-                    $this->smarty->assign('errorPasswordInput', "errore");
-                    break;
-
-                case "email":
-                    $this->smarty->assign('errorEmail', "errore");
-                    break;
-            }
-        }
-        $this->smarty->display('modificaProfiloNegozio.tpl');
-    }
-*/
 
     public function ErrorInputModificaPrivato($errori)
     {
@@ -416,20 +388,6 @@ class VUser
             $this->smarty->display('modificaProfiloPrivato.tpl');
         }
     }
-
-    /*
-    public function formModificaProfiloImage($utente, $errore) {
-        switch ($errore) {
-            case "errorSize" :
-                $this->smarty->assign('errorSize', "errore");
-                break;
-            case "errorType" :
-                $this->smarty->assign('errorType', "errore");
-                break;
-        }
-        $this->smarty->display('modificaProfiloImage.tpl');
-    }
-    */
 
     public function formModificaCarta($utente,$errore){
         switch ($errore) {
