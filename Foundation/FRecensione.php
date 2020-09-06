@@ -199,7 +199,7 @@ class FRecensione
     }
 
     /**
-     * Metodo che permette di effettuare una parola data come valore in input.
+     * Metodo che permette di effettuare una ricerca con una parola data come valore in input.
      * @param $parola valore da ricercare all'interno del campo di testo della recensione
      */
 

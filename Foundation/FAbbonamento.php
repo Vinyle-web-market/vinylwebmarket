@@ -1,7 +1,7 @@
 <?php
 
 /**
- * La classe FAbbonamentp implementa le funzionalità di persistenza dati per l'oggetto abbonamento.
+ * La classe FAbbonamento implementa le funzionalità di persistenza dati per l'oggetto abbonamento.
  * Si occupa di mantenere e recuperare i dati della tabella 'abbonamento' presente nel database.
  * @author Gruppo Cruciani - Nanni - Scarselli
  * @package Foundation
