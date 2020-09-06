@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * la classe controller principale che risveglia il server,il primo controllore che parte.
+ * nel nostro caso si occupa:
+ *                        -creare il controllore responsabile per la gestione della chiamata
+ *                        -identificare il metodo da eseguire
+ *                        -identificare eventuali dati da passare al metodo
+ * $_SERVER['REQUEST_URI'] restiruisce L URL in formato stringa
+ * explode successiva spezza la stringa per ogni / ,ed array_shift butta una componente
+ *
+ */
 
 class CFrontController
 {
@@ -41,21 +51,16 @@ class CFrontController
                     } else {
                         $c->$metodo();
                     }
-                }
-                /*else {
+                } else {
                     header('HTTP/1.1 405 Method Not Allowed');
                     exit;
                 }
-                */
-
             }
-            /*
             else {
-                $errore="Pagina non trovata";
-                $view = new VError();
-                $view->mostraErrore($errore);
+                header('HTTP/1.1 404 Not Found');
+                exit;
             }
-            */
+
         }
         else { //richiesta per la Homepage
             $controller = new CHomepage();
