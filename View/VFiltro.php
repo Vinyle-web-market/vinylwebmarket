@@ -12,6 +12,7 @@ class VFiltro
 
     /**
      * Vetrina aggiornata dopo il filtraggio applicato dall'utentr.
+     * neanche serve, bastava richiamare la funzione in VVinile per la presentazione della vetrina
      * @param $result contiene i vinili
      * @param $img un'immagine per vinile
      * @throws SmartyException
@@ -26,10 +27,6 @@ class VFiltro
         $pic64=null;
         $pic64P=null;
 
-       // echo "<hr>";
-        //var_dump($img);
-       // echo "<hr>";
-       //var_dump($imgP);
 
 
         if (isset($img)) {
@@ -76,11 +73,6 @@ class VFiltro
 
         $b=serialize($result);
         $s=urlencode($b);
-        // var_dump($s);
-        // echo "<hr>";
-        //$u=urldecode($s);
-        // $x=unserialize($u);
-        //var_dump($x);
 
 
         $this->smarty->assign('S_vinili', $s);
