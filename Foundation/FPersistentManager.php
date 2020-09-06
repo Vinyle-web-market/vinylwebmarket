@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * La classe FPersistentManager si presenta come interfaccia fra le classi del package Foundation e le classi Controller che la interrogano per effettuare le operazioni CRUD sul database.
+ * @access public
+ * @author cruciani-scarselli-nanni
+ * @package Foundation
+ */
 
 class FPersistentManager
 {
@@ -19,7 +24,6 @@ class FPersistentManager
     public function __construct(){}
 
     /** Metodo che permette di salvare un oggetto sul db */
-    //1...claudia fa una distinzione con uan classe,tenere conto
     public static function store($object) {
         //$PM=static::getInstance();  //
         $classe_entity = get_class($object);
@@ -29,6 +33,9 @@ class FPersistentManager
 
     }
 
+    /**
+     * Metodo che permette di salvare un oggetto EImage sul db
+     */
     public static function storeImg(EImage $media){
         $result=null;
         $fclass='FImage';
@@ -36,10 +43,16 @@ class FPersistentManager
         return $result;
     }
 
+    /**
+     * Funzione che permette di eliminare un oggetto dal DB dato un valore ed una colonna.
+     */
     public static function delete($field,$value,$Fclass) {
         $Fclass::delete($field,$value);  //
     }
 
+    /**
+     * Funzione che permette di eliminare un oggetto EImage dal DB dato la categoria dell'immagine,un valore ed una colonna.
+     */
     public static function deleteImg(string $categoriaImage,$field, $id){
         $result=null;
         $fclass='FImage';
@@ -47,18 +60,27 @@ class FPersistentManager
         return $result;
     }
 
+    /**
+     * Metodo che accerta l'esistenza di un valore di un campo passato come parametro
+     */
     public static function exist($field, $value ,$Fclass) {
         $esiste = null;
         $esiste = $Fclass::exist($field,$value);
         return $esiste;
     }
 
+    /**
+     * Metodo che permette di caricare un oggetto con un valore passato come parametro di una determinata colonna
+     */
     public static function load($field, $value,$Fclass) {
         $result = null;
         $result = $Fclass::load($field,$value);
         return $result;
     }
 
+    /**
+     * Metodo che permette di caricare solo vimnili attvi di un venditore con email passata in input
+     */
     public static function loadViniliAttivi($email) {
         $result = null;
         $Fclass="FVinile";
@@ -66,6 +88,9 @@ class FPersistentManager
         return $result;
     }
 
+    /**
+     * Metodo per caricare oggetti Eimage
+     */
     public static function loadImg(string $categoriaImage,$field,$id){
         $result=null;
         $fclass='FImage';
@@ -73,8 +98,9 @@ class FPersistentManager
         return $result;
     }
 
-   // public static function loadI1(string $categoriaImage,$field,$id){
-    //per caricare immagini per risolvere il problema di 2 immagini per il vinile
+    /**
+     * Metodo per caricare 1 oggetto EimageVinile,foto pricipale
+     */
     public static function loadImg2(string $categoriaImage,$field,$id){
         $result=null;
         $fclass='FImage';
@@ -82,7 +108,9 @@ class FPersistentManager
         return $result;
     }
 
-    //come la precedente ma per caricare le immagini posterioriori
+    /**
+     * Metodo per caricare 1 oggetto EimageVinile,ma in questo la foto posteriore
+     */
     public static function loadImgP2(string $categoriaImage,$field,$id){
         $result=null;
         $fclass='FImage';
@@ -90,9 +118,9 @@ class FPersistentManager
         return $result;
     }
 
-
-
-    /** Metodo che permette l'aggiornamento del valore di un campo passato per parametro */
+    /**
+     * Metodo che permette l'aggiornamento del valore di un campo passato per parametro
+     */
     public static function update($field, $newValue, $keyField, $idValue ,$Fclass) {
         $result = null;
        // if ($Fclass == "FAnnuncio" || $Fclass == "FMezzo" || $Fclass == "FTappa" || $Fclass == "FTrasportatore" || $Fclass == "FUtenteloggato" || $Fclass == "FCliente")
@@ -102,6 +130,9 @@ class FPersistentManager
         return $result;
     }
 
+    /**
+     * Metodo che permette il caricamento vinili che rispettano 6 i parametri passati in input alla funzione
+     */
     public static function searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo) {
         $search = null;
         $search = FVinile::searchVinyl ($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo);
@@ -115,19 +146,27 @@ class FPersistentManager
         return $rec;
     }
 
+    /**
+     * Metodo per controllare la vera presenza si email e password di un utente che tenta di loddarsi
+     * se ha successo la funzione restiruisce un oggetto utente
+     */
     public static function loginUtente ($email, $pass) {
         $ris = null;
         $ris = FUtente_loggato::login($email, $pass);
         return $ris;
     }
 
+    /**
+     * funzione per caricare gli ultimi 6 vinili e presentarli come novità nel carosello sulle homepage
+     */
     public function vinylHome(){
         $ris=null;
         $ris=FVinile::loadSixVinyls();
         return $ris;
     }
 
-    /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
+    /** PER LE RECENSIONI
+     * Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
      */
 
@@ -138,7 +177,9 @@ class FPersistentManager
         return $ris;
     }
 
-    /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
+    /**
+     * PER I VINILI
+     * Metodo che permette il caricamento delle sole tuple che abbiano nel campo titolo una stringa/sottostringa data in input
      *  @param parola da cercare nell'area di testo
      */
 
@@ -149,7 +190,10 @@ class FPersistentManager
         return $ris;
     }
 
-     //ricercaParolaCampo($parola,$field)
+    /**
+     * Metodo che permette il caricamento delle sole tuple che abbiano nel campo $field una stringa/sottostringa data in input come $parola
+     *  @param parola da cercare nell'area di testo
+     */
     public static function cercaViniliCampo($parola,$field)
     {
         $ris = null;
@@ -157,7 +201,9 @@ class FPersistentManager
         return $ris;
     }
 
-    /** Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
+    /**
+     * PER GLI UTENTI
+     * Metodo che permette il caricamento delle sole tuple che abbiano in un loro campo una parola data in input
      *  @param parola da cercare nell'area di testo
      */
 

@@ -11,6 +11,9 @@ class FVinile
     {
     }
 
+    /**
+     *Associa un valore a un segnaposto con nome corrispondente nell'istruzione SQL utilizzata per preparare l'istruzione
+     */
     public static function bind($pdost, EVinile $vinile)
     {
 
@@ -28,7 +31,8 @@ class FVinile
     }
 
     /**
-     * @return string
+     * questo metodo restituisce il nome della tabella per le Query
+     * @return string $table nome della tabella
      */
     public static function getTable(): string
     {
@@ -36,7 +40,7 @@ class FVinile
     }
 
     /**
-     * @return string
+     * questo metodo restituisce il nome della classe per la costruzione delle Query
      */
     public static function getClass(): string
     {
@@ -44,13 +48,16 @@ class FVinile
     }
 
     /**
-     * @return string
+     * questo metodo restituisce l'insieme dei valori per la costruzione delle Query
      */
     public static function getValues(): string
     {
         return self::$values;
     }
 
+    /**
+     * Permette il salavataggio del vinile sul db
+     */
     public static function store(EVinile $vinile)
     {
         $db = FDatabase::getInstance();
@@ -63,7 +70,12 @@ class FVinile
         return $id;
     }
 
-
+    /**
+     * Metodo che elimina un vinile
+     * @param $id valori della riga da eliminare
+     * @param $keyfield campo di ricerca
+     * @return true se il mezzo è stato eliminato, altrimenti false
+     */
     public static function delete($keyField, $id)
     {
         $db = FDatabase::getInstance();
@@ -74,6 +86,10 @@ class FVinile
             return NULL;
     }
 
+    /**
+     * Metodo che verifica se esiste un vinile con un certo valore in uno dei suoi campi:
+     * ritrona un bool
+     */
     public static function exist($keyField, $id)
     {
         $db = FDatabase::getInstance();
@@ -110,7 +126,9 @@ class FVinile
         return $vinile;
     }
    */
-
+    /**
+     * Metodo che recupera dal db tutti i vinili che rispettano il parametro del id del campo di ricerca field
+     */
     public static function load($field, $id)
     {
         $utenteloggato= null;
@@ -139,7 +157,9 @@ class FVinile
         return $vinile;
     }
 
-
+    /**
+     * Metodo che modifica il campo di un vinile che rispetta una condizione $id nel campo $keyfield
+     */
     public static function update($field, $newvalue, $keyField, $id)
     {
         $db = FDatabase::getInstance();
@@ -148,7 +168,9 @@ class FVinile
         else return false;
     }
 
-    //loadByform di claudia
+    /**
+     * Metodo per filtrare annunci secondo i 6 possibili input utilizzati come parametro di ricerca
+     */
     public static function searchVinyl($titolo, $artista, $genere, $ngiri, $condizioni, $prezzo)
     {
         $vinile = null;
@@ -175,6 +197,9 @@ class FVinile
         return $vinile;
      }
 
+    /**
+     * metodo per il carimento degli ultimi 6 vinili (ultimi 6,sarebbero le novità) necessari a riempire il carosello della homepage
+     */
      public static function loadSixVinyls()
      {
          $vinile = null;
@@ -189,26 +214,21 @@ class FVinile
              $n=6;
          for ($i=0; $i<$n; $i++)
          {
-                 //ublic static function loadI(string $categoriaImage,$field,$id){
-             // echo '<br>';
                  $img[$i] = FImage::loadI1("EImageVinile", "id_vinile", $vinile[$i]);
                  $result[$i] = $vinile[$i];
                  $load[$i] = FVinile::load('id_vinile', $result[$i]);
             //var_dump($load[$i]);
             // echo '<br>';
             // var_dump($img[$i]);
-             //echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';echo '<br>';
 
          }
          return array($load,$img);
     }
 
     /**
-     * @param $parola valore da ricercare all'interno del campo di testo del vinile
-     * @param $campo restituisce il campo interessati da tale ricerca associati alla parola in input
-     * @param $class classe a cui si vuole far riferimento
+     * metodo di ricerca di stringhe o sottostringhe di un vinile nel csmpo titolo
+     * @param $parola valore da ricercare all'interno del campo titolo del vinile
      */
-     //ricerca titolo
     public static function ricercaParola($parola)
     {
         $vinile = null;
@@ -239,6 +259,11 @@ class FVinile
         return $vinile;
     }
 
+    /**
+     * FUNZIONE CHE INLUDE ANCHE QUELLA DI SOPRA
+     * metodo di ricerca di stringhe o sottostringhe di un vinile nel campo passato come input alla funzione
+     * @param $parola valore da ricercare all'interno del campo $field
+     */
     public static function ricercaParolaCampo($parola,$field)
     {
         $vinile = null;
@@ -269,6 +294,9 @@ class FVinile
         return $vinile;
     }
 
+    /**
+     * funzione che carica i solo vinili attivi del venditore con email passato per input
+     */
     public static function loadVinAtt($email)
     {
         $utenteloggato= null;
