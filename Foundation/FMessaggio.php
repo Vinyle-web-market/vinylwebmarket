@@ -1,17 +1,27 @@
 <?php
 
+/**
+ * La classe FMessaggio implementa le funzionalità di persistenza dati per l'oggetto messaggio.
+ * Si occupa di mantenere e recuperare i dati della tabella 'messaggio' presente nel database.
+ * @author Gruppo Cruciani - Nanni - Scarselli
+ * @package Foundation
+ */
 
 class FMessaggio
 {
     private static $table = "messaggio";
-
     private static $class = "FMessaggio";
-
     private static $values ="(:id, :mittente, :destinatario, :testo, :oggetto)";
 
-    public function __construct()
-    {
-    }
+    //-------------------------COSTRUTTORE-------------------------
+    public function __construct() {}
+
+    /**
+     * Metodo che permette di specificare a quale segnaposto della tabella dobbiamo associare
+     * al place holder (terzo elemento del bind, necessario per il PDO).
+     * @param $pdost (PDO statement) variabile utilizzata per l'approccio ad oggetti con il PDO.
+     * @param EMessaggio $m da associare al place holder.
+     */
 
     public static function bind($pdost, EMessaggio $m)
     {
@@ -23,38 +33,62 @@ class FMessaggio
     }
 
     /**
+     * Metodo che ci permette di
+     * prendere la classe specifica.
+     * Essa verrà recuperata e passata in tutte le query di FDatabase.
      * @return string
      */
+
     public static function getClass(): string
     {
         return self::$class;
     }
 
     /**
+     * Metodo che permette di recuperare il nome dela tabella
+     * presente nel database, associata a tale classe Foundation.
      * @return string
      */
+
     public static function getTable(): string
     {
         return self::$table;
     }
 
     /**
+     * Metodo che permette di recupero i valori
+     * specifici di determinati campi della tabella, all'interno
+     * del database.
      * @return string
      */
+
     public static function getValues(): string
     {
         return self::$values;
     }
 
+    /**
+     * Metodo che permette di salvare una specifica tupla nella tabella
+     * di associazione presente nel database.
+     * @param EMessaggio $m da associare al place holder.
+     */
+
     public function store(EMessaggio $m)
     {
-        $db = FDatabase::getInstance();  /*se dovesse funzionare senza questa riga, dobbiamo eliminarla */
+        $db = FDatabase::getInstance();
         $id =$db->storeP($m, self::getClass());
         if ($id)
             return $id;
         else
             return null;
     }
+
+    /**
+     * Metodo che permette di verificare se una specifica tupla, nella tabella
+     * di associazione, risulta esser presente nel database.
+     * @param $keyField chiave della ricerca.
+     * @param $id valore identificativo della ricerca.
+     */
 
     public function exist ($field, $id)
     {
@@ -67,7 +101,15 @@ class FMessaggio
             return $exist = false;
     }
 
-    public function delete($keyField,$id){
+     /**
+     * Metodo che permette di eliminare una specifica tupla nella tabella
+     * di associazione presente nel database.
+     * @param $keyField chiave della ricerca.
+     * @param $id valore identificativo della ricerca.
+     */
+
+    public function delete($keyField,$id)
+    {
         $db = FDatabase::getInstance();
         $id = $db->deleteP(self::getClass(),$keyField,$id);
         if ($id)
@@ -75,6 +117,15 @@ class FMessaggio
         else
             return NULL;
     }
+
+    /**
+     * Metodo che permette di aggiornare una specifica tupla nella tabella
+     * di associazione presente nel database.
+     * @param $field campo della tabella su cui fare l'aggiornamento.
+     * @param $newvalue valore da inserire per l'aggiornamento.
+     * @param $keyField campo della chiave.
+     * @param $id valore che viene richiesto.
+     */
 
     public static function update($field, $newvalue, $keyField, $id)
     {
@@ -84,22 +135,31 @@ class FMessaggio
         else return false;
     }
 
-    public static function load($field, $id){
+    /**
+     * Metodo che permette di caricare una o più tuple dalla tabella
+     * di associazione presente nel database.
+     * @param $field campo della tabella su cui si fà la richiesta.
+     * @param $id valore che viene richiesto.
+     */
+
+    public static function load($field, $id)
+    {
         $messaggio = null;
         $db=FDatabase::getInstance();
         $result=$db->loadP(static::getClass(), $field, $id);
         $rows_number = $db->countLoadP(static::getClass(), $field, $id);
-        if(($result!=null) && ($rows_number == 1)) {
+        if(($result!=null) && ($rows_number == 1))
+        {
             $messaggio=new EMessaggio($result['mittente'],$result['destinatario'],$result['oggetto'],$result['testo']);
-            //$messaggio[$i]->setId($result['id']);
         }
-        else {
-            if(($result!=null) && ($rows_number > 1)){
+        else
+            {
+            if(($result!=null) && ($rows_number > 1))
+            {
                 $messaggio = array();
-                for($i=0; $i<count($result); $i++){
+                for($i=0; $i<count($result); $i++)
+                {
                     $messaggio[]=new EMessaggio($result[$i]['mittente'],$result[$i]['destinatario'],$result[$i]['oggetto'],$result[$i]['testo']);
-                   // $messaggio[$i]->setId($result['id']);
-
                 }
             }
         }
@@ -111,6 +171,7 @@ class FMessaggio
      * @param $email valore da ricercare nel campo $field
      * @param $email2 valore del campo della ricerca
      */
+
     public static function loadChats($email, $email2)
     {
         $messaggio1 = null;
@@ -152,7 +213,6 @@ class FMessaggio
                 }
             }
         }
-
         return array($messaggio1, $messaggio2);
     }
 
@@ -185,7 +245,6 @@ class FMessaggio
                 }
             }
         }
-
         return $messaggio;
     }
 
