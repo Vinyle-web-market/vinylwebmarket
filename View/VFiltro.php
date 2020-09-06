@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * La classe VFiltro si occupa dell'input / output riguardante il filtraggio
+ * di tutte le caratteristiche dei vinili che esposti nella vetrina
+ * del nostro sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
 
 class VFiltro
 {

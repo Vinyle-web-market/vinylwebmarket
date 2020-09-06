@@ -1,9 +1,12 @@
 <?php
 
-
 /**
- * Class VUser per la presentazione delle possibili operazioni scelte dall'utente e le relative conseguenze
+ * La classe VUser si occupa dell'input / output riguardante tutti gli utenti
+ * che sono presenti nel sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
  */
+
 class VUser
 {
     private $smarty;

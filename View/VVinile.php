@@ -1,6 +1,13 @@
 <?php
 
 
+/**
+ * La classe VVinile si occupa dell'input / output riguardante tutti i vinili
+ * che sono presenti nel sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
+
 class VVinile
 {
     private $smarty;

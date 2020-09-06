@@ -1,6 +1,14 @@
 <?php
 
 
+/**
+ * La classe VAdmin si occupa dell'input / output riguardante tutte le funzionalità
+ * di supervisione, che l'amministratore deve effettuare per mantenere sotto
+ * controllo il sito da possibili comportamenti inadeguati.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
+
 class VAdmin
 {
     public function __construct()
