@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Nella classe InputChecker sono presenti tutti i metodi e gli attributi necessari alla gestione della correttezza dei valori passati alle entity.
+ * @access public
+ * @author cruciani-scarselli-nanni
+ * @package Model
+ */
 
 class EInputControl
 {
