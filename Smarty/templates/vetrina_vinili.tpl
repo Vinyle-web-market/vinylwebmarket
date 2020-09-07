@@ -131,7 +131,7 @@
                                     </a>
                                 </div>
                             <div class="product-content">
-                                <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}}">{$vinili[$i]->getTitolo()}</a></h3>
+                                <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili[$i]->getId()}">{$vinili[$i]->getTitolo()}</a></h3>
                                 <h3 class="title">{$vinili[$i]->getArtista()}</h3>
                                 <hr color=black>
                                 <div class="price">
@@ -157,7 +157,7 @@
                     </a>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili->getId()}}">{$vinili->getTitolo()}</a></h3>
+                    <h3 class="title"><a href="/vinylwebmarket/Vinile/dettagliVinile/{$vinili->getId()}">{$vinili->getTitolo()}</a></h3>
                     <h3 class="title">{$vinili->getArtista()}</h3>
                     <hr color=black>
                     <div class="price">
