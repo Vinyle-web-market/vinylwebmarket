@@ -32,9 +32,6 @@
     </nav>
 
       <nav class="navbar navbar-expand-lg navbar sticky-top navbar-dark bg-dark">
-        <div class="container=50px">
-
-        </div>
         <a class="navbar-brand" href="/vinylwebmarket/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -65,7 +62,7 @@
         </div>
       </nav>
 
-    <form class="form-content" action="/vinylwebmarket/User/login" method="POST">
+    <form class="container" action="/vinylwebmarket/User/login" method="POST">
       <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">

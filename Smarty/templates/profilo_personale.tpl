@@ -115,6 +115,11 @@
                                         <i class="glyphicon glyphicon-user"></i>
                                         Prolunga o rinnova il tuo Abbonamento </a>
                                 </li>
+                                <li>
+                                    <a href="/vinylwebmarket/Vinile/UltimiViniliCercati">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Ultimi Vinili Cercati</a>
+                                </li>
 
                             </div>
                             <!-- END MENU -->

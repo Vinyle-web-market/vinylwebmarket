@@ -68,10 +68,13 @@
         <div class="form">
             <div class="note">
                 <p>Inserisci i campi che desideri modificare:</p>
-                <p>Reinserisci i campi che intendi mantenere.</p>
+
             </div>
             <form enctype="multipart/form-data" name="form_mod" onsubmit="return validateForm()" class="form-content" action="/vinylwebmarket/User/modificaProfilo" method="POST">
+               <center> <h5>Reinserisci i campi che intendi mantenere.</h5></center>
+                <br>
                 <div class="row">
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Email" value="{$email}" name="email"/>
