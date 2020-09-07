@@ -100,46 +100,7 @@ class Session
         $_SESSION['utente'] = $u;
     }
 
-    public function setNum($num)
-    {
-        if(session_status()==PHP_SESSION_NONE)
-        {
-            session_start();
-        }
-        $_SESSION['num'] = $num;
-    }
 
-    public function getNum($num)
-    {
-        if(session_status()==PHP_SESSION_NONE)
-        {
-            session_start();
-        }
-        return $_SESSION['num'];
-    }
-
-    public function setInfoVendita($prezzo,$quantita)
-    {
-        if(session_status()==PHP_SESSION_NONE)
-        {
-            session_start();
-        }
-        $_SESSION['prezzo'] = $prezzo;
-        $_SESSION['quantita'] = $quantita;
-    }
-
-    public function getInfoVendita()
-    {
-        if(session_status()==PHP_SESSION_NONE)
-        {
-            session_start();
-        }
-
-        $dati = array();
-        $dati['prezzo'] = $_SESSION['prezzo'];
-        $dati['quantita'] = $_SESSION['quantita'];
-        return $dati;
-    }
 
     /**
      * Metodo che provvede ad eliminare i dati di sessione (quando l'utente fa logout).

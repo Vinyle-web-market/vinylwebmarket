@@ -4,7 +4,7 @@
 /**
  * La classe VAbbonamento si occupa dell'input / output riguardante l'abbonamento
  * che, gli utenti registrati come negozio, devono sottoscrivere per
- * poter registrasi ed utilizzare il nostro sito.
+ * poter registrasi aggiungere vinili illimitati
  * @author Cruciani - Nanni - Scarselli
  * @package View
  */
@@ -15,7 +15,6 @@ class VAbbonamento
 
     public function __construct()
     {
-        //FARE IL FILE DI CONFIGURAZIONE StartSmarty.php(mettere fuori dalle cartelle?)
         $this->smarty = smartyConfiguration::configuration();
     }
 

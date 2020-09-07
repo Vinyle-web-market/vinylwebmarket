@@ -4,6 +4,9 @@
 class CAbbonamento
 {
 
+    /**
+     * Funzione di redirect alla form di check della carta per l'inizio del pagamento dell'abbonameneto
+     */
     static function form_carta(){
         $sessione= Session::getInstance();
         if ($sessione->isLoggedUtente())
@@ -19,6 +22,10 @@ class CAbbonamento
         else header('Location: /vinylwebmarket/User/login');
     }
 
+    /**
+     * funzione di check per il controllo della validità della carta
+     * se si insersci una nuova carta si puo registrare come carta salvata nel database
+     */
     public function check_carta()
     {
         $view = new VAbbonamento();
@@ -51,6 +58,9 @@ class CAbbonamento
         }
     }
 
+    /**
+     * Se l'utente è loggato e i dati della carta sono validi si procede con le tre possibili transazioni
+     */
     static function transazione(){
         $sessione= Session::getInstance();
         if ($sessione->isLoggedUtente())
@@ -58,16 +68,13 @@ class CAbbonamento
             $abb = $sessione->getUtente()->getAbbonamento();
             $pm = new FPersistentManager();
             $id=$abb->getId();
-            //FARE UNA SESSIONE PER L'ABBONAMENT0?
-            //attento perche la carta è salvata in sessione perciò due rinnovi sulla stessa sessione riusiltato un problema
-                //$abb->setData(date("Y-m-d"));
                 $n_mesi = $_POST['numeromesi'];
                 $data = $abb->AggiornaAbbonamento($n_mesi);
                 $pm->update("scadenza", $data, "id", $id, "FAbbonamento");
                 $pm->update("stato", 1, "id", $id, "FAbbonamento");
                 $pm->update("visibility", 1, "venditore",$sessione->getUtente()->getEmail(), "FVinile");
                 $u=$pm->load("id_abbonamento",$id,"FNegozio");
-                $sessione->setUtenteLoggato($u);   //AGGIORNO LA SESSIONE
+                $sessione->setUtenteLoggato($u);
                 header('Location: /vinylwebmarket/User/profile');
         }
         else header('Location: /vinylwebmarket/User/login');
