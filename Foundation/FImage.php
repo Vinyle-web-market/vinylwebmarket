@@ -1,18 +1,35 @@
 <?php
 
+/**
+ * Classe che permette il salvataggio e il caricamento di oggetti IMG (EImageUtente oppure EImageVinile) dal DB.
+ * Class FImage
+ * @author cruciani-scarselli-nanni
+ * @package Foundation
+ */
+
 
 class FImage
 {
 
-
+    /**
+     * Nome della Fclasse.
+     */
     private static string $className       = "FImage";
-
+    /**
+     * Nome della corrispondente tabella presente sul DB se ci si riferisce ad una immagine del profilo.
+     */
     private static string $tableImgUtente  = "imageutente";
-
+    /**
+     * Nome della corrispondente tabella presente sul DB se ci si riferisce alla foto di un vinile
+     */
     private static string $tableImgVinile  = "imagevinile";
-
+    /**
+     * Insieme delle colonne presenti nella tabella sul DB che verrà sostituita in fase di binding se l'oggetto è una immagine del profilo.
+     */
     private static string $valuesImgUtente = "(:id,:filename,:mimetype,:dataimage,:email_utente)";
-
+    /**
+     * Insieme delle colonne presenti nella tabella sul DB che verrà sostituita in fase di binding se l'oggetto è una immagine di un vinile.
+     */
     private static string $valuesImgVinile = "(:id,:filename,:mimetype,:dataimage,:id_vinile)";
 
     public function __construct(){}
@@ -31,7 +48,12 @@ class FImage
         unlink($path);
     }
      */
-
+    /**
+     *Associa un valore a un segnaposto con nome corrispondente nell'istruzione SQL utilizzata per preparare l'istruzione
+     * $media è l oggetto a cui si vogliono prelevare i valori
+     * file_get_contents () è il modo preferito per leggere il contenuto di un file in una stringa.
+     * La funzione addlashes () restituisce una stringa con backslash davanti a caratteri predefiniti.la rende adatta ad essere salvata sul database
+     */
     public static function bind($pdost,$media) {
         $dataimage=file_get_contents($media->getDataImage());
         $dataimage = addslashes($dataimage);
@@ -89,6 +111,10 @@ class FImage
         return null;
     }
 
+    /**
+     * Funzione che permette di salvare una immagine sul DB.
+     * @param EMedia $media, immagine da salvare.
+     */
     public static function storeI(EImage $media) {
         $db = FDatabase::getInstance();
 
@@ -99,6 +125,12 @@ class FImage
         return $id;
     }
 
+    /**
+     * Funzione che elimina un oggetto nel DB. Ritorna l'esito dell'operazione.
+     * @param $value, valore necessario ad indetificare l'oggetto.
+     * @param $row, colonna nella quale cercare il valore.
+     * @return bool, esito dell'operazione.
+     */
     public static function deleteI(string $categoriaImage,$field, $id){
         $result = false;
         $db=FDatabase::getInstance();
@@ -120,6 +152,9 @@ class FImage
     }
 */
 
+    /**
+     * Funzione che sulla base della tabella richiamata ritorna un oggetto immagine vinile o utente
+     */
     public static function loadI(string $categoriaImage,$field,$id){
         $image=null;
         $Fclass=static::getClass();
@@ -167,7 +202,10 @@ class FImage
         return $image;
     }
 
-    //per caricare solo 1 foto se ce ne sono 2
+    /**
+     * Il vinile ha in genere 2 foto
+     * Funzione che sulla base della tabella richiamata ritorna 1 e solo 1 oggetto immagine vinile(in questo caso un solo la foto principale)
+     */
     public static function loadI1(string $categoriaImage,$field,$id){
         $image=null;
         $image1 = null;
@@ -194,7 +232,11 @@ class FImage
         }
 return $image1;
 }
-  //come la precedente ma per caricare le img posteriori del vinile
+
+    /**
+     * Il vinile ha in genere 2 foto
+     * Funzione che sulla base della tabella richiamata ritorna 1 e solo 1 oggetto immagine vinile(in questo caso un solo la foto RETRO de vinile)
+     */
     public static function loadI2(string $categoriaImage,$field,$id){
         $image=null;
         $image1 = null;

@@ -71,28 +71,9 @@ class CFiltro
 
     /**
      * Metodo per la ricerca di vinili attraverso il filtri
+     * URLDECODE per passare eventuali risultati di precedenti ricerche attraverso in Post con input hidden e cosi si procede
+     * per filtraggi iterativi fino alle condizioni che l'utente richiede
      */
-    /*
-    static function ricerca (){
-        $pm = new FPersistentManager();
-        $VFiltro = new VFiltro();
-        $titolo = static::getTitolo();
-        $artista=static::getArtista();
-        $genere= static ::getGenere();
-        $ngiri = static::getNgiri();
-        $condizione = static::getCondizione();
-        $prezzo=static::getPrezzo();
-        if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
-                $result = $pm->searchVinyl ($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
-                //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-                $img=static::ImageVinyls($result);
-                $imgP=static::ImageVinyls2($result);
-                $VFiltro->showResult($result,$img,$imgP);
-
-        } else
-            header('Location: /vinylwebmarket/');
-    }
-    */
     static function ricerca (){
         //$r, $image, $imageP
         //var_dump($_POST['vinili']);
@@ -126,12 +107,8 @@ class CFiltro
                     $prezzo = static::getPrezzo();
                     //var_dump($prezzo);
                     if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
-                        //echo "$titolo"." $artista"." $genere"." $ngiri"." $condizione"." $prezzo";
                         $result[] = $pm->searchVinyl($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
-                        //var_dump($result);
-                        //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-                        //$img[] = static::ImageVinyls($result);
-                        //$imgP[] = static::ImageVinyls2($result);
+
                         if($result[0]!=null){ //non result senza [0] perchè un vettore con (1 elemento nullnon vale null)
                             $img[] = static::ImageVinyls($result);
                             $imgP[] = static::ImageVinyls2($result);
@@ -145,30 +122,6 @@ class CFiltro
         }else{
             $VFiltro->ViniliCercati(null, null, null);
         }
-        /*$titolo = static::getTitolo();
-        $artista = static::getArtista();
-        $genere = static::getGenere();
-        $ngiri = static::getNgiri();
-        $condizione = static::getCondizione();
-        $prezzo = static::getPrezzo();
-        if ($titolo != null || $artista != null || $genere != null || $ngiri != null || $condizione != null || $prezzo != null) {
-            $result = $pm->searchVinyl($titolo, $artista, $genere, $ngiri, $condizione, $prezzo);
-            //fare la funzione per le immagini vinili,simile imageReviews in Cuser
-            $img = static::ImageVinyls($result);
-            $imgP = static::ImageVinyls2($result);
-            $VFiltro->ViniliCercati($result, $img, $imgP);
-
-
-        } else
-            header('Location: /vinylwebmarket/');
-    }
-        */
-        //echo"<hr>";
-        //var_dump($r);
-        //echo"<hr>";
-        //var_dump($image);
-        //echo"<hr>";
-        //var_dump($imageP);
         $VFiltro->ViniliCercati($r, $image, $imageP);
     }
 
@@ -255,7 +208,10 @@ class CFiltro
         return $imgVynils;
     }
 
-
+    /**
+     * Funzione per la ricerca di una parola all'interno della Search sulla NavBar
+     * la ricerca è effetuata anche per sottostrighe Case_nonSensitive e nei campi Artista e NomeVinile
+     */
     static function ricercaParola (){
         $pm = new FPersistentManager();
         $VFiltro = new VFiltro();
@@ -264,7 +220,6 @@ class CFiltro
         $result1=array();
         if (isset($_POST['parola']))
             $value = $_POST['parola'];
-
         if ($value != null) {
             $result1 = $pm->ricercaVinili ($value);
             $result2 = $pm->cercaViniliCampo($value,"artista");
@@ -278,7 +233,7 @@ class CFiltro
             $VVinile->Vetrina($result,$img,$imgP);
 
         } else
-            header('Location: /vinylwebmarket/');
+            header('Location: /vinylwebmarket/Vinile/Vetrina');
     }
 
 

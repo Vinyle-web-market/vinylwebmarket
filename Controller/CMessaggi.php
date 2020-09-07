@@ -2,7 +2,7 @@
 
 
 /**
- * La classe VMessaggi si occupa dell'input/output riguardante chat/messaggi solo per gli utenti loggati.
+ * La classe CMessaggi si occupa dell'input/output riguardante chat/messaggi solo per gli utenti loggati.
  * @author Gruppo Cruciani - Nanni - Scarselli.
  * @package Controller
  */

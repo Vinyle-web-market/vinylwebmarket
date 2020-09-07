@@ -1,6 +1,13 @@
 <?php
 
 include_once("./View/VHomepage.php");
+/**
+ * La classe VHomepage si occupa dell'input / output riguardante
+ * la visualizzazione della homepage nel sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
+
 class VHomepage
 {
     private $smarty;

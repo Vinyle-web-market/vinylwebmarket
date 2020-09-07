@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Classe che gestisce l'utente:
+ *                -sua iscrizione al sito(connotati biografici e informazioni per il contatto )
+ *                -modifica profilo e carta di credito
+ *                -presentazione sezione privata e pubblica per essere visitati e contattati dagli altri utenti
+ */
+
 
 class CUser
 {

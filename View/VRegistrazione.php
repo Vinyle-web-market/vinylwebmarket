@@ -1,6 +1,13 @@
 <?php
 
 
+/**
+ * La classe VRegistrazione si occupa dell'input / output riguardante la registrazione
+ * di tutti gli utenti che vogliono entrare nel sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
+
 class VRegistrazione
 {
     private $smarty;

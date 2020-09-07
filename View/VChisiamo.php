@@ -4,9 +4,10 @@
 
 /**
  * La classe VChisiamo è specializzata nel visualizzare la pagina di informazioni della nostra applicazione
- * @author Gruppo8
+ * @author Cruciani - Nanni - Scarselli
  * @package View
  */
+
 class VChisiamo
 {
 

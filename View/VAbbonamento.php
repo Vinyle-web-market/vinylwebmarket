@@ -1,6 +1,14 @@
 <?php
 
 
+/**
+ * La classe VAbbonamento si occupa dell'input / output riguardante l'abbonamento
+ * che, gli utenti registrati come negozio, devono sottoscrivere per
+ * poter registrasi ed utilizzare il nostro sito.
+ * @author Cruciani - Nanni - Scarselli
+ * @package View
+ */
+
 class VAbbonamento
 {
     private $smarty;
