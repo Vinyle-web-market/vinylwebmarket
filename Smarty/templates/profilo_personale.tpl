@@ -62,7 +62,7 @@
                         <div class="col-md-3">
                             <div class="profile-sidebar">
                             <div class="profile-userpic">
-                                <a href="/vinylwebmarket/User/modificaProfiloImage">
+                                <a href="#">
                                     <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive" alt="img non disponibile">
                                 </a>
                             </div>
@@ -228,7 +228,7 @@
                                 <!-- SIDEBAR USERPIC -->
 
                                 <div class="profile-userpic">
-                                    <a href="/vinylwebmarket/User/modificaProfiloImage">
+                                    <a href="#">
                                         <img src="data:{$type};base64,{$pic64}" width="300" height="300" class="img-responsive" alt="img non disponibile">
                                     </a>
                                 </div>
